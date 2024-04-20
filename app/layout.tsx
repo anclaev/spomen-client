@@ -1,6 +1,12 @@
-import type { Metadata } from 'next'
+import { Roboto } from 'next/font/google'
+import { Metadata } from 'next'
 
 import '@styles/globals.sass'
+
+const roboto = Roboto({
+  weight: ['300', '400', '500', '700'],
+  variable: '--font-roboto',
+})
 
 export const metadata: Metadata = {
   title: 'Spomen',
@@ -14,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ru'>
-      <body>{children}</body>
+      <body className={`${roboto.variable} font-sans`}>{children}</body>
     </html>
   )
 }
