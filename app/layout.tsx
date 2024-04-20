@@ -1,10 +1,29 @@
-import type { Metadata } from 'next'
+import { Roboto } from 'next/font/google'
+import { Metadata } from 'next'
 
-import '@styles/globals.css'
+import Header from '@containers/Header'
+
+import '@styles/globals.sass'
+
+const roboto = Roboto({
+  weight: ['300', '400', '500', '700'],
+  variable: '--font-roboto',
+})
 
 export const metadata: Metadata = {
   title: 'Spomen',
   description: 'Wep client',
+  manifest: 'site.webmanifest',
+  appleWebApp: true,
+  applicationName: 'Spomen',
+  icons: {
+    apple: '/fav/apple-touch-icon.png',
+  },
+  other: {
+    'theme-color': '#1d2533',
+    'msapplication-TileColor': '#1d2533',
+    'msapplication-config': '/browserconfig.xml',
+  },
 }
 
 export default function RootLayout({
@@ -14,7 +33,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ru'>
-      <body>{children}</body>
+      <body className={`${roboto.variable} wrapper font-sans`}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }
