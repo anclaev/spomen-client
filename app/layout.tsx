@@ -13,6 +13,17 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: 'Spomen',
   description: 'Wep client',
+  manifest: 'site.webmanifest',
+  appleWebApp: true,
+  applicationName: 'Spomen',
+  icons: {
+    apple: '/fav/apple-touch-icon.png',
+  },
+  other: {
+    'theme-color': '#1d2533',
+    'msapplication-TileColor': '#1d2533',
+    'msapplication-config': '/browserconfig.xml',
+  },
 }
 
 export default function RootLayout({
