@@ -13,6 +13,21 @@ html
   background: var(--color-background)
   color: var(--color-content)
 
+body
+  position: relative
+  overflow-x: hidden
+
+  @apply min-h-dvh
+
+  &::after
+    position: fixed
+    content: ''
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: left 15% no-repeat url('/images/circle-w.png'), right bottom no-repeat url('/images/circle-m.png')
+
 ::selection
   background: var(--color-primary-dark)
   color: var(--color-content-dark)
@@ -26,3 +41,6 @@ html
 
 *::-webkit-scrollbar-thumb
   background-color: var(--color-accent)
+
+.wrapper > *
+  @include container()

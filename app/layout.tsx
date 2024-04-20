@@ -1,6 +1,8 @@
 import { Roboto } from 'next/font/google'
 import { Metadata } from 'next'
 
+import Header from '@containers/Header'
+
 import '@styles/globals.sass'
 
 const roboto = Roboto({
@@ -20,7 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ru'>
-      <body className={`${roboto.variable} font-sans`}>{children}</body>
+      <body className={`${roboto.variable} wrapper font-sans`}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }
