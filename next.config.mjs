@@ -2,7 +2,7 @@
 
 const nextConfig = {
   /** For GitHub Pages */
-  basePath: '/spomen-client'
+   basePath: '/spomen-client'
 };
 
 export default nextConfig;
