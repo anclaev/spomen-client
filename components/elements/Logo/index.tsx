@@ -1,6 +1,8 @@
 import Link from 'next/link'
 
-const Logo = ({ className }: { className?: string }) => {
+import { Component } from '@typs/components'
+
+const Logo: Component<{}> = ({ className }) => {
   return (
     <Link
       href='/'

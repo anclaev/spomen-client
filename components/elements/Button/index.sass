@@ -1,0 +1,21 @@
+.button
+  position: relative
+  padding: 15px 35px
+  border: 2px solid var(--color-accent-dark)
+  border-radius: 50px
+  overflow: hidden
+
+  &::before
+    content: ''
+    position: absolute
+    background: var(--gradient-h)
+    transition: .2s
+    top: -2
+    left: -2
+    right: -2
+    bottom: -2
+    z-index: -1
+    opacity: 0
+
+  &:hover::before
+    opacity: .5
