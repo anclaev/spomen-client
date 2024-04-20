@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import '@styles/globals.css'
+import '@styles/globals.sass'
 
 export const metadata: Metadata = {
   title: 'Spomen',
