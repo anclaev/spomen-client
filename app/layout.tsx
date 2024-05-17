@@ -1,7 +1,10 @@
+import { EffectorNext } from '@effector/next'
 import { Roboto } from 'next/font/google'
 import { Metadata } from 'next'
 
 import Header from '@containers/Header'
+
+import { ReduxDevToolsAdapter } from '@lib/utils/redux-dev-tools-provider'
 
 import '@styles/globals.sass'
 
@@ -35,8 +38,11 @@ export default function RootLayout({
   return (
     <html lang='ru'>
       <body className={`${roboto.variable} wrapper font-sans`}>
-        <Header />
-        {children}
+        <ReduxDevToolsAdapter />
+        <EffectorNext>
+          <Header />
+          {children}
+        </EffectorNext>
       </body>
     </html>
   )
