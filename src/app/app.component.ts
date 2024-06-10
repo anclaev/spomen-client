@@ -1,6 +1,7 @@
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify'
 import { RouterOutlet } from '@angular/router'
 import { Component } from '@angular/core'
+import * as VKID from '@vkid/sdk'
 
 import {
   TuiRootModule,
@@ -8,6 +9,8 @@ import {
   TuiAlertModule,
   TUI_SANITIZER,
 } from '@taiga-ui/core'
+
+import { env } from '@env'
 
 import { HeaderComponent } from '@common/components/header/header.component'
 
@@ -25,4 +28,12 @@ import { HeaderComponent } from '@common/components/header/header.component'
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor() {
+    VKID.Config.set({
+      app: env.appId,
+      redirectUrl: env.redirectUrl,
+      state: 'dj29fnsadjsd82f249k293c139j1kd3',
+    })
+  }
+}

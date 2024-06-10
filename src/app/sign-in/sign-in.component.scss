@@ -1,0 +1,23 @@
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.sign-in {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 300px;
+}
+
+.sign-in__fields {
+  margin-bottom: 40px;
+}
+
+.sign-in__fields > .field:not(:last-child) {
+  margin-bottom: 20px;
+}
