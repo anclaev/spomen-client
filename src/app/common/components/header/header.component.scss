@@ -1,0 +1,32 @@
+.header,
+.header__logo {
+  display: flex;
+  justify-content: center;
+}
+
+.header__logo {
+  position: relative;
+  padding: 15px;
+  user-select: none;
+}
+
+.header__logo:before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  bottom: 15px;
+  right: 15px;
+  background: url('/images/logo-circle.svg') no-repeat;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.header__logo {
+  cursor: pointer;
+}
+
+.header__logo:hover::before {
+  opacity: 0.3;
+}

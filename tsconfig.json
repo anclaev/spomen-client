@@ -23,6 +23,7 @@
     "paths": {
       "tslib": ["./node_modules/tslib/tslib.d.ts"],
       "@common/*": ["./src/app/common/*"],
+      "@styles/*": ["./src/styles/*"],
       "@store/*": ["./src/store/*"],
       "@env": ["./src/envs/env.ts"],
       "@tps/*": ["./src/types/*"],

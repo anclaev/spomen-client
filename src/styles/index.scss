@@ -1,0 +1,42 @@
+@import './fonts.scss';
+@import './colors.scss';
+@import './effects.scss';
+
+:root {
+  --tui-font-heading: 'Roboto', 'sans-serif';
+  --tui-font-text: 'Roboto', 'sans-serif';
+  --tui-base-01: var(--color-background);
+  --tui-text-01: var(--color-content);
+}
+
+::selection {
+  background: var(--color-primary-dark);
+  color: var(--color-content-dark);
+  text-shadow: none;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  position: fixed;
+  content: '';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    left 15% no-repeat url('/images/circle-w.svg'),
+    right bottom no-repeat url('/images/circle-m.svg');
+  z-index: -1;
+}
+
+.t-root-content {
+  min-height: 100vh;
+}
+
+p {
+  margin: 0;
+}

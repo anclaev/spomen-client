@@ -1,0 +1,6 @@
+@import '@styles/effects.scss';
+
+:host {
+  display: block;
+  @include container;
+}
