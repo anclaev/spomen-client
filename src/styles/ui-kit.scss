@@ -27,6 +27,10 @@ button {
   transition: border-color 0.3s;
 }
 
+.textbox--invalid {
+  border-color: var(--color-error);
+}
+
 .textbox:active,
 .textbox:focus,
 .button:active,

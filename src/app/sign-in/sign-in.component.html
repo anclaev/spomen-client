@@ -1,20 +1,26 @@
 <div class="sign-in">
-  <div class="sign-in__fields">
-    <input
-      class="textbox"
-      type="text"
-      name="login"
-      id="login"
-      placeholder="Логин"
-    />
-    <input
-      class="textbox"
-      type="password"
-      name="pass"
-      id="pass"
-      placeholder="Пароль"
-    />
-  </div>
-  <button class="sign-in__btn button">Войти</button>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="sign-in__fields">
+      <input
+        class="textbox"
+        type="text"
+        name="login"
+        id="login"
+        placeholder="Логин"
+        formControlName="login"
+        [ngClass]="{ 'textbox--invalid': form.controls.login.errors }"
+      />
+      <input
+        class="textbox"
+        type="password"
+        name="pass"
+        id="pass"
+        placeholder="Пароль"
+        formControlName="pass"
+        [ngClass]="{ 'textbox--invalid': form.controls.pass.errors }"
+      />
+    </div>
+    <button class="sign-in__btn button">Войти</button>
+  </form>
   <div id="VkIdSdkOneTap" #VkIdSdkOneTap></div>
 </div>
