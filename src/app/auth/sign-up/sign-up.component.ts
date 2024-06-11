@@ -39,7 +39,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   private isLoading: BehaviorSubject<boolean> = new BehaviorSubject(false)
   isLoading$$: Observable<boolean> = this.isLoading.asObservable()
 
-  showConfirmForm: boolean = true
+  showConfirmForm: boolean = false
 
   form: FormGroup<{
     login: FormControl<string | null>
