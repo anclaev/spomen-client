@@ -125,9 +125,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
     }
 
     this.showConfirmForm = true
-
-    // this.subs$.push(this.alerts.open('Запрос на сервер...').subscribe())
-    // this.isLoading.next(true)
   }
 
   confirmPass() {
@@ -140,6 +137,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
     ) {
       this.subs$.push(this.alerts.open('Некорректный пароль').subscribe())
       this.confirmForm.controls.confirmPass.reset()
+      this.form.controls.pass.reset()
       return
     }
 
@@ -150,3 +148,5 @@ export class SignUpComponent implements OnInit, OnDestroy {
     this.subs$.forEach((sub) => sub.unsubscribe())
   }
 }
+
+// TODO: Вынести форму подтверждения пароля в отдельный компонент
