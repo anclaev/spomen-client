@@ -1,6 +1,6 @@
-import { TuiAlertService } from '@taiga-ui/core'
+import { TuiAlertService, TuiLoaderModule } from '@taiga-ui/core'
+import { BehaviorSubject, Observable, Subscription } from 'rxjs'
 import { CommonModule } from '@angular/common'
-import { Subscription } from 'rxjs'
 import * as VKID from '@vkid/sdk'
 
 import {
@@ -24,7 +24,7 @@ import {
 @Component({
   selector: 'spomen-sign-in',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, TuiLoaderModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
 })
@@ -34,6 +34,9 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
   private vkIdOneTap = new VKID.OneTap()
   private alerts = inject(TuiAlertService)
   private subs$: Subscription[] = []
+
+  private isLoading: BehaviorSubject<boolean> = new BehaviorSubject(false)
+  isLoading$$: Observable<boolean> = this.isLoading.asObservable()
 
   form: FormGroup<{
     login: FormControl<string | null>
@@ -99,6 +102,7 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     this.subs$.push(this.alerts.open('Запрос на сервер...').subscribe())
+    this.isLoading.next(true)
   }
 
   ngOnDestroy(): void {

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core'
-import { BehaviorSubject, Subscription } from 'rxjs'
-import { TuiAlertService } from '@taiga-ui/core'
+import { TuiAlertService, TuiLoaderModule } from '@taiga-ui/core'
+import { BehaviorSubject, Observable, Subscription } from 'rxjs'
 import { ActivatedRoute } from '@angular/router'
 import { CommonModule } from '@angular/common'
 
@@ -20,7 +20,7 @@ import { SignInCallbackResponse } from '@tps/dto/sign-in-callback'
 @Component({
   selector: 'spomen-sign-in-callback',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, TuiLoaderModule],
   templateUrl: './sign-in-callback.component.html',
   styleUrl: './sign-in-callback.component.scss',
 })
@@ -29,6 +29,9 @@ export class SignInCallbackComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute)
   private alerts = inject(TuiAlertService)
   private subs$: Subscription[] = []
+
+  private isLoading: BehaviorSubject<boolean> = new BehaviorSubject(false)
+  isLoading$$: Observable<boolean> = this.isLoading.asObservable()
 
   form: FormGroup<{
     pass: FormControl<string | null>
@@ -109,6 +112,7 @@ export class SignInCallbackComponent implements OnInit, OnDestroy {
     }
 
     this.subs$.push(this.alerts.open('Запрос на сервер...').subscribe())
+    this.isLoading.next(true)
   }
 
   ngOnDestroy(): void {

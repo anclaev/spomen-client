@@ -18,5 +18,18 @@
     formControlName="confirmPass"
     [ngClass]="{ 'textbox--invalid': form.controls.confirmPass.errors }"
   />
-  <button type="submit" class="sign-up__btn button">Продолжить</button>
+  <tui-loader
+    class="sign-up__loader"
+    [inheritColor]="true"
+    [overlay]="true"
+    [showLoader]="(isLoading$$ | async) || false"
+  >
+    <button
+      type="submit"
+      class="sign-up__btn button"
+      [disabled]="isLoading$$ | async"
+    >
+      Продолжить
+    </button>
+  </tui-loader>
 </form>
