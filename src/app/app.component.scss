@@ -1,6 +1,6 @@
-@import '@styles/effects.scss';
-
 :host {
   display: block;
-  @include container;
+  width: 90%;
+  max-width: 1540px;
+  margin: 0 auto;
 }

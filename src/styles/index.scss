@@ -1,6 +1,7 @@
 @import './fonts.scss';
 @import './colors.scss';
 @import './effects.scss';
+@import './ui-kit.scss';
 
 * {
   box-sizing: border-box;
@@ -57,54 +58,4 @@ h2 {
   text-align: center;
   margin: 0;
   padding: 0;
-}
-
-input {
-  all: unset;
-  box-sizing: border-box;
-}
-
-button {
-  all: unset;
-  box-sizing: border-box;
-  color: inherit;
-  cursor: pointer;
-  width: 100%;
-  text-align: center;
-}
-
-.field,
-.btn {
-  transition: border-color 0.3s;
-  font-size: 16px;
-  font-weight: 400;
-  padding: 11px;
-}
-
-.field {
-  text-align: center;
-  background: transparent;
-  width: 100%;
-  border-bottom: 2px solid var(--color-primary-dark);
-}
-
-.field:active,
-.field:focus,
-.btn:active,
-.btn:focus {
-  border-color: var(--color-accent-dark);
-}
-
-.field::placeholder {
-  color: var(--color-background-light);
-}
-
-.btn {
-  border: 2px solid var(--color-primary-dark);
-  border-radius: 50px;
-  transition: border-color 0.3s;
-}
-
-.btn:hover {
-  border-color: var(--color-accent-dark);
 }

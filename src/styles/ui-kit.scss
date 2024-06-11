@@ -1,0 +1,70 @@
+input {
+  all: unset;
+  box-sizing: border-box;
+}
+
+button {
+  all: unset;
+  box-sizing: border-box;
+  color: inherit;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.textbox,
+.button {
+  font-size: 16px;
+  font-weight: 400;
+  padding: 11px;
+}
+
+.textbox {
+  text-align: center;
+  background: transparent;
+  width: 100%;
+  border-bottom: 2px solid var(--color-primary-dark);
+  transition: border-color 0.3s;
+}
+
+.textbox:active,
+.textbox:focus,
+.button:active,
+.button:focus {
+  border-color: var(--color-accent-dark);
+}
+
+.textbox::placeholder {
+  color: var(--color-background-light);
+  transition: color 0.2s;
+}
+
+.textbox:active::placeholder,
+.textbox:focus::placeholder {
+  color: var(--color-content);
+}
+
+.button {
+  position: relative;
+  border: 2px solid var(--color-accent-dark);
+  border-radius: 50px;
+  overflow: hidden;
+  user-select: none;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  background: var(--gradient-h);
+  transition: 0.2s;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  z-index: -1;
+  opacity: 0;
+}
+
+.button:hover::before {
+  opacity: 1;
+}

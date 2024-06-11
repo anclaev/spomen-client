@@ -1,12 +1,6 @@
-:host {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100%;
-}
+@import '../../styles/effects.scss';
+
+@include container;
 
 .sign-in {
   box-sizing: border-box;
@@ -18,7 +12,7 @@
   margin-bottom: 40px;
 }
 
-.sign-in__fields > .field:not(:last-child) {
+.sign-in__fields > .textbox:not(:last-child) {
   margin-bottom: 20px;
 }
 
