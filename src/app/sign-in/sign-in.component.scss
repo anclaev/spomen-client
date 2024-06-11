@@ -1,6 +1,7 @@
 @import '../../styles/effects.scss';
 
 @include container;
+@include container-absolute;
 
 .sign-in {
   box-sizing: border-box;
