@@ -1,0 +1,70 @@
+@import '../../styles/effects.scss';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+:host,
+:host::before {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+:host::before {
+  content: '404';
+  font-size: 400px;
+  min-height: 50vh;
+  min-width: 50vw;
+  line-height: 1;
+  font-weight: 500;
+  opacity: 0.3;
+  background: var(--gradient-h);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: -1;
+  animation: show404 2s forwards;
+}
+
+.not-found__title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  line-height: 1.2;
+}
+
+.not-found__btn {
+  padding: 15px 35px;
+}
+
+@media screen and (max-width: 768px) {
+  .not-found::before {
+    font-size: 220px;
+  }
+
+  .not-found__title {
+    font-size: 24px;
+  }
+
+  .not-found__btn {
+    width: 100%;
+  }
+}
+
+@keyframes show404 {
+  0% {
+    top: 30%;
+    opacity: 0;
+  }
+
+  100% {
+    top: 50%;
+    opacity: 0.3;
+  }
+}

@@ -1,4 +1,5 @@
-input {
+input,
+a {
   all: unset;
   box-sizing: border-box;
 }
@@ -7,7 +8,6 @@ button {
   all: unset;
   box-sizing: border-box;
   color: inherit;
-  cursor: pointer;
   width: 100%;
   text-align: center;
 }
@@ -45,6 +45,9 @@ button {
 }
 
 .button {
+  display: block;
+  text-align: center;
+  cursor: pointer;
   position: relative;
   border: 2px solid var(--color-accent-dark);
   border-radius: 50px;

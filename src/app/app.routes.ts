@@ -29,7 +29,11 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/',
+    loadComponent: () =>
+      import('./not-found/not-found.component').then(
+        (m) => m.NotFoundComponent
+      ),
     pathMatch: 'full',
+    title: 'Упс...',
   },
 ]
