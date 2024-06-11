@@ -11,12 +11,13 @@ export const authGuard: CanActivateFn = () => {
 
   return toObservable(auth.isAuthenticated).pipe(
     map((isAuthenticated) => {
-      let isSignInPage = router
-        .getCurrentNavigation()
-        ?.extractedUrl.toString()
-        .includes('/sign-in')
+      let path = router.getCurrentNavigation()?.extractedUrl.toString()
 
-      if (isSignInPage) {
+      let isSignPage = path!.includes('/sign-in')
+
+      if (path!.includes('/auth/callback') && !isAuthenticated) return true
+
+      if (isSignPage) {
         if (!isAuthenticated) return true
         else {
           router.navigate(['/'])
@@ -25,7 +26,7 @@ export const authGuard: CanActivateFn = () => {
       }
 
       if (!isAuthenticated) {
-        router.navigate(['/sign-in'])
+        router.navigate(['/auth/sign-in'])
         return false
       }
 

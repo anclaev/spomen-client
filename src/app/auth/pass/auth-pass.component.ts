@@ -15,16 +15,16 @@ import {
 import { getQueryPayload } from '@utils/getQueryPayload'
 import Validation from '@utils/validation'
 
-import { SignInCallbackResponse } from '@tps/dto/sign-in-callback'
+import { AuthCallbackResponse } from '@tps/dto/auth-callback'
 
 @Component({
-  selector: 'spomen-sign-in-callback',
+  selector: 'spomen-auth-pass',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, TuiLoaderModule],
-  templateUrl: './sign-in-callback.component.html',
-  styleUrl: './sign-in-callback.component.scss',
+  templateUrl: './auth-pass.component.html',
+  styleUrl: './auth-pass.component.scss',
 })
-export class SignInCallbackComponent implements OnInit, OnDestroy {
+export class AuthPassComponent implements OnInit, OnDestroy {
   private token: BehaviorSubject<string> = new BehaviorSubject('')
   private route = inject(ActivatedRoute)
   private alerts = inject(TuiAlertService)
@@ -44,7 +44,7 @@ export class SignInCallbackComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    const payload = getQueryPayload<SignInCallbackResponse>(
+    const payload = getQueryPayload<AuthCallbackResponse>(
       this.route.snapshot.queryParams
     )!
 

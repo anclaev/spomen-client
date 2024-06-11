@@ -3,17 +3,17 @@ import { inject } from '@angular/core'
 
 import { getQueryPayload } from '@utils/getQueryPayload'
 
-import { SignInCallbackResponse } from '@tps/dto/sign-in-callback'
+import { AuthCallbackResponse } from '@tps/dto/auth-callback'
 
-export const signInCallbackGuard: CanActivateFn = (route, state) => {
+export const authCallbackGuard: CanActivateFn = (route, state) => {
   const router = inject(Router)
 
-  const payload = getQueryPayload<SignInCallbackResponse>(route.queryParams)
+  const payload = getQueryPayload<AuthCallbackResponse>(route.queryParams)
 
   if (payload && payload.token) {
     return true
   } else {
-    router.navigate(['/sign-in'])
+    router.navigate(['/auth/sign-in'])
     return false
   }
 }
