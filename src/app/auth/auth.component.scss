@@ -1,0 +1,59 @@
+@import '../../styles/effects.scss';
+
+@include container;
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 90%;
+  max-width: 500px;
+  min-height: 50vh;
+  margin: 20px auto;
+}
+
+.auth__tabs {
+  width: 100%;
+  min-height: 56px;
+  box-shadow: none;
+  margin-bottom: 60px;
+}
+
+.auth__tabs > button {
+  opacity: 0.3;
+}
+
+.auth__tabs > button._active {
+  opacity: 1;
+}
+
+.auth__tabs > button:hover {
+  opacity: 1;
+}
+
+.auth__tabs > button {
+  justify-content: center;
+  flex-shrink: initial;
+  color: var(--color-content);
+  user-select: none;
+}
+
+.auth__wrapper {
+  width: 100%;
+  flex-grow: 1;
+  position: relative;
+  min-height: 50vh;
+}
+
+.auth__wrapper > * {
+  position: relative;
+  margin: 0 auto 40px auto;
+  justify-content: start;
+}
+
+@media screen and (max-height: 420px) {
+  .auth__tabs {
+    margin-bottom: 40px;
+  }
+}

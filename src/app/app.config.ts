@@ -1,6 +1,6 @@
 import { provideAnimations } from '@angular/platform-browser/animations'
+import { provideRouter, withViewTransitions } from '@angular/router'
 import { provideRouterStore } from '@ngrx/router-store'
-import { provideRouter } from '@angular/router'
 import { TuiRootModule } from '@taiga-ui/core'
 import { provideStore } from '@ngrx/store'
 
@@ -18,7 +18,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideRouter(routes, withViewTransitions()),
     importProvidersFrom(TuiRootModule),
     provideStore(),
     provideRouterStore(),

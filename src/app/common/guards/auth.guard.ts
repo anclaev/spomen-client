@@ -13,11 +13,11 @@ export const authGuard: CanActivateFn = () => {
     map((isAuthenticated) => {
       let path = router.getCurrentNavigation()?.extractedUrl.toString()
 
-      let isSignPage = path!.includes('/sign-in')
+      let isAuthPage = path!.includes('/auth')
 
       if (path!.includes('/auth/callback') && !isAuthenticated) return true
 
-      if (isSignPage) {
+      if (isAuthPage) {
         if (!isAuthenticated) return true
         else {
           router.navigate(['/'])
@@ -26,7 +26,7 @@ export const authGuard: CanActivateFn = () => {
       }
 
       if (!isAuthenticated) {
-        router.navigate(['/auth/sign-in'])
+        router.navigate(['/auth'])
         return false
       }
 

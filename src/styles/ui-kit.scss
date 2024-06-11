@@ -27,7 +27,7 @@ button {
   transition: border-color 0.3s;
 }
 
-.textbox--invalid {
+.textbox--invalid.ng-touched {
   border-color: var(--color-error);
 }
 

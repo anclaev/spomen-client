@@ -1,8 +1,8 @@
-.header {
+:host {
   position: sticky;
 }
 
-.header,
+:host,
 .header__logo {
   display: flex;
   justify-content: center;
