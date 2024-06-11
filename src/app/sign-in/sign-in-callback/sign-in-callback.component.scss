@@ -8,20 +8,16 @@
   width: 100%;
 }
 
-.sign-in {
+.sign-up {
   box-sizing: border-box;
   width: 100%;
   max-width: 300px;
 }
 
-.sign-in__fields {
-  margin-bottom: 40px;
-}
-
-.sign-in__fields > .field:not(:last-child) {
+.sign-up > * {
   margin-bottom: 20px;
 }
 
-.sign-in__btn {
-  margin-bottom: 20px;
+.sign-up > input#pass-two {
+  margin-bottom: 30px;
 }

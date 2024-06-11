@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core'
 import * as VKID from '@vkid/sdk'
 
 @Component({
@@ -8,14 +8,21 @@ import * as VKID from '@vkid/sdk'
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
 })
-export class SignInComponent implements OnInit {
-  floatingOneTap = new VKID.FloatingOneTap()
+export class SignInComponent implements AfterViewInit {
+  @ViewChild('VkIdSdkOneTap') VkIdSdkOneTap!: ElementRef<HTMLDivElement>
 
-  ngOnInit(): void {
-    this.floatingOneTap.render({
-      appName: 'Spomen',
-      scheme: VKID.Scheme.DARK,
-      lang: VKID.Languages.RUS,
-    })
+  private vkIdOneTap = new VKID.OneTap()
+
+  ngAfterViewInit(): void {
+    if (this.VkIdSdkOneTap) {
+      this.vkIdOneTap.render({
+        container: this.VkIdSdkOneTap.nativeElement,
+        scheme: VKID.Scheme.DARK,
+        lang: VKID.Languages.RUS,
+        styles: {
+          borderRadius: 50,
+        },
+      })
+    }
   }
 }
