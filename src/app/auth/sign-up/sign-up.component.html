@@ -1,1 +1,81 @@
-<div>hi</div>
+<form class="sign-up" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="sign-up__fields">
+    <input
+      class="textbox"
+      type="text"
+      name="login"
+      id="login"
+      placeholder="Логин"
+      formControlName="login"
+      [ngClass]="{ 'textbox--invalid': form.controls.login.errors }"
+    />
+    <input
+      class="textbox"
+      type="password"
+      name="pass"
+      id="pass"
+      placeholder="Пароль"
+      formControlName="pass"
+      [ngClass]="{ 'textbox--invalid': form.controls.pass.errors }"
+    />
+  </div>
+  <div class="sign-up__fields">
+    <input
+      class="textbox"
+      type="text"
+      name="name"
+      id="name"
+      placeholder="Как вас зовут"
+      formControlName="name"
+      [ngClass]="{ 'textbox--invalid': form.controls.name.errors }"
+    />
+    <input
+      class="textbox"
+      type="text"
+      name="surname"
+      id="surname"
+      placeholder="Ваша фамилия"
+      formControlName="surname"
+      [ngClass]="{ 'textbox--invalid': form.controls.surname.errors }"
+    />
+  </div>
+  <div class="sign-up__fields">
+    <input
+      class="textbox"
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Email"
+      formControlName="login"
+      [ngClass]="{ 'textbox--invalid': form.controls.email.errors }"
+    />
+    <!-- <input
+      class="textbox"
+      type="date"
+      name="birthday"
+      id="birthday"
+      placeholder="Дата рождения"
+      formControlName="birthday"
+      [ngClass]="{ 'textbox--invalid': form.controls.birthday.errors }"
+    /> -->
+    <tui-input-date
+      class="datebox"
+      formControlName="birthday"
+      id="birthday"
+      [ngClass]="{ 'textbox--invalid': form.controls.birthday.errors }"
+    >
+      Дата рождения
+      <input tuiTextfield />
+    </tui-input-date>
+  </div>
+  <tui-loader
+    class="sign-up__loader"
+    [inheritColor]="true"
+    [overlay]="true"
+    [showLoader]="(isLoading$$ | async) || false"
+  >
+    <button class="sign-up__btn button" [disabled]="isLoading$$ | async">
+      Продолжить
+    </button></tui-loader
+  >
+</form>

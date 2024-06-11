@@ -52,6 +52,12 @@
   justify-content: start;
 }
 
+@media screen and (max-width: 576px) {
+  .auth__tabs {
+    margin-bottom: 40px;
+  }
+}
+
 @media screen and (max-height: 420px) {
   .auth__tabs {
     margin-bottom: 40px;

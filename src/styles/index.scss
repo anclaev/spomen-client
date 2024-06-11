@@ -11,7 +11,13 @@
   --tui-font-heading: 'Roboto', 'sans-serif';
   --tui-font-text: 'Roboto', 'sans-serif';
   --tui-base-01: var(--color-background);
+  --tui-base-03: var(--color-primary-dark);
   --tui-text-01: var(--color-content);
+  --tui-text-02: var(--color-content);
+  --tui-elevation-02: var(--color-background-light);
+  --tui-negative: var(--color-accent-dark);
+  --tui-secondary-hover: var(--color-background);
+  --tui-primary: var(--color-accent);
 }
 
 ::selection {

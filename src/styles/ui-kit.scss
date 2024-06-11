@@ -75,3 +75,33 @@ button {
 .button:hover::before {
   opacity: 1;
 }
+
+button#year-btn {
+  text-align: center;
+}
+
+div.tui-autofill {
+  border: none !important;
+  background: transparent !important;
+}
+
+div.tui-autofill:after {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0 !important;
+  border-bottom: 2px solid var(--color-primary-dark);
+}
+
+div.tui-autofill._focused::after {
+  border-color: var(--color-accent);
+}
+
+div.t-item {
+  transition: 0.3s;
+}
+
+label.t-placeholder {
+  color: var(--color-background-light) !important;
+  margin-bottom: 5px;
+}

@@ -1,0 +1,50 @@
+@import '../../../styles/effects.scss';
+
+@include container;
+@include container-absolute;
+
+.sign-up,
+.sign-up__fields {
+  display: flex;
+}
+
+.sign-up {
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.sign-up__fields {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.sign-up__fields > * {
+  min-width: 200px;
+}
+
+.sign-up__fields > *:not(:first-child) {
+  margin-left: 20px;
+}
+
+.sign-up__loader {
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 576px) {
+  .sign-up__fields {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .sign-up__fields > *:not(:first-child) {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  .sign-up__loader {
+    margin-top: 20px;
+  }
+}
