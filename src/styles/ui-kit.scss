@@ -27,7 +27,8 @@ button {
   transition: border-color 0.3s;
 }
 
-.textbox--invalid.ng-touched {
+.textbox--invalid.ng-touched,
+.ng-invalid.ng-touched {
   border-color: var(--color-error);
 }
 
@@ -104,4 +105,8 @@ div.t-item {
 label.t-placeholder {
   color: var(--color-background-light) !important;
   margin-bottom: 5px;
+}
+
+h2.t-heading {
+  font: var(--tui-font-heading-6) !important;
 }

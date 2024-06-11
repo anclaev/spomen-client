@@ -33,6 +33,10 @@
   margin-bottom: 20px;
 }
 
+.sign-up__confirm > input {
+  margin: 10px 0 30px;
+}
+
 @media screen and (max-width: 576px) {
   .sign-up__fields {
     flex-direction: column;

@@ -46,18 +46,9 @@
       name="email"
       id="email"
       placeholder="Email"
-      formControlName="login"
+      formControlName="email"
       [ngClass]="{ 'textbox--invalid': form.controls.email.errors }"
     />
-    <!-- <input
-      class="textbox"
-      type="date"
-      name="birthday"
-      id="birthday"
-      placeholder="Дата рождения"
-      formControlName="birthday"
-      [ngClass]="{ 'textbox--invalid': form.controls.birthday.errors }"
-    /> -->
     <tui-input-date
       class="datebox"
       formControlName="birthday"
@@ -79,3 +70,35 @@
     </button></tui-loader
   >
 </form>
+
+<ng-template
+  let-observer
+  [tuiDialogOptions]="{ label: 'Подтвердите пароль', size: 's' }"
+  [(tuiDialog)]="showConfirmForm"
+  title="Hi"
+>
+  <form
+    class="sign-up__confirm"
+    [formGroup]="confirmForm"
+    (ngSubmit)="observer.complete()"
+  >
+    <input
+      class="textbox"
+      type="password"
+      name="confirmPass"
+      id="confirmPass"
+      placeholder="Пароль"
+      formControlName="confirmPass"
+      [ngClass]="{ 'textbox--invalid': form.controls.email.errors }"
+    />
+
+    <button
+      class="button"
+      type="submit"
+      (click)="confirmPass()"
+      [disabled]="confirmForm.controls.confirmPass.errors"
+    >
+      ОК
+    </button>
+  </form>
+</ng-template>

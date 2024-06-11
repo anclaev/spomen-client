@@ -15,5 +15,5 @@ import { SignUpComponent } from './sign-up/sign-up.component'
   animations: [enterLeave],
 })
 export class AuthComponent {
-  activeItemIndex = 0
+  activeItemIndex = 1
 }
