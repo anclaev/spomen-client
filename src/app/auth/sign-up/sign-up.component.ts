@@ -14,9 +14,12 @@ import {
 
 import { Component, OnDestroy, OnInit, inject } from '@angular/core'
 import { BehaviorSubject, Observable, Subscription } from 'rxjs'
+import { HttpErrorResponse } from '@angular/common/http'
 import { TuiInputDateModule } from '@taiga-ui/kit'
 import { CommonModule } from '@angular/common'
 import { TuiDay } from '@taiga-ui/cdk'
+
+import { AuthService } from '@common/services/auth.service'
 
 // TODO: Продумать данные пользователя при регистрации
 @Component({
@@ -39,7 +42,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   private isLoading: BehaviorSubject<boolean> = new BehaviorSubject(false)
   isLoading$$: Observable<boolean> = this.isLoading.asObservable()
 
-  showConfirmForm: boolean = false
+  showConfirmForm = false
 
   form: FormGroup<{
     login: FormControl<string | null>
@@ -63,7 +66,10 @@ export class SignUpComponent implements OnInit, OnDestroy {
     confirmPass: new FormControl(''),
   })
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private auth: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -128,9 +134,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   confirmPass() {
-    console.log(this.form.controls.pass.value!.trim())
-    console.log(this.confirmForm.controls.confirmPass.value!.trim())
-
     if (
       this.form.controls.pass.value!.trim() !==
       this.confirmForm.controls.confirmPass.value!.trim()
@@ -142,6 +145,77 @@ export class SignUpComponent implements OnInit, OnDestroy {
     }
 
     this.isLoading.next(true)
+
+    this.subs$.push(
+      this.auth
+        .signUp({
+          login: this.form.controls.login.value!.trim(),
+          password: this.form.controls.pass.value!.trim(),
+          birthday: this.form.controls.birthday.touched
+            ? this.form.controls.birthday.value!.toUtcNativeDate().toISOString()
+            : undefined,
+          email:
+            this.form.controls.email.touched && this.form.controls.email.valid
+              ? this.form.controls.email.value!.trim()
+              : undefined,
+          name:
+            this.form.controls.name.touched &&
+            this.form.controls.name.valid &&
+            this.form.controls.name.value!.trim().length > 2
+              ? this.form.controls.name.value!.trim()
+              : undefined,
+          surname:
+            this.form.controls.surname.touched &&
+            this.form.controls.surname.valid &&
+            this.form.controls.surname.value!.trim().length > 2
+              ? this.form.controls.surname.value!.trim()
+              : undefined,
+        })
+        .subscribe({
+          next: (data) => {
+            this.subs$.push(
+              this.alerts.open('Вы успешно зарегистрировались!').subscribe()
+            )
+            this.isLoading.next(false)
+          },
+          error: (err: HttpErrorResponse) => {
+            if (err.status === 409) {
+              if (this.form.controls.email.value!.trim().length === 0) {
+                this.subs$.push(
+                  this.alerts
+                    .open('Данный логин уже зарегистрирован')
+                    .subscribe()
+                )
+
+                this.isLoading.next(false)
+                return
+              } else if (
+                this.form.controls.email.touched &&
+                this.form.controls.email.valid
+              ) {
+                this.subs$.push(
+                  this.alerts
+                    .open('Данная почта уже зарегистрирована')
+                    .subscribe()
+                )
+
+                this.isLoading.next(false)
+                return
+              }
+            }
+
+            this.subs$.push(
+              this.alerts.open('Сервер временно недоступен').subscribe()
+            )
+
+            this.isLoading.next(false)
+            return
+          },
+          complete: () => {
+            this.confirmForm.controls.confirmPass.setValue('')
+          },
+        })
+    )
   }
 
   ngOnDestroy(): void {

@@ -10,6 +10,7 @@ import { SignUpComponent } from './sign-up/sign-up.component'
   selector: 'spomen-auth',
   standalone: true,
   imports: [TuiTabsModule, SignInComponent, SignUpComponent],
+  providers: [],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
   animations: [enterLeave],

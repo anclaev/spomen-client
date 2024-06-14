@@ -1,4 +1,8 @@
-import { TuiAlertService, TuiLoaderModule } from '@taiga-ui/core'
+import {
+  TuiAlertService,
+  TuiHostedDropdownComponent,
+  TuiLoaderModule,
+} from '@taiga-ui/core'
 import { BehaviorSubject, Observable, Subscription } from 'rxjs'
 import { CommonModule } from '@angular/common'
 import * as VKID from '@vkid/sdk'
@@ -20,6 +24,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms'
+
+import { AuthService } from '@common/services/auth.service'
 
 @Component({
   selector: 'spomen-sign-in',
@@ -46,7 +52,10 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
     pass: new FormControl(''),
   })
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private auth: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -101,8 +110,31 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
       return
     }
 
-    this.subs$.push(this.alerts.open('Запрос на сервер...').subscribe())
+    // this.subs$.push(this.alerts.open('Запрос на сервер...').subscribe())
     this.isLoading.next(true)
+
+    this.subs$.push(
+      this.auth
+        .signIn({
+          login: this.form.controls.login.value!.trim(),
+          password: this.form.controls.pass.value!.trim(),
+        })
+        .subscribe({
+          next: (data) => {
+            this.subs$.push(
+              this.alerts.open(`Привет, ${data.login}!`).subscribe()
+            )
+          },
+          error: (err) => {
+            console.log(err)
+            this.isLoading.next(false)
+            this.subs$.push(
+              this.alerts.open(`Приложение временно недоступно`).subscribe()
+            )
+          },
+          complete: () => this.isLoading.next(false),
+        })
+    )
   }
 
   ngOnDestroy(): void {

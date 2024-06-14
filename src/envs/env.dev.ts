@@ -2,4 +2,5 @@ export const env = {
   production: false,
   appId: 51897483,
   redirectUrl: 'http://localhost/auth/callback',
+  apiUrl: 'http://localhost:3001',
 }
