@@ -5,7 +5,6 @@ import { authGuard } from '@common/guards/auth.guard'
 
 import { AuthCallbackComponent } from './callback/auth-callback.component'
 import { AuthComponent } from './auth.component'
-import { SignInComponent } from './sign-in/sign-in.component'
 
 export const authRoutes: Routes = [
   {
@@ -18,7 +17,7 @@ export const authRoutes: Routes = [
     path: 'callback',
     component: AuthCallbackComponent,
     canActivate: [authGuard, authCallbackGuard],
-    title: 'Вход',
+    title: 'Вход...',
   },
   {
     path: '**',

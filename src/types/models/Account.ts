@@ -1,7 +1,7 @@
 import { Role } from '@tps/enums/role.enum'
 
 export interface Account {
-  id: string
+  id: number
   login: string
   email: string | null
   roles: Role[]

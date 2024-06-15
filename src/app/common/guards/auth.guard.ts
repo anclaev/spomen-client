@@ -17,20 +17,20 @@ export const authGuard: CanActivateFn = () => {
 
       if (path!.includes('/auth/callback') && !isAuthenticated) return true
 
-      if (isAuthPage) {
-        if (!isAuthenticated) return true
-        else {
-          router.navigate(['/'])
-          return false
-        }
+      if (!isAuthenticated && isAuthPage) {
+        return true
       }
 
-      if (!isAuthenticated) {
-        router.navigate(['/auth'])
+      if (isAuthPage && isAuthenticated) {
+        router.navigate(['/'])
         return false
       }
 
-      return true
+      if (isAuthenticated) return true
+
+      router.navigate(['/auth'])
+
+      return false
     })
   )
 }

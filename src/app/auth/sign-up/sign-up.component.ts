@@ -17,11 +17,12 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs'
 import { HttpErrorResponse } from '@angular/common/http'
 import { TuiInputDateModule } from '@taiga-ui/kit'
 import { CommonModule } from '@angular/common'
+import { Router } from '@angular/router'
 import { TuiDay } from '@taiga-ui/cdk'
 
 import { AuthService } from '@common/services/auth.service'
+import { AuthStore } from '@store/auth'
 
-// TODO: Продумать данные пользователя при регистрации
 @Component({
   selector: 'spomen-sign-up',
   standalone: true,
@@ -37,6 +38,9 @@ import { AuthService } from '@common/services/auth.service'
 })
 export class SignUpComponent implements OnInit, OnDestroy {
   private alerts = inject(TuiAlertService)
+  private store = inject(AuthStore)
+  private router = inject(Router)
+
   private subs$: Subscription[] = []
 
   private isLoading: BehaviorSubject<boolean> = new BehaviorSubject(false)
@@ -155,7 +159,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
             ? this.form.controls.birthday.value!.toUtcNativeDate().toISOString()
             : undefined,
           email:
-            this.form.controls.email.touched && this.form.controls.email.valid
+            this.form.controls.email.touched &&
+            this.form.controls.email.valid &&
+            this.form.controls.email.value!.trim().length > 0
               ? this.form.controls.email.value!.trim()
               : undefined,
           name:
@@ -173,10 +179,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
         })
         .subscribe({
           next: (data) => {
-            this.subs$.push(
-              this.alerts.open('Вы успешно зарегистрировались!').subscribe()
-            )
             this.isLoading.next(false)
+            this.store.setAuth(data)
+            this.router.navigate(['/'])
           },
           error: (err: HttpErrorResponse) => {
             if (err.status === 409) {

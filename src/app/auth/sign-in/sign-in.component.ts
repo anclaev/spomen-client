@@ -1,10 +1,7 @@
-import {
-  TuiAlertService,
-  TuiHostedDropdownComponent,
-  TuiLoaderModule,
-} from '@taiga-ui/core'
+import { TuiAlertService, TuiLoaderModule } from '@taiga-ui/core'
 import { BehaviorSubject, Observable, Subscription } from 'rxjs'
 import { CommonModule } from '@angular/common'
+import { Router } from '@angular/router'
 import * as VKID from '@vkid/sdk'
 
 import {
@@ -26,6 +23,7 @@ import {
 } from '@angular/forms'
 
 import { AuthService } from '@common/services/auth.service'
+import { AuthStore } from '@store/auth'
 
 @Component({
   selector: 'spomen-sign-in',
@@ -37,8 +35,11 @@ import { AuthService } from '@common/services/auth.service'
 export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('VkIdSdkOneTap') VkIdSdkOneTap!: ElementRef<HTMLDivElement>
 
-  private vkIdOneTap = new VKID.OneTap()
   private alerts = inject(TuiAlertService)
+  private store = inject(AuthStore)
+  private router = inject(Router)
+
+  private vkIdOneTap = new VKID.OneTap()
   private subs$: Subscription[] = []
 
   private isLoading: BehaviorSubject<boolean> = new BehaviorSubject(false)
@@ -121,13 +122,17 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
         })
         .subscribe({
           next: (data) => {
-            this.subs$.push(
-              this.alerts.open(`Привет, ${data.login}!`).subscribe()
-            )
+            this.store.setAuth(data)
+            this.router.navigate(['/'])
           },
           error: (err) => {
-            console.log(err)
             this.isLoading.next(false)
+
+            if (err.status === 400) {
+              this.subs$.push(this.alerts.open(`Вход не выполнен`).subscribe())
+              return
+            }
+
             this.subs$.push(
               this.alerts.open(`Приложение временно недоступно`).subscribe()
             )

@@ -18,17 +18,11 @@
   min-height: 56px;
   box-shadow: none;
   margin-bottom: 60px;
-}
-
-.auth__tabs > button {
   opacity: 0.3;
+  transition: opacity 0.4s;
 }
 
-.auth__tabs > button._active {
-  opacity: 1;
-}
-
-.auth__tabs > button:hover {
+.auth__tabs:hover {
   opacity: 1;
 }
 
