@@ -17,7 +17,7 @@ export const authRoutes: Routes = [
     path: 'callback',
     component: AuthCallbackComponent,
     canActivate: [authGuard, authCallbackGuard],
-    title: 'Вход...',
+    title: 'Spomen',
   },
   {
     path: '**',

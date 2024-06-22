@@ -6,8 +6,9 @@ import {
   withState,
 } from '@ngrx/signals'
 
-import { distinctUntilChanged, of, pipe, switchMap, tap } from 'rxjs'
+import { distinctUntilChanged, pipe, switchMap, tap } from 'rxjs'
 import { rxMethod } from '@ngrx/signals/rxjs-interop'
+import { CookieService } from 'ngx-cookie-service'
 import { computed, inject } from '@angular/core'
 import { tapResponse } from '@ngrx/operators'
 
@@ -15,12 +16,11 @@ import { AuthService } from '@common/services/auth.service'
 
 import { Auth } from '@tps/models/Auth'
 import { AuthState } from '@tps/store'
-import { STORE } from '@tps/constants'
 
 const initialState: AuthState = {
   id: null,
   vk_id: null,
-  login: null,
+  username: null,
   email: null,
   roles: [],
   avatar: null,
@@ -40,27 +40,25 @@ export const AuthStore = signalStore(
       () => `${store.first_name() || ''} ${store.last_name() || ''}`
     ),
   })),
-  withMethods((store, auth = inject(AuthService)) => ({
-    initAuth: rxMethod<string>(
-      pipe(
-        distinctUntilChanged(),
-        tap(() => patchState(store, { loading: true })),
-        switchMap(() => {
-          const token = sessionStorage.getItem(STORE.ACCESS_TOKEN)
-
-          if (token) {
-            return auth.verifyAuth(token).pipe(
+  withMethods(
+    (store, auth = inject(AuthService), cookie = inject(CookieService)) => ({
+      initSession: rxMethod<string>(
+        pipe(
+          distinctUntilChanged(),
+          tap(() => patchState(store, { loading: true })),
+          switchMap(() => {
+            return auth.me().pipe(
               tapResponse({
                 next: (data) =>
                   patchState(store, () => ({
                     id: data.id,
-                    vk_id: data.vkId,
-                    login: data.login,
+                    vk_id: data.vk_id,
+                    username: data.username,
                     email: data.email,
                     roles: data.roles,
-                    avatar: data.avatarId || data.vkAvatar || null,
-                    first_name: data.name,
-                    last_name: data.surname,
+                    avatar: data.avatar_id || data.vk_avatar || null,
+                    first_name: data.first_name,
+                    last_name: data.last_name,
                     token: data.access_token,
                     loading: false,
                   })),
@@ -69,31 +67,26 @@ export const AuthStore = signalStore(
                 },
               })
             )
-          }
-
-          return of(null)
-        })
-      )
-    ),
-    setAuth(data: Auth): void {
-      patchState(store, (state) => ({
-        ...state,
-        id: data.id,
-        vk_id: data.vkId,
-        login: data.login,
-        email: data.email,
-        roles: data.roles,
-        avatar: data.avatarId || data.vkAvatar || null,
-        first_name: data.name,
-        last_name: data.surname,
-        token: data.access_token,
-      }))
-
-      sessionStorage.setItem(STORE.ACCESS_TOKEN, data.access_token)
-    },
-    clearAuth(): void {
-      patchState(store, (state) => ({ ...state, ...initialState }))
-      sessionStorage.removeItem(STORE.ACCESS_TOKEN)
-    },
-  }))
+          })
+        )
+      ),
+      setSession(data: Auth): void {
+        patchState(store, (state) => ({
+          ...state,
+          id: data.id,
+          vk_id: data.vk_id,
+          username: data.username,
+          email: data.email,
+          roles: data.roles,
+          avatar: data.avatar_id || data.vk_avatar || null,
+          first_name: data.first_name,
+          last_name: data.last_name,
+          token: data.access_token,
+        }))
+      },
+      clearSession(): void {
+        patchState(store, (state) => ({ ...state, ...initialState }))
+      },
+    })
+  )
 )

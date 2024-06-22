@@ -122,7 +122,7 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
         })
         .subscribe({
           next: (data) => {
-            this.store.setAuth(data)
+            this.store.setSession(data)
             this.router.navigate(['/'])
           },
           error: (err) => {

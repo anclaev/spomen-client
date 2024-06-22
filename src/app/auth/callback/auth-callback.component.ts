@@ -22,15 +22,14 @@ import { AuthCallbackResponse } from '@tps/dto/auth-callback'
 })
 export class AuthCallbackComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute)
-  private subs$: Subscription[] = []
-
+  private auth = inject(AuthService)
   private store = inject(AuthStore)
   private router = inject(Router)
 
+  private subs$: Subscription[] = []
+
   private isLoading: BehaviorSubject<boolean> = new BehaviorSubject(true)
   isLoading$$: Observable<boolean> = this.isLoading.asObservable()
-
-  constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
     const payload = getQueryPayload<AuthCallbackResponse>(
@@ -44,7 +43,7 @@ export class AuthCallbackComponent implements OnInit, OnDestroy {
         })
         .subscribe({
           next: (data) => {
-            this.store.setAuth(data)
+            this.store.setSession(data)
             this.router.navigate(['/'])
           },
           error: (err) => {

@@ -2,15 +2,15 @@ import { Role } from '@tps/enums/role.enum'
 
 export interface Account {
   id: number
-  login: string
+  username: string
   email: string | null
   roles: Role[]
-  avatarId: string | null
-  vkId: string | null
-  vkAvatar: string | null
-  name: string | null
-  surname: string | null
+  avatar_id: string | null
+  vk_id: string | null
+  vk_avatar: string | null
+  first_name: string | null
+  last_name: string | null
   birthday: Date | null
-  createdAt: Date
-  updatedAt: Date
+  created_at: Date
+  updated_at: Date
 }

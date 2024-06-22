@@ -30,8 +30,8 @@ import { HeaderComponent } from '@common/components/header/header.component'
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  private store = inject(AuthStore)
   private alerts = inject(TuiAlertService)
+  private store = inject(AuthStore)
 
   constructor() {
     VKID.Config.set({
@@ -40,14 +40,14 @@ export class AppComponent {
       state: 'dj29fnsadjsd82f249k293c139j1kd3',
     })
 
-    this.store.initAuth('')
+    this.store.initSession('')
 
     effect(() => {
       const auth = getState(this.store)
 
       if (auth.id) {
         this.alerts
-          .open(`Привет, ${auth.first_name || auth.login}!`)
+          .open(`Привет, ${auth.first_name || auth.username}!`)
           .subscribe()
       }
     })

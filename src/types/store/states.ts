@@ -3,7 +3,7 @@ import { Role } from '@tps/enums/role.enum'
 export type AuthState = {
   id: number | null
   vk_id: string | null
-  login: string | null
+  username: string | null
   email: string | null
   roles: Role[]
   avatar: string | null

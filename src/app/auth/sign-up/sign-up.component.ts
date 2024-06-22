@@ -180,7 +180,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
         .subscribe({
           next: (data) => {
             this.isLoading.next(false)
-            this.store.setAuth(data)
+            this.store.setSession(data)
             this.router.navigate(['/'])
           },
           error: (err: HttpErrorResponse) => {

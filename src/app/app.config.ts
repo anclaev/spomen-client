@@ -1,4 +1,5 @@
-import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http'
+import { provideHttpClient, withInterceptors } from '@angular/common/http'
+
 import { provideAnimations } from '@angular/platform-browser/animations'
 import { provideRouter, withViewTransitions } from '@angular/router'
 import { TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE } from '@taiga-ui/i18n'
@@ -14,7 +15,7 @@ import {
   importProvidersFrom,
 } from '@angular/core'
 
-import { HttpRequestInterceptor } from '@common/interceptors/http.interceptor'
+import { httpRequestIntercepor } from '@common/interceptors/http.interceptor'
 import { AuthService } from '@common/services/auth.service'
 
 import { AuthStore } from '@store/auth'
@@ -29,18 +30,13 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(TuiRootModule),
     provideStore(),
     provideRouterStore(),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([httpRequestIntercepor])),
     AuthStore,
     AuthService,
     { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
     {
       provide: TUI_LANGUAGE,
       useValue: of(TUI_RUSSIAN_LANGUAGE),
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpRequestInterceptor,
-      multi: true,
     },
   ],
 }

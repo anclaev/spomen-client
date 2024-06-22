@@ -10,10 +10,7 @@ export const authCallbackGuard: CanActivateFn = (route, state) => {
 
   const payload = getQueryPayload<AuthCallbackResponse>(route.queryParams)
 
-  if (payload && payload.token) {
-    return true
-  } else {
-    router.navigate(['/auth/sign-in'])
-    return false
-  }
+  return payload && payload.token
+    ? true
+    : router.createUrlTree(['/auth/sign-in'])
 }
