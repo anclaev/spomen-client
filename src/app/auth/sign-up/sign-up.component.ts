@@ -160,13 +160,13 @@ export class SignUpComponent implements OnInit, OnDestroy {
             this.form.controls.email.value!.trim().length > 0
               ? this.form.controls.email.value!.trim()
               : undefined,
-          name:
+          first_name:
             this.form.controls.name.touched &&
             this.form.controls.name.valid &&
             this.form.controls.name.value!.trim().length > 2
               ? this.form.controls.name.value!.trim()
               : undefined,
-          surname:
+          last_name:
             this.form.controls.surname.touched &&
             this.form.controls.surname.valid &&
             this.form.controls.surname.value!.trim().length > 2
@@ -224,4 +224,4 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 }
 
-// TODO: Вынести форму подтверждения пароля в отдельный компонент
+// TODO: Сброс паролей в обеих формах при неудачной регистрации
