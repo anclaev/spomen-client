@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations'
 
-export const enterLeave = trigger('enterLeave', [
+export const enterLeaveAnimation = trigger('enterLeave', [
   transition(':enter', [
     style({
       transform: 'translateX(-50%)',

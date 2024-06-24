@@ -1,6 +1,6 @@
-import { Role } from '@enums/role.enum'
+import { Role } from '@enums'
 
-export const initial: AuthenticatedUser = {
+export const initialAuthenticatedUser: AuthenticatedUser = {
   id: null,
   vk_id: null,
   username: null,

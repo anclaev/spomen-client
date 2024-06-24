@@ -1,8 +1,12 @@
 <tui-root class="wrapper" [attr.data-loading]="this.auth.$loading()">
-  @if (this.auth.$loading()) {
-    <tui-loader size="xxl" class="callback-loader" @inOut />
-  } @else {
-    <spomen-header />
+  <spomen-header />
+  @if (this.auth.$loading() && !isRefused) {
+    <tui-loader size="xxl" @inOut />
+  } @else if (!isRefused) {
     <router-outlet />
+  }
+
+  @if (isRefused) {
+    <spomen-oops @inOut />
   }
 </tui-root>

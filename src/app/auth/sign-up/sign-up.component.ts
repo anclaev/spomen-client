@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common'
 import { Router } from '@angular/router'
 import { TuiDay } from '@taiga-ui/cdk'
 
-import { AuthService } from '@services/auth.service'
+import { AuthService } from '@services'
 
 @Component({
   selector: 'spomen-sign-up',

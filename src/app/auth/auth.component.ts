@@ -1,7 +1,7 @@
 import { TuiTabsModule } from '@taiga-ui/kit'
 import { Component } from '@angular/core'
 
-import { enterLeave } from '@animations/enter-leave'
+import { enterLeaveAnimation } from '@animations'
 
 import { SignInComponent } from './sign-in/sign-in.component'
 import { SignUpComponent } from './sign-up/sign-up.component'
@@ -13,7 +13,7 @@ import { SignUpComponent } from './sign-up/sign-up.component'
   providers: [],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
-  animations: [enterLeave],
+  animations: [enterLeaveAnimation],
 })
 export class AuthComponent {
   activeItemIndex = 0

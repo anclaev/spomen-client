@@ -12,10 +12,8 @@ import {
   Validators,
 } from '@angular/forms'
 
-import { getQueryPayload } from '@utils/getQueryPayload'
-import { Validation } from '@utils/validation'
-
-import { AuthCallbackDto } from '@dto/auth-callback'
+import { getQueryPayload, Validation } from '@utils'
+import { AuthCallbackDto } from '@dtos'
 
 @Component({
   selector: 'spomen-auth-pass',

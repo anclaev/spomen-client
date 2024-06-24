@@ -1,6 +1,6 @@
-import { Role } from '@enums/role.enum'
+import { Role } from '@enums'
 
-export interface Account {
+export interface AccountModel {
   id: number
   username: string
   email: string | null

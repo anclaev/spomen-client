@@ -21,18 +21,17 @@
     "paths": {
       "tslib": ["./node_modules/tslib/tslib.d.ts"],
       "@styles/*": ["./src/styles/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@store/*": ["./src/store/*"],
       "@env": ["./src/envs/env.ts"],
-      "@dto/*": ["./src/types/dto/*"],
-      "@interfaces/*": ["./src/types/interfaces/*"],
-      "@enums/*": ["./src/types/enums/*"],
-      "@models/*": ["./src/types/models/*"],
-      "@interceptors/*": ["./src/app/common/interceptors/*"],
-      "@animations/*": ["./src/app/common/animations/*"],
+      "@utils": ["./src/utils/index.ts"],
+      "@dtos": ["./src/types/dtos/index.ts"],
+      "@interfaces": ["./src/types/interfaces/index.ts"],
+      "@enums": ["./src/types/enums/index.ts"],
+      "@models": ["./src/types/models/index.ts"],
+      "@interceptors": ["./src/app/common/interceptors/index.ts"],
+      "@animations": ["./src/app/common/animations/index.ts"],
+      "@services": ["./src/app/common/services/index.ts"],
+      "@guards": ["./src/app/common/guards/index.ts"],
       "@components/*": ["./src/app/common/components/*"],
-      "@services/*": ["./src/app/common/services/*"],
-      "@guards/*": ["./src/app/common/guards/*"],
 
       "@app/*": ["./src/app/*"]
     }

@@ -1,3 +1,7 @@
+:host {
+  position: relative;
+}
+
 .wrapper[data-loading='true'] tui-loader {
   position: fixed;
   top: 0;

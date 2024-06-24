@@ -6,11 +6,9 @@ import { CommonModule } from '@angular/common'
 
 import { AuthPassComponent } from '@app/auth/pass/auth-pass.component'
 
-import { AuthService } from '@services/auth.service'
-
-import { getQueryPayload } from '@utils/getQueryPayload'
-
-import { AuthCallbackDto } from '@dto/auth-callback'
+import { getQueryPayload } from '@utils'
+import { AuthCallbackDto } from '@dtos'
+import { AuthService } from '@services'
 
 @Component({
   selector: 'spomen-sign-in-callback',

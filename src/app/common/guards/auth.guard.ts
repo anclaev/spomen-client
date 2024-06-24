@@ -2,8 +2,8 @@ import { CanActivateFn, Router } from '@angular/router'
 import { inject } from '@angular/core'
 import { map } from 'rxjs'
 
-import { AuthService } from '@services/auth.service'
-import { getCurrentPath } from '@utils/getCurrentPath'
+import { AuthService } from '@services'
+import { getCurrentPath } from '@utils'
 
 export const authGuard: CanActivateFn = () => {
   const isLoading = inject(AuthService).$loading()

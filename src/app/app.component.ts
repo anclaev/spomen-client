@@ -1,14 +1,4 @@
 import {
-  Component,
-  OnDestroy,
-  OnInit,
-  WritableSignal,
-  effect,
-  inject,
-  signal,
-} from '@angular/core'
-
-import {
   TuiRootModule,
   TuiDialogModule,
   TuiAlertModule,
@@ -16,6 +6,7 @@ import {
   TuiLoaderModule,
 } from '@taiga-ui/core'
 
+import { Component, OnDestroy, OnInit, effect, inject } from '@angular/core'
 import { HttpErrorResponse } from '@angular/common/http'
 import { Router, RouterOutlet } from '@angular/router'
 import { Subscription } from 'rxjs'
@@ -23,11 +14,12 @@ import * as VKID from '@vkid/sdk'
 
 import { env } from '@env'
 
-import { HeaderComponent } from '@components/header/header.component'
-import { inOut } from '@animations/in-out'
+import { inOutAnimation } from '@animations'
+import { AuthService } from '@services'
+import { getCurrentPath } from '@utils'
 
-import { getCurrentPath } from '@utils/getCurrentPath'
-import { AuthService } from '@services/auth.service'
+import { HeaderComponent } from '@components/header'
+import { OopsComponent } from '@components/oops'
 
 @Component({
   selector: 'spomen-root',
@@ -39,8 +31,9 @@ import { AuthService } from '@services/auth.service'
     TuiAlertModule,
     TuiLoaderModule,
     HeaderComponent,
+    OopsComponent,
   ],
-  animations: [inOut],
+  animations: [inOutAnimation],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -48,6 +41,8 @@ export class AppComponent implements OnInit, OnDestroy {
   private alerts = inject(TuiAlertService)
   private router = inject(Router)
   auth = inject(AuthService)
+
+  isRefused: boolean = false
 
   private subs: Subscription[] = []
 
@@ -83,10 +78,17 @@ export class AppComponent implements OnInit, OnDestroy {
           this.auth.$loading.set(false)
         },
         error: (err: HttpErrorResponse) => {
-          if (err.status !== 401) {
-            this.subs.push(this.alerts.open(err.message).subscribe())
+          if (err.status === 0) {
+            this.isRefused = true
+            this.auth.$loading.set(false)
             return
           }
+
+          // if (err.status !== 401) {
+          //   this.subs.push(this.alerts.open('Сервер недоступен').subscribe())
+          //   return
+          // }
+
           this.auth.$loading.set(false)
         },
       })

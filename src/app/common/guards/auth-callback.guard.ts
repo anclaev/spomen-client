@@ -1,11 +1,10 @@
 import { CanActivateFn, Router } from '@angular/router'
 import { inject } from '@angular/core'
 
-import { getQueryPayload } from '@utils/getQueryPayload'
+import { AuthCallbackDto } from '@dtos'
+import { getQueryPayload } from '@utils'
 
-import { AuthCallbackDto } from '@dto/auth-callback'
-
-export const authCallbackGuard: CanActivateFn = (route, _) => {
+export const authCallbackGuard: CanActivateFn = (route) => {
   const router = inject(Router)
 
   const payload = getQueryPayload<AuthCallbackDto>(route.queryParams)
