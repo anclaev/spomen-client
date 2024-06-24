@@ -7,8 +7,9 @@ import {
   signal,
 } from '@angular/core'
 
-import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { Observable, catchError, map, switchMap, throwError } from 'rxjs'
+import { HttpClient, HttpErrorResponse } from '@angular/common/http'
+import { toObservable } from '@angular/core/rxjs-interop'
 
 import { env } from '@env'
 
@@ -28,8 +29,12 @@ export class AuthService {
   http: HttpClient = inject(HttpClient)
 
   $user: WritableSignal<AuthenticatedUser> = signal(initial)
+
   $isAuth: Signal<boolean> = computed(() => !!this.$user().id)
+  $$isAuth: Observable<boolean> = toObservable(this.$isAuth)
+
   $loading: WritableSignal<boolean> = signal(false)
+  $$loading: Observable<boolean> = toObservable(this.$loading)
 
   set(data: Auth) {
     this.$user.set({
@@ -54,14 +59,7 @@ export class AuthService {
       catchError((err: HttpErrorResponse) => {
         if (err.status === 401) {
           return this.refresh().pipe(
-            switchMap(() =>
-              this.me().pipe(
-                map((val) => {
-                  this.set(val)
-                  return val
-                })
-              )
-            )
+            switchMap(() => this.me().pipe(map((val) => val)))
           )
         }
 

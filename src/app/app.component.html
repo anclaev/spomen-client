@@ -1,5 +1,5 @@
-<tui-root class="wrapper" [attr.data-loading]="this.$loading()">
-  @if (this.$loading()) {
+<tui-root class="wrapper" [attr.data-loading]="this.auth.$loading()">
+  @if (this.auth.$loading()) {
     <tui-loader size="xxl" class="callback-loader" @inOut />
   } @else {
     <spomen-header />

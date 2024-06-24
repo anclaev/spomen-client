@@ -17,7 +17,7 @@ import {
 } from '@taiga-ui/core'
 
 import { HttpErrorResponse } from '@angular/common/http'
-import { RouterOutlet } from '@angular/router'
+import { Router, RouterOutlet } from '@angular/router'
 import { Subscription } from 'rxjs'
 import * as VKID from '@vkid/sdk'
 
@@ -26,6 +26,7 @@ import { env } from '@env'
 import { HeaderComponent } from '@components/header/header.component'
 import { inOut } from '@animations/in-out'
 
+import { getCurrentPath } from '@utils/getCurrentPath'
 import { AuthService } from '@services/auth.service'
 
 @Component({
@@ -45,11 +46,10 @@ import { AuthService } from '@services/auth.service'
 })
 export class AppComponent implements OnInit, OnDestroy {
   private alerts = inject(TuiAlertService)
-  private auth = inject(AuthService)
+  private router = inject(Router)
+  auth = inject(AuthService)
 
   private subs: Subscription[] = []
-
-  $loading: WritableSignal<boolean> = signal(false)
 
   constructor() {
     VKID.Config.set({
@@ -65,23 +65,29 @@ export class AppComponent implements OnInit, OnDestroy {
         this.subs.push(
           this.alerts.open(`Привет, ${first_name || username}!`).subscribe()
         )
+
+        if (getCurrentPath(this.router).includes('/auth')) {
+          this.router.navigate(['/'])
+        }
       }
     })
   }
 
   ngOnInit(): void {
-    this.$loading.set(true)
+    this.auth.$loading.set(true)
+
     this.subs.push(
       this.auth.init().subscribe({
-        next: () => {
-          this.$loading.set(false)
+        next: (user) => {
+          this.auth.set(user)
+          this.auth.$loading.set(false)
         },
         error: (err: HttpErrorResponse) => {
           if (err.status !== 401) {
             this.subs.push(this.alerts.open(err.message).subscribe())
             return
           }
-          this.$loading.set(false)
+          this.auth.$loading.set(false)
         },
       })
     )
