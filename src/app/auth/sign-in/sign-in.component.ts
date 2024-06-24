@@ -123,7 +123,7 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
           error: (err) => {
             this.isLoading.next(false)
 
-            if (err.status === 401) {
+            if (err.status === 401 || err.status === 400) {
               this.subs$.push(this.alerts.open(`Вход не выполнен`).subscribe())
               return
             }

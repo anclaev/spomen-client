@@ -1,3 +1,37 @@
-<a class="header__logo" routerLink="/">
-  <img src="images/logo.svg" width="84.6" height="50" />
-</a>
+<div class="header__burger" [attr.data-hidden]="!user().id">
+  <button>
+    <tui-svg src="tuiIconMenuLarge" />
+  </button>
+</div>
+<div class="header__logo">
+  <a routerLink="/">
+    <img src="images/logo.svg" width="84.6" height="50" />
+  </a>
+</div>
+<div class="header-me" [attr.data-hidden]="!user().id">
+  <tui-hosted-dropdown
+    class="t-wrapper-flex"
+    [content]="profileMenu"
+    [(open)]="isOpenProfileMenu"
+    [tuiDropdownOffset]="10"
+  >
+    <tui-avatar
+      class="header-me__avatar"
+      [avatarUrl]="user().avatar"
+      size="s"
+      [rounded]="true"
+      [text]="user().full_name || user().username || ''"
+    />
+
+    <tui-line-clamp
+      class="header-me__person"
+      [content]="user().full_name || user().username || ''"
+      [linesLimit]="1"
+    />
+    <tui-svg src="tuiIconChevronDown" />
+  </tui-hosted-dropdown>
+</div>
+
+<ng-template #profileMenu let-close="close">
+  <spomen-profile-menu (close)="close()" />
+</ng-template>

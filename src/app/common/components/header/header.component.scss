@@ -1,36 +1,132 @@
 :host {
   position: sticky;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+:host > *[data-hidden='true'] {
+  visibility: hidden;
+}
+
+:host > * {
+  flex: 1;
 }
 
 :host,
-.header__logo {
+.header__burger,
+.header__logo,
+.header__logo > a,
+.header-me {
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
-.header__logo {
-  position: relative;
-  padding: 15px;
+.header__burger > button,
+.header__logo > a {
+  cursor: pointer;
   user-select: none;
 }
 
-.header__logo:before {
+.header__burger > button {
+  width: auto;
+}
+
+.header__logo,
+.header__logo > a {
+  justify-content: center;
+}
+
+.header__burger {
+  align-items: center;
+  justify-content: start;
+}
+
+.header__logo {
+  margin: 0 10px;
+}
+
+.header__logo > a {
+  align-items: center;
+  position: relative;
+  padding: 10px 15px;
+}
+
+.header__logo > a:before {
   content: '';
   z-index: -1;
   position: absolute;
-  top: 15px;
+  top: 10px;
+  bottom: 10px;
   left: 15px;
-  bottom: 15px;
   right: 15px;
   background: url('/images/logo-circle.svg') no-repeat;
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-.header__logo {
-  cursor: pointer;
+.header__logo > a:hover::before {
+  opacity: 0.3;
 }
 
-.header__logo:hover::before {
-  opacity: 0.3;
+.header-me__person {
+  margin-top: 4px;
+  display: block;
+  text-align: center;
+  max-width: 200px;
+}
+
+.header-me {
+  justify-content: end;
+}
+
+.header-me tui-svg {
+  transition: 0.2s;
+}
+
+.header-me > tui-hosted-dropdown {
+  cursor: pointer;
+  user-select: none;
+}
+
+.header-me > tui-hosted-dropdown:hover tui-svg {
+  transform: rotate(-90deg);
+}
+
+.header-me__avatar {
+  margin-right: 12px;
+}
+
+.header-me__person {
+  margin-right: 5px;
+}
+
+.header-me__avatar {
+  border: 1px solid transparent;
+  background-image: var(--gradient-h);
+  background-origin: border-box;
+}
+
+@media only screen and (max-width: 576px) {
+  :host {
+    width: 95%;
+  }
+
+  .header__logo > a {
+    padding: 10px;
+  }
+
+  .header__logo > a:before {
+    left: 10px;
+    right: 10px;
+  }
+
+  .header-me__avatar {
+    margin-right: 1px;
+  }
+
+  .header-me__person {
+    display: none;
+  }
 }

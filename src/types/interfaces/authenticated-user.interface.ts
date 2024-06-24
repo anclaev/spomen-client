@@ -9,6 +9,7 @@ export const initialAuthenticatedUser: AuthenticatedUser = {
   avatar: null,
   first_name: null,
   last_name: null,
+  full_name: null,
   token: null,
 }
 
@@ -21,5 +22,6 @@ export interface AuthenticatedUser {
   avatar: string | null
   first_name: string | null
   last_name: string | null
+  full_name: string | null
   token: string | null
 }

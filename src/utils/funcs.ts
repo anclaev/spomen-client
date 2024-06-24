@@ -26,9 +26,11 @@ export function debouncedSignal<T>(
 }
 
 export function getCurrentPath(router: Router): string {
-  const extratcedUrl = router.getCurrentNavigation()!.extractedUrl ?? ''
+  const extractedUrl = router.getCurrentNavigation()
+    ? router.getCurrentNavigation()!.extractedUrl
+    : ''
 
-  return extratcedUrl.toString()
+  return extractedUrl.toString()
 }
 export function getQueryPayload<T>(params: Params): T | null {
   return Object.keys(params).includes('payload')

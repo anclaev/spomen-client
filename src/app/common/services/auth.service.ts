@@ -44,7 +44,15 @@ export class AuthService {
       email: data.email || null,
       first_name: data.first_name || null,
       last_name: data.last_name || null,
+      full_name:
+        data.first_name && data.last_name
+          ? `${data.first_name.trim()} ${data.last_name.trim()}`
+          : null,
     })
+  }
+
+  clear() {
+    this.$user.set(initialAuthenticatedUser)
   }
 
   init(): Observable<AuthModel> {
@@ -71,6 +79,10 @@ export class AuthService {
 
   signUp(dto: SignUpDto): Observable<AuthModel> {
     return this.http.post<AuthModel>(`${env.apiUrl}${API.AUTH_SIGN_UP}`, dto)
+  }
+
+  signOut(): Observable<boolean> {
+    return this.http.post<boolean>(`${env.apiUrl}${API.AUTH_SIGN_OUT}`, {})
   }
 
   signInVK(dto: AuthCallbackDto): Observable<AuthModel> {

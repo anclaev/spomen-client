@@ -110,3 +110,16 @@ label.t-placeholder {
 h2.t-heading {
   font: var(--tui-font-heading-6) !important;
 }
+
+tui-dropdown {
+  border: none !important;
+}
+
+tui-dropdown p {
+  all: unset;
+}
+
+.t-wrapper-flex > div.t-wrapper {
+  display: flex;
+  align-items: center;
+}

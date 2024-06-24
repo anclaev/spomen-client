@@ -2074,6 +2074,13 @@
     "@taiga-ui/i18n" "^3.83.0"
     tslib "^2.6.2"
 
+"@taiga-ui/experimental@^3.84.0":
+  version "3.84.0"
+  resolved "https://registry.yarnpkg.com/@taiga-ui/experimental/-/experimental-3.84.0.tgz#d2ef626b22d3e3c2f9393b6b9a5007688ce259ab"
+  integrity sha512-q0hNVy+EmywCG8hpZlg/+haKIFhnmxicQiSeV/D1P7CHO10safjGo0ptT6e1hYMFa5/cJZOM4OwDPen2xs17Wg==
+  dependencies:
+    tslib "^2.6.2"
+
 "@taiga-ui/i18n@^3.83.0":
   version "3.83.0"
   resolved "https://registry.yarnpkg.com/@taiga-ui/i18n/-/i18n-3.83.0.tgz#ab530545dd0cb39369b7c229e819abb607cccd96"

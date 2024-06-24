@@ -1,0 +1,28 @@
+:host {
+  flex-direction: column;
+  user-select: none;
+  min-width: 150px;
+}
+
+:host,
+:host > button {
+  display: flex;
+}
+
+:host > button {
+  padding: 10px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.2s;
+}
+
+:host > button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+:host > button > span {
+  margin-right: 10px;
+  flex-grow: 1;
+  text-align: center;
+}
