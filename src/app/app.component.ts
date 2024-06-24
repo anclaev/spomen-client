@@ -16,6 +16,7 @@ import {
   TuiLoaderModule,
 } from '@taiga-ui/core'
 
+import { HttpErrorResponse } from '@angular/common/http'
 import { RouterOutlet } from '@angular/router'
 import { Subscription } from 'rxjs'
 import * as VKID from '@vkid/sdk'
@@ -75,8 +76,13 @@ export class AppComponent implements OnInit, OnDestroy {
         next: () => {
           this.$loading.set(false)
         },
-        error: ({ message }: Error) =>
-          this.subs.push(this.alerts.open(message).subscribe()),
+        error: (err: HttpErrorResponse) => {
+          if (err.status !== 401) {
+            this.subs.push(this.alerts.open(err.message).subscribe())
+            return
+          }
+          this.$loading.set(false)
+        },
       })
     )
   }
