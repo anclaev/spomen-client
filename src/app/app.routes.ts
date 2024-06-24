@@ -9,6 +9,7 @@ export const routes: Routes = [
     path: '',
     component: DashboardComponent,
     canActivate: [authGuard],
+    title: 'Воспоминания',
   },
   {
     path: 'auth',

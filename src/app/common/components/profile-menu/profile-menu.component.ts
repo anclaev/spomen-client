@@ -5,8 +5,8 @@ import {
   Output,
   inject,
 } from '@angular/core'
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
-import { TuiSvgModule } from '@taiga-ui/core'
+
+import { TuiDialogService, TuiSvgModule } from '@taiga-ui/core'
 import { Router } from '@angular/router'
 
 import { AuthService } from '@services'
@@ -19,28 +19,35 @@ import { AuthService } from '@services'
   styleUrl: './profile-menu.component.scss',
 })
 export class ProfileMenuComponent {
+  dialogs = inject(TuiDialogService)
   destroyRef = inject(DestroyRef)
   auth = inject(AuthService)
   router = inject(Router)
 
   @Output() close = new EventEmitter()
 
-  signOut() {
-    this.auth
-      .signOut()
-      .pipe(takeUntilDestroyed(this.destroyRef))
+  handleSignOut() {
+    this.dialogs
+      .open('Выйти из воспоминаний?', {
+        size: 's',
+        required: true,
+      })
       .subscribe({
-        next: () => {
-          this.auth.clear()
-          this.router.navigate(['/auth'])
-          this.close.emit()
-        },
-        error: () => {
-          this.auth.clear()
-          this.router.navigate(['/auth'])
-          this.close.emit()
-          window.location.reload()
-        },
+        error: () => {},
+        complete: () =>
+          this.auth.signOut().subscribe({
+            next: () => {
+              this.auth.clear()
+              this.router.navigate(['/auth'])
+              this.close.emit()
+            },
+            error: () => {
+              this.auth.clear()
+              this.router.navigate(['/auth'])
+              this.close.emit()
+              window.location.reload()
+            },
+          }),
       })
   }
 }
