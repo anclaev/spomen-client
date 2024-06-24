@@ -1,4 +1,8 @@
-<tui-root className="wrapper">
-  <spomen-header />
-  <router-outlet />
+<tui-root class="wrapper" [attr.data-loading]="this.$loading()">
+  @if (this.$loading()) {
+    <tui-loader size="xxl" class="callback-loader" @inOut />
+  } @else {
+    <spomen-header />
+    <router-outlet />
+  }
 </tui-root>

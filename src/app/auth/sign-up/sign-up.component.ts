@@ -20,8 +20,7 @@ import { CommonModule } from '@angular/common'
 import { Router } from '@angular/router'
 import { TuiDay } from '@taiga-ui/cdk'
 
-import { AuthService } from '@common/services/auth.service'
-import { AuthStore } from '@store/auth'
+import { AuthService } from '@services/auth.service'
 
 @Component({
   selector: 'spomen-sign-up',
@@ -38,7 +37,7 @@ import { AuthStore } from '@store/auth'
 })
 export class SignUpComponent implements OnInit, OnDestroy {
   private alerts = inject(TuiAlertService)
-  private store = inject(AuthStore)
+  private auth = inject(AuthService)
   private router = inject(Router)
 
   private subs$: Subscription[] = []
@@ -70,10 +69,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
     confirmPass: new FormControl(''),
   })
 
-  constructor(
-    private fb: FormBuilder,
-    private auth: AuthService
-  ) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -153,7 +149,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
     this.subs$.push(
       this.auth
         .signUp({
-          login: this.form.controls.login.value!.trim(),
+          username: this.form.controls.login.value!.trim(),
           password: this.form.controls.pass.value!.trim(),
           birthday: this.form.controls.birthday.touched
             ? this.form.controls.birthday.value!.toUtcNativeDate().toISOString()
@@ -180,7 +176,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
         .subscribe({
           next: (data) => {
             this.isLoading.next(false)
-            this.store.setSession(data)
+            this.auth.set(data)
             this.router.navigate(['/'])
           },
           error: (err: HttpErrorResponse) => {

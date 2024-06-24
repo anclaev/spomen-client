@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router'
 
-import { authCallbackGuard } from '@common/guards/auth-callback.guard'
-import { authGuard } from '@common/guards/auth.guard'
+import { authCallbackGuard } from '@guards/auth-callback.guard'
+import { authGuard } from '@guards/auth.guard'
 
 import { AuthCallbackComponent } from './callback/auth-callback.component'
 import { AuthComponent } from './auth.component'

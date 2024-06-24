@@ -20,12 +20,20 @@
     "lib": ["ES2022", "dom"],
     "paths": {
       "tslib": ["./node_modules/tslib/tslib.d.ts"],
-      "@common/*": ["./src/app/common/*"],
       "@styles/*": ["./src/styles/*"],
       "@utils/*": ["./src/utils/*"],
       "@store/*": ["./src/store/*"],
       "@env": ["./src/envs/env.ts"],
-      "@tps/*": ["./src/types/*"],
+      "@dto/*": ["./src/types/dto/*"],
+      "@interfaces/*": ["./src/types/interfaces/*"],
+      "@enums/*": ["./src/types/enums/*"],
+      "@models/*": ["./src/types/models/*"],
+      "@interceptors/*": ["./src/app/common/interceptors/*"],
+      "@animations/*": ["./src/app/common/animations/*"],
+      "@components/*": ["./src/app/common/components/*"],
+      "@services/*": ["./src/app/common/services/*"],
+      "@guards/*": ["./src/app/common/guards/*"],
+
       "@app/*": ["./src/app/*"]
     }
   },

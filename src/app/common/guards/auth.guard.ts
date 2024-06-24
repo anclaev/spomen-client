@@ -1,27 +1,26 @@
 import { CanActivateFn, Router } from '@angular/router'
 import { inject } from '@angular/core'
 
-import { AuthStore } from '@store/auth'
+import { AuthService } from '@services/auth.service'
 
 export const authGuard: CanActivateFn = () => {
-  const auth = inject(AuthStore)
+  const isAuthenticated = inject(AuthService).$isAuth()
   const router = inject(Router)
 
   const currentPath = router.getCurrentNavigation()!.extractedUrl.toString()
   const isAuthPage = currentPath!.includes('/auth')
-  const isAuth = auth.isAuthenticated()
 
   if (
-    (currentPath.includes('/auth/callback') && isAuth) ||
-    (isAuthPage && !isAuth)
+    (currentPath.includes('/auth/callback') && isAuthenticated) ||
+    (isAuthPage && !isAuthenticated)
   )
     return true
 
-  if (isAuthPage && isAuth) {
+  if (isAuthPage && isAuthenticated) {
     return router.createUrlTree(['/'])
   }
 
-  if (isAuth) return true
+  if (isAuthenticated) return true
 
   return router.createUrlTree(['/auth'])
 }

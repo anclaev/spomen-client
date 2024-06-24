@@ -2,7 +2,7 @@ import { Routes } from '@angular/router'
 
 import { DashboardComponent } from '@app/dashboard/dashboard.component'
 
-import { authGuard } from '@common/guards/auth.guard'
+import { authGuard } from '@guards/auth.guard'
 
 export const routes: Routes = [
   {

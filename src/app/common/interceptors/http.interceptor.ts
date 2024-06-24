@@ -17,9 +17,11 @@ export const httpRequestIntercepor: HttpInterceptorFn = (req, next) => {
   })
 
   return next(req).pipe(
-    catchError((err) => {
-      console.log(err)
-      return throwError(err)
+    catchError((err: Error) => {
+      if (!env.production) {
+        console.log(err)
+      }
+      return throwError(() => err)
     })
   )
 }

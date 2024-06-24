@@ -6,12 +6,11 @@ import { CommonModule } from '@angular/common'
 
 import { AuthPassComponent } from '@app/auth/pass/auth-pass.component'
 
-import { AuthService } from '@common/services/auth.service'
-import { AuthStore } from '@store/auth'
+import { AuthService } from '@services/auth.service'
 
 import { getQueryPayload } from '@utils/getQueryPayload'
 
-import { AuthCallbackResponse } from '@tps/dto/auth-callback'
+import { AuthCallbackDto } from '@dto/auth-callback'
 
 @Component({
   selector: 'spomen-sign-in-callback',
@@ -23,7 +22,6 @@ import { AuthCallbackResponse } from '@tps/dto/auth-callback'
 export class AuthCallbackComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute)
   private auth = inject(AuthService)
-  private store = inject(AuthStore)
   private router = inject(Router)
 
   private subs$: Subscription[] = []
@@ -32,7 +30,7 @@ export class AuthCallbackComponent implements OnInit, OnDestroy {
   isLoading$$: Observable<boolean> = this.isLoading.asObservable()
 
   ngOnInit(): void {
-    const payload = getQueryPayload<AuthCallbackResponse>(
+    const payload = getQueryPayload<AuthCallbackDto>(
       this.route.snapshot.queryParams
     )!
 
@@ -43,7 +41,7 @@ export class AuthCallbackComponent implements OnInit, OnDestroy {
         })
         .subscribe({
           next: (data) => {
-            this.store.setSession(data)
+            this.auth.set(data)
             this.router.navigate(['/'])
           },
           error: (err) => {

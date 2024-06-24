@@ -1,19 +1,31 @@
-import { Component, effect, inject } from '@angular/core'
-import { RouterOutlet } from '@angular/router'
-import { getState } from '@ngrx/signals'
-import * as VKID from '@vkid/sdk'
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+  WritableSignal,
+  effect,
+  inject,
+  signal,
+} from '@angular/core'
 
 import {
   TuiRootModule,
   TuiDialogModule,
   TuiAlertModule,
   TuiAlertService,
+  TuiLoaderModule,
 } from '@taiga-ui/core'
 
-import { AuthStore } from '@store/auth'
+import { RouterOutlet } from '@angular/router'
+import { Subscription } from 'rxjs'
+import * as VKID from '@vkid/sdk'
+
 import { env } from '@env'
 
-import { HeaderComponent } from '@common/components/header/header.component'
+import { HeaderComponent } from '@components/header/header.component'
+import { inOut } from '@animations/in-out'
+
+import { AuthService } from '@services/auth.service'
 
 @Component({
   selector: 'spomen-root',
@@ -23,15 +35,20 @@ import { HeaderComponent } from '@common/components/header/header.component'
     TuiRootModule,
     TuiDialogModule,
     TuiAlertModule,
+    TuiLoaderModule,
     HeaderComponent,
   ],
-  providers: [],
+  animations: [inOut],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   private alerts = inject(TuiAlertService)
-  private store = inject(AuthStore)
+  private auth = inject(AuthService)
+
+  private subs: Subscription[] = []
+
+  $loading: WritableSignal<boolean> = signal(false)
 
   constructor() {
     VKID.Config.set({
@@ -40,16 +57,31 @@ export class AppComponent {
       state: 'dj29fnsadjsd82f249k293c139j1kd3',
     })
 
-    this.store.initSession('')
-
     effect(() => {
-      const auth = getState(this.store)
+      if (this.auth.$isAuth()) {
+        const { first_name, username } = this.auth.$user()
 
-      if (auth.id) {
-        this.alerts
-          .open(`Привет, ${auth.first_name || auth.username}!`)
-          .subscribe()
+        this.subs.push(
+          this.alerts.open(`Привет, ${first_name || username}!`).subscribe()
+        )
       }
     })
+  }
+
+  ngOnInit(): void {
+    this.$loading.set(true)
+    this.subs.push(
+      this.auth.init().subscribe({
+        next: () => {
+          this.$loading.set(false)
+        },
+        error: ({ message }: Error) =>
+          this.subs.push(this.alerts.open(message).subscribe()),
+      })
+    )
+  }
+
+  ngOnDestroy(): void {
+    this.subs.forEach((sub) => sub.unsubscribe())
   }
 }

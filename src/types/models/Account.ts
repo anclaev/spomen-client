@@ -1,4 +1,4 @@
-import { Role } from '@tps/enums/role.enum'
+import { Role } from '@enums/role.enum'
 
 export interface Account {
   id: number

@@ -1,7 +1,7 @@
 import { TuiTabsModule } from '@taiga-ui/kit'
 import { Component } from '@angular/core'
 
-import { enterLeave } from '@common/animations/enter-leave'
+import { enterLeave } from '@animations/enter-leave'
 
 import { SignInComponent } from './sign-in/sign-in.component'
 import { SignUpComponent } from './sign-up/sign-up.component'

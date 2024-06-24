@@ -22,8 +22,7 @@ import {
   Validators,
 } from '@angular/forms'
 
-import { AuthService } from '@common/services/auth.service'
-import { AuthStore } from '@store/auth'
+import { AuthService } from '@services/auth.service'
 
 @Component({
   selector: 'spomen-sign-in',
@@ -36,7 +35,7 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('VkIdSdkOneTap') VkIdSdkOneTap!: ElementRef<HTMLDivElement>
 
   private alerts = inject(TuiAlertService)
-  private store = inject(AuthStore)
+  private auth = inject(AuthService)
   private router = inject(Router)
 
   private vkIdOneTap = new VKID.OneTap()
@@ -53,10 +52,7 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
     pass: new FormControl(''),
   })
 
-  constructor(
-    private fb: FormBuilder,
-    private auth: AuthService
-  ) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -111,24 +107,23 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
       return
     }
 
-    // this.subs$.push(this.alerts.open('Запрос на сервер...').subscribe())
     this.isLoading.next(true)
 
     this.subs$.push(
       this.auth
         .signIn({
-          login: this.form.controls.login.value!.trim(),
+          username: this.form.controls.login.value!.trim(),
           password: this.form.controls.pass.value!.trim(),
         })
         .subscribe({
           next: (data) => {
-            this.store.setSession(data)
+            this.auth.set(data)
             this.router.navigate(['/'])
           },
           error: (err) => {
             this.isLoading.next(false)
 
-            if (err.status === 400) {
+            if (err.status === 401) {
               this.subs$.push(this.alerts.open(`Вход не выполнен`).subscribe())
               return
             }

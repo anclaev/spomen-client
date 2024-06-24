@@ -3,12 +3,12 @@ import { inject } from '@angular/core'
 
 import { getQueryPayload } from '@utils/getQueryPayload'
 
-import { AuthCallbackResponse } from '@tps/dto/auth-callback'
+import { AuthCallbackDto } from '@dto/auth-callback'
 
-export const authCallbackGuard: CanActivateFn = (route, state) => {
+export const authCallbackGuard: CanActivateFn = (route, _) => {
   const router = inject(Router)
 
-  const payload = getQueryPayload<AuthCallbackResponse>(route.queryParams)
+  const payload = getQueryPayload<AuthCallbackDto>(route.queryParams)
 
   return payload && payload.token
     ? true

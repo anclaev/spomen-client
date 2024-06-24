@@ -15,10 +15,8 @@ import {
   importProvidersFrom,
 } from '@angular/core'
 
-import { httpRequestIntercepor } from '@common/interceptors/http.interceptor'
-import { AuthService } from '@common/services/auth.service'
-
-import { AuthStore } from '@store/auth'
+import { httpRequestIntercepor } from '@interceptors/http.interceptor'
+import { AuthService } from '@services/auth.service'
 
 import { routes } from './app.routes'
 
@@ -31,7 +29,6 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideRouterStore(),
     provideHttpClient(withInterceptors([httpRequestIntercepor])),
-    AuthStore,
     AuthService,
     { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
     {

@@ -13,9 +13,9 @@ import {
 } from '@angular/forms'
 
 import { getQueryPayload } from '@utils/getQueryPayload'
-import Validation from '@utils/validation'
+import { Validation } from '@utils/validation'
 
-import { AuthCallbackResponse } from '@tps/dto/auth-callback'
+import { AuthCallbackDto } from '@dto/auth-callback'
 
 @Component({
   selector: 'spomen-auth-pass',
@@ -44,7 +44,7 @@ export class AuthPassComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    const payload = getQueryPayload<AuthCallbackResponse>(
+    const payload = getQueryPayload<AuthCallbackDto>(
       this.route.snapshot.queryParams
     )!
 
