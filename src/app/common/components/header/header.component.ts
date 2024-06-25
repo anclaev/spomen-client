@@ -3,7 +3,7 @@ import { TuiAvatarModule, TuiLineClampModule } from '@taiga-ui/kit'
 import { Component, inject } from '@angular/core'
 import { RouterModule } from '@angular/router'
 
-import { AuthService } from '@services'
+import { AuthService, MenuService } from '@services'
 
 import { MeComponent } from '@components/me'
 
@@ -23,6 +23,7 @@ import { MeComponent } from '@components/me'
 })
 export class HeaderComponent {
   user = inject(AuthService).$user
+  menu = inject(MenuService)
 
   isOpenProfileMenu = false
 }

@@ -1,6 +1,9 @@
 <div class="header__burger" [attr.data-hidden]="!user().id">
-  <button>
-    <tui-svg src="tuiIconMenuLarge" />
+  <span>a</span>
+  <button (click)="this.menu.toggle()" [attr.data-open]="this.menu.$isOpen()">
+    <span class="header__burger__line header__burger__line1"></span>
+    <span class="header__burger__line header__burger__line2"></span>
+    <span class="header__burger__line header__burger__line3"></span>
   </button>
 </div>
 <div class="header__logo">

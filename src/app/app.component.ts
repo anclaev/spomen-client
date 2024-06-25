@@ -20,6 +20,7 @@ import { getCurrentPath } from '@utils'
 
 import { HeaderComponent } from '@components/header'
 import { OopsComponent } from '@components/oops'
+import { MenuComponent } from '@components/menu'
 
 @Component({
   selector: 'spomen-root',
@@ -31,6 +32,7 @@ import { OopsComponent } from '@components/oops'
     TuiAlertModule,
     TuiLoaderModule,
     HeaderComponent,
+    MenuComponent,
     OopsComponent,
   ],
   animations: [inOutAnimation],

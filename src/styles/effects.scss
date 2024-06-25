@@ -12,35 +12,36 @@
     0px 0px 25px 0px rgba(255, 255, 255, 0.1);
 }
 
+@mixin page() {
+  grid-area: page;
+  width: 100%;
+  justify-self: center;
+  padding: 20px 0;
+}
+
 @mixin container() {
-  :host {
-    display: flex;
-    box-sizing: border-box;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  display: flex;
+  box-sizing: border-box;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 
   @media only screen and (max-width: 576px) {
-    :host {
-      width: 95%;
-    }
+    width: 95%;
   }
 }
 
 @mixin container-absolute() {
-  :host {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 80px auto;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 80px auto;
 }
 
 @mixin avatarBorder($size) {

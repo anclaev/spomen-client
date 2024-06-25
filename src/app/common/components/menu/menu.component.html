@@ -1,0 +1,37 @@
+<a
+  routerLink="/"
+  class="menu__item"
+  [routerLinkActive]="'active-route'"
+  [routerLinkActiveOptions]="{ exact: true }"
+>
+  <tui-svg src="tuiIconAirplayLarge" />
+  <span>Дашборд</span>
+</a>
+<a
+  routerLink="/memories"
+  class="menu__item"
+  [routerLinkActive]="'active-route'"
+>
+  <tui-svg src="tuiIconCalendarLarge" />
+  <span>Воспоминания</span>
+</a>
+<a routerLink="/events" class="menu__item" [routerLinkActive]="'active-route'">
+  <tui-svg src="tuiIconTableLarge" />
+  <span>События</span>
+</a>
+<a
+  routerLink="/timelines"
+  class="menu__item"
+  [routerLinkActive]="'active-route'"
+>
+  <tui-svg src="tuiIconChartLineLarge" />
+  <span>Таймлайны</span>
+</a>
+<a routerLink="/chats" class="menu__item" [routerLinkActive]="'active-route'">
+  <tui-svg src="tuiIconMessageCircleLarge" />
+  <span>Чаты</span>
+</a>
+<a routerLink="/uploads" class="menu__item" [routerLinkActive]="'active-route'">
+  <tui-svg src="tuiIconFileTextLarge" />
+  <span>Файлы</span>
+</a>

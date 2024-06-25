@@ -13,7 +13,7 @@ import {
 } from '@angular/core'
 
 import { httpRequestIntercepor } from '@interceptors'
-import { AuthService } from '@services'
+import { AuthService, MenuService } from '@services'
 
 import { routes } from './app.routes'
 
@@ -25,6 +25,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(TuiRootModule),
     provideHttpClient(withInterceptors([httpRequestIntercepor])),
     AuthService,
+    MenuService,
     { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
     {
       provide: TUI_LANGUAGE,

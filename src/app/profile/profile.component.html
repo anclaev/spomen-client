@@ -1,10 +1,9 @@
 <aside class="profile-side">
   <tui-avatar
     class="profile-side__avatar"
-    [avatarUrl]="
-      this.$profile().avatar ? this.$profile().avatar : 'tuiIconUserLarge'
-    "
+    [avatarUrl]="this.$profile().avatar"
     [tuiSkeleton]="this.$loading()"
+    [text]="this.$profile().full_name || this.$profile().username || ''"
     size="xxl"
     [rounded]="true"
   />
@@ -47,7 +46,7 @@
   } @else {
     <tui-line-clamp
       class="profile-info__fullname"
-      [content]="this.$profile().full_name ?? ''"
+      [content]="this.$profile().full_name || this.$profile().username || ''"
       [linesLimit]="1"
     />
   }

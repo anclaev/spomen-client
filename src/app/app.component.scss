@@ -1,3 +1,5 @@
+@import '../styles/effects.scss';
+
 :host {
   position: relative;
 }
@@ -8,4 +10,20 @@
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+main {
+  @include container();
+
+  display: grid;
+  grid-template-areas: 'menu page';
+  grid-template-columns: max-content 1fr;
+  align-content: center;
+}
+
+@media only screen and (max-width: 576px) {
+  main {
+    display: flex;
+    grid-gap: initial;
+  }
 }

@@ -1,16 +1,16 @@
 @import '../../styles/effects.scss';
 
-@include container;
-
 :host {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 90%;
-  max-width: 500px;
-  min-height: 50vh;
-  margin: 20px auto;
+  max-width: 500px !important;
+  min-height: 50vh !important;
+  margin: 20px auto !important;
+
+  @include container;
 }
 
 .auth__tabs {

@@ -1,14 +1,12 @@
 @import '../../styles/effects.scss';
 
-@include container();
-
 :host {
   display: grid;
   grid-template-areas: 'side info';
   grid-template-columns: max-content 1fr;
   grid-gap: 40px;
-  max-width: 800px;
-  margin-top: 40px;
+
+  @include page;
 }
 
 .profile-info,
@@ -28,8 +26,11 @@
 
 .profile-info__fullname {
   max-width: 95%;
-  margin: 40px 0;
+  margin: 20px 0;
   font: var(--tui-font-heading-5);
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+  line-height: 1.3;
 }
 
 .profile-side__avatar {
@@ -66,6 +67,7 @@
   .profile-info__fullname {
     margin: 20px 0;
     font: var(--tui-font-heading-6);
+    font-weight: 300;
   }
 }
 

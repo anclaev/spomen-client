@@ -3,7 +3,14 @@
   @if (this.auth.$loading() && !isRefused) {
     <tui-loader size="xxl" @inOut />
   } @else if (!isRefused) {
-    <router-outlet />
+    @if (this.auth.$isAuth()) {
+      <main>
+        <spomen-menu />
+        <router-outlet />
+      </main>
+    } @else {
+      <router-outlet />
+    }
   }
 
   @if (isRefused) {
