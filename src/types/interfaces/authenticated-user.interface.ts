@@ -1,4 +1,5 @@
 import { Role } from '@enums'
+import { Account } from './account.interface'
 
 export const initialAuthenticatedUser: AuthenticatedUser = {
   id: null,
@@ -13,15 +14,6 @@ export const initialAuthenticatedUser: AuthenticatedUser = {
   token: null,
 }
 
-export interface AuthenticatedUser {
-  id: number | null
-  vk_id: string | null
-  username: string | null
-  email: string | null
-  roles: Role[]
-  avatar: string | null
-  first_name: string | null
-  last_name: string | null
-  full_name: string | null
+export interface AuthenticatedUser extends Account {
   token: string | null
 }

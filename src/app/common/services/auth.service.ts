@@ -38,7 +38,7 @@ export class AuthService {
       id: data.id,
       username: data.username,
       token: data.access_token,
-      roles: data.roles,
+      roles: data.roles.sort((a, b) => a.localeCompare(b)),
       vk_id: data.vk_id || null,
       avatar: data.avatar_id || data.vk_avatar || null,
       email: data.email || null,

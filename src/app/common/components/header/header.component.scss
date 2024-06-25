@@ -1,9 +1,10 @@
+@import '../../../../styles/effects.scss';
+
+@include container();
+
 :host {
   position: sticky;
   justify-content: space-between;
-  max-width: 1200px;
-  width: 90%;
-  margin: 0 auto;
 }
 
 :host > *[data-hidden='true'] {
@@ -103,16 +104,10 @@
 }
 
 .header-me__avatar {
-  border: 1px solid transparent;
-  background-image: var(--gradient-h);
-  background-origin: border-box;
+  @include avatarBorder(1px);
 }
 
 @media only screen and (max-width: 576px) {
-  :host {
-    width: 95%;
-  }
-
   .header__logo > a {
     padding: 10px;
   }

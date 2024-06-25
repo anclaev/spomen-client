@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router'
 
 import { AuthService } from '@services'
 
-import { ProfileMenuComponent } from '@components/profile-menu'
+import { MeComponent } from '@components/me'
 
 @Component({
   selector: 'spomen-header',
@@ -16,7 +16,7 @@ import { ProfileMenuComponent } from '@components/profile-menu'
     TuiSvgModule,
     TuiLineClampModule,
     TuiHostedDropdownModule,
-    ProfileMenuComponent,
+    MeComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

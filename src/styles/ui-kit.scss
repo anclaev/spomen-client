@@ -127,3 +127,12 @@ tui-dropdown p {
 .t-dialog {
   text-align: center;
 }
+
+tui-chip {
+  width: 100% !important;
+  justify-content: center !important;
+}
+
+tui-chip[data-role='Administrator'] {
+  border: 1px solid var(--color-accent);
+}

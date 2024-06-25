@@ -14,11 +14,17 @@
 
 @mixin container() {
   :host {
-    display: block;
+    display: flex;
     box-sizing: border-box;
     width: 90%;
-    max-width: 1540px;
+    max-width: 1200px;
     margin: 0 auto;
+  }
+
+  @media only screen and (max-width: 576px) {
+    :host {
+      width: 95%;
+    }
   }
 }
 
@@ -35,4 +41,10 @@
     bottom: 0;
     margin: 80px auto;
   }
+}
+
+@mixin avatarBorder($size) {
+  border: $size solid transparent !important;
+  background-image: var(--gradient-h) !important;
+  background-origin: border-box !important;
 }

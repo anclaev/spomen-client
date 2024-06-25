@@ -12,19 +12,24 @@ import { Router } from '@angular/router'
 import { AuthService } from '@services'
 
 @Component({
-  selector: 'spomen-profile-menu',
+  selector: 'spomen-me',
   standalone: true,
   imports: [TuiSvgModule],
-  templateUrl: './profile-menu.component.html',
-  styleUrl: './profile-menu.component.scss',
+  templateUrl: './me.component.html',
+  styleUrl: './me.component.scss',
 })
-export class ProfileMenuComponent {
+export class MeComponent {
   dialogs = inject(TuiDialogService)
   destroyRef = inject(DestroyRef)
   auth = inject(AuthService)
   router = inject(Router)
 
   @Output() close = new EventEmitter()
+
+  handleMe() {
+    this.router.navigate([`/${this.auth.$user().username}`])
+    this.close.emit()
+  }
 
   handleSignOut() {
     this.dialogs

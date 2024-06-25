@@ -32,6 +32,7 @@ export function getCurrentPath(router: Router): string {
 
   return extractedUrl.toString()
 }
+
 export function getQueryPayload<T>(params: Params): T | null {
   return Object.keys(params).includes('payload')
     ? (JSON.parse(params['payload']) as T)
