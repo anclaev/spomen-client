@@ -13,7 +13,7 @@ export const authGuard: CanActivateFn = () => {
   const isAuthPage = currentPath.includes('/auth')
 
   return auth.$$isAuth.pipe(
-    withLatestFrom(auth.$$loading),
+    withLatestFrom(auth.$$isLoading),
     filter(([_, loading]) => !loading),
     map(([isAuth]) => {
       if (

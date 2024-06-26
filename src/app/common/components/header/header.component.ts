@@ -3,7 +3,7 @@ import { TuiAvatarModule, TuiLineClampModule } from '@taiga-ui/kit'
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core'
 import { RouterModule } from '@angular/router'
 
-import { AuthService, MenuService } from '@services'
+import { AuthService, ConfigService } from '@services'
 
 import { MeComponent } from '@components/me'
 
@@ -23,16 +23,7 @@ import { MeComponent } from '@components/me'
 })
 export class HeaderComponent {
   user = inject(AuthService).$user
-  menu = inject(MenuService)
+  config = inject(ConfigService)
 
   isOpenProfileMenu = false
-
-  @Input() navIsFull: boolean = true
-  @Input() isNotFound: boolean = false
-
-  @Output() toggleFullNav = new EventEmitter()
-
-  toggleNav() {
-    this.toggleFullNav.emit()
-  }
 }

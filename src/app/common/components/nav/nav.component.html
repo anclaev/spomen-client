@@ -1,4 +1,8 @@
-<nav class="nav" [attr.full]="this.isFull" [attr.nf]="this.isNotFound">
+<nav
+  class="nav"
+  [attr.full]="this.config.$navIsFull()"
+  [attr.nf]="this.config.$isNotFoundPage()"
+>
   <a
     routerLink="/"
     class="nav__item"

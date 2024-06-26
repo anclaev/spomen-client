@@ -1,19 +1,15 @@
 <tui-root
   class="root-wrapper"
-  [attr.data-loading]="this.auth.$$loading | async"
+  [attr.data-loading]="this.auth.$$isLoading | async"
 >
-  <spomen-header
-    [navIsFull]="this.navIsFull"
-    [isNotFound]="this.isNotFound"
-    (toggleFullNav)="this.toggleNav()"
-  />
-  @if ((this.auth.$$loading | async) && !isRefused) {
+  <spomen-header />
+  @if ((this.auth.$$isLoading | async) && !this.config.$isRefusedPage()) {
     <tui-loader size="xxl" @inOut />
-  } @else if (!isRefused) {
+  } @else if (!this.config.$isRefusedPage()) {
     @if (this.auth.$isAuth()) {
       <div class="wrapper">
-        <spomen-nav [isFull]="this.navIsFull" [isNotFound]="this.isNotFound" />
-        <main [attr.nf]="this.isNotFound">
+        <spomen-nav />
+        <main [attr.nf]="this.config.$isNotFoundPage()">
           <router-outlet />
         </main>
       </div>
@@ -22,7 +18,7 @@
     }
   }
 
-  @if (isRefused) {
+  @if (this.config.$isRefusedPage()) {
     <spomen-oops @inOut />
   }
 </tui-root>

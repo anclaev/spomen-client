@@ -15,6 +15,7 @@ import {
   switchMap,
   throwError,
 } from 'rxjs'
+
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { toObservable } from '@angular/core/rxjs-interop'
 
@@ -37,8 +38,8 @@ export class AuthService {
   $isAuth: Signal<boolean> = computed(() => !!this.$user().id)
   $$isAuth: Observable<boolean> = toObservable(this.$isAuth)
 
-  $loading = new BehaviorSubject<any>(false)
-  $$loading: Observable<any> = this.$loading.asObservable()
+  $isLoading: BehaviorSubject<boolean> = new BehaviorSubject(false)
+  $$isLoading: Observable<boolean> = this.$isLoading.asObservable()
 
   set(data: AuthModel) {
     this.$user.set({
@@ -63,7 +64,7 @@ export class AuthService {
   }
 
   init(): Observable<AuthModel> {
-    this.$loading.next(true)
+    this.$isLoading.next(true)
 
     return this.me().pipe(
       map((data) => {

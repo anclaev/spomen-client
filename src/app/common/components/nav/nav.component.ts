@@ -1,6 +1,8 @@
 import { RouterLink, RouterLinkActive } from '@angular/router'
+import { Component, inject } from '@angular/core'
 import { TuiSvgModule } from '@taiga-ui/core'
-import { Component, Input } from '@angular/core'
+
+import { ConfigService } from '@services'
 
 @Component({
   selector: 'spomen-nav',
@@ -10,6 +12,5 @@ import { Component, Input } from '@angular/core'
   styleUrl: './nav.component.scss',
 })
 export class NavComponent {
-  @Input() isFull: boolean = true
-  @Input() isNotFound: boolean = false
+  config = inject(ConfigService)
 }

@@ -7,16 +7,16 @@ import {
 } from '@taiga-ui/core'
 
 import { Component, OnDestroy, OnInit, effect, inject } from '@angular/core'
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router'
 import { HttpErrorResponse } from '@angular/common/http'
+import { Router, RouterOutlet } from '@angular/router'
 import { CommonModule } from '@angular/common'
-import { Subscription, filter, map } from 'rxjs'
+import { Subscription } from 'rxjs'
 import * as VKID from '@vkid/sdk'
 
 import { env } from '@env'
 
+import { AuthService, ConfigService } from '@services'
 import { inOutAnimation } from '@animations'
-import { AuthService } from '@services'
 import { getCurrentPath } from '@utils'
 
 import { HeaderComponent } from '@components/header'
@@ -44,13 +44,8 @@ import { NavComponent } from '@components/nav'
 export class AppComponent implements OnInit, OnDestroy {
   private alerts = inject(TuiAlertService)
   private router = inject(Router)
+  config = inject(ConfigService)
   auth = inject(AuthService)
-
-  isRefused: boolean = false
-  isNotFound: boolean = false
-
-  navIsFull: boolean =
-    (localStorage.getItem('nav') as unknown as boolean) || true
 
   private subs: Subscription[] = []
 
@@ -77,46 +72,27 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.auth.$loading.next(true)
-
-    this.subs.push(
-      this.router.events
-        .pipe(
-          filter((val) => val instanceof NavigationEnd),
-          map((a: any) => {
-            if (a.url && a.urlAfterRedirects) {
-              this.isNotFound =
-                a.url.includes('/404') || a.urlAfterRedirects.includes('/404')
-            }
-          })
-        )
-        .subscribe()
-    )
+    this.auth.$isLoading.next(true)
 
     this.subs.push(
       this.auth.init().subscribe({
         next: (user) => {
           this.auth.set(user)
-          this.auth.$loading.next(false)
+          this.auth.$isLoading.next(false)
         },
         error: (err: HttpErrorResponse) => {
           if (err.status === 0) {
-            this.isRefused = true
-            this.auth.$loading.next(false)
+            this.config.$isRefusedPage.set(true)
+            this.auth.$isLoading.next(false)
             return
           }
 
-          this.auth.$loading.next(false)
+          this.auth.$isLoading.next(false)
 
           this.router.navigateByUrl(getCurrentPath(this.router))
         },
       })
     )
-  }
-
-  toggleNav() {
-    this.navIsFull = !this.navIsFull
-    localStorage.setItem('nav', String(this.navIsFull))
   }
 
   ngOnDestroy(): void {
