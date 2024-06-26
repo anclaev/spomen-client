@@ -12,7 +12,7 @@ import {
   TuiLoaderModule,
 } from '@taiga-ui/core'
 
-import { Component, OnDestroy, OnInit, inject } from '@angular/core'
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core'
 import { BehaviorSubject, Observable, Subscription } from 'rxjs'
 import { HttpErrorResponse } from '@angular/common/http'
 import { TuiInputDateModule } from '@taiga-ui/kit'
@@ -39,6 +39,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
   private alerts = inject(TuiAlertService)
   private auth = inject(AuthService)
   private router = inject(Router)
+
+  @Input() callbackUrl: string | null = null
 
   private subs$: Subscription[] = []
 
@@ -176,8 +178,12 @@ export class SignUpComponent implements OnInit, OnDestroy {
         .subscribe({
           next: (data) => {
             this.isLoading.next(false)
+
             this.auth.set(data)
-            this.router.navigate(['/'])
+
+            this.router.navigate([
+              `${this.callbackUrl ? this.callbackUrl : '/'}`,
+            ])
           },
           error: (err: HttpErrorResponse) => {
             if (err.status === 409) {

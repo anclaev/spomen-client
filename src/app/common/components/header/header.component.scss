@@ -2,20 +2,23 @@
 
 :host {
   position: sticky;
-  justify-content: space-between;
+  top: 0;
+}
 
+header {
+  justify-content: space-between;
   @include container();
 }
 
-:host > *[data-hidden='true'] {
-  visibility: hidden;
-}
-
-:host > * {
+header > * {
   flex: 1;
 }
 
-:host,
+header > *[data-hidden='true'] {
+  visibility: hidden;
+}
+
+header,
 .header__burger,
 .header__logo,
 .header__logo > a,
@@ -32,6 +35,18 @@
 
 .header__burger {
   position: relative;
+}
+
+.header__burger--mobile {
+  display: none;
+}
+
+header[nf='true'] > .header__burger {
+  display: none;
+}
+
+header[nf='true'] > .header__burger--mobile {
+  display: flex;
 }
 
 .header__burger > span {
@@ -71,33 +86,49 @@
 }
 
 .header__burger__line1 {
+  width: 100%;
+}
+
+.header__burger__line2 {
+  width: 60%;
+}
+
+.header__burger__line3 {
+  width: 20%;
+}
+
+.header__burger--mobile__line1 {
   transform-origin: 0% 0%;
   transition: transform 0.4s ease-in-out;
 }
 
-.header__burger__line2 {
+.header__burger--mobile__line2 {
   transition: transform 0.2s ease-in-out;
 }
 
-.header__burger__line3 {
+.header__burger--mobile__line3 {
   transform-origin: 0% 100%;
   transition: transform 0.4s ease-in-out;
 }
 
-.header__burger > button[data-open='true'] .header__burger__line1 {
-  transform: rotate(45deg);
-}
-
-.header__burger > button[data-open='true'] .header__burger__line2 {
-  transform: scaleY(0);
-}
-
-.header__burger > button[data-open='true'] .header__burger__line3 {
-  transform: rotate(-45deg);
+.header__burger > button[data-open='true'] .header__burger__line {
+  background: var(--color-accent);
 }
 
 .header__burger > button[data-open='true'] .header__burger__line {
-  background: var(--color-accent);
+  width: 100%;
+}
+
+.header__burger > button[data-open='true'] .header__burger--mobile__line1 {
+  transform: rotate(45deg) translate(3px, -3px);
+}
+
+.header__burger > button[data-open='true'] .header__burger--mobile__line2 {
+  transform: scaleY(0);
+}
+
+.header__burger > button[data-open='true'] .header__burger--mobile__line3 {
+  transform: rotate(-45deg) translate(3px, 3px);
 }
 
 .header__logo,
@@ -108,7 +139,6 @@
 .header__burger {
   align-items: center;
   justify-content: start;
-  padding: 0 15px;
 }
 
 .header__logo {
@@ -177,6 +207,14 @@
 @media only screen and (max-width: 768px) {
   .header__burger > button {
     left: 5px;
+  }
+
+  .header__burger {
+    display: none;
+  }
+
+  .header__burger--mobile {
+    display: flex;
   }
 }
 

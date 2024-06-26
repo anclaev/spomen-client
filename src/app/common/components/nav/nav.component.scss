@@ -1,0 +1,156 @@
+@import '../../../../styles/effects.scss';
+
+:host {
+  margin-right: 40px;
+}
+
+.nav {
+  position: sticky;
+  align-self: start;
+  top: 70px;
+
+  display: flex;
+  flex-direction: column;
+
+  font: var(--tui-font-text-s);
+
+  max-width: 200px;
+  transition: max-width 1s;
+}
+
+.nav[nf='true'] {
+  display: none;
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
+}
+
+.nav__item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 15px;
+  border-left: 2px solid transparent;
+  transition: 0.2s;
+  overflow: hidden;
+}
+
+.nav__item:hover {
+  transform: scale(1.1);
+}
+
+.nav__item > tui-svg {
+  margin-right: 15px;
+}
+
+.nav__item > tui-svg[data-fill] {
+  fill: var(--color-content);
+}
+
+.nav__item.active-route {
+  border-left-color: var(--color-accent);
+}
+
+@media only screen and (min-width: 768px) {
+  .nav[full='false'] {
+    max-width: 54px;
+    overflow-x: hidden;
+  }
+
+  .nav[full='false'] > .nav__item {
+    padding-right: 30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  :host {
+    margin-right: 30px;
+  }
+
+  .nav {
+    max-width: 34px;
+    overflow-x: hidden;
+  }
+
+  .nav__item {
+    padding: 15px 5px;
+    border: none;
+  }
+
+  .nav__item.active-route > tui-svg {
+    color: var(--color-accent);
+  }
+
+  .nav__item.active-route > tui-svg[data-fill] {
+    fill: var(--color-accent);
+  }
+
+  .nav__item:hover {
+    transform: none;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  :host {
+    margin: 0;
+  }
+
+  .nav {
+    position: fixed;
+    height: min-content;
+    width: 100%;
+    max-width: unset;
+    top: unset;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-x: scroll;
+    overflow-y: unset;
+    margin: unset;
+    padding: 20px;
+    display: block;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .nav[nf='true'] {
+    display: block;
+  }
+
+  .nav__item {
+    display: inline-flex;
+    border: none;
+    padding: 10px;
+    background: rgba(173, 202, 255, 0.3);
+    border-radius: 15px;
+    overflow: unset;
+
+    @include shadow_box;
+  }
+
+  .nav__item:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  .nav__item > tui-svg {
+    color: var(--color-primary);
+  }
+
+  .nav__item > tui-svg[data-fill] {
+    fill: var(--color-primary);
+  }
+
+  .nav__item.active-route {
+    border-bottom-color: var(--color-accent-dark);
+  }
+
+  .nav__item > span {
+    display: none;
+  }
+
+  .nav__item > tui-svg {
+    margin-right: 0;
+  }
+}

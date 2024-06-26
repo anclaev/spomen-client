@@ -44,10 +44,8 @@
       >skeleton</span
     >
   } @else {
-    <tui-line-clamp
-      class="profile-info__fullname"
-      [content]="this.$profile().full_name || this.$profile().username || ''"
-      [linesLimit]="1"
-    />
+    <span class="profile-info__fullname">{{
+      this.$profile().full_name || this.$profile().username || ''
+    }}</span>
   }
 </div>

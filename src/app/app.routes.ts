@@ -53,17 +53,22 @@ export const routes: Routes = [
     loadChildren: () => import('./auth/auth.routes').then((r) => r.authRoutes),
   },
   {
-    path: ':username',
-    loadComponent: () =>
-      import('./profile/profile.component').then((c) => c.ProfileComponent),
-  },
-  {
-    path: '**',
+    path: '404',
     loadComponent: () =>
       import('./not-found/not-found.component').then(
         (m) => m.NotFoundComponent
       ),
     pathMatch: 'full',
     title: 'Упс...',
+  },
+  {
+    path: ':username',
+    loadComponent: () =>
+      import('./profile/profile.component').then((c) => c.ProfileComponent),
+    canActivate: [authGuard],
+  },
+  {
+    path: '**',
+    redirectTo: '/404',
   },
 ]

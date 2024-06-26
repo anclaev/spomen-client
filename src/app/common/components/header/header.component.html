@@ -1,40 +1,53 @@
-<div class="header__burger" [attr.data-hidden]="!user().id">
-  <span>a</span>
-  <button (click)="this.menu.toggle()" [attr.data-open]="this.menu.$isOpen()">
-    <span class="header__burger__line header__burger__line1"></span>
-    <span class="header__burger__line header__burger__line2"></span>
-    <span class="header__burger__line header__burger__line3"></span>
-  </button>
-</div>
-<div class="header__logo">
-  <a routerLink="/">
-    <img src="images/logo.svg" width="84.6" height="50" />
-  </a>
-</div>
-<div class="header-me" [attr.data-hidden]="!user().id">
-  <tui-hosted-dropdown
-    class="t-wrapper-flex"
-    [content]="profileMenu"
-    [(open)]="isOpenProfileMenu"
-    [tuiDropdownOffset]="10"
+<header [attr.nf]="this.isNotFound">
+  <div class="header__burger" [attr.data-hidden]="!user().id">
+    <span>!</span>
+    <button (click)="this.toggleNav()" [attr.data-open]="this.navIsFull">
+      <span class="header__burger__line header__burger__line1"></span>
+      <span class="header__burger__line header__burger__line2"></span>
+      <span class="header__burger__line header__burger__line3"></span>
+    </button>
+  </div>
+  <div
+    class="header__burger header__burger--mobile"
+    [attr.data-hidden]="!user().id"
   >
-    <tui-avatar
-      class="header-me__avatar"
-      [avatarUrl]="user().avatar"
-      size="s"
-      [rounded]="true"
-      [text]="user().full_name || user().username || ''"
-    />
+    <span>!</span>
+    <button (click)="this.menu.toggle()" [attr.data-open]="this.menu.$isOpen()">
+      <span class="header__burger__line header__burger--mobile__line1"></span>
+      <span class="header__burger__line header__burger--mobile__line2"></span>
+      <span class="header__burger__line header__burger--mobile__line3"></span>
+    </button>
+  </div>
+  <div class="header__logo">
+    <a routerLink="/">
+      <img src="images/logo.svg" width="84.6" height="50" />
+    </a>
+  </div>
+  <div class="header-me" [attr.data-hidden]="!user().id">
+    <tui-hosted-dropdown
+      class="t-wrapper-flex"
+      [content]="profileMenu"
+      [(open)]="isOpenProfileMenu"
+      [tuiDropdownOffset]="10"
+    >
+      <tui-avatar
+        class="header-me__avatar"
+        [avatarUrl]="user().avatar"
+        size="s"
+        [rounded]="true"
+        [text]="user().full_name || user().username || ''"
+      />
 
-    <tui-line-clamp
-      class="header-me__person"
-      [content]="user().full_name || user().username || ''"
-      [linesLimit]="1"
-    />
-    <tui-svg src="tuiIconChevronDown" />
-  </tui-hosted-dropdown>
-</div>
+      <tui-line-clamp
+        class="header-me__person"
+        [content]="user().full_name || user().username || ''"
+        [linesLimit]="1"
+      />
+      <tui-svg src="tuiIconChevronDown" />
+    </tui-hosted-dropdown>
+  </div>
 
-<ng-template #profileMenu let-close="close">
-  <spomen-me (close)="close()" />
-</ng-template>
+  <ng-template #profileMenu let-close="close">
+    <spomen-me (close)="close()" />
+  </ng-template>
+</header>

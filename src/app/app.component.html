@@ -1,13 +1,22 @@
-<tui-root class="wrapper" [attr.data-loading]="this.auth.$loading()">
-  <spomen-header />
-  @if (this.auth.$loading() && !isRefused) {
+<tui-root
+  class="root-wrapper"
+  [attr.data-loading]="this.auth.$$loading | async"
+>
+  <spomen-header
+    [navIsFull]="this.navIsFull"
+    [isNotFound]="this.isNotFound"
+    (toggleFullNav)="this.toggleNav()"
+  />
+  @if ((this.auth.$$loading | async) && !isRefused) {
     <tui-loader size="xxl" @inOut />
   } @else if (!isRefused) {
     @if (this.auth.$isAuth()) {
-      <main>
-        <spomen-menu />
-        <router-outlet />
-      </main>
+      <div class="wrapper">
+        <spomen-nav [isFull]="this.navIsFull" [isNotFound]="this.isNotFound" />
+        <main [attr.nf]="this.isNotFound">
+          <router-outlet />
+        </main>
+      </div>
     } @else {
       <router-outlet />
     }

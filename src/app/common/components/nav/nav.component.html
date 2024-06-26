@@ -1,0 +1,52 @@
+<nav class="nav" [attr.full]="this.isFull" [attr.nf]="this.isNotFound">
+  <a
+    routerLink="/"
+    class="nav__item"
+    [routerLinkActive]="'active-route'"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <tui-svg src="tuiIconAirplayLarge" />
+    <span>Дашборд</span>
+  </a>
+  <a
+    routerLink="/memories"
+    class="nav__item"
+    [routerLinkActive]="'active-route'"
+  >
+    <tui-svg src="tuiIconCalendarLarge" />
+    <span>Воспоминания</span>
+  </a>
+  <a routerLink="/events" class="nav__item" [routerLinkActive]="'active-route'">
+    <tui-svg
+      src="/images/cake.svg"
+      id="events_icon"
+      [attr.data-fill]="true"
+      [attr.data-fill-path]="true"
+    />
+    <span>События</span>
+  </a>
+  <a
+    routerLink="/timelines"
+    class="nav__item"
+    [routerLinkActive]="'active-route'"
+  >
+    <tui-svg src="tuiIconChartLineLarge" />
+    <span>Таймлайны</span>
+  </a>
+  <a routerLink="/chats" class="nav__item" [routerLinkActive]="'active-route'">
+    <tui-svg src="tuiIconMessageCircleLarge" />
+    <span>Чаты</span>
+  </a>
+  <a
+    routerLink="/uploads"
+    class="nav__item"
+    [routerLinkActive]="'active-route'"
+  >
+    <tui-svg
+      src="/images/files.svg"
+      [attr.data-fill]="true"
+      [attr.data-fill-path]="true"
+    />
+    <span>Файлы</span>
+  </a>
+</nav>

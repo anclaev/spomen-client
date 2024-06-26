@@ -136,3 +136,20 @@ tui-chip {
 tui-chip[data-role='Administrator'] {
   border: 1px solid var(--color-accent);
 }
+
+.t-src svg {
+  height: inherit;
+  width: inherit;
+}
+
+tui-svg[data-fill] .t-src {
+  fill: inherit;
+}
+
+tui-svg[data-fill] .t-src svg {
+  fill: inherit;
+}
+
+tui-svg[data-fill-path] .t-src svg path {
+  fill: inherit;
+}

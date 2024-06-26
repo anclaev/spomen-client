@@ -8,6 +8,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Input,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -37,6 +38,8 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
   private alerts = inject(TuiAlertService)
   private auth = inject(AuthService)
   private router = inject(Router)
+
+  @Input() callbackUrl: string | null = null
 
   private vkIdOneTap = new VKID.OneTap()
   private subs$: Subscription[] = []
@@ -118,7 +121,10 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
         .subscribe({
           next: (data) => {
             this.auth.set(data)
-            this.router.navigate(['/'])
+
+            this.router.navigate([
+              `${this.callbackUrl ? this.callbackUrl : '/'}`,
+            ])
           },
           error: (err) => {
             this.isLoading.next(false)

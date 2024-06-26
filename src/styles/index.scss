@@ -46,8 +46,9 @@ body::before {
 }
 
 .t-root-content {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  overflow-x: hidden;
   min-height: 100dvh;
 }
 

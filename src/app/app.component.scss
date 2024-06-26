@@ -4,7 +4,7 @@
   position: relative;
 }
 
-.wrapper[data-loading='true'] tui-loader {
+.root-wrapper[data-loading='true'] tui-loader {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,18 +12,24 @@
   bottom: 0;
 }
 
-main {
+.wrapper {
   @include container();
-
-  display: grid;
-  grid-template-areas: 'menu page';
-  grid-template-columns: max-content 1fr;
-  align-content: center;
 }
 
-@media only screen and (max-width: 576px) {
-  main {
-    display: flex;
-    grid-gap: initial;
-  }
+main {
+  width: 100%;
+  z-index: -1;
+}
+
+main[nf='false'] {
+  position: relative;
+}
+
+main[nf='true'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
 }
