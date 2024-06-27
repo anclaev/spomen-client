@@ -17,7 +17,7 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": ["ES2022", "dom"],
+    "lib": ["ES2022", "dom", "esnext.asynciterable"],
     "paths": {
       "tslib": ["./node_modules/tslib/tslib.d.ts"],
       "@styles/*": ["./src/styles/*"],
@@ -27,14 +27,15 @@
       "@interfaces": ["./src/types/interfaces/index.ts"],
       "@enums": ["./src/types/enums/index.ts"],
       "@models": ["./src/types/models/index.ts"],
-      "@interceptors": ["./src/app/common/interceptors/index.ts"],
       "@animations": ["./src/app/common/animations/index.ts"],
-      "@services": ["./src/app/common/services/index.ts"],
-      "@guards": ["./src/app/common/guards/index.ts"],
       "@components/*": ["./src/app/common/components/*"],
-
+      "@interceptors": ["./src/app/core/interceptors/index.ts"],
+      "@services": ["./src/app/core/services/index.ts"],
+      "@guards": ["./src/app/core/guards/index.ts"],
+      "@graphql": ["./src/app/core/graphql/index.ts"],
       "@app/*": ["./src/app/*"]
-    }
+    },
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

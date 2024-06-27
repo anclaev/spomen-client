@@ -12,13 +12,19 @@ import {
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop'
 import { TuiChipModule, TuiSkeletonModule } from '@taiga-ui/experimental'
 import { TuiAvatarModule, TuiLineClampModule } from '@taiga-ui/kit'
-import { TuiDialogModule, TuiDialogService } from '@taiga-ui/core'
+import {
+  TuiAlertService,
+  TuiDialogModule,
+  TuiDialogService,
+} from '@taiga-ui/core'
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus'
 import { Observable, map, of, switchMap } from 'rxjs'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute } from '@angular/router'
 import { CommonModule } from '@angular/common'
+import { Apollo } from 'apollo-angular'
 
+import { getAccountQuery, GetAccountModel } from '@graphql'
 import { AuthService } from '@services'
 import { serializeRole } from '@utils'
 
@@ -43,15 +49,17 @@ import { ChangeAvatarComponent } from './change-avatar/change-avatar.component'
 })
 export class ProfileComponent implements OnInit {
   dialogs = inject(TuiDialogService)
+  alerts = inject(TuiAlertService)
   destroyRef = inject(DestroyRef)
   route = inject(ActivatedRoute)
   injector = inject(Injector)
   auth = inject(AuthService)
+  apollo = inject(Apollo)
   title = inject(Title)
 
-  $loading: WritableSignal<boolean> = signal(true)
-
   $profile: WritableSignal<Account> = signal(initialAccount)
+  $loading: WritableSignal<boolean> = signal(true)
+  $query: WritableSignal<string> = signal('')
 
   $$roles: Observable<Role[]> = toObservable(this.$profile).pipe(
     map((acc) => acc.roles)
@@ -59,6 +67,7 @@ export class ProfileComponent implements OnInit {
 
   $$isMe = this.route.params.pipe(
     map((params) => {
+      this.$query.set(params['username'])
       return params['username'] === this.auth.$user().username
     })
   )
@@ -86,7 +95,39 @@ export class ProfileComponent implements OnInit {
         if (isMe) {
           this.$profile.set(this.auth.$user())
           this.$loading.set(false)
+          return
         }
+
+        this.apollo
+          .watchQuery<GetAccountModel, { username: string }>({
+            query: getAccountQuery,
+            variables: {
+              username: this.$query(),
+            },
+          })
+          .valueChanges.pipe(takeUntilDestroyed(this.destroyRef))
+          .subscribe({
+            next: ({ data, loading }) => {
+              this.$loading.set(loading)
+              this.$profile.set({
+                ...data,
+                avatar:
+                  data.avatar && data.avatar.upload
+                    ? data.avatar.upload.url
+                    : null,
+                full_name:
+                  data.first_name && data.last_name
+                    ? `${data.first_name.trim()} ${data.last_name.trim()}`
+                    : null,
+              })
+            },
+            error: () => {
+              this.alerts
+                .open('Сервер временно недоступен', { status: 'error' })
+                .pipe(takeUntilDestroyed(this.destroyRef))
+                .subscribe()
+            },
+          })
       },
     })
   }

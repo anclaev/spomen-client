@@ -12,8 +12,9 @@ import {
   importProvidersFrom,
 } from '@angular/core'
 
-import { httpRequestIntercepor } from '@interceptors'
 import { AuthService, ConfigService } from '@services'
+import { httpRequestIntercepor } from '@interceptors'
+import { graphqlProvider } from '@graphql'
 
 import { routes } from './app.routes'
 
@@ -31,5 +32,6 @@ export const appConfig: ApplicationConfig = {
       provide: TUI_LANGUAGE,
       useValue: of(TUI_RUSSIAN_LANGUAGE),
     },
+    graphqlProvider,
   ],
 }
