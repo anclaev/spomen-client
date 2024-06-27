@@ -120,7 +120,7 @@ export class ProfileComponent implements OnInit {
                 avatar:
                   account.avatar && account.avatar.upload
                     ? account.avatar.upload.url
-                    : null,
+                    : account.vk_avatar,
                 full_name:
                   account.first_name && account.last_name
                     ? `${account.first_name.trim()} ${account.last_name.trim()}`
