@@ -14,10 +14,10 @@ import { TuiChipModule, TuiSkeletonModule } from '@taiga-ui/experimental'
 import { TuiAvatarModule, TuiLineClampModule } from '@taiga-ui/kit'
 import { TuiDialogModule, TuiDialogService } from '@taiga-ui/core'
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus'
+import { Observable, map, of, switchMap } from 'rxjs'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute } from '@angular/router'
 import { CommonModule } from '@angular/common'
-import { Observable, map, of, switchMap } from 'rxjs'
 
 import { AuthService } from '@services'
 import { serializeRole } from '@utils'
@@ -99,7 +99,11 @@ export class ProfileComponent implements OnInit {
     this.$$isMe
       .pipe(
         takeUntilDestroyed(this.destroyRef),
-        switchMap((isMe) => (isMe ? this.changeAvatarDialog : of(null)))
+        switchMap((isMe) =>
+          isMe || this.auth.$user().roles.includes(Role.Administrator)
+            ? this.changeAvatarDialog
+            : of(null)
+        )
       )
       .subscribe()
   }
