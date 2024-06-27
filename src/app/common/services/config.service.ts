@@ -11,14 +11,15 @@ export class ConfigService {
   $isNotFoundPage: WritableSignal<boolean> = signal(false)
   $isRefusedPage: WritableSignal<boolean> = signal(false)
   $menuIsOpen: WritableSignal<boolean> = signal(false)
-  $navIsFull: WritableSignal<boolean> = signal(true)
 
   toggleMenuStatus() {
     this.$menuIsOpen.set(!this.$menuIsOpen())
   }
 
-  toggleNavStatus() {
-    this.$navIsFull.set(!this.$navIsFull())
+  closeMenu() {
+    if (this.$menuIsOpen()) {
+      this.$menuIsOpen.set(false)
+    }
   }
 
   constructor() {

@@ -3,7 +3,7 @@ import { Routes } from '@angular/router'
 import { DashboardComponent } from '@app/dashboard/dashboard.component'
 
 import { authGuard } from '@guards'
-
+;``
 export const routes: Routes = [
   {
     path: '',
@@ -55,7 +55,7 @@ export const routes: Routes = [
   {
     path: '404',
     loadComponent: () =>
-      import('./not-found/not-found.component').then(
+      import('./common/components/not-found/not-found.component').then(
         (m) => m.NotFoundComponent
       ),
     pathMatch: 'full',

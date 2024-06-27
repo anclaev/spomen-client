@@ -15,12 +15,13 @@ import * as VKID from '@vkid/sdk'
 
 import { env } from '@env'
 
+import { inOutAnimation200, inOutAnimation500 } from '@animations'
 import { AuthService, ConfigService } from '@services'
-import { inOutAnimation } from '@animations'
 import { getCurrentPath } from '@utils'
 
 import { HeaderComponent } from '@components/header'
 import { OopsComponent } from '@components/oops'
+import { MenuComponent } from '@components/menu'
 import { NavComponent } from '@components/nav'
 
 @Component({
@@ -36,8 +37,9 @@ import { NavComponent } from '@components/nav'
     HeaderComponent,
     NavComponent,
     OopsComponent,
+    MenuComponent,
   ],
-  animations: [inOutAnimation],
+  animations: [inOutAnimation200, inOutAnimation500],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

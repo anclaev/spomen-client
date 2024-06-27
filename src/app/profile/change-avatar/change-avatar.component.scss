@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.change-avatar__btn {
+  font: var(--tui-font-text-m);
+  margin-top: 20px;
+}

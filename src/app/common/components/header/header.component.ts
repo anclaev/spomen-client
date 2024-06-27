@@ -25,5 +25,5 @@ export class HeaderComponent {
   user = inject(AuthService).$user
   config = inject(ConfigService)
 
-  isOpenProfileMenu = false
+  isOpenProfileDropdown = false
 }

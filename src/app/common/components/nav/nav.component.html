@@ -1,56 +1,25 @@
 <nav
   class="nav"
-  [attr.full]="this.config.$navIsFull()"
   [attr.nf]="this.config.$isNotFoundPage()"
+  [attr.fixed]="this.fixed"
 >
-  <a
-    routerLink="/"
-    class="nav__item"
-    [routerLinkActive]="'active-route'"
-    [routerLinkActiveOptions]="{ exact: true }"
-  >
-    <tui-svg src="tuiIconAirplayLarge" />
-    <span>Дашборд</span>
-  </a>
-  <a
-    routerLink="/memories"
-    class="nav__item"
-    [routerLinkActive]="'active-route'"
-  >
-    <tui-svg src="tuiIconCalendarLarge" />
-    <span>Воспоминания</span>
-  </a>
-  <a routerLink="/events" class="nav__item" [routerLinkActive]="'active-route'">
-    <tui-svg
-      src="/images/cake.svg"
-      id="events_icon"
-      [attr.data-fill]="true"
-      [attr.data-fill-path]="true"
-    />
-    <span>События</span>
-  </a>
-  <a
-    routerLink="/timelines"
-    class="nav__item"
-    [routerLinkActive]="'active-route'"
-  >
-    <tui-svg src="tuiIconChartLineLarge" />
-    <span>Таймлайны</span>
-  </a>
-  <a routerLink="/chats" class="nav__item" [routerLinkActive]="'active-route'">
-    <tui-svg src="tuiIconMessageCircleLarge" />
-    <span>Чаты</span>
-  </a>
-  <a
-    routerLink="/uploads"
-    class="nav__item"
-    [routerLinkActive]="'active-route'"
-  >
-    <tui-svg
-      src="/images/files.svg"
-      [attr.data-fill]="true"
-      [attr.data-fill-path]="true"
-    />
-    <span>Файлы</span>
-  </a>
+  @if (this.auth.$isAuth()) {
+    @for (route of this.authenticatedRoutes; track route) {
+      <a
+        [routerLink]="route.url"
+        class="nav__item"
+        [routerLinkActive]="'active-route'"
+        (click)="this.closeMenu()"
+        [routerLinkActiveOptions]="{ exact: route.exact ?? false }"
+      >
+        <tui-svg
+          [src]="route.icon"
+          id="events_icon"
+          [attr.data-fill]="route.customIcon"
+          [attr.data-fill-path]="route.customIcon"
+        />
+        <span>{{ route.title }}</span>
+      </a>
+    }
+  }
 </nav>

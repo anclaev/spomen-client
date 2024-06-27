@@ -42,6 +42,32 @@
   @include avatarBorder(3px);
 }
 
+.profile-side__avatar[data-me='true'] {
+  position: relative;
+  cursor: pointer !important;
+}
+
+.profile-side__avatar[data-me='true']::after {
+  content: 'Изменить';
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: -5px;
+  bottom: -5px;
+  background: rgba(0, 0, 0, 0.7);
+  font-size: 12px;
+  letter-spacing: 0.2rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.profile-side__avatar[data-me='true']:hover::after {
+  opacity: 1;
+}
+
 .profile-side__username {
   display: block;
   text-align: center;

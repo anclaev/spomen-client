@@ -6,6 +6,8 @@
     [text]="this.$profile().full_name || this.$profile().username || ''"
     size="xxl"
     [rounded]="true"
+    [attr.data-me]="this.$$isMe | async"
+    (click)="this.changeAvatar()"
   />
   @if (this.$loading()) {
     <span

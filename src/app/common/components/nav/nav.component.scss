@@ -13,12 +13,9 @@
   flex-direction: column;
 
   font: var(--tui-font-text-s);
-
-  max-width: 200px;
-  transition: max-width 1s;
 }
 
-.nav[nf='true'] {
+.nav[nf='true']:not([fixed='true']) {
   display: none;
 }
 
@@ -53,23 +50,12 @@
   border-left-color: var(--color-accent);
 }
 
-@media only screen and (min-width: 768px) {
-  .nav[full='false'] {
-    max-width: 54px;
-    overflow-x: hidden;
-  }
-
-  .nav[full='false'] > .nav__item {
-    padding-right: 30px;
-  }
-}
-
 @media only screen and (max-width: 768px) {
   :host {
     margin-right: 30px;
   }
 
-  .nav {
+  .nav:not([fixed='true']) {
     max-width: 34px;
     overflow-x: hidden;
   }
@@ -97,7 +83,7 @@
     margin: 0;
   }
 
-  .nav {
+  .nav:not([fixed='true']) {
     position: fixed;
     height: min-content;
     width: 100%;
@@ -115,11 +101,11 @@
     text-align: center;
   }
 
-  .nav[nf='true'] {
+  .nav[nf='true']:not([fixed='true']) {
     display: block;
   }
 
-  .nav__item {
+  .nav:not([fixed='true']) .nav__item {
     display: inline-flex;
     border: none;
     padding: 10px;
@@ -130,27 +116,40 @@
     @include shadow_box;
   }
 
-  .nav__item:not(:last-child) {
+  .nav:not([fixed='true']) .nav__item:not(:last-child) {
     margin-right: 20px;
   }
 
-  .nav__item > tui-svg {
+  .nav:not([fixed='true']) .nav__item > tui-svg {
     color: var(--color-primary);
   }
 
-  .nav__item > tui-svg[data-fill] {
+  .nav:not([fixed='true']) .nav__item > tui-svg[data-fill] {
     fill: var(--color-primary);
   }
 
-  .nav__item.active-route {
+  .nav:not([fixed='true']) .nav__item.active-route {
     border-bottom-color: var(--color-accent-dark);
   }
 
-  .nav__item > span {
+  .nav:not([fixed='true']) .nav__item > span {
     display: none;
   }
 
-  .nav__item > tui-svg {
+  .nav:not([fixed='true']) .nav__item > tui-svg {
     margin-right: 0;
+  }
+
+  .nav[fixed='true'] .nav__item > tui-svg {
+    margin-right: 20px;
+  }
+
+  .nav[fixed='true'] .nav__item > span {
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  .nav[fixed='true'] .nav__item.active-route {
+    color: var(--color-accent);
   }
 }

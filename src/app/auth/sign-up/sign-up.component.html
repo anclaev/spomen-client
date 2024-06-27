@@ -68,7 +68,7 @@
     [showLoader]="(isLoading$$ | async) || false"
   >
     <button class="sign-up__btn button" [disabled]="isLoading$$ | async">
-      Продолжить
+      <span>Продолжить</span>
     </button></tui-loader
   >
 </form>
@@ -100,7 +100,7 @@
       (click)="confirmPass()"
       [disabled]="confirmForm.controls.confirmPass.errors"
     >
-      ОК
+      <span>ОК</span>
     </button>
   </form>
 </ng-template>

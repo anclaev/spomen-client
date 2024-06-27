@@ -47,6 +47,10 @@
 }
 
 @media screen and (max-width: 576px) {
+  .auth__wrapper {
+    overflow-x: hidden;
+  }
+
   .auth__tabs {
     margin-bottom: 40px;
   }

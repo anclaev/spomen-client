@@ -9,7 +9,7 @@ import {
 import { TuiDialogService, TuiSvgModule } from '@taiga-ui/core'
 import { Router } from '@angular/router'
 
-import { AuthService } from '@services'
+import { AuthService, ConfigService } from '@services'
 
 @Component({
   selector: 'spomen-me',
@@ -21,6 +21,7 @@ import { AuthService } from '@services'
 export class MeComponent {
   dialogs = inject(TuiDialogService)
   destroyRef = inject(DestroyRef)
+  config = inject(ConfigService)
   auth = inject(AuthService)
   router = inject(Router)
 
@@ -28,6 +29,7 @@ export class MeComponent {
 
   handleMe() {
     this.router.navigate([`/${this.auth.$user().username}`])
+    this.config.closeMenu()
     this.close.emit()
   }
 

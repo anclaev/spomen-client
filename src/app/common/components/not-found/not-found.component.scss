@@ -1,4 +1,4 @@
-@import '../../styles/effects.scss';
+@import '../../../../styles/effects.scss';
 
 :host {
   display: flex;
@@ -44,16 +44,29 @@
 }
 
 @media screen and (max-width: 768px) {
-  .not-found::before {
-    font-size: 220px;
-  }
-
   .not-found__title {
     font-size: 24px;
+    margin-bottom: 30px;
   }
 
   .not-found__btn {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  :host::before {
+    font-size: 280px;
+    min-height: 40vh;
+  }
+
+  .not-found__title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .not-found__btn {
+    padding: 10px 20px;
   }
 }
 
