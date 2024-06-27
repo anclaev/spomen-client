@@ -9,24 +9,26 @@ import {
   signal,
 } from '@angular/core'
 
-import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop'
-import { TuiChipModule, TuiSkeletonModule } from '@taiga-ui/experimental'
-import { TuiAvatarModule, TuiLineClampModule } from '@taiga-ui/kit'
 import {
   TuiAlertService,
   TuiDialogModule,
   TuiDialogService,
 } from '@taiga-ui/core'
+
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop'
+import { TuiChipModule, TuiSkeletonModule } from '@taiga-ui/experimental'
+import { TuiAvatarModule, TuiLineClampModule } from '@taiga-ui/kit'
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus'
+import { ActivatedRoute, Router } from '@angular/router'
 import { Observable, map, of, switchMap } from 'rxjs'
+import { ApolloError } from '@apollo/client/errors'
 import { Title } from '@angular/platform-browser'
-import { ActivatedRoute } from '@angular/router'
 import { CommonModule } from '@angular/common'
 import { Apollo } from 'apollo-angular'
 
 import { getAccountQuery, GetAccountModel } from '@graphql'
+import { isNotFound, serializeRole } from '@utils'
 import { AuthService } from '@services'
-import { serializeRole } from '@utils'
 
 import { Account, initialAccount } from '@interfaces'
 import { Role } from '@enums'
@@ -55,6 +57,7 @@ export class ProfileComponent implements OnInit {
   injector = inject(Injector)
   auth = inject(AuthService)
   apollo = inject(Apollo)
+  router = inject(Router)
   title = inject(Title)
 
   $profile: WritableSignal<Account> = signal(initialAccount)
@@ -108,20 +111,28 @@ export class ProfileComponent implements OnInit {
           .valueChanges.pipe(takeUntilDestroyed(this.destroyRef))
           .subscribe({
             next: ({ data, loading }) => {
+              const { account } = data
+
               this.$loading.set(loading)
+
               this.$profile.set({
-                ...data,
+                ...account,
                 avatar:
-                  data.avatar && data.avatar.upload
-                    ? data.avatar.upload.url
+                  account.avatar && account.avatar.upload
+                    ? account.avatar.upload.url
                     : null,
                 full_name:
-                  data.first_name && data.last_name
-                    ? `${data.first_name.trim()} ${data.last_name.trim()}`
+                  account.first_name && account.last_name
+                    ? `${account.first_name.trim()} ${account.last_name.trim()}`
                     : null,
               })
             },
-            error: () => {
+            error: (err: ApolloError) => {
+              if (isNotFound(err.message)) {
+                this.router.navigate(['/404'])
+                return
+              }
+
               this.alerts
                 .open('Сервер временно недоступен', { status: 'error' })
                 .pipe(takeUntilDestroyed(this.destroyRef))

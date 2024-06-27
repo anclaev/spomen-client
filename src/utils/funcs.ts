@@ -38,3 +38,7 @@ export function getQueryPayload<T>(params: Params): T | null {
     ? (JSON.parse(params['payload']) as T)
     : null
 }
+
+export function isNotFound(message: string): boolean {
+  return message.includes('non-nullable')
+}

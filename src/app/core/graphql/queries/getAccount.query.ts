@@ -2,7 +2,7 @@ import { gql } from 'apollo-angular'
 
 export const getAccountQuery = gql`
   query Account($username: String!) {
-    account(id: $username) {
+    account(username: $username) {
       id
       username
       email

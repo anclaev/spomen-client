@@ -7,7 +7,10 @@ import { env } from '@env'
 export function apolloOptionsFactory(): ApolloClientOptions<any> {
   const httpLink = inject(HttpLink)
   return {
-    link: httpLink.create({ uri: `${env.apiUrl}/graphql` }),
+    link: httpLink.create({
+      uri: `${env.apiUrl}/graphql`,
+      withCredentials: true,
+    }),
     cache: new InMemoryCache(),
     connectToDevTools: true,
   }
