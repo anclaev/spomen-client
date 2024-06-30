@@ -7,7 +7,7 @@
 /bazel-out
 
 # Environments
-env.ts
+assets/config.json
 
 # Node
 /node_modules

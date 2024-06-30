@@ -52,12 +52,6 @@ export class AppComponent implements OnInit, OnDestroy {
   private subs: Subscription[] = []
 
   constructor() {
-    VKID.Config.set({
-      app: env.appId,
-      redirectUrl: env.redirectUrl,
-      state: 'dj29fnsadjsd82f249k293c139j1kd3',
-    })
-
     effect(() => {
       if (this.auth.$isAuth()) {
         const { first_name, username } = this.auth.$user()
@@ -74,6 +68,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    VKID.Config.set({
+      app: env.appId,
+      redirectUrl: env.redirectUrl,
+      state: 'dj29fnsadjsd82f249k293c139j1kd3',
+    })
+
     this.auth.$isLoading.next(true)
 
     this.subs.push(

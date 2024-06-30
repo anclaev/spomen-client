@@ -5,6 +5,7 @@
     "ng": "ng",
     "dev": "ng serve --port 80",
     "build": "ng build",
+    "build:staging": "ng build --configuration staging",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -19,6 +20,7 @@
     "@angular/platform-browser": "^18.0.0",
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
+    "@apollo/client": "^3.0.0",
     "@taiga-ui/addon-charts": "^3.83.0",
     "@taiga-ui/addon-commerce": "^3.83.0",
     "@taiga-ui/addon-mobile": "^3.83.0",
@@ -36,12 +38,11 @@
     "@vkid/sdk": "^1.1.0",
     "apollo-angular": "7.0.2",
     "dompurify": "3.0.6",
+    "graphql": "^16",
     "normalize.css": "^8.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.6.3",
-    "zone.js": "~0.14.3",
-    "@apollo/client": "^3.0.0",
-    "graphql": "^16"
+    "zone.js": "~0.14.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.0.3",

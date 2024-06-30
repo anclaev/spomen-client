@@ -10,6 +10,7 @@ import {
   ApplicationConfig,
   provideZoneChangeDetection,
   importProvidersFrom,
+  APP_INITIALIZER,
 } from '@angular/core'
 
 import { AuthService, ConfigService } from '@services'
@@ -17,6 +18,12 @@ import { httpRequestIntercepor } from '@interceptors'
 import { graphqlProvider } from '@graphql'
 
 import { routes } from './app.routes'
+
+function appInitializerFactory(config: ConfigService) {
+  return async () => {
+    await config.loadConfig()
+  }
+}
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +33,12 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(TuiRootModule),
     provideHttpClient(withInterceptors([httpRequestIntercepor])),
     ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializerFactory,
+      deps: [ConfigService],
+      multi: true,
+    },
     AuthService,
     { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
     {
