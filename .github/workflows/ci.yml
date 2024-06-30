@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: ['ci', 'main']
+    branches: ['develop']
 
 concurrency:
   group: 'ci'
@@ -58,6 +58,7 @@ jobs:
   #         github-token: ${{ secrets.GITHUB_TOKEN }}
 
   build:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
     name: Build project
     runs-on: ubuntu-latest
     # needs: tests
