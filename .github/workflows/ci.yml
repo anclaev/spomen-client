@@ -81,7 +81,9 @@ jobs:
         with:
           push: true
           tags: anclaev/spomen-client:dev
-
+          build-args: |
+            build_env=build:staging
+          file: docker/Dockerfile
   deploy:
     name: Deploy app
     runs-on: ubuntu-latest

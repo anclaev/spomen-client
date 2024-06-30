@@ -1,0 +1,48 @@
+@import '../styles/effects.scss';
+
+:host {
+  position: relative;
+}
+
+.root-wrapper[data-loading='true'] tui-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.root-wrapper[data-nf='true'] {
+  overflow-x: hidden;
+}
+
+.wrapper {
+  @include container();
+}
+
+main {
+  width: 100%;
+  z-index: 0;
+}
+
+main[nf='false'] {
+  position: relative;
+}
+
+main[nf='true'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+spomen-nav[data-hidden='true'] {
+  opacity: 0;
+}
+
+spomen-nav {
+  opacity: 1;
+  transition: opacity 0.3s;
+}

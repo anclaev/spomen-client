@@ -1,0 +1,75 @@
+@import './fonts.scss';
+@import './colors.scss';
+@import './effects.scss';
+@import './ui-kit.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --tui-font-heading: 'Roboto', 'sans-serif';
+  --tui-font-text: 'Roboto', 'sans-serif';
+  --tui-base-01: var(--color-background);
+  --tui-base-03: var(--color-primary-dark);
+  --tui-text-01: var(--color-content);
+  --tui-text-02: var(--color-content);
+  --tui-elevation-01: var(--color-background);
+  --tui-elevation-02: var(--color-background-light);
+  --tui-negative: var(--color-accent-dark);
+  --tui-secondary-hover: var(--color-background);
+  --tui-primary: var(--color-accent);
+}
+
+::selection {
+  background: var(--color-primary-dark);
+  color: var(--color-content-dark);
+  text-shadow: none;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  position: fixed;
+  content: '';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    left 15% no-repeat url('/images/circle-w.svg'),
+    right bottom no-repeat url('/images/circle-m.svg');
+  z-index: -1;
+}
+
+.t-root-content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100dvh;
+}
+
+.t-highlight {
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}

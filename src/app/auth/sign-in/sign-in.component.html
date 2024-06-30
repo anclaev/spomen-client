@@ -1,0 +1,37 @@
+<div class="sign-in">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="sign-in__fields">
+      <input
+        class="textbox"
+        type="text"
+        name="login"
+        autocomplete="username"
+        id="login"
+        placeholder="Логин"
+        formControlName="login"
+        [ngClass]="{ 'textbox--invalid': form.controls.login.errors }"
+      />
+      <input
+        class="textbox"
+        type="password"
+        name="pass"
+        id="pass"
+        autocomplete="current-password"
+        placeholder="Пароль"
+        formControlName="pass"
+        [ngClass]="{ 'textbox--invalid': form.controls.pass.errors }"
+      />
+    </div>
+    <tui-loader
+      class="sign-in__loader"
+      [inheritColor]="true"
+      [overlay]="true"
+      [showLoader]="(isLoading$$ | async) || false"
+    >
+      <button class="sign-in__btn button" [disabled]="isLoading$$ | async">
+        <span>Войти</span>
+      </button></tui-loader
+    >
+  </form>
+  <div id="VkIdSdkOneTap" #VkIdSdkOneTap></div>
+</div>

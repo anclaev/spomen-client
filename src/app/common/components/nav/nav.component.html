@@ -1,0 +1,25 @@
+<nav
+  class="nav"
+  [attr.nf]="this.config.$isNotFoundPage()"
+  [attr.fixed]="this.fixed"
+>
+  @if (this.auth.$isAuth()) {
+    @for (route of this.authenticatedRoutes; track route) {
+      <a
+        [routerLink]="route.url"
+        class="nav__item"
+        [routerLinkActive]="'active-route'"
+        (click)="this.closeMenu()"
+        [routerLinkActiveOptions]="{ exact: route.exact ?? false }"
+      >
+        <tui-svg
+          [src]="route.icon"
+          id="events_icon"
+          [attr.data-fill]="route.customIcon"
+          [attr.data-fill-path]="route.customIcon"
+        />
+        <span>{{ route.title }}</span>
+      </a>
+    }
+  }
+</nav>

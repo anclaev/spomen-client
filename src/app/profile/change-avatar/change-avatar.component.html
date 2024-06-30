@@ -1,0 +1,28 @@
+<tui-loader
+  [inheritColor]="true"
+  [overlay]="true"
+  [showLoader]="this.isLoading()"
+>
+  <tui-input-files *ngIf="!control.value" [formControl]="control">
+    <input
+      accept="image/*"
+      capture="user"
+      title="Выберите изображение"
+      tuiInputFiles
+    />
+  </tui-input-files>
+
+  <tui-files class="tui-space_top-1">
+    <tui-file
+      *ngIf="control.valueChanges | async as file"
+      [file]="file"
+      (removed)="removeFile()"
+    ></tui-file>
+  </tui-files>
+
+  @if (control.value) {
+    <button class="change-avatar__btn button" (click)="this.changeAvatar()">
+      <span>Обновить аватар</span>
+    </button>
+  }
+</tui-loader>

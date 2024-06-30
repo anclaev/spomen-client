@@ -1,0 +1,12 @@
+<tui-tabs [(activeItemIndex)]="activeItemIndex" class="auth__tabs">
+  <button tuiTab>Вход</button>
+  <button tuiTab>Регистрация</button>
+</tui-tabs>
+<div class="auth__wrapper">
+  @if (activeItemIndex === 0) {
+    <spomen-sign-in @enterLeave [callbackUrl]="this.callbackUrl" />
+  }
+  @if (activeItemIndex === 1) {
+    <spomen-sign-up @enterLeave [callbackUrl]="this.callbackUrl" />
+  }
+</div>
