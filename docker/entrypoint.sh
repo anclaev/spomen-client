@@ -8,6 +8,13 @@
 # }
 # EOT
 
-echo "aefaef" >> /usr/share/nginx/html/assets/config.json
+echo "
+{\n
+  \"appId\": \"$VK_ID_APP_ID\",\n
+  \"redirectUrl\": \"$VK_ID_REDIRECT_URL\",\n
+  \"apiUrl\": \"$API_HOST\",\n
+  {\"origin\": \"$ORIGIN\"}\n
+}
+" > /usr/share/nginx/html/assets/config.json
 
 nginx -g 'daemon off;'
