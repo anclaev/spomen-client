@@ -1,0 +1,25 @@
+@import '../../../../styles/effects.scss';
+
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-background-light);
+  z-index: 10;
+  overflow-y: auto;
+}
+
+.menu {
+  @include container;
+  margin-top: 70px;
+}
+
+@media only screen and (max-width: 576px) {
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+}

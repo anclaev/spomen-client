@@ -1,9 +1,9 @@
 {
   "name": "Spomen",
   "short_name": "Spomen",
-  "description": "Web app",
-  "theme_color": "#1d2533",
-  "background_color": "#1d2533",
+  "description": "Воспоминания",
+  "theme_color": "#040d29",
+  "background_color": "#040d29",
   "orientation": "portrait",
   "display_override": ["fullscreen", "minimal-ui"],
   "display": "standalone",
@@ -12,13 +12,13 @@
   "start_url": "/?source=pwa",
   "icons": [
     {
-      "src": "/fav/android-chrome-192x192.png",
+      "src": "/fav/android-chrome-192x192.png?v=1",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/fav/android-chrome-512x512.png",
+      "src": "/fav/android-chrome-512x512.png?v=1",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"

@@ -1,0 +1,25 @@
+@import '../../../styles/effects.scss';
+
+:host {
+  @include container;
+  @include container-absolute;
+}
+
+.sign-in {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 300px;
+  user-select: none;
+}
+
+.sign-in__fields {
+  margin-bottom: 40px;
+}
+
+.sign-in__fields > .textbox:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.sign-in__loader {
+  margin-bottom: 20px;
+}

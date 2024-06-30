@@ -82,6 +82,9 @@ jobs:
         with:
           push: true
           tags: anclaev/spomen-client:${{ github.ref_name }}
+          build-args: |
+            build_env=build
+          file: docker/Dockerfile
 
   release:
     name: Release app

@@ -1,38 +1,46 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": ".",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
+    "outDir": "./dist/out-tsc",
     "strict": true,
-    "noEmit": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
-    "module": "esnext",
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
     "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": ["ES2022", "dom", "esnext.asynciterable"],
     "paths": {
-      "@api/*": ["./api/*"],
-      "@app/*": ["./app/*"],
-      "@containers/*": ["./components/containers/*"],
-      "@elements/*": ["./components/elements/*"],
-      "@layouts/*": ["./components/layouts/*"],
-      "@constants/*": ["./constants/*"],
-      "@context/*": ["./context/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@lib/*": ["./lib/*"],
-      "@public/*": ["./public/*"],
-      "@styles/*": ["./styles/*"],
-      "@typs/*": ["./types/*"]
-    }
+      "tslib": ["./node_modules/tslib/tslib.d.ts"],
+      "@styles/*": ["./src/styles/*"],
+      "@env": ["./src/envs/env.ts"],
+      "@utils": ["./src/utils/index.ts"],
+      "@dtos": ["./src/types/dtos/index.ts"],
+      "@interfaces": ["./src/types/interfaces/index.ts"],
+      "@enums": ["./src/types/enums/index.ts"],
+      "@models": ["./src/types/models/index.ts"],
+      "@animations": ["./src/app/common/animations/index.ts"],
+      "@components/*": ["./src/app/common/components/*"],
+      "@interceptors": ["./src/app/core/interceptors/index.ts"],
+      "@services": ["./src/app/core/services/index.ts"],
+      "@guards": ["./src/app/core/guards/index.ts"],
+      "@graphql": ["./src/app/core/graphql/index.ts"],
+      "@app/*": ["./src/app/*"]
+    },
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
 }

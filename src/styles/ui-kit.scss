@@ -1,0 +1,160 @@
+input,
+a {
+  all: unset;
+  box-sizing: border-box;
+}
+
+button {
+  all: unset;
+  box-sizing: border-box;
+  color: inherit;
+  width: 100%;
+  text-align: center;
+}
+
+.textbox,
+.button {
+  font-size: 16px;
+  font-weight: 400;
+  padding: 11px;
+}
+
+.textbox {
+  text-align: center;
+  background: transparent;
+  width: 100%;
+  border-bottom: 2px solid var(--color-primary-dark);
+  transition: border-color 0.3s;
+}
+
+.textbox--invalid.ng-touched,
+.ng-invalid.ng-touched {
+  border-color: var(--color-error);
+}
+
+.textbox:active,
+.textbox:focus,
+.button:active,
+.button:focus {
+  border-color: var(--color-accent-dark);
+}
+
+.textbox::placeholder {
+  color: var(--color-background-light);
+  transition: color 0.2s;
+}
+
+.textbox:active::placeholder,
+.textbox:focus::placeholder {
+  color: var(--color-content);
+}
+
+.button {
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid var(--color-accent-dark);
+  border-radius: 50px;
+  overflow: hidden;
+  user-select: none;
+}
+
+.button > span {
+  position: relative;
+  z-index: 1;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  background: var(--gradient-h);
+  transition: 0.2s;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  z-index: 0;
+  opacity: 0;
+}
+
+.button:hover::after {
+  opacity: 1;
+}
+
+button#year-btn {
+  text-align: center;
+}
+
+div.tui-autofill {
+  border: none !important;
+  background: transparent !important;
+}
+
+div.tui-autofill:after {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0 !important;
+  border-bottom: 2px solid var(--color-primary-dark);
+}
+
+div.tui-autofill._focused::after {
+  border-color: var(--color-accent);
+}
+
+div.t-item {
+  transition: 0.3s;
+}
+
+label.t-placeholder {
+  color: var(--color-background-light) !important;
+  margin-bottom: 5px;
+}
+
+h2.t-heading {
+  font: var(--tui-font-heading-6) !important;
+}
+
+tui-dropdown {
+  border: none !important;
+}
+
+tui-dropdown p {
+  all: unset;
+}
+
+.t-wrapper-flex > div.t-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.t-dialog {
+  text-align: center;
+}
+
+tui-chip {
+  width: 100% !important;
+  justify-content: center !important;
+}
+
+tui-chip[data-role='Administrator'] {
+  border: 1px solid var(--color-accent);
+}
+
+.t-src svg {
+  height: inherit;
+  width: inherit;
+}
+
+tui-svg[data-fill] .t-src {
+  fill: inherit;
+}
+
+tui-svg[data-fill] .t-src svg {
+  fill: inherit;
+}
+
+tui-svg[data-fill-path] .t-src svg path {
+  fill: inherit;
+}

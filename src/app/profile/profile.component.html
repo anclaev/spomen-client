@@ -1,0 +1,53 @@
+<aside class="profile-side">
+  <tui-avatar
+    class="profile-side__avatar"
+    [avatarUrl]="this.$profile().avatar"
+    [tuiSkeleton]="this.$loading()"
+    [text]="this.$profile().full_name || this.$profile().username || ''"
+    size="xxl"
+    [rounded]="true"
+    [attr.data-me]="this.$$isMe | async"
+    (click)="this.changeAvatar()"
+  />
+  @if (this.$loading()) {
+    <span
+      class="profile-side__username"
+      style="width: 150px"
+      [tuiSkeleton]="this.$loading()"
+      >skeleton</span
+    >
+  } @else {
+    <tui-line-clamp
+      class="profile-side__username"
+      [content]="this.$profile().username"
+      [linesLimit]="1"
+    />
+  }
+  <div class="profile-side__roles">
+    @if (this.$loading()) {
+      @for (skeleton of [1, 2]; track skeleton) {
+        <tui-chip [tuiSkeleton]="this.$loading()" />
+      }
+    } @else {
+      <tui-chip
+        [attr.data-role]="role"
+        *ngFor="let role of this.$$roles | async"
+        >{{ this.serializeRole(role) }}</tui-chip
+      >
+    }
+  </div>
+</aside>
+<div class="profile-info">
+  @if (this.$loading()) {
+    <span
+      class="profile-info__fullname"
+      style="width: 300px"
+      [tuiSkeleton]="this.$loading()"
+      >skeleton</span
+    >
+  } @else {
+    <span class="profile-info__fullname">{{
+      this.$profile().full_name || this.$profile().username || ''
+    }}</span>
+  }
+</div>
