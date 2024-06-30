@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "dev": "ng serve --port 80",
-    "build": "ng build",
-    "build:staging": "ng build --configuration staging",
+    "build": "node_modules/.bin/ng build build",
+    "build:staging": "node_modules/.bin/ng build --configuration staging",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
