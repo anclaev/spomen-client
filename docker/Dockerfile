@@ -19,4 +19,6 @@ COPY --from=build /app/dist/spomen/client/browser /usr/share/nginx/html
 COPY docker/nginx.conf /etc/nginx/nginx.conf
 COPY docker/entrypoint.sh /entrypoint.sh
 
+RUN chmod +x /entrypoint.sh
+
 CMD ["/entrypoint.sh"]
