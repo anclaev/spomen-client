@@ -6,6 +6,7 @@ ARG build_env=build
 COPY package.json yarn.lock*  ./
 
 RUN yarn install --frozen-lockfile --production
+RUN yarn install @angular/cli
 
 COPY . .
 
