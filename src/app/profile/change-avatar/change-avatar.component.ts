@@ -4,6 +4,7 @@ import { TuiInputFilesModule } from '@taiga-ui/kit'
 import { TuiLoaderModule } from '@taiga-ui/core'
 import { CommonModule } from '@angular/common'
 import * as Sentry from '@sentry/angular'
+
 @Component({
   selector: 'spomen-change-avatar',
   standalone: true,

@@ -4,12 +4,7 @@
   [showLoader]="this.isLoading()"
 >
   <tui-input-files *ngIf="!control.value" [formControl]="control">
-    <input
-      accept="image/*"
-      capture="user"
-      title="Выберите изображение"
-      tuiInputFiles
-    />
+    <input accept="image/*" title="Выберите изображение" tuiInputFiles />
   </tui-input-files>
 
   <tui-files class="tui-space_top-1">

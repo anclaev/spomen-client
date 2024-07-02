@@ -7,7 +7,7 @@ ARG sentry_auth_token
 
 COPY package.json yarn.lock*  ./
 
-RUN yarn install --frozen-lockfile --production
+RUN yarn install --frozen-lockfile --production --silent
 RUN yarn add -D @angular/cli
 
 COPY . .
