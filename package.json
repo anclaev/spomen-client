@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
     "@apollo/client": "^3.0.0",
+    "@sentry/angular": "^8.13.0",
     "@taiga-ui/addon-charts": "^3.83.0",
     "@taiga-ui/addon-commerce": "^3.83.0",
     "@taiga-ui/addon-mobile": "^3.83.0",

@@ -25,6 +25,8 @@ function appInitializerFactory(config: ConfigService) {
   }
 }
 
+
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
