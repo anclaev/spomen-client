@@ -1,7 +1,9 @@
 # Stage 1: Сборка проекта
 FROM node:18-alpine AS build
 WORKDIR /app
+
 ARG build_env=build
+ARG sentry_auth_token
 
 COPY package.json yarn.lock*  ./
 
@@ -10,6 +12,7 @@ RUN yarn add -D @angular/cli
 
 COPY . .
 
+RUN yarn sentry-cli login --auth-token ${sentry_auth_token}
 RUN yarn $build_env
 
 # Stage 2: Запуск приложения
