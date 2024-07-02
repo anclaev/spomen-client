@@ -5,11 +5,10 @@
     "ng": "ng",
     "dev": "ng serve --port 80",
     "build": "ng build && yarn sentry:sourcemaps",
-    "build:staging": "ng build --configuration staging && yarn sentry:sourcemaps:staging",
+    "build:staging": "ng build --configuration staging && yarn sentry:sourcemaps",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org anclaev-ti --project spomen-client ./dist/spomen/client/browser && sentry-cli sourcemaps upload --org anclaev-ti --project spomen-client ./dist/spomen/client/browser",
-    "sentry:sourcemaps:staging": "sentry-cli sourcemaps inject --org anclaev-ti --project spomen-client ./dist/spomen/client/browser && sentry-cli sourcemaps upload --org anclaev-ti --project spomen-client ./dist/spomen/client/browser --e staging"
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org anclaev-ti --project spomen-client ./dist/spomen/client/browser && sentry-cli sourcemaps upload --org anclaev-ti --project spomen-client ./dist/spomen/client/browser"
   },
   "private": true,
   "dependencies": {
