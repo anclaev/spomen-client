@@ -18,7 +18,7 @@ export const httpRequestIntercepor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError((err: Error) => {
-      if (!env.production) {
+      if (env.environment !== 'production') {
         console.log(err)
       }
       return throwError(() => err)

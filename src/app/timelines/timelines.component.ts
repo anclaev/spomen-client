@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import * as Sentry from '@sentry/angular'
 
 @Component({
   selector: 'spomen-timelines',
   standalone: true,
   imports: [],
   templateUrl: './timelines.component.html',
-  styleUrl: './timelines.component.scss'
+  styleUrl: './timelines.component.scss',
 })
-export class TimelinesComponent {
-
-}
+@Sentry.TraceClass({ name: 'Timelines' })
+export class TimelinesComponent {}

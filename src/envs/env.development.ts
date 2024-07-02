@@ -1,5 +1,7 @@
-export const env = {
-  production: false,
+import { Env } from '@interfaces'
+
+export const env: Env = {
+  environment: 'local',
   appId: 0,
   redirectUrl: '',
   apiUrl: '',

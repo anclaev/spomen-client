@@ -1,6 +1,7 @@
 import { RouterLink, RouterLinkActive } from '@angular/router'
 import { Component, Input, inject } from '@angular/core'
 import { TuiSvgModule } from '@taiga-ui/core'
+import * as Sentry from '@sentry/angular'
 
 import { AuthService, ConfigService } from '@services'
 import { Route } from '@interfaces'
@@ -48,6 +49,7 @@ const protectedRoutes: Route[] = [
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss',
 })
+@Sentry.TraceClass({ name: 'Nav' })
 export class NavComponent {
   config = inject(ConfigService)
   auth = inject(AuthService)

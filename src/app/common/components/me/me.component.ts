@@ -7,9 +7,9 @@ import {
 } from '@angular/core'
 
 import { TuiDialogService, TuiSvgModule } from '@taiga-ui/core'
-import { Router } from '@angular/router'
-
 import { AuthService, ConfigService } from '@services'
+import * as Sentry from '@sentry/angular'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'spomen-me',
@@ -18,6 +18,7 @@ import { AuthService, ConfigService } from '@services'
   templateUrl: './me.component.html',
   styleUrl: './me.component.scss',
 })
+@Sentry.TraceClass({ name: 'Me' })
 export class MeComponent {
   dialogs = inject(TuiDialogService)
   destroyRef = inject(DestroyRef)

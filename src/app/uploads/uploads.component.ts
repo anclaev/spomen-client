@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import * as Sentry from '@sentry/angular'
 
 @Component({
   selector: 'spomen-uploads',
   standalone: true,
   imports: [],
   templateUrl: './uploads.component.html',
-  styleUrl: './uploads.component.scss'
+  styleUrl: './uploads.component.scss',
 })
-export class UploadsComponent {
-
-}
+@Sentry.TraceClass({ name: 'Uploads' })
+export class UploadsComponent {}

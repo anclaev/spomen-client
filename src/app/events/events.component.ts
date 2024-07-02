@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
-
+import { Component } from '@angular/core'
+import * as Sentry from '@sentry/angular'
 @Component({
   selector: 'spomen-events',
   standalone: true,
   imports: [],
   templateUrl: './events.component.html',
-  styleUrl: './events.component.scss'
+  styleUrl: './events.component.scss',
 })
-export class EventsComponent {
-
-}
+@Sentry.TraceClass({ name: 'Events' })
+export class EventsComponent {}

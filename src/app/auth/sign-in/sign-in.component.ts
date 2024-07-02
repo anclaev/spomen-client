@@ -2,6 +2,7 @@ import { TuiAlertService, TuiLoaderModule } from '@taiga-ui/core'
 import { BehaviorSubject, Observable, Subscription } from 'rxjs'
 import { CommonModule } from '@angular/common'
 import { Router } from '@angular/router'
+import * as Sentry from '@sentry/angular'
 import * as VKID from '@vkid/sdk'
 
 import {
@@ -32,6 +33,7 @@ import { AuthService } from '@services'
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
 })
+@Sentry.TraceClass({ name: 'SignIn' })
 export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('VkIdSdkOneTap') VkIdSdkOneTap!: ElementRef<HTMLDivElement>
 
@@ -57,6 +59,7 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private fb: FormBuilder) {}
 
+  @Sentry.TraceMethod({ name: 'SignIn.ngOnInit' })
   ngOnInit(): void {
     this.form = this.fb.group({
       login: [
@@ -78,6 +81,7 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
     })
   }
 
+  @Sentry.TraceMethod({ name: 'SignIn.ngAfterViewInit' })
   ngAfterViewInit(): void {
     if (this.VkIdSdkOneTap) {
       this.vkIdOneTap.render({
@@ -143,6 +147,7 @@ export class SignInComponent implements OnInit, AfterViewInit, OnDestroy {
     )
   }
 
+  @Sentry.TraceMethod({ name: 'SignIn.ngOnDestroy' })
   ngOnDestroy(): void {
     this.subs$.forEach((sub) => sub.unsubscribe())
   }

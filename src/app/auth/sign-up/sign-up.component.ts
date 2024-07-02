@@ -19,6 +19,7 @@ import { TuiInputDateModule } from '@taiga-ui/kit'
 import { CommonModule } from '@angular/common'
 import { Router } from '@angular/router'
 import { TuiDay } from '@taiga-ui/cdk'
+import * as Sentry from '@sentry/angular'
 
 import { AuthService } from '@services'
 
@@ -35,6 +36,7 @@ import { AuthService } from '@services'
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss',
 })
+@Sentry.TraceClass({ name: 'SignUp' })
 export class SignUpComponent implements OnInit, OnDestroy {
   private alerts = inject(TuiAlertService)
   private auth = inject(AuthService)
@@ -73,6 +75,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder) {}
 
+  @Sentry.TraceMethod({ name: 'SignUp.ngOnInit' })
   ngOnInit(): void {
     this.form = this.fb.group({
       login: [
@@ -225,6 +228,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
     )
   }
 
+  @Sentry.TraceMethod({ name: 'SignUp.ngOnDestroy' })
   ngOnDestroy(): void {
     this.subs$.forEach((sub) => sub.unsubscribe())
   }

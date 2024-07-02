@@ -1,7 +1,8 @@
 import { TuiHostedDropdownModule, TuiSvgModule } from '@taiga-ui/core'
 import { TuiAvatarModule, TuiLineClampModule } from '@taiga-ui/kit'
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { RouterModule } from '@angular/router'
+import * as Sentry from '@sentry/angular'
 
 import { AuthService, ConfigService } from '@services'
 
@@ -21,6 +22,7 @@ import { MeComponent } from '@components/me'
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
+@Sentry.TraceClass({ name: 'Header' })
 export class HeaderComponent {
   user = inject(AuthService).$user
   config = inject(ConfigService)

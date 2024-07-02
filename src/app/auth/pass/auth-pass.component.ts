@@ -3,6 +3,7 @@ import { TuiAlertService, TuiLoaderModule } from '@taiga-ui/core'
 import { BehaviorSubject, Observable, Subscription } from 'rxjs'
 import { ActivatedRoute } from '@angular/router'
 import { CommonModule } from '@angular/common'
+import * as Sentry from '@sentry/angular'
 
 import {
   FormBuilder,
@@ -22,6 +23,7 @@ import { AuthCallbackDto } from '@dtos'
   templateUrl: './auth-pass.component.html',
   styleUrl: './auth-pass.component.scss',
 })
+@Sentry.TraceClass({ name: 'AuthPass' })
 export class AuthPassComponent implements OnInit, OnDestroy {
   private token: BehaviorSubject<string> = new BehaviorSubject('')
   private route = inject(ActivatedRoute)
@@ -41,6 +43,7 @@ export class AuthPassComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder) {}
 
+  @Sentry.TraceMethod({ name: 'AuthPass.ngOnInit' })
   ngOnInit(): void {
     const payload = getQueryPayload<AuthCallbackDto>(
       this.route.snapshot.queryParams
@@ -113,6 +116,7 @@ export class AuthPassComponent implements OnInit, OnDestroy {
     this.isLoading.next(true)
   }
 
+  @Sentry.TraceMethod({ name: 'AuthPass.ngOnDestroy' })
   ngOnDestroy(): void {
     this.subs$.forEach((sub) => sub.unsubscribe())
   }
