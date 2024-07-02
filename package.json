@@ -1,6 +1,6 @@
 {
   "name": "@spomen/client",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "dev": "ng serve --port 80",
