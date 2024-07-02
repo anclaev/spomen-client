@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "dev": "ng serve --port 80",
-    "build": "ng build",
-    "build:staging": "ng build --configuration staging",
+    "build": "ng build && yarn sentry:sourcemaps",
+    "build:staging": "ng build --configuration staging && yarn sentry:sourcemaps",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org anclaev-ti --project spomen-client ./dist/spomen/client/browser && sentry-cli sourcemaps upload --org anclaev-ti --project spomen-client ./dist/spomen/client/browser"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,8 @@
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
     "@apollo/client": "^3.0.0",
+    "@sentry/angular": "^8.13.0",
+    "@sentry/cli": "^2.32.1",
     "@taiga-ui/addon-charts": "^3.83.0",
     "@taiga-ui/addon-commerce": "^3.83.0",
     "@taiga-ui/addon-mobile": "^3.83.0",

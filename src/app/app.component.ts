@@ -10,6 +10,7 @@ import { Component, OnDestroy, OnInit, effect, inject } from '@angular/core'
 import { HttpErrorResponse } from '@angular/common/http'
 import { Router, RouterOutlet } from '@angular/router'
 import { CommonModule } from '@angular/common'
+import * as Sentry from '@sentry/angular'
 import { Subscription } from 'rxjs'
 import * as VKID from '@vkid/sdk'
 
@@ -43,6 +44,7 @@ import { NavComponent } from '@components/nav'
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
+@Sentry.TraceClass({ name: 'App' })
 export class AppComponent implements OnInit, OnDestroy {
   private alerts = inject(TuiAlertService)
   private router = inject(Router)
@@ -67,6 +69,7 @@ export class AppComponent implements OnInit, OnDestroy {
     })
   }
 
+  @Sentry.TraceMethod({ name: 'App.ngOnInit' })
   ngOnInit(): void {
     VKID.Config.set({
       app: env.appId,
@@ -97,6 +100,7 @@ export class AppComponent implements OnInit, OnDestroy {
     )
   }
 
+  @Sentry.TraceMethod({ name: 'App.ngOnDestroy' })
   ngOnDestroy(): void {
     this.subs.forEach((sub) => sub.unsubscribe())
   }

@@ -99,6 +99,7 @@
     display: block;
     white-space: nowrap;
     text-align: center;
+    z-index: 3;
   }
 
   .nav[nf='true']:not([fixed='true']) {
@@ -128,8 +129,12 @@
     fill: var(--color-primary);
   }
 
-  .nav:not([fixed='true']) .nav__item.active-route {
-    border-bottom-color: var(--color-accent-dark);
+  .nav:not([fixed='true']) .nav__item.active-route > tui-svg {
+    color: var(--color-accent-dark);
+  }
+
+  .nav:not([fixed='true']) .nav__item.active-route > tui-svg[data-fill] {
+    fill: var(--color-accent-dark);
   }
 
   .nav:not([fixed='true']) .nav__item > span {

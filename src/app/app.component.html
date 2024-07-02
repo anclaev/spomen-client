@@ -3,7 +3,7 @@
   [attr.data-loading]="this.auth.$$isLoading | async"
   [attr.data-nf]="this.config.$isNotFoundPage()"
 >
-  <spomen-header />
+  <spomen-header [attr.data-menu]="this.config.$menuIsOpen()" />
   @if ((this.auth.$$isLoading | async) && !this.config.$isRefusedPage()) {
     <tui-loader size="xxl" @inOut500 />
   } @else if (!this.config.$isRefusedPage()) {

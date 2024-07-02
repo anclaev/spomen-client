@@ -96,7 +96,10 @@ export class AuthService {
   }
 
   signInVK(dto: AuthCallbackDto): Observable<AuthModel> {
-    return this.http.post<AuthModel>(`${env.apiUrl}${API.AUTH_SIGN_IN_VK}`, dto)
+    return this.http.post<AuthModel>(
+      `${env.apiUrl}${API.VK_ID_EXCHANGE_TOKEN}`,
+      dto
+    )
   }
 
   me(): Observable<AuthModel> {

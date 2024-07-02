@@ -24,6 +24,7 @@ import { Observable, map, of, switchMap } from 'rxjs'
 import { ApolloError } from '@apollo/client/errors'
 import { Title } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
+import * as Sentry from '@sentry/angular'
 import { Apollo } from 'apollo-angular'
 
 import { getAccountQuery, GetAccountModel } from '@graphql'
@@ -49,6 +50,7 @@ import { ChangeAvatarComponent } from './change-avatar/change-avatar.component'
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
+@Sentry.TraceClass({ name: 'Profile' })
 export class ProfileComponent implements OnInit {
   dialogs = inject(TuiDialogService)
   alerts = inject(TuiAlertService)
@@ -92,6 +94,7 @@ export class ProfileComponent implements OnInit {
     })
   }
 
+  @Sentry.TraceMethod({ name: 'Profile.ngOnInit' })
   ngOnInit(): void {
     this.$$isMe.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (isMe) => {

@@ -36,7 +36,7 @@ jobs:
   #       with:
   #         node-version: ${{ matrix.node-version }}
   #     - run: yarn install
-  #     - run: yarn test:cov
+  #     - run: yarn test
 
   #     - name: Coveralls Parallel
   #       uses: coverallsapp/github-action@v2
@@ -59,7 +59,7 @@ jobs:
   #         github-token: ${{ secrets.GITHUB_TOKEN }}
 
   build:
-    name: Build project
+    name: Build image
     runs-on: ubuntu-latest
     # needs: tests
 
@@ -84,6 +84,7 @@ jobs:
           tags: anclaev/spomen-client:${{ github.ref_name }}
           build-args: |
             build_env=build
+            sentry_auth_token=${{ secrets.SENTRY_AUTH_TOKEN }}
           file: docker/Dockerfile
 
   release:

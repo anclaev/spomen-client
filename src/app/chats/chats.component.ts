@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import * as Sentry from '@sentry/angular'
 
 @Component({
   selector: 'spomen-chats',
   standalone: true,
   imports: [],
   templateUrl: './chats.component.html',
-  styleUrl: './chats.component.scss'
+  styleUrl: './chats.component.scss',
 })
-export class ChatsComponent {
-
-}
+@Sentry.TraceClass({ name: 'Chats' })
+export class ChatsComponent {}

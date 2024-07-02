@@ -1,7 +1,10 @@
-export const env = {
-  production: true,
+import { Env } from '@interfaces'
+
+export const env: Env = {
+  environment: 'staging',
   appId: 0,
   redirectUrl: '',
   apiUrl: '',
   origin: '',
+  sentryDsn: '',
 }
