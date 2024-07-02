@@ -1,7 +1,7 @@
 export enum API {
   AUTH_ME = '/auth',
   AUTH_SIGN_IN = '/auth/token',
-  AUTH_SIGN_IN_VK = '/auth/vkid',
+  AUTH_SIGN_IN_VK = '/auth/vk-id/exchange-token',
   AUTH_SIGN_UP = '/auth/sign-up',
   AUTH_SIGN_OUT = '/auth/logout',
   AUTH_REFRESH = '/auth/refresh',
