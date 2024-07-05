@@ -120,10 +120,7 @@ export class ProfileComponent implements OnInit {
 
               this.$profile.set({
                 ...account,
-                avatar:
-                  account.avatar && account.avatar.upload
-                    ? account.avatar.upload.url
-                    : account.vk_avatar,
+                avatar: account.avatar ? account.avatar.url : account.vk_avatar,
                 full_name:
                   account.first_name && account.last_name
                     ? `${account.first_name.trim()} ${account.last_name.trim()}`

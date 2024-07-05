@@ -7,9 +7,7 @@ export interface GetAccountModel {
     email: string | null
     roles: Role[]
     avatar: {
-      upload: {
-        url: string | null
-      } | null
+      url: string
     } | null
     vk_id: string | null
     vk_avatar: string | null

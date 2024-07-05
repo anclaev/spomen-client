@@ -1,4 +1,3 @@
-import { Role } from '@enums'
 import { Account } from './account.interface'
 
 export const initialAuthenticatedUser: AuthenticatedUser = {

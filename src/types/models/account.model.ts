@@ -5,7 +5,9 @@ export interface AccountModel {
   username: string
   email: string | null
   roles: Role[]
-  avatar_id: string | null
+  avatar: {
+    url: string
+  } | null
   vk_id: string | null
   vk_avatar: string | null
   first_name: string | null
