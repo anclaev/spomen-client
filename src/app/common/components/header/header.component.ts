@@ -24,7 +24,7 @@ import { MeComponent } from '@components/me'
 })
 @Sentry.TraceClass({ name: 'Header' })
 export class HeaderComponent {
-  user = inject(AuthService).$user
+  auth = inject(AuthService)
   config = inject(ConfigService)
 
   isOpenProfileDropdown = false

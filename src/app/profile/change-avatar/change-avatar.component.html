@@ -19,9 +19,26 @@
     ></tui-file>
   </tui-files>
 
-  @if (control.value) {
-    <button class="change-avatar__btn button" (click)="this.changeAvatar()">
+  <div class="change-avatar-btns">
+    <button
+      class="change-avatar-btns__item button"
+      (click)="this.changeAvatar()"
+      [disabled]="!control.value"
+    >
       <span>Обновить аватар</span>
     </button>
-  }
+
+    @if (avatarAlreadyExists) {
+      <button
+        class="change-avatar-btns__item button"
+        tuiHint="Удалить аватар"
+        tuiHintDirection="top"
+        [tuiHintShowDelay]="2000"
+        (click)="this.removeAvatar()"
+        [disabled]="control.value"
+      >
+        <tui-svg src="tuiIconTrash2" />
+      </button>
+    }
+  </div>
 </tui-loader>

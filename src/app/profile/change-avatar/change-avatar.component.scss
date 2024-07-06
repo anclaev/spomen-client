@@ -1,9 +1,27 @@
-:host {
+:host,
+.change-avatar-btns,
+.change-avatar-btns__item:last-child {
   display: flex;
-  flex-direction: column;
 }
 
-.change-avatar__btn {
-  font: var(--tui-font-text-m);
+:host {
+  flex-direction: column;
+}
+.change-avatar-btns {
   margin-top: 20px;
+}
+
+.change-avatar-btns__item {
+  font: var(--tui-font-text-m);
+  width: auto;
+}
+
+.change-avatar-btns__item:first-child {
+  flex-grow: 1;
+}
+
+.change-avatar-btns__item:last-child {
+  margin-left: 15px;
+  align-items: center;
+  justify-content: center;
 }

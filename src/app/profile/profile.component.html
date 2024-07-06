@@ -1,13 +1,13 @@
 <aside class="profile-side">
   <tui-avatar
     class="profile-side__avatar"
-    [avatarUrl]="this.$profile().avatar"
+    [avatarUrl]="this.$avatar()"
     [tuiSkeleton]="this.$loading()"
     [text]="this.$profile().full_name || this.$profile().username || ''"
     size="xxl"
     [rounded]="true"
-    [attr.data-edit]="(this.$$isMe | async) || this.auth.$isAuth()"
-    (click)="this.changeAvatar()"
+    [attr.data-edit]="this.$isMe() || this.auth.$isAdmin()"
+    (click)="this.$isMe() || this.auth.$isAdmin() ? this.changeAvatar() : null"
   />
   @if (this.$loading()) {
     <span

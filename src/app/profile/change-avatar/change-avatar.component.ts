@@ -10,14 +10,16 @@ import {
 import {
   TuiAlertService,
   TuiDialogContext,
+  TuiHintModule,
   TuiLoaderModule,
+  TuiSvgModule,
 } from '@taiga-ui/core'
 
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { catchError, of, switchMap, takeLast } from 'rxjs'
 import { TuiFileLike, TuiInputFilesModule } from '@taiga-ui/kit'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus'
-import { catchError, of, switchMap, takeLast, throwError } from 'rxjs'
 import { CommonModule } from '@angular/common'
 import * as Sentry from '@sentry/angular'
 
@@ -34,6 +36,8 @@ import { UploadModel } from '@models'
     ReactiveFormsModule,
     TuiInputFilesModule,
     TuiLoaderModule,
+    TuiSvgModule,
+    TuiHintModule,
   ],
   templateUrl: './change-avatar.component.html',
   styleUrl: './change-avatar.component.scss',
@@ -64,7 +68,7 @@ export class ChangeAvatarComponent {
   isLoading: WritableSignal<boolean> = signal(false)
 
   private targetAccountId: string
-  private avatarAlreadyExists: boolean
+  avatarAlreadyExists: boolean
 
   removeFile(): void {
     this.control.setValue(null)
@@ -82,19 +86,19 @@ export class ChangeAvatarComponent {
           takeUntilDestroyed(this.destroyRef),
           catchError((res) => {
             this.showError(res.error.message)
-            return throwError(() => res.error)
+            return of(new Error(res.error))
           }),
           switchMap((res) => (res ? this.uploadAvatar() : of(null)))
         )
         .subscribe({
-          next: (res) => this.handleUploadResult(res),
+          next: (res) => this.handleUploadResult(res as UploadModel),
           error: () => {
             this.isLoading.set(false)
           },
         })
     } else {
       this.uploadAvatar().subscribe({
-        next: (res) => this.handleUploadResult(res),
+        next: (res) => this.handleUploadResult(res as UploadModel),
         error: () => {
           this.isLoading.set(false)
         },
@@ -102,17 +106,29 @@ export class ChangeAvatarComponent {
     }
   }
 
-  private handleUploadResult(res: UploadModel | null) {
-    if (res) {
-      this.auth.$user.update((user) => ({
-        ...user,
-        avatar: res.url,
-      }))
-    }
+  removeAvatar() {
+    this.isLoading.set(true)
 
-    this.isLoading.set(false)
-
-    this.context.completeWith(res ? res.url : null)
+    this.account
+      .removeAvatar({
+        id: this.targetAccountId,
+      })
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        catchError((err) => {
+          this.showError(err)
+          return of(new Error(err))
+        })
+      )
+      .subscribe({
+        next: () => {
+          this.isLoading.set(false)
+          this.context.completeWith(true)
+        },
+        error: () => {
+          this.isLoading.set(false)
+        },
+      })
   }
 
   private uploadAvatar() {
@@ -126,9 +142,15 @@ export class ChangeAvatarComponent {
         takeLast(1),
         catchError((res) => {
           this.showError(res.error.message)
-          return throwError(() => res.error)
+          return of(new Error(res.error))
         })
       )
+  }
+
+  private handleUploadResult(res: UploadModel | null) {
+    this.isLoading.set(false)
+
+    this.context.completeWith(res ? res.url : null)
   }
 
   private showError(err: string) {

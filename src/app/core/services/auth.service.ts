@@ -35,6 +35,10 @@ export class AuthService {
 
   $user: WritableSignal<AuthenticatedUser> = signal(initialAuthenticatedUser)
 
+  $avatar: Signal<string | null> = computed(
+    () => this.$user().avatar || this.$user().vk_avatar
+  )
+
   $isAuth: Signal<boolean> = computed(() => !!this.$user().id)
   $$isAuth: Observable<boolean> = toObservable(this.$isAuth)
 
@@ -52,7 +56,8 @@ export class AuthService {
       token: data.access_token,
       roles: data.roles.sort((a, b) => a.localeCompare(b)),
       vk_id: data.vk_id || null,
-      avatar: data.avatar ? data.avatar.url : data.vk_avatar || null,
+      avatar: data.avatar ? data.avatar.url : null,
+      vk_avatar: data.vk_avatar || null,
       email: data.email || null,
       first_name: data.first_name || null,
       last_name: data.last_name || null,

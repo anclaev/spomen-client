@@ -7,6 +7,7 @@ export const initialAuthenticatedUser: AuthenticatedUser = {
   email: null,
   roles: [],
   avatar: null,
+  vk_avatar: null,
   first_name: null,
   last_name: null,
   full_name: null,

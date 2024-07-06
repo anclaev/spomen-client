@@ -3,7 +3,9 @@ import {
   DestroyRef,
   Injector,
   OnInit,
+  Signal,
   WritableSignal,
+  computed,
   effect,
   inject,
   signal,
@@ -20,18 +22,19 @@ import { TuiChipModule, TuiSkeletonModule } from '@taiga-ui/experimental'
 import { TuiAvatarModule, TuiLineClampModule } from '@taiga-ui/kit'
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus'
 import { ActivatedRoute, Router } from '@angular/router'
-import { Observable, map, of, switchMap } from 'rxjs'
 import { ApolloError } from '@apollo/client/errors'
 import { Title } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
 import * as Sentry from '@sentry/angular'
 import { Apollo } from 'apollo-angular'
+import { Observable, map } from 'rxjs'
 
 import { getAccountQuery, GetAccountModel } from '@graphql'
 import { isNotFound, serializeRole } from '@utils'
 import { AuthService } from '@services'
 
 import { Account, initialAccount } from '@interfaces'
+
 import { Role } from '@enums'
 
 import { ChangeAvatarComponent } from './change-avatar/change-avatar.component'
@@ -64,36 +67,24 @@ export class ProfileComponent implements OnInit {
 
   $profile: WritableSignal<Account> = signal(initialAccount)
   $loading: WritableSignal<boolean> = signal(true)
+  $isMe: WritableSignal<boolean> = signal(false)
   $query: WritableSignal<string> = signal('')
 
-  $$roles: Observable<Role[]> = toObservable(this.$profile).pipe(
-    map((acc) => acc.roles)
+  $avatar: Signal<string | null> = computed(
+    () => this.$profile().avatar || this.$profile().vk_avatar
   )
 
-  $$isMe = this.route.params.pipe(
+  $$roles: Observable<Role[]> = toObservable(this.$profile).pipe(
+    map((profile) => profile.roles)
+  )
+
+  $$isMe: Observable<boolean> = this.route.params.pipe(
     map((params) => {
       this.$query.set(params['username'])
-      return params['username'] === this.auth.$user().username
+      this.$isMe.set(params['username'] === this.auth.$user().username)
+      return this.$isMe()
     })
   )
-
-  private readonly showChangeAvatarDialog = (
-    accountId: string,
-    isMe: boolean
-  ) => {
-    return this.dialogs.open<string | null>(
-      new PolymorpheusComponent(ChangeAvatarComponent, this.injector),
-      {
-        size: 's',
-        data: {
-          accountId,
-          avatarAlreadyExists: isMe
-            ? !!this.auth.$user().avatar
-            : !!this.$profile().avatar,
-        },
-      }
-    )
-  }
 
   constructor() {
     effect(() => {
@@ -131,7 +122,8 @@ export class ProfileComponent implements OnInit {
 
               this.$profile.set({
                 ...account,
-                avatar: account.avatar ? account.avatar.url : account.vk_avatar,
+                avatar: account.avatar ? account.avatar.url : null,
+                vk_avatar: account.vk_avatar || null,
                 full_name:
                   account.first_name && account.last_name
                     ? `${account.first_name.trim()} ${account.last_name.trim()}`
@@ -159,29 +151,40 @@ export class ProfileComponent implements OnInit {
   }
 
   changeAvatar() {
-    if (!this.$profile().id) return
-
-    this.$$isMe
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-        switchMap((isMe) =>
-          isMe || this.auth.$isAdmin()
-            ? this.showChangeAvatarDialog(this.$profile().id!, isMe)
-            : of(null)
-        )
-      )
-      .subscribe((res: string | null) => {
+    this.showChangeAvatarDialog().subscribe((res: string | boolean | null) => {
+      if (res) {
         this.alerts
-          .open('Аватар успешно изменён', { status: 'success' })
+          .open(
+            `Аватар успешно ${typeof res === 'string' ? 'изменён' : 'удалён'}`,
+            { status: 'success' }
+          )
           .pipe(takeUntilDestroyed(this.destroyRef))
           .subscribe()
 
-        if (res) {
-          this.$profile.update((profile) => ({
-            ...profile,
-            avatar: res,
+        this.$profile.update((profile) => ({
+          ...profile,
+          avatar: typeof res === 'string' ? res : null,
+        }))
+
+        if (this.$isMe()) {
+          this.auth.$user.update((user) => ({
+            ...user,
+            avatar: typeof res === 'string' ? res : null,
           }))
         }
-      })
+      }
+    })
   }
+
+  private showChangeAvatarDialog = () =>
+    this.dialogs.open<string | null>(
+      new PolymorpheusComponent(ChangeAvatarComponent, this.injector),
+      {
+        size: 's',
+        data: {
+          accountId: this.$profile().id,
+          avatarAlreadyExists: !!this.$profile().avatar,
+        },
+      }
+    )
 }

@@ -39,6 +39,15 @@ button {
   border-color: var(--color-accent-dark);
 }
 
+.button:disabled {
+  opacity: 0.5 !important;
+  cursor: auto;
+}
+
+.button:disabled:after {
+  opacity: 0 !important;
+}
+
 .textbox::placeholder {
   color: var(--color-background-light);
   transition: color 0.2s;
@@ -60,7 +69,8 @@ button {
   user-select: none;
 }
 
-.button > span {
+.button > span,
+.button > tui-svg {
   position: relative;
   z-index: 1;
 }
