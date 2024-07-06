@@ -168,3 +168,7 @@ tui-svg[data-fill] .t-src svg {
 tui-svg[data-fill-path] .t-src svg path {
   fill: inherit;
 }
+
+tui-hint {
+  background: var(--color-background-light) !important;
+}

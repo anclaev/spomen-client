@@ -11,6 +11,8 @@ export const initialAccount: Account = {
   first_name: null,
   last_name: null,
   full_name: null,
+  sex: null,
+  birthday: null,
 }
 
 export interface Account {
@@ -24,4 +26,6 @@ export interface Account {
   first_name: string | null
   last_name: string | null
   full_name: string | null
+  birthday: Date | null
+  sex: '0' | '1' | '2' | null
 }

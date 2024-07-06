@@ -15,16 +15,18 @@ import {
   TuiAlertService,
   TuiDialogModule,
   TuiDialogService,
+  TuiHintModule,
+  TuiSvgModule,
 } from '@taiga-ui/core'
 
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop'
 import { TuiChipModule, TuiSkeletonModule } from '@taiga-ui/experimental'
 import { TuiAvatarModule, TuiLineClampModule } from '@taiga-ui/kit'
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus'
+import { CommonModule, DatePipe } from '@angular/common'
 import { ActivatedRoute, Router } from '@angular/router'
 import { ApolloError } from '@apollo/client/errors'
 import { Title } from '@angular/platform-browser'
-import { CommonModule } from '@angular/common'
 import * as Sentry from '@sentry/angular'
 import { Apollo } from 'apollo-angular'
 import { Observable, map } from 'rxjs'
@@ -32,12 +34,19 @@ import { Observable, map } from 'rxjs'
 import { getAccountQuery, GetAccountModel } from '@graphql'
 import { isNotFound, serializeRole } from '@utils'
 import { AuthService } from '@services'
+import { SexPipe } from '@pipes'
 
-import { Account, initialAccount } from '@interfaces'
+import { Account, Sex, initialAccount } from '@interfaces'
 
 import { Role } from '@enums'
 
 import { ChangeAvatarComponent } from './change-avatar/change-avatar.component'
+
+const sexIcons = {
+  0: '/images/tor.svg',
+  1: '/images/man.svg',
+  2: '/images/woman.svg',
+}
 
 @Component({
   selector: 'spomen-profile',
@@ -49,7 +58,11 @@ import { ChangeAvatarComponent } from './change-avatar/change-avatar.component'
     TuiDialogModule,
     TuiChipModule,
     TuiLineClampModule,
+    TuiSvgModule,
+    TuiHintModule,
+    SexPipe,
   ],
+  providers: [DatePipe],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
@@ -103,6 +116,7 @@ export class ProfileComponent implements OnInit {
         if (isMe) {
           this.$profile.set(this.auth.$user())
           this.$loading.set(false)
+
           return
         }
 
@@ -122,6 +136,7 @@ export class ProfileComponent implements OnInit {
 
               this.$profile.set({
                 ...account,
+                birthday: account.birthday || null,
                 avatar: account.avatar ? account.avatar.url : null,
                 vk_avatar: account.vk_avatar || null,
                 full_name:
@@ -144,10 +159,6 @@ export class ProfileComponent implements OnInit {
           })
       },
     })
-  }
-
-  serializeRole(role: Role) {
-    return serializeRole(role)
   }
 
   changeAvatar() {
@@ -174,6 +185,14 @@ export class ProfileComponent implements OnInit {
         }
       }
     })
+  }
+
+  serializeRole(role: Role) {
+    return serializeRole(role)
+  }
+
+  serializeSex(sex: Sex | null): string {
+    return sex ? sexIcons[sex] : sexIcons[0]
   }
 
   private showChangeAvatarDialog = () =>

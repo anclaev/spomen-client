@@ -10,8 +10,10 @@ export const initialAuthenticatedUser: AuthenticatedUser = {
   vk_avatar: null,
   first_name: null,
   last_name: null,
+  sex: null,
   full_name: null,
   token: null,
+  birthday: null,
 }
 
 export interface AuthenticatedUser extends Account {

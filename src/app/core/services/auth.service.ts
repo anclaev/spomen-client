@@ -53,6 +53,8 @@ export class AuthService {
     this.$user.set({
       id: data.id,
       username: data.username,
+      birthday: data.birthday,
+      sex: data.sex,
       token: data.access_token,
       roles: data.roles.sort((a, b) => a.localeCompare(b)),
       vk_id: data.vk_id || null,

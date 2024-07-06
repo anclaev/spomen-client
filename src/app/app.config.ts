@@ -13,9 +13,11 @@ import {
   importProvidersFrom,
   APP_INITIALIZER,
   ErrorHandler,
+  LOCALE_ID,
 } from '@angular/core'
 
 import { AuthService, ConfigService, AccountService } from '@services'
+
 import { httpRequestIntercepor } from '@interceptors'
 import { graphqlProvider } from '@graphql'
 import { initSentry } from '@utils'
@@ -57,6 +59,7 @@ export const appConfig: ApplicationConfig = {
       provide: TUI_LANGUAGE,
       useValue: of(TUI_RUSSIAN_LANGUAGE),
     },
+    { provide: LOCALE_ID, useValue: 'ru' },
     graphqlProvider,
     ConfigService,
     AuthService,

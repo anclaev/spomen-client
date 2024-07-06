@@ -12,6 +12,7 @@ export interface AccountModel {
   first_name: string | null
   last_name: string | null
   birthday: Date | null
+  sex: '0' | '1' | '2'
   created_at: Date
   updated_at: Date
 }
