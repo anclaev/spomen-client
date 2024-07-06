@@ -42,12 +42,12 @@
   @include avatarBorder(3px);
 }
 
-.profile-side__avatar[data-me='true'] {
+.profile-side__avatar[data-edit='true'] {
   position: relative;
   cursor: pointer !important;
 }
 
-.profile-side__avatar[data-me='true']::after {
+.profile-side__avatar[data-edit='true']::after {
   content: 'Изменить';
   position: absolute;
   display: flex;
@@ -64,7 +64,7 @@
   transition: opacity 0.3s;
 }
 
-.profile-side__avatar[data-me='true']:hover::after {
+.profile-side__avatar[data-edit='true']:hover::after {
   opacity: 1;
 }
 

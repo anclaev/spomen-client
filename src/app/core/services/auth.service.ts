@@ -23,7 +23,7 @@ import { AuthenticatedUser, initialAuthenticatedUser } from '@interfaces'
 import { AuthCallbackDto, SignUpDto, SignInDto } from '@dtos'
 import { AuthModel } from '@models'
 
-import { API } from '@enums'
+import { API, Role } from '@enums'
 
 import { env } from '@env'
 
@@ -31,18 +31,21 @@ import { env } from '@env'
   providedIn: 'root',
 })
 export class AuthService {
-  http: HttpClient = inject(HttpClient)
+  private http: HttpClient = inject(HttpClient)
 
   $user: WritableSignal<AuthenticatedUser> = signal(initialAuthenticatedUser)
 
   $isAuth: Signal<boolean> = computed(() => !!this.$user().id)
   $$isAuth: Observable<boolean> = toObservable(this.$isAuth)
 
+  $isAdmin: Signal<boolean> = computed(() =>
+    this.$user().roles.includes(Role.Administrator)
+  )
+
   $isLoading: BehaviorSubject<boolean> = new BehaviorSubject(false)
   $$isLoading: Observable<boolean> = this.$isLoading.asObservable()
 
   set(data: AuthModel) {
-    console.log(data)
     this.$user.set({
       id: data.id,
       username: data.username,

@@ -52,15 +52,15 @@ import { ChangeAvatarComponent } from './change-avatar/change-avatar.component'
 })
 @Sentry.TraceClass({ name: 'Profile' })
 export class ProfileComponent implements OnInit {
-  dialogs = inject(TuiDialogService)
-  alerts = inject(TuiAlertService)
-  destroyRef = inject(DestroyRef)
-  route = inject(ActivatedRoute)
-  injector = inject(Injector)
+  private dialogs = inject(TuiDialogService)
+  private alerts = inject(TuiAlertService)
+  private destroyRef = inject(DestroyRef)
+  private route = inject(ActivatedRoute)
+  private injector = inject(Injector)
+  private apollo = inject(Apollo)
+  private router = inject(Router)
+  private title = inject(Title)
   auth = inject(AuthService)
-  apollo = inject(Apollo)
-  router = inject(Router)
-  title = inject(Title)
 
   $profile: WritableSignal<Account> = signal(initialAccount)
   $loading: WritableSignal<boolean> = signal(true)
@@ -77,12 +77,23 @@ export class ProfileComponent implements OnInit {
     })
   )
 
-  private readonly changeAvatarDialog = this.dialogs.open(
-    new PolymorpheusComponent(ChangeAvatarComponent, this.injector),
-    {
-      size: 's',
-    }
-  )
+  private readonly showChangeAvatarDialog = (
+    accountId: string,
+    isMe: boolean
+  ) => {
+    return this.dialogs.open<string | null>(
+      new PolymorpheusComponent(ChangeAvatarComponent, this.injector),
+      {
+        size: 's',
+        data: {
+          accountId,
+          avatarAlreadyExists: isMe
+            ? !!this.auth.$user().avatar
+            : !!this.$profile().avatar,
+        },
+      }
+    )
+  }
 
   constructor() {
     effect(() => {
@@ -148,15 +159,29 @@ export class ProfileComponent implements OnInit {
   }
 
   changeAvatar() {
+    if (!this.$profile().id) return
+
     this.$$isMe
       .pipe(
         takeUntilDestroyed(this.destroyRef),
         switchMap((isMe) =>
-          isMe || this.auth.$user().roles.includes(Role.Administrator)
-            ? this.changeAvatarDialog
+          isMe || this.auth.$isAdmin()
+            ? this.showChangeAvatarDialog(this.$profile().id!, isMe)
             : of(null)
         )
       )
-      .subscribe()
+      .subscribe((res: string | null) => {
+        this.alerts
+          .open('Аватар успешно изменён', { status: 'success' })
+          .pipe(takeUntilDestroyed(this.destroyRef))
+          .subscribe()
+
+        if (res) {
+          this.$profile.update((profile) => ({
+            ...profile,
+            avatar: res,
+          }))
+        }
+      })
   }
 }

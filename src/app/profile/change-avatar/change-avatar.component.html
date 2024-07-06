@@ -3,7 +3,11 @@
   [overlay]="true"
   [showLoader]="this.isLoading()"
 >
-  <tui-input-files *ngIf="!control.value" [formControl]="control">
+  <tui-input-files
+    *ngIf="!control.value"
+    [formControl]="control"
+    [maxFileSize]="1048576"
+  >
     <input accept="image/*" title="Выберите изображение" tuiInputFiles />
   </tui-input-files>
 

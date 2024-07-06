@@ -2,7 +2,7 @@ import { Role } from '@enums'
 
 export interface GetAccountModel {
   account: {
-    id: number
+    id: string
     username: string
     email: string | null
     roles: Role[]

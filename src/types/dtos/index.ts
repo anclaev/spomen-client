@@ -1,3 +1,2 @@
-export * from './auth-callback.dto'
-export * from './sign-in.dto'
-export * from './sign-up.dto'
+export * from './auth.dtos'
+export * from './account.dtos'

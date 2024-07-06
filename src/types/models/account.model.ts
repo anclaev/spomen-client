@@ -1,13 +1,12 @@
+import { UploadModel } from '@models'
 import { Role } from '@enums'
 
 export interface AccountModel {
-  id: number
+  id: string
   username: string
   email: string | null
   roles: Role[]
-  avatar: {
-    url: string
-  } | null
+  avatar: UploadModel | null
   vk_id: string | null
   vk_avatar: string | null
   first_name: string | null

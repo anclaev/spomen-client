@@ -6,7 +6,7 @@
     [text]="this.$profile().full_name || this.$profile().username || ''"
     size="xxl"
     [rounded]="true"
-    [attr.data-me]="this.$$isMe | async"
+    [attr.data-edit]="(this.$$isMe | async) || this.auth.$isAuth()"
     (click)="this.changeAvatar()"
   />
   @if (this.$loading()) {

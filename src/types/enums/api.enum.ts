@@ -6,4 +6,5 @@ export enum API {
   AUTH_REFRESH = '/auth/refresh',
   AUTH_REFRESH_CLEAR = '/auth/refresh/clear',
   VK_ID_EXCHANGE_TOKEN = '/vk-id/exchange-token',
+  ACCOUNT_AVATAR = '/account/avatar',
 }

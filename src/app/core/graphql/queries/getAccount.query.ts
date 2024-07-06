@@ -8,9 +8,7 @@ export const getAccountQuery = gql`
       email
       roles
       avatar {
-        upload {
-          url
-        }
+        url
       }
       vk_id
       vk_avatar

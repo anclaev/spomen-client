@@ -13,7 +13,7 @@ export const initialAccount = {
 }
 
 export interface Account {
-  id: number | null
+  id: string | null
   vk_id: string | null
   username: string | null
   email: string | null
