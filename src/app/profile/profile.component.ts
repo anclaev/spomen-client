@@ -146,7 +146,6 @@ export class ProfileComponent implements OnInit {
               })
             },
             error: (err: ApolloError) => {
-              console.log(err.stack)
               if (isNotFound(err.message)) {
                 this.router.navigate(['/404'])
                 return
