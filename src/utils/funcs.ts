@@ -40,5 +40,5 @@ export function getQueryPayload<T>(params: Params): T | null {
 }
 
 export function isNotFound(message: string): boolean {
-  return message.includes('non-nullable')
+  return message.includes('Не найдено')
 }
