@@ -1,6 +1,7 @@
 {
   "name": "spomen-client",
   "version": "0.0.2",
+  "description": "Platform of memories",
   "scripts": {
     "ng": "ng",
     "dev": "ng serve --port 80",
