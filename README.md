@@ -1,5 +1,3 @@
-![Logo](/public/images/logo-og.png)
+# spomen-slient
 
-# Spomen Client
-
-Веб-клиент приложения Spomen.
+Платформа воспоминаний
