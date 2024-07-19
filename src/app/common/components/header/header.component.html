@@ -15,7 +15,7 @@
     </a>
   </div>
   <div class="header-me">
-    @if (this.user().id) {
+    @if (this.auth.$user().id) {
       <tui-hosted-dropdown
         class="t-wrapper-flex"
         [content]="profileMenu"
@@ -24,15 +24,15 @@
       >
         <tui-avatar
           class="header-me__avatar"
-          [avatarUrl]="user().avatar"
+          [avatarUrl]="auth.$avatar()"
           size="s"
           [rounded]="true"
-          [text]="user().full_name || user().username || ''"
+          [text]="auth.$user().full_name || auth.$user().username || ''"
         />
 
         <tui-line-clamp
           class="header-me__person"
-          [content]="user().full_name || user().username || ''"
+          [content]="auth.$user().full_name || auth.$user().username || ''"
           [linesLimit]="1"
         />
         <tui-svg src="tuiIconChevronDown" />

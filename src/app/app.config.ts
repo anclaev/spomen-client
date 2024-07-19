@@ -13,9 +13,11 @@ import {
   importProvidersFrom,
   APP_INITIALIZER,
   ErrorHandler,
+  LOCALE_ID,
 } from '@angular/core'
 
-import { AuthService, ConfigService } from '@services'
+import { AuthService, ConfigService, AccountService } from '@services'
+
 import { httpRequestIntercepor } from '@interceptors'
 import { graphqlProvider } from '@graphql'
 import { initSentry } from '@utils'
@@ -36,7 +38,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withViewTransitions()),
     importProvidersFrom(TuiRootModule),
     provideHttpClient(withInterceptors([httpRequestIntercepor])),
-    ConfigService,
     {
       provide: ErrorHandler,
       useValue: Sentry.createErrorHandler({
@@ -53,12 +54,15 @@ export const appConfig: ApplicationConfig = {
       deps: [ConfigService, Sentry.TraceService],
       multi: true,
     },
-    AuthService,
     { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
     {
       provide: TUI_LANGUAGE,
       useValue: of(TUI_RUSSIAN_LANGUAGE),
     },
+    { provide: LOCALE_ID, useValue: 'ru' },
     graphqlProvider,
+    ConfigService,
+    AuthService,
+    AccountService,
   ],
 }

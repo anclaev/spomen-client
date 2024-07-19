@@ -2,20 +2,19 @@ import { Role } from '@enums'
 
 export interface GetAccountModel {
   account: {
-    id: number
+    id: string
     username: string
     email: string | null
     roles: Role[]
     avatar: {
-      upload: {
-        url: string | null
-      } | null
+      url: string
     } | null
     vk_id: string | null
     vk_avatar: string | null
     first_name: string | null
     last_name: string | null
     birthday: Date | null
+    sex: '0' | '1' | '2' | null
     created_at: Date
     updated_at: Date
   }

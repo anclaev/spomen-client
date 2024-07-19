@@ -1,0 +1,417 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>spomen-client</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">spomen-client</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DashboardComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/dashboard/dashboard.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>spomen-dashboard</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./dashboard.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./dashboard.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;
+import * as Sentry from &#x27;@sentry/angular&#x27;
+
+@Component({
+  selector: &#x27;spomen-dashboard&#x27;,
+  standalone: true,
+  imports: [],
+  templateUrl: &#x27;./dashboard.component.html&#x27;,
+  styleUrl: &#x27;./dashboard.component.scss&#x27;,
+})
+@Sentry.TraceClass({ name: &#x27;Dashboard&#x27; })
+export class DashboardComponent {}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;p&gt;dashboard works!&lt;/p&gt;
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem minus,
+ratione rem unde saepe distinctio nostrum ipsa hic cupiditate sint consequatur
+mollitia, ducimus laboriosam quis aperiam velit consequuntur dolor aliquid!
+Soluta, reiciendis laboriosam! Nulla facere voluptatibus nobis voluptates atque
+eaque velit iusto. Voluptas sunt veniam veritatis, nesciunt pariatur minus. Quis
+velit fugiat, ipsa accusamus quisquam commodi beatae nemo officiis aut! Iure sed
+minima voluptatum adipisci sapiente officiis natus tempore itaque, nihil
+possimus nemo deserunt atque provident et in eius repellat facere magni culpa
+consectetur? Harum maxime rerum in illo obcaecati! Aperiam voluptas quam, aut
+quia iste architecto quidem eius culpa dolorum consequuntur officiis nihil nisi
+vero, explicabo delectus voluptate ratione qui, ab exercitationem. Aliquid quam
+obcaecati a facere tenetur illo. Voluptatum cupiditate perspiciatis, enim
+deleniti labore accusamus reprehenderit voluptatem quisquam quam autem saepe
+totam ex quo, ipsum eos qui! Accusantium ipsam modi aliquam. Hic quibusdam, odit
+aspernatur blanditiis perferendis vitae. Recusandae, doloremque qui totam
+perferendis quasi cumque tempora rem vero obcaecati asperiores dolorum voluptate
+repellat ullam atque, libero voluptatem expedita. Ab officiis blanditiis
+laudantium optio dolor excepturi ipsa hic doloremque! Officiis rerum eos,
+impedit et recusandae enim, id magni culpa vitae magnam a quas doloribus!
+Aspernatur, dolor inventore quae doloremque accusantium quos odit nostrum
+beatae, eaque quod consectetur architecto saepe! Sit consequatur accusantium
+quidem dolor, adipisci laboriosam quos rem suscipit atque harum, praesentium
+necessitatibus eius tenetur enim? Totam eligendi qui odio vero impedit! Animi
+commodi dicta nostrum cupiditate illum beatae? Minima aperiam quis ut aliquam,
+nemo illum repudiandae animi aut corrupti deleniti, quam earum atque fugiat amet
+impedit iure modi rem unde sit officia! Voluptate veritatis optio quam
+recusandae velit! Quam pariatur incidunt tempore! Repellat quis est nihil
+consectetur iure ipsum praesentium corporis non hic voluptas odio eos aliquam a,
+optio recusandae cupiditate perspiciatis deleniti tempore dolore? Dolor, illum
+obcaecati? Voluptatibus debitis dolor quia sed non dicta autem facere distinctio
+aliquid, quod ab iure! Aspernatur corrupti dolorum quia officia quisquam, sit
+cumque vitae expedita eum obcaecati reiciendis at molestiae nam! Minus fugiat,
+est nemo ex recusandae, accusamus nostrum dolorum at, totam qui esse
+perspiciatis labore autem minima! Error veniam soluta corporis ad voluptates
+itaque, ratione, quas vero harum quibusdam magni? Voluptatem repellendus nihil
+dicta quos consequuntur similique doloremque provident voluptate at iste itaque
+beatae, possimus doloribus rerum deserunt eligendi commodi minus tempore facere
+quae voluptatibus autem pariatur! Quo, dolores obcaecati. Ex provident molestias
+et consectetur cum iusto modi, sit reprehenderit dicta temporibus deleniti
+quaerat at itaque vel autem numquam qui reiciendis dignissimos eaque nihil ullam
+suscipit voluptatum impedit! Esse, eos. Asperiores perferendis illo architecto
+nesciunt ipsam atque, veritatis vitae voluptates. Itaque libero modi fugiat
+facilis, consequuntur eum repellat incidunt laudantium ullam veniam? Reiciendis
+nostrum perferendis nulla a fuga rem recusandae? Explicabo suscipit cupiditate
+quasi adipisci, atque labore nulla possimus! Rem fugit modi quas odit, voluptas,
+eligendi iure adipisci quasi nostrum eos deleniti! Eius, maiores laboriosam odio
+at quisquam repudiandae! Id? Maxime delectus tempore libero, odit aspernatur
+quia culpa facilis. Quo laborum illum earum vitae ipsa odio quia sunt inventore
+illo maiores eum ea hic minima, aperiam amet iure eos mollitia! Officiis
+pariatur quis minima quia nemo. Nihil hic, aspernatur commodi quibusdam
+perferendis ratione cum, minus molestiae reprehenderit autem architecto deserunt
+aut delectus nesciunt accusantium quia facilis maiores fuga. Architecto,
+molestias! Velit rerum, rem beatae dolorem non, inventore nihil placeat,
+voluptatum dolor voluptates molestiae. Consequatur ratione, saepe cupiditate
+reiciendis veritatis eos eveniet, rerum vel, laudantium aspernatur doloribus ut
+consequuntur eum cum? Fugit, nesciunt. Perferendis error excepturi saepe soluta
+quo pariatur officiis maxime. Dolorem laudantium voluptas quae perspiciatis
+libero neque saepe? Dolor ea est saepe suscipit deleniti ut nam reprehenderit,
+fugit optio! Quasi fuga incidunt totam et minus ipsum nulla asperiores obcaecati
+nostrum, laudantium maiores repudiandae aspernatur perferendis libero sequi
+repellat corporis expedita temporibus explicabo quae placeat odit molestiae
+dolores quod? Nihil? Temporibus facere architecto ratione totam eveniet nisi
+eaque impedit officia consequatur deserunt incidunt, inventore corrupti sit
+aliquam fugiat quae esse saepe dicta optio quam omnis! Possimus temporibus
+laudantium dolorum odio. Consectetur totam nemo deleniti assumenda aliquid
+praesentium? Nesciunt nulla cumque voluptates consectetur! Suscipit non mollitia
+aliquam nihil similique voluptate iure tenetur at velit nulla officia corporis
+dicta et, tempore ipsum! Animi accusamus explicabo modi nesciunt consequuntur
+commodi numquam, totam corporis recusandae maiores tempore aperiam distinctio
+voluptates aliquid ex, cumque necessitatibus at eos exercitationem porro vel
+magnam. Impedit ratione expedita sint! Sed unde maxime deserunt ullam quisquam
+nihil laudantium quibusdam, nulla, possimus asperiores quas delectus
+consequuntur dolores alias, odit amet odio? Perferendis tenetur deleniti
+pariatur sunt esse sit porro, deserunt veniam. Eaque, consectetur unde. Ut ipsa
+neque est odit, vel voluptates repellendus quod suscipit minima, accusamus
+reiciendis magni, laboriosam nihil? Necessitatibus ex sequi ducimus eius laborum
+cupiditate officiis sint unde nihil! Rerum enim laudantium esse possimus
+aliquam. Rerum hic fuga quo, dolorem nulla quisquam facere repellendus eos odio
+maiores, eius, officia necessitatibus. Soluta eius, amet eos nihil quisquam qui
+reprehenderit cum! Nihil sapiente tempora perspiciatis veritatis aut aliquam
+earum, error omnis dolor consectetur cum facere? Voluptatum corporis dicta omnis
+repudiandae officiis esse quidem ipsum nam quibusdam saepe explicabo, hic iusto
+architecto. Sequi blanditiis, tenetur vero reprehenderit ipsa nemo aut doloribus
+ut sit eum, fugiat earum quam optio quae minima quaerat eveniet fugit itaque
+laudantium hic porro culpa, aperiam voluptas! Vitae, nesciunt. Cumque soluta
+deleniti labore perferendis consequatur dolores cum ipsum, repellat saepe illum
+deserunt facere quasi? Quasi sint adipisci tempora nostrum animi mollitia sit
+incidunt, aperiam quia omnis! Sequi, aliquam eligendi!
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><p>dashboard works!</p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem minus,ratione rem unde saepe distinctio nostrum ipsa hic cupiditate sint consequaturmollitia, ducimus laboriosam quis aperiam velit consequuntur dolor aliquid!Soluta, reiciendis laboriosam! Nulla facere voluptatibus nobis voluptates atqueeaque velit iusto. Voluptas sunt veniam veritatis, nesciunt pariatur minus. Quisvelit fugiat, ipsa accusamus quisquam commodi beatae nemo officiis aut! Iure sedminima voluptatum adipisci sapiente officiis natus tempore itaque, nihilpossimus nemo deserunt atque provident et in eius repellat facere magni culpaconsectetur? Harum maxime rerum in illo obcaecati! Aperiam voluptas quam, autquia iste architecto quidem eius culpa dolorum consequuntur officiis nihil nisivero, explicabo delectus voluptate ratione qui, ab exercitationem. Aliquid quamobcaecati a facere tenetur illo. Voluptatum cupiditate perspiciatis, enimdeleniti labore accusamus reprehenderit voluptatem quisquam quam autem saepetotam ex quo, ipsum eos qui! Accusantium ipsam modi aliquam. Hic quibusdam, oditaspernatur blanditiis perferendis vitae. Recusandae, doloremque qui totamperferendis quasi cumque tempora rem vero obcaecati asperiores dolorum voluptaterepellat ullam atque, libero voluptatem expedita. Ab officiis blanditiislaudantium optio dolor excepturi ipsa hic doloremque! Officiis rerum eos,impedit et recusandae enim, id magni culpa vitae magnam a quas doloribus!Aspernatur, dolor inventore quae doloremque accusantium quos odit nostrumbeatae, eaque quod consectetur architecto saepe! Sit consequatur accusantiumquidem dolor, adipisci laboriosam quos rem suscipit atque harum, praesentiumnecessitatibus eius tenetur enim? Totam eligendi qui odio vero impedit! Animicommodi dicta nostrum cupiditate illum beatae? Minima aperiam quis ut aliquam,nemo illum repudiandae animi aut corrupti deleniti, quam earum atque fugiat ametimpedit iure modi rem unde sit officia! Voluptate veritatis optio quamrecusandae velit! Quam pariatur incidunt tempore! Repellat quis est nihilconsectetur iure ipsum praesentium corporis non hic voluptas odio eos aliquam a,optio recusandae cupiditate perspiciatis deleniti tempore dolore? Dolor, illumobcaecati? Voluptatibus debitis dolor quia sed non dicta autem facere distinctioaliquid, quod ab iure! Aspernatur corrupti dolorum quia officia quisquam, sitcumque vitae expedita eum obcaecati reiciendis at molestiae nam! Minus fugiat,est nemo ex recusandae, accusamus nostrum dolorum at, totam qui esseperspiciatis labore autem minima! Error veniam soluta corporis ad voluptatesitaque, ratione, quas vero harum quibusdam magni? Voluptatem repellendus nihildicta quos consequuntur similique doloremque provident voluptate at iste itaquebeatae, possimus doloribus rerum deserunt eligendi commodi minus tempore facerequae voluptatibus autem pariatur! Quo, dolores obcaecati. Ex provident molestiaset consectetur cum iusto modi, sit reprehenderit dicta temporibus delenitiquaerat at itaque vel autem numquam qui reiciendis dignissimos eaque nihil ullamsuscipit voluptatum impedit! Esse, eos. Asperiores perferendis illo architectonesciunt ipsam atque, veritatis vitae voluptates. Itaque libero modi fugiatfacilis, consequuntur eum repellat incidunt laudantium ullam veniam? Reiciendisnostrum perferendis nulla a fuga rem recusandae? Explicabo suscipit cupiditatequasi adipisci, atque labore nulla possimus! Rem fugit modi quas odit, voluptas,eligendi iure adipisci quasi nostrum eos deleniti! Eius, maiores laboriosam odioat quisquam repudiandae! Id? Maxime delectus tempore libero, odit aspernaturquia culpa facilis. Quo laborum illum earum vitae ipsa odio quia sunt inventoreillo maiores eum ea hic minima, aperiam amet iure eos mollitia! Officiispariatur quis minima quia nemo. Nihil hic, aspernatur commodi quibusdamperferendis ratione cum, minus molestiae reprehenderit autem architecto deseruntaut delectus nesciunt accusantium quia facilis maiores fuga. Architecto,molestias! Velit rerum, rem beatae dolorem non, inventore nihil placeat,voluptatum dolor voluptates molestiae. Consequatur ratione, saepe cupiditatereiciendis veritatis eos eveniet, rerum vel, laudantium aspernatur doloribus utconsequuntur eum cum? Fugit, nesciunt. Perferendis error excepturi saepe solutaquo pariatur officiis maxime. Dolorem laudantium voluptas quae perspiciatislibero neque saepe? Dolor ea est saepe suscipit deleniti ut nam reprehenderit,fugit optio! Quasi fuga incidunt totam et minus ipsum nulla asperiores obcaecatinostrum, laudantium maiores repudiandae aspernatur perferendis libero sequirepellat corporis expedita temporibus explicabo quae placeat odit molestiaedolores quod? Nihil? Temporibus facere architecto ratione totam eveniet nisieaque impedit officia consequatur deserunt incidunt, inventore corrupti sitaliquam fugiat quae esse saepe dicta optio quam omnis! Possimus temporibuslaudantium dolorum odio. Consectetur totam nemo deleniti assumenda aliquidpraesentium? Nesciunt nulla cumque voluptates consectetur! Suscipit non mollitiaaliquam nihil similique voluptate iure tenetur at velit nulla officia corporisdicta et, tempore ipsum! Animi accusamus explicabo modi nesciunt consequunturcommodi numquam, totam corporis recusandae maiores tempore aperiam distinctiovoluptates aliquid ex, cumque necessitatibus at eos exercitationem porro velmagnam. Impedit ratione expedita sint! Sed unde maxime deserunt ullam quisquamnihil laudantium quibusdam, nulla, possimus asperiores quas delectusconsequuntur dolores alias, odit amet odio? Perferendis tenetur delenitipariatur sunt esse sit porro, deserunt veniam. Eaque, consectetur unde. Ut ipsaneque est odit, vel voluptates repellendus quod suscipit minima, accusamusreiciendis magni, laboriosam nihil? Necessitatibus ex sequi ducimus eius laborumcupiditate officiis sint unde nihil! Rerum enim laudantium esse possimusaliquam. Rerum hic fuga quo, dolorem nulla quisquam facere repellendus eos odiomaiores, eius, officia necessitatibus. Soluta eius, amet eos nihil quisquam quireprehenderit cum! Nihil sapiente tempora perspiciatis veritatis aut aliquamearum, error omnis dolor consectetur cum facere? Voluptatum corporis dicta omnisrepudiandae officiis esse quidem ipsum nam quibusdam saepe explicabo, hic iustoarchitecto. Sequi blanditiis, tenetur vero reprehenderit ipsa nemo aut doloribusut sit eum, fugiat earum quam optio quae minima quaerat eveniet fugit itaquelaudantium hic porro culpa, aperiam voluptas! Vitae, nesciunt. Cumque solutadeleniti labore perferendis consequatur dolores cum ipsum, repellat saepe illumdeserunt facere quasi? Quasi sint adipisci tempora nostrum animi mollitia sitincidunt, aperiam quia omnis! Sequi, aliquam eligendi!</div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DashboardComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DashboardComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

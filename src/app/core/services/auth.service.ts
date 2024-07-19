@@ -23,7 +23,7 @@ import { AuthenticatedUser, initialAuthenticatedUser } from '@interfaces'
 import { AuthCallbackDto, SignUpDto, SignInDto } from '@dtos'
 import { AuthModel } from '@models'
 
-import { API } from '@enums'
+import { API, Role } from '@enums'
 
 import { env } from '@env'
 
@@ -31,12 +31,20 @@ import { env } from '@env'
   providedIn: 'root',
 })
 export class AuthService {
-  http: HttpClient = inject(HttpClient)
+  private http: HttpClient = inject(HttpClient)
 
   $user: WritableSignal<AuthenticatedUser> = signal(initialAuthenticatedUser)
 
+  $avatar: Signal<string | null> = computed(
+    () => this.$user().avatar || this.$user().vk_avatar
+  )
+
   $isAuth: Signal<boolean> = computed(() => !!this.$user().id)
   $$isAuth: Observable<boolean> = toObservable(this.$isAuth)
+
+  $isAdmin: Signal<boolean> = computed(() =>
+    this.$user().roles.includes(Role.Administrator)
+  )
 
   $isLoading: BehaviorSubject<boolean> = new BehaviorSubject(false)
   $$isLoading: Observable<boolean> = this.$isLoading.asObservable()
@@ -45,10 +53,13 @@ export class AuthService {
     this.$user.set({
       id: data.id,
       username: data.username,
+      birthday: data.birthday,
+      sex: data.sex,
       token: data.access_token,
       roles: data.roles.sort((a, b) => a.localeCompare(b)),
       vk_id: data.vk_id || null,
-      avatar: data.avatar_id || data.vk_avatar || null,
+      avatar: data.avatar ? data.avatar.url : null,
+      vk_avatar: data.vk_avatar || null,
       email: data.email || null,
       first_name: data.first_name || null,
       last_name: data.last_name || null,

@@ -30,6 +30,7 @@
       "@animations": ["./src/app/common/animations/index.ts"],
       "@components/*": ["./src/app/common/components/*"],
       "@interceptors": ["./src/app/core/interceptors/index.ts"],
+      "@pipes": ["./src/app/core/pipes/index.ts"],
       "@services": ["./src/app/core/services/index.ts"],
       "@guards": ["./src/app/core/guards/index.ts"],
       "@graphql": ["./src/app/core/graphql/index.ts"],

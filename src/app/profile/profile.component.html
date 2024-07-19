@@ -1,13 +1,13 @@
 <aside class="profile-side">
   <tui-avatar
     class="profile-side__avatar"
-    [avatarUrl]="this.$profile().avatar"
+    [avatarUrl]="this.$avatar()"
     [tuiSkeleton]="this.$loading()"
     [text]="this.$profile().full_name || this.$profile().username || ''"
     size="xxl"
     [rounded]="true"
-    [attr.data-me]="this.$$isMe | async"
-    (click)="this.changeAvatar()"
+    [attr.data-edit]="this.$isMe() || this.auth.$isAdmin()"
+    (click)="this.$isMe() || this.auth.$isAdmin() ? this.changeAvatar() : null"
   />
   @if (this.$loading()) {
     <span
@@ -50,4 +50,26 @@
       this.$profile().full_name || this.$profile().username || ''
     }}</span>
   }
+  <div class="profile-info-row">
+    <div
+      class="profile-info-row__item"
+      tuiHint="День рождения"
+      [tuiHintShowDelay]="2000"
+    >
+      <tui-svg
+        src="/images/cake.svg"
+        [attr.data-fill-path]="true"
+        [attr.data-fill]="true"
+      />
+      <span>{{
+        this.$profile().birthday
+          ? (this.$profile().birthday | date: 'd MMMM')
+          : 'Не указан'
+      }}</span>
+    </div>
+    <div class="profile-info-row__item" tuiHint="Пол" [tuiHintShowDelay]="2000">
+      <tui-svg [src]="this.serializeSex(this.$profile().sex)" />
+      <span>{{ this.$profile().sex | sex }}</span>
+    </div>
+  </div>
 </div>

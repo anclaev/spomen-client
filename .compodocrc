@@ -1,0 +1,9 @@
+tsconfig: ./tsconfig.doc.json
+output: ./docs
+name: spomen-client
+language: ru-RU
+assetsFolder: ./public
+theme: gitbook
+hideGenerator: true
+customFavicon: ./public/favicon.ico
+customLogo: ./public/images/logo.svg

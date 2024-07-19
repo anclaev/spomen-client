@@ -6,7 +6,15 @@ import {
   TuiLoaderModule,
 } from '@taiga-ui/core'
 
-import { Component, OnDestroy, OnInit, effect, inject } from '@angular/core'
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+  effect,
+  inject,
+  untracked,
+} from '@angular/core'
+
 import { HttpErrorResponse } from '@angular/common/http'
 import { Router, RouterOutlet } from '@angular/router'
 import { CommonModule } from '@angular/common'
@@ -56,7 +64,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor() {
     effect(() => {
       if (this.auth.$isAuth()) {
-        const { first_name, username } = this.auth.$user()
+        const { first_name, username } = untracked(this.auth.$user)
 
         this.subs.push(
           this.alerts.open(`Привет, ${first_name || username}!`).subscribe()
@@ -66,7 +74,7 @@ export class AppComponent implements OnInit, OnDestroy {
           this.router.navigate(['/'])
         }
       }
-    })
+    }, {})
   }
 
   @Sentry.TraceMethod({ name: 'App.ngOnInit' })
