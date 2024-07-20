@@ -1,1 +1,2 @@
-export * from './getAccount.query'
+export * from './accounts.query'
+export * from './uploads.query'

@@ -1,1 +1,162 @@
-<p>uploads works!</p>
+<form class="uploads-filters" [formGroup]="filters">
+  <tui-input
+    formControlName="name"
+    tuiTextfieldIcon="tuiIconSearch"
+    [tuiTextfieldSize]="'s'"
+    >Название</tui-input
+  >
+  <tui-input-tag
+    formControlName="ext"
+    [placeholder]="'Тип'"
+    tuiTextfieldIcon="tuiIconSliders"
+    [tuiTextfieldSize]="'s'"
+    [rows]="1"
+    >Тип</tui-input-tag
+  >
+  <tui-input-tag
+    formControlName="username"
+    [placeholder]="'Аккаунт'"
+    tuiTextfieldIcon="tuiIconUser"
+    [tuiTextfieldSize]="'s'"
+    (searchChange)="handleUsernameFilterChange($event)"
+    [rows]="1"
+    >Аккаунт
+    <tui-data-list-wrapper
+      *tuiDataList
+      [items]="this.$accountsList()"
+    ></tui-data-list-wrapper
+  ></tui-input-tag>
+  <button class="button uploads__upload" (click)="this.showUploadFile()">
+    <tui-svg src="tuiIconUpload"></tui-svg>
+  </button>
+</form>
+
+<section class="uploads-list">
+  @if (this.$uploadsLoading()) {
+    <div @inOutGrid200>
+      @for (item of this.uploadSkeletonLimit; track $index) {
+        <div class="uploads-list-item">
+          <span [tuiSkeleton]="true"
+            ><tui-icon icon="tuiIconFolderLarge"></tui-icon>
+          </span>
+          <tui-line-clamp
+            [tuiSkeleton]="true"
+            class="uploads-list-item__title"
+            [linesLimit]="1"
+            content="loading"
+          ></tui-line-clamp>
+          <div class="uploads-list-item__meta">
+            <tui-line-clamp
+              [tuiSkeleton]="true"
+              [linesLimit]="1"
+              content="loading"
+            ></tui-line-clamp>
+          </div>
+          <tui-chip
+            [tuiSkeleton]="true"
+            class="uploads-list-item__ext"
+            [attr.data-type]="'primary'"
+            >loading</tui-chip
+          >
+          <a class="uploads-list-item__owner">
+            <tui-avatar
+              avatarUrl="tuiIconUser"
+              [rounded]="true"
+              size="s"
+              [tuiSkeleton]="true"
+            />
+
+            <tui-line-clamp
+              [linesLimit]="1"
+              [tuiSkeleton]="true"
+              content="loading"
+            ></tui-line-clamp>
+          </a>
+          <span class="uploads-list-item__date" [tuiSkeleton]="true"
+            >01.01.2001</span
+          >
+        </div>
+      }
+    </div>
+  } @else {
+    <div @inOutGrid200>
+      @for (upload of this.$uploads(); track $index) {
+        <div class="uploads-list-item">
+          <a [href]="upload.url" target="_blank" tuiHint="Открыть файл"
+            ><tui-icon icon="tuiIconFolderLarge"></tui-icon>
+          </a>
+          <tui-line-clamp
+            class="uploads-list-item__title"
+            (click)="this.showUploadInfo(upload.id)"
+            [linesLimit]="1"
+            [content]="upload.name"
+          ></tui-line-clamp>
+          <div class="uploads-list-item__meta">
+            <tui-line-clamp
+              [linesLimit]="1"
+              [content]="upload.file_name"
+            ></tui-line-clamp>
+          </div>
+          <tui-chip
+            class="uploads-list-item__ext"
+            [attr.data-type]="'primary'"
+            tuiHint="Выбрать тип"
+            [tuiHintShowDelay]="1000"
+            (click)="this.handleSetExt(upload.ext)"
+            >{{ upload.ext }}</tui-chip
+          >
+          <a
+            class="uploads-list-item__owner"
+            [routerLink]="upload.owner ? '/' + upload.owner.username : null"
+            [attr.data-system]="!!!upload.owner"
+            tuiHint="Перейти к аккаунту"
+            [tuiHintShowDelay]="1000"
+          >
+            <tui-avatar
+              [avatarUrl]="
+                upload.owner
+                  ? upload.owner.avatar && upload.owner.avatar.url
+                    ? upload.owner.avatar.url
+                    : upload.owner.vk_avatar
+                  : null
+              "
+              [text]="
+                upload.owner
+                  ? upload.owner.first_name && upload.owner.last_name
+                    ? upload.owner.first_name[0] +
+                      '' +
+                      upload.owner.last_name[0]
+                    : upload.owner.username
+                  : 'S'
+              "
+              [rounded]="true"
+              size="s"
+            />
+
+            <tui-line-clamp
+              [linesLimit]="1"
+              [content]="
+                upload.owner
+                  ? upload.owner.first_name && upload.owner.last_name
+                    ? upload.owner.first_name + ' ' + upload.owner.last_name
+                    : upload.owner.username
+                  : 'Система'
+              "
+            ></tui-line-clamp>
+          </a>
+          <span class="uploads-list-item__date">{{
+            upload.created_at | date: 'd MMMM, YYYY г.'
+          }}</span>
+        </div>
+      }
+    </div>
+  }
+</section>
+@if (this.$uploads().length === 0 && !this.$uploadsLoading()) {
+  <section class="uploads__not-found">
+    <spomen-not-found
+      title="Загрузки не найдены"
+      [showRef]="false"
+    ></spomen-not-found>
+  </section>
+}

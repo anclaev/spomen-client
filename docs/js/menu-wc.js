@@ -113,6 +113,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/TimelinesComponent.html" data-type="entity-link" >TimelinesComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/UploadFileComponent.html" data-type="entity-link" >UploadFileComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/UploadInfoComponent.html" data-type="entity-link" >UploadInfoComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/UploadsComponent.html" data-type="entity-link" >UploadsComponent</a>
                             </li>
                         </ul>
@@ -162,6 +168,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/AccountModel.html" data-type="entity-link" >AccountModel</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/AccountShortModel.html" data-type="entity-link" >AccountShortModel</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/ApiError.html" data-type="entity-link" >ApiError</a>

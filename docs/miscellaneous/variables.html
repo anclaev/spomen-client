@@ -133,7 +133,16 @@
                             <a href="#env" title="src/envs/env.ts" ><b>env</b>&nbsp;&nbsp;&nbsp;(src/.../env.ts)</a>
                         </li>
                         <li>
-                            <a href="#getAccountQuery" title="src/app/core/graphql/queries/getAccount.query.ts" ><b>getAccountQuery</b>&nbsp;&nbsp;&nbsp;(src/.../getAccount.query.ts)</a>
+                            <a href="#getAccountQuery" title="src/app/core/graphql/queries/accounts.query.ts" ><b>getAccountQuery</b>&nbsp;&nbsp;&nbsp;(src/.../accounts.query.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getAccountsInfoByUsernameQuery" title="src/app/core/graphql/queries/accounts.query.ts" ><b>getAccountsInfoByUsernameQuery</b>&nbsp;&nbsp;&nbsp;(src/.../accounts.query.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getUploadById" title="src/app/core/graphql/queries/uploads.query.ts" ><b>getUploadById</b>&nbsp;&nbsp;&nbsp;(src/.../uploads.query.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getUploads" title="src/app/core/graphql/queries/uploads.query.ts" ><b>getUploads</b>&nbsp;&nbsp;&nbsp;(src/.../uploads.query.ts)</a>
                         </li>
                         <li>
                             <a href="#graphqlProvider" title="src/app/core/graphql/graphql.provider.ts" ><b>graphqlProvider</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.provider.ts)</a>
@@ -152,6 +161,12 @@
                         </li>
                         <li>
                             <a href="#inOutAnimation500" title="src/app/common/animations/in-out.animation.ts" ><b>inOutAnimation500</b>&nbsp;&nbsp;&nbsp;(src/.../in-out.animation.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#inOutGridAnimation200" title="src/app/common/animations/in-out-grid.animation.ts" ><b>inOutGridAnimation200</b>&nbsp;&nbsp;&nbsp;(src/.../in-out-grid.animation.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#inOutGridAnimation500" title="src/app/common/animations/in-out-grid.animation.ts" ><b>inOutGridAnimation500</b>&nbsp;&nbsp;&nbsp;(src/.../in-out-grid.animation.ts)</a>
                         </li>
                         <li>
                             <a href="#protectedRoutes" title="src/app/common/components/nav/nav.component.ts" ><b>protectedRoutes</b>&nbsp;&nbsp;&nbsp;(src/.../nav.component.ts)</a>
@@ -491,7 +506,7 @@
         </tbody>
     </table>
 </section>
-    <h3>src/app/core/graphql/queries/getAccount.query.ts</h3>
+    <h3>src/app/core/graphql/queries/accounts.query.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
@@ -507,8 +522,8 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>gql&#x60;
-  query Account($username: String!) {
-    account(username: $username) {
+  query getAccount($username: String!) {
+    account(args: { username: $username }) {
       id
       username
       email
@@ -521,6 +536,140 @@
       first_name
       last_name
       birthday
+    }
+  }
+&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAccountsInfoByUsernameQuery"></a>
+                    <span class="name">
+                        <span ><b>getAccountsInfoByUsernameQuery</b></span>
+                        <a href="#getAccountsInfoByUsernameQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>gql&#x60;
+  query getAccountsInfoByUsername($username: String!) {
+    accounts(filter: { username: { contains: $username } }, size: 5, page: 1) {
+      id
+      username
+      first_name
+      last_name
+    }
+  }
+&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/graphql/queries/uploads.query.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUploadById"></a>
+                    <span class="name">
+                        <span ><b>getUploadById</b></span>
+                        <a href="#getUploadById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>gql&#x60;
+  query getUploadById($id: String!) {
+    upload(where: { id: $id }) {
+      id
+      name
+      ext
+      url
+      bucket
+      is_system
+      path
+      url
+      file_name
+      permissions
+      owner {
+        id
+        username
+        first_name
+        last_name
+        avatar {
+          url
+        }
+        vk_avatar
+      }
+      created_at
+      updated_at
+    }
+  }
+&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUploads"></a>
+                    <span class="name">
+                        <span ><b>getUploads</b></span>
+                        <a href="#getUploads"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>gql&#x60;
+  query getUploads(
+    $size: Float!
+    $page: Float!
+    $owner: [String!]
+    $name: String
+    $ext: [String!]
+  ) {
+    uploads(
+      filter: {
+        owner: { username: { in: $owner } }
+        name: { contains: $name }
+        ext: { in: $ext }
+      }
+      size: $size
+      page: $page
+    ) {
+      id
+      name
+      ext
+      file_name
+      url
+      owner {
+        id
+        username
+        avatar {
+          url
+        }
+        vk_avatar
+        first_name
+        last_name
+      }
+      created_at
     }
   }
 &#x60;</code>
@@ -808,6 +957,135 @@
       style({
         opacity: 0,
         position: &#x27;fixed&#x27;,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      })
+    ),
+  ]),
+])</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/common/animations/in-out-grid.animation.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inOutGridAnimation200"></a>
+                    <span class="name">
+                        <span ><b>inOutGridAnimation200</b></span>
+                        <a href="#inOutGridAnimation200"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>trigger(&#x27;inOutGrid200&#x27;, [
+  transition(&#x27;:enter&#x27;, [
+    style({
+      opacity: 0,
+      position: &#x27;absolute&#x27;,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    }),
+    animate(
+      &#x27;200ms ease-in&#x27;,
+      style({
+        opacity: 1,
+        position: &#x27;absolute&#x27;,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      })
+    ),
+  ]),
+  transition(&#x27;:leave&#x27;, [
+    style({
+      opacity: 1,
+      position: &#x27;absolute&#x27;,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    }),
+    animate(
+      &#x27;200ms ease-in&#x27;,
+      style({
+        opacity: 0,
+        position: &#x27;absolute&#x27;,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      })
+    ),
+  ]),
+])</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inOutGridAnimation500"></a>
+                    <span class="name">
+                        <span ><b>inOutGridAnimation500</b></span>
+                        <a href="#inOutGridAnimation500"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>trigger(&#x27;inOutGrid500&#x27;, [
+  transition(&#x27;:enter&#x27;, [
+    style({
+      opacity: 0,
+      position: &#x27;absolute&#x27;,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    }),
+    animate(
+      &#x27;500ms ease-in&#x27;,
+      style({
+        opacity: 1,
+        position: &#x27;absolute&#x27;,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      })
+    ),
+  ]),
+  transition(&#x27;:leave&#x27;, [
+    style({
+      opacity: 1,
+      position: &#x27;absolute&#x27;,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    }),
+    animate(
+      &#x27;500ms ease-in&#x27;,
+      style({
+        opacity: 0,
+        position: &#x27;absolute&#x27;,
         top: 0,
         left: 0,
         right: 0,

@@ -37,6 +37,7 @@ button {
 .button:active,
 .button:focus {
   border-color: var(--color-accent-dark);
+  transition: 0.2s;
 }
 
 .button:disabled {
@@ -67,6 +68,7 @@ button {
   border-radius: 50px;
   overflow: hidden;
   user-select: none;
+  transition: 0.2s;
 }
 
 .button > span,
@@ -107,9 +109,16 @@ div.tui-autofill:after {
   border-right: none !important;
   border-radius: 0 !important;
   border-bottom: 2px solid var(--color-primary-dark);
+  transition: 0.2s;
 }
 
-div.tui-autofill._focused::after {
+div.tui-autofill:after,
+div[data-appearance='textfield']:after {
+  transition: 0.2s;
+}
+
+div.tui-autofill._focused::after,
+div[data-appearance='textfield']._focused:after {
   border-color: var(--color-accent);
 }
 
@@ -118,7 +127,7 @@ div.t-item {
 }
 
 label.t-placeholder {
-  color: var(--color-background-light) !important;
+  color: var(--tui-text-02) !important;
   margin-bottom: 5px;
 }
 
@@ -148,8 +157,10 @@ tui-chip {
   justify-content: center !important;
 }
 
-tui-chip[data-role='Administrator'] {
+tui-chip[data-role='Administrator'],
+tui-chip[data-type='primary'] {
   border: 1px solid var(--color-accent);
+  transition: 0.2s;
 }
 
 .t-src svg {
@@ -171,4 +182,16 @@ tui-svg[data-fill-path] .t-src svg path {
 
 tui-hint {
   background: var(--color-background-light) !important;
+}
+
+div[data-appearance='textfield']:after {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid var(--color-primary-dark);
+  transition: 0.2s;
+}
+
+._expandable {
+  border-radius: 0 !important;
 }

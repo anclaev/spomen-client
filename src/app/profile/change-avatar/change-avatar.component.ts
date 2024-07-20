@@ -16,10 +16,10 @@ import {
 } from '@taiga-ui/core'
 
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { catchError, of, switchMap, takeLast } from 'rxjs'
 import { TuiFileLike, TuiInputFilesModule } from '@taiga-ui/kit'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus'
+import { catchError, of, switchMap, takeLast } from 'rxjs'
 import { CommonModule } from '@angular/common'
 import * as Sentry from '@sentry/angular'
 
