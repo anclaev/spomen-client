@@ -156,31 +156,14 @@ export class UploadsComponent implements OnInit {
       },
     })
 
-  private uploadsQuery: PaginatedQuery<
-    { uploads: UploadModel[] },
-    { owner?: string[]; name?: string; ext?: string[] }
-  > = this.apollo.watchQuery<
+  private uploadsQuery: QueryRef<
     { uploads: UploadModel[] },
     Pagination & {
       owner?: string[]
       name?: string
       ext?: string[]
     }
-  >({
-    query: getUploads,
-    variables: {
-      size: this.$uploadsSize(),
-      page: this.$uploadsPage(),
-      owner:
-        this.$uploadsOwners().length === 0 ? undefined : this.$uploadsOwners(),
-      name:
-        this.$uploadsName().trim().length === 0
-          ? undefined
-          : this.$uploadsName(),
-      ext: this.$uploadsExt().length === 0 ? undefined : this.$uploadsExt(),
-    },
-    fetchPolicy: 'cache-and-network',
-  })
+  > | null = null
 
   ngOnInit(): void {
     if (this.currentUser) {
@@ -209,6 +192,31 @@ export class UploadsComponent implements OnInit {
           this.$extensionsList.set(res.data.getExtensions)
         },
       })
+
+    this.uploadsQuery = this.apollo.watchQuery<
+      { uploads: UploadModel[] },
+      Pagination & {
+        owner?: string[]
+        name?: string
+        ext?: string[]
+      }
+    >({
+      query: getUploads,
+      variables: {
+        size: this.$uploadsSize(),
+        page: this.$uploadsPage(),
+        owner:
+          this.$uploadsOwners().length === 0
+            ? undefined
+            : this.$uploadsOwners(),
+        name:
+          this.$uploadsName().trim().length === 0
+            ? undefined
+            : this.$uploadsName(),
+        ext: this.$uploadsExt().length === 0 ? undefined : this.$uploadsExt(),
+      },
+      fetchPolicy: 'cache-and-network',
+    })
 
     this.uploadsQuery.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -323,6 +331,8 @@ export class UploadsComponent implements OnInit {
     )
 
   private refetchUploads() {
+    if (!this.uploadsQuery) return
+
     this.$uploadsLoading.set(true)
     this.uploadsQuery.refetch({
       owner:
