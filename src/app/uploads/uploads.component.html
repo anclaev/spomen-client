@@ -11,7 +11,12 @@
     tuiTextfieldIcon="tuiIconSliders"
     [tuiTextfieldSize]="'s'"
     [rows]="1"
-    >Тип</tui-input-tag
+    >Тип
+    <tui-data-list-wrapper
+      *tuiDataList
+      [items]="this.$extensionsList()"
+    ></tui-data-list-wrapper>
+  </tui-input-tag
   >
   <tui-input-tag
     formControlName="username"

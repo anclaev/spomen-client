@@ -65,3 +65,9 @@ export const getUploadById = gql`
     }
   }
 `
+
+export const getExtensions = gql`
+  query getExtensions($size: Float!, $page: Float!) {
+    getExtensions(page: $page, size: $size)
+  }
+`

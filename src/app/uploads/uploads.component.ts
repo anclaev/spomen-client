@@ -52,6 +52,7 @@ import * as Sentry from '@sentry/angular'
 import {
   getAccountsInfoByUsernameQuery,
   getUploads,
+  getExtensions,
   PaginatedQuery,
   Pagination,
 } from '@graphql'
@@ -117,6 +118,8 @@ export class UploadsComponent implements OnInit {
   $accountsFilter: WritableSignal<string> = signal('')
   $$accountFilter: Observable<string> = toObservable(this.$accountsFilter)
 
+  $extensionsList: WritableSignal<string[]> = signal([])
+
   $uploadsOwners: WritableSignal<string[]> = signal([])
   $uploadsName: WritableSignal<string> = signal('')
   $uploadsExt: WritableSignal<string[]> = signal([])
@@ -143,6 +146,15 @@ export class UploadsComponent implements OnInit {
     },
     fetchPolicy: 'cache-first',
   })
+
+  private extenstionsQuery: PaginatedQuery<{ getExtensions: string[] }, {}> =
+    this.apollo.watchQuery<{ getExtensions: string[] }, Pagination>({
+      query: getExtensions,
+      variables: {
+        size: 10,
+        page: 1,
+      },
+    })
 
   private uploadsQuery: PaginatedQuery<
     { uploads: UploadModel[] },
@@ -187,6 +199,14 @@ export class UploadsComponent implements OnInit {
             .open('Сервер временно недоступен', { status: 'error' })
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe()
+        },
+      })
+
+    this.extenstionsQuery.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (res) => {
+          this.$extensionsList.set(res.data.getExtensions)
         },
       })
 
