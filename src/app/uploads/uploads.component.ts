@@ -128,7 +128,7 @@ export class UploadsComponent implements OnInit {
 
   uploadSkeletonLimit = new Array(10)
 
-  tagValidator: (tag: string) => boolean = (tag) => true
+  // tagValidator: (tag: string) => boolean = () => true
 
   private accountsQuery: QueryRef<
     { accounts: AccountShortModel[] },
@@ -305,9 +305,13 @@ export class UploadsComponent implements OnInit {
   private refetchUploads() {
     this.$uploadsLoading.set(true)
     this.uploadsQuery.refetch({
-      owner: this.$uploadsOwners(),
-      name: this.$uploadsName(),
-      ext: this.$uploadsExt(),
+      owner:
+        this.$uploadsOwners().length === 0 ? undefined : this.$uploadsOwners(),
+      name:
+        this.$uploadsName().trim().length === 0
+          ? undefined
+          : this.$uploadsName().trim(),
+      ext: this.$uploadsExt().length === 0 ? undefined : this.$uploadsExt(),
       page: this.$uploadsPage(),
       size: this.$uploadsSize(),
     })

@@ -9,7 +9,7 @@ export const getUploads = gql`
     $ext: [String!]
   ) {
     uploads(
-      filter: {
+      filters: {
         owner: { username: { in: $owner } }
         name: { contains: $name }
         ext: { in: $ext }

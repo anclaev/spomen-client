@@ -108,7 +108,7 @@
           <a
             class="uploads-list-item__owner"
             [routerLink]="upload.owner ? '/' + upload.owner.username : null"
-            [attr.data-system]="!!!upload.owner"
+            [attr.data-system]="!upload.owner"
             tuiHint="Перейти к аккаунту"
             [tuiHintShowDelay]="1000"
           >

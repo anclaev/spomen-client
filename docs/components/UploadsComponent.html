@@ -296,9 +296,6 @@
                                 <a href="#showUploadInfoDialog" >showUploadInfoDialog</a>
                             </li>
                             <li>
-                                <a href="#tagValidator" >tagValidator</a>
-                            </li>
-                            <li>
                                 <a href="#uploadSkeletonLimit" >uploadSkeletonLimit</a>
                             </li>
                             <li>
@@ -1309,37 +1306,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="tagValidator"></a>
-                    <span class="name">
-                        <span ><b>tagValidator</b></span>
-                        <a href="#tagValidator"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/app/uploads/uploads.component.ts:131</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="uploadSkeletonLimit"></a>
                     <span class="name">
                         <span ><b>uploadSkeletonLimit</b></span>
@@ -1550,7 +1516,7 @@ export class UploadsComponent implements OnInit {
 
   uploadSkeletonLimit &#x3D; new Array(10)
 
-  tagValidator: (tag: string) &#x3D;&gt; boolean &#x3D; (tag) &#x3D;&gt; true
+  // tagValidator: (tag: string) &#x3D;&gt; boolean &#x3D; () &#x3D;&gt; true
 
   private accountsQuery: QueryRef&lt;
     { accounts: AccountShortModel[] },
@@ -1727,9 +1693,13 @@ export class UploadsComponent implements OnInit {
   private refetchUploads() {
     this.$uploadsLoading.set(true)
     this.uploadsQuery.refetch({
-      owner: this.$uploadsOwners(),
-      name: this.$uploadsName(),
-      ext: this.$uploadsExt(),
+      owner:
+        this.$uploadsOwners().length &#x3D;&#x3D;&#x3D; 0 ? undefined : this.$uploadsOwners(),
+      name:
+        this.$uploadsName().trim().length &#x3D;&#x3D;&#x3D; 0
+          ? undefined
+          : this.$uploadsName().trim(),
+      ext: this.$uploadsExt().length &#x3D;&#x3D;&#x3D; 0 ? undefined : this.$uploadsExt(),
       page: this.$uploadsPage(),
       size: this.$uploadsSize(),
     })
@@ -1849,7 +1819,7 @@ export class UploadsComponent implements OnInit {
           &lt;a
             class&#x3D;&quot;uploads-list-item__owner&quot;
             [routerLink]&#x3D;&quot;upload.owner ? &#x27;/&#x27; + upload.owner.username : null&quot;
-            [attr.data-system]&#x3D;&quot;!!!upload.owner&quot;
+            [attr.data-system]&#x3D;&quot;!upload.owner&quot;
             tuiHint&#x3D;&quot;Перейти к аккаунту&quot;
             [tuiHintShowDelay]&#x3D;&quot;1000&quot;
           &gt;
@@ -1930,7 +1900,7 @@ export class UploadsComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form class="uploads-filters" [formGroup]="filters">  <tui-input    formControlName="name"    tuiTextfieldIcon="tuiIconSearch"    [tuiTextfieldSize]="\'s\'"    >Название</tui-input  >  <tui-input-tag    formControlName="ext"    [placeholder]="\'Тип\'"    tuiTextfieldIcon="tuiIconSliders"    [tuiTextfieldSize]="\'s\'"    [rows]="1"    >Тип</tui-input-tag  >  <tui-input-tag    formControlName="username"    [placeholder]="\'Аккаунт\'"    tuiTextfieldIcon="tuiIconUser"    [tuiTextfieldSize]="\'s\'"    (searchChange)="handleUsernameFilterChange($event)"    [rows]="1"    >Аккаунт    <tui-data-list-wrapper      *tuiDataList      [items]="this.$accountsList()"    ></tui-data-list-wrapper  ></tui-input-tag>  <button class="button uploads__upload" (click)="this.showUploadFile()">    <tui-svg src="tuiIconUpload"></tui-svg>  </button></form><section class="uploads-list">  @if (this.$uploadsLoading()) {    <div @inOutGrid200>      @for (item of this.uploadSkeletonLimit; track $index) {        <div class="uploads-list-item">          <span [tuiSkeleton]="true"            ><tui-icon icon="tuiIconFolderLarge"></tui-icon>          </span>          <tui-line-clamp            [tuiSkeleton]="true"            class="uploads-list-item__title"            [linesLimit]="1"            content="loading"          ></tui-line-clamp>          <div class="uploads-list-item__meta">            <tui-line-clamp              [tuiSkeleton]="true"              [linesLimit]="1"              content="loading"            ></tui-line-clamp>          </div>          <tui-chip            [tuiSkeleton]="true"            class="uploads-list-item__ext"            [attr.data-type]="\'primary\'"            >loading</tui-chip          >          <a class="uploads-list-item__owner">            <tui-avatar              avatarUrl="tuiIconUser"              [rounded]="true"              size="s"              [tuiSkeleton]="true"            />            <tui-line-clamp              [linesLimit]="1"              [tuiSkeleton]="true"              content="loading"            ></tui-line-clamp>          </a>          <span class="uploads-list-item__date" [tuiSkeleton]="true"            >01.01.2001</span          >        </div>      }    </div>  } @else {    <div @inOutGrid200>      @for (upload of this.$uploads(); track $index) {        <div class="uploads-list-item">          <a [href]="upload.url" target="_blank" tuiHint="Открыть файл"            ><tui-icon icon="tuiIconFolderLarge"></tui-icon>          </a>          <tui-line-clamp            class="uploads-list-item__title"            (click)="this.showUploadInfo(upload.id)"            [linesLimit]="1"            [content]="upload.name"          ></tui-line-clamp>          <div class="uploads-list-item__meta">            <tui-line-clamp              [linesLimit]="1"              [content]="upload.file_name"            ></tui-line-clamp>          </div>          <tui-chip            class="uploads-list-item__ext"            [attr.data-type]="\'primary\'"            tuiHint="Выбрать тип"            [tuiHintShowDelay]="1000"            (click)="this.handleSetExt(upload.ext)"            >{{ upload.ext }}</tui-chip          >          <a            class="uploads-list-item__owner"            [routerLink]="upload.owner ? \'/\' + upload.owner.username : null"            [attr.data-system]="!!!upload.owner"            tuiHint="Перейти к аккаунту"            [tuiHintShowDelay]="1000"          >            <tui-avatar              [avatarUrl]="                upload.owner                  ? upload.owner.avatar && upload.owner.avatar.url                    ? upload.owner.avatar.url                    : upload.owner.vk_avatar                  : null              "              [text]="                upload.owner                  ? upload.owner.first_name && upload.owner.last_name                    ? upload.owner.first_name[0] +                      \'\' +                      upload.owner.last_name[0]                    : upload.owner.username                  : \'S\'              "              [rounded]="true"              size="s"            />            <tui-line-clamp              [linesLimit]="1"              [content]="                upload.owner                  ? upload.owner.first_name && upload.owner.last_name                    ? upload.owner.first_name + \' \' + upload.owner.last_name                    : upload.owner.username                  : \'Система\'              "            ></tui-line-clamp>          </a>          <span class="uploads-list-item__date">{{            upload.created_at | date: \'d MMMM, YYYY г.\'          }}</span>        </div>      }    </div>  }</section>@if (this.$uploads().length === 0 && !this.$uploadsLoading()) {  <section class="uploads__not-found">    <spomen-not-found      title="Загрузки не найдены"      [showRef]="false"    ></spomen-not-found>  </section>}</div>'
+        var COMPONENT_TEMPLATE = '<div><form class="uploads-filters" [formGroup]="filters">  <tui-input    formControlName="name"    tuiTextfieldIcon="tuiIconSearch"    [tuiTextfieldSize]="\'s\'"    >Название</tui-input  >  <tui-input-tag    formControlName="ext"    [placeholder]="\'Тип\'"    tuiTextfieldIcon="tuiIconSliders"    [tuiTextfieldSize]="\'s\'"    [rows]="1"    >Тип</tui-input-tag  >  <tui-input-tag    formControlName="username"    [placeholder]="\'Аккаунт\'"    tuiTextfieldIcon="tuiIconUser"    [tuiTextfieldSize]="\'s\'"    (searchChange)="handleUsernameFilterChange($event)"    [rows]="1"    >Аккаунт    <tui-data-list-wrapper      *tuiDataList      [items]="this.$accountsList()"    ></tui-data-list-wrapper  ></tui-input-tag>  <button class="button uploads__upload" (click)="this.showUploadFile()">    <tui-svg src="tuiIconUpload"></tui-svg>  </button></form><section class="uploads-list">  @if (this.$uploadsLoading()) {    <div @inOutGrid200>      @for (item of this.uploadSkeletonLimit; track $index) {        <div class="uploads-list-item">          <span [tuiSkeleton]="true"            ><tui-icon icon="tuiIconFolderLarge"></tui-icon>          </span>          <tui-line-clamp            [tuiSkeleton]="true"            class="uploads-list-item__title"            [linesLimit]="1"            content="loading"          ></tui-line-clamp>          <div class="uploads-list-item__meta">            <tui-line-clamp              [tuiSkeleton]="true"              [linesLimit]="1"              content="loading"            ></tui-line-clamp>          </div>          <tui-chip            [tuiSkeleton]="true"            class="uploads-list-item__ext"            [attr.data-type]="\'primary\'"            >loading</tui-chip          >          <a class="uploads-list-item__owner">            <tui-avatar              avatarUrl="tuiIconUser"              [rounded]="true"              size="s"              [tuiSkeleton]="true"            />            <tui-line-clamp              [linesLimit]="1"              [tuiSkeleton]="true"              content="loading"            ></tui-line-clamp>          </a>          <span class="uploads-list-item__date" [tuiSkeleton]="true"            >01.01.2001</span          >        </div>      }    </div>  } @else {    <div @inOutGrid200>      @for (upload of this.$uploads(); track $index) {        <div class="uploads-list-item">          <a [href]="upload.url" target="_blank" tuiHint="Открыть файл"            ><tui-icon icon="tuiIconFolderLarge"></tui-icon>          </a>          <tui-line-clamp            class="uploads-list-item__title"            (click)="this.showUploadInfo(upload.id)"            [linesLimit]="1"            [content]="upload.name"          ></tui-line-clamp>          <div class="uploads-list-item__meta">            <tui-line-clamp              [linesLimit]="1"              [content]="upload.file_name"            ></tui-line-clamp>          </div>          <tui-chip            class="uploads-list-item__ext"            [attr.data-type]="\'primary\'"            tuiHint="Выбрать тип"            [tuiHintShowDelay]="1000"            (click)="this.handleSetExt(upload.ext)"            >{{ upload.ext }}</tui-chip          >          <a            class="uploads-list-item__owner"            [routerLink]="upload.owner ? \'/\' + upload.owner.username : null"            [attr.data-system]="!upload.owner"            tuiHint="Перейти к аккаунту"            [tuiHintShowDelay]="1000"          >            <tui-avatar              [avatarUrl]="                upload.owner                  ? upload.owner.avatar && upload.owner.avatar.url                    ? upload.owner.avatar.url                    : upload.owner.vk_avatar                  : null              "              [text]="                upload.owner                  ? upload.owner.first_name && upload.owner.last_name                    ? upload.owner.first_name[0] +                      \'\' +                      upload.owner.last_name[0]                    : upload.owner.username                  : \'S\'              "              [rounded]="true"              size="s"            />            <tui-line-clamp              [linesLimit]="1"              [content]="                upload.owner                  ? upload.owner.first_name && upload.owner.last_name                    ? upload.owner.first_name + \' \' + upload.owner.last_name                    : upload.owner.username                  : \'Система\'              "            ></tui-line-clamp>          </a>          <span class="uploads-list-item__date">{{            upload.created_at | date: \'d MMMM, YYYY г.\'          }}</span>        </div>      }    </div>  }</section>@if (this.$uploads().length === 0 && !this.$uploadsLoading()) {  <section class="uploads__not-found">    <spomen-not-found      title="Загрузки не найдены"      [showRef]="false"    ></spomen-not-found>  </section>}</div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'UploadsComponent'};

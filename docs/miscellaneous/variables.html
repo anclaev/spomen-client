@@ -560,7 +560,7 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>gql&#x60;
   query getAccountsInfoByUsername($username: String!) {
-    accounts(filter: { username: { contains: $username } }, size: 5, page: 1) {
+    accounts(filters: { username: { contains: $username } }, size: 5, page: 1) {
       id
       username
       first_name
@@ -646,7 +646,7 @@
     $ext: [String!]
   ) {
     uploads(
-      filter: {
+      filters: {
         owner: { username: { in: $owner } }
         name: { contains: $name }
         ext: { in: $ext }

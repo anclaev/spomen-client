@@ -21,7 +21,7 @@ export const getAccountQuery = gql`
 
 export const getAccountsInfoByUsernameQuery = gql`
   query getAccountsInfoByUsername($username: String!) {
-    accounts(filter: { username: { contains: $username } }, size: 5, page: 1) {
+    accounts(filters: { username: { contains: $username } }, size: 5, page: 1) {
       id
       username
       first_name
