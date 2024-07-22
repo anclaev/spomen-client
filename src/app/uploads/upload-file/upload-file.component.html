@@ -1,1 +1,56 @@
-<p>upload-file works!</p>
+<tui-loader
+  [inheritColor]="true"
+  [overlay]="true"
+  [showLoader]="this.isLoading()"
+>
+  <div class="upload-file-container" [attr.data-step]="this.currentStep" [attr.data-selected]="!!this.control.value">
+    @if (this.currentStep === 1) {
+      <div class="upload-file-input" @enterLeave>
+        <tui-input-files
+          *ngIf="!control.value"
+          [formControl]="control"
+          [maxFileSize]="1048576"
+        >
+          <input title="Выберите файл" tuiInputFiles />
+        </tui-input-files>
+        <tui-files class="tui-space_top-1">
+          <tui-file
+            *ngIf="control.valueChanges | async as file"
+            [file]="file"
+            (removed)="removeFile()"
+          ></tui-file>
+        </tui-files>
+        @if (this.control.value) {
+          <button class="button" [disabled]="!this.control.value" (click)="nextStep()"><span>Далее</span></button>
+        }
+      </div>
+    }
+
+    @if (this.currentStep === 2) {
+      <div @enterLeave [formGroup]="this.fileForm" class="upload-file-info">
+        <div class="upload-file-info__row">
+          <tui-input-inline formControlName="name">
+          </tui-input-inline>
+          <tui-chip size="m">{{ this.fileForm.controls['ext'].value }}</tui-chip>
+        </div>
+        <div class="upload-file-info__row">
+          <div class="upload-file-info__col">
+            <div class="upload-file-toggle">
+              <span>Сжать</span>
+              <tui-toggle formControlName="compress" size="l"></tui-toggle>
+            </div>
+            <div class="upload-file-toggle">
+              <span>Личный</span>
+              <tui-toggle formControlName="private" size="l"></tui-toggle>
+            </div>
+          </div>
+          <div class="upload-file-info__col">
+            <button class="button" (click)="uploadFile()">
+              <span>Загрузить</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</tui-loader>
