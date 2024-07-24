@@ -147,8 +147,8 @@ export class UploadsComponent implements OnInit {
     fetchPolicy: 'cache-first',
   })
 
-  private extenstionsQuery: PaginatedQuery<{ getExtensions: string[] }, {}> =
-    this.apollo.watchQuery<{ getExtensions: string[] }, Pagination>({
+  private extenstionsQuery: PaginatedQuery<{ uploadExtensions: string[] }, {}> =
+    this.apollo.watchQuery<{ uploadExtensions: string[] }, Pagination>({
       query: getExtensions,
       variables: {
         size: 10,
@@ -189,7 +189,7 @@ export class UploadsComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (res) => {
-          this.$extensionsList.set(res.data.getExtensions)
+          this.$extensionsList.set(res.data.uploadExtensions)
         },
       })
 

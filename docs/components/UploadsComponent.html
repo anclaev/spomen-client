@@ -1247,7 +1247,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>this.apollo.watchQuery&lt;{ getExtensions: string[] }, Pagination&gt;({
+                        <i>Default value : </i><code>this.apollo.watchQuery&lt;{ uploadExtensions: string[] }, Pagination&gt;({
       query: getExtensions,
       variables: {
         size: 10,
@@ -1590,8 +1590,8 @@ export class UploadsComponent implements OnInit {
     fetchPolicy: &#x27;cache-first&#x27;,
   })
 
-  private extenstionsQuery: PaginatedQuery&lt;{ getExtensions: string[] }, {}&gt; &#x3D;
-    this.apollo.watchQuery&lt;{ getExtensions: string[] }, Pagination&gt;({
+  private extenstionsQuery: PaginatedQuery&lt;{ uploadExtensions: string[] }, {}&gt; &#x3D;
+    this.apollo.watchQuery&lt;{ uploadExtensions: string[] }, Pagination&gt;({
       query: getExtensions,
       variables: {
         size: 10,
@@ -1632,7 +1632,7 @@ export class UploadsComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (res) &#x3D;&gt; {
-          this.$extensionsList.set(res.data.getExtensions)
+          this.$extensionsList.set(res.data.uploadExtensions)
         },
       })
 
