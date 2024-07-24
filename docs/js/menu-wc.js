@@ -153,6 +153,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <li class="link">
                                     <a href="injectables/ConfigService.html" data-type="entity-link" >ConfigService</a>
                                 </li>
+                                <li class="link">
+                                    <a href="injectables/UploadService.html" data-type="entity-link" >UploadService</a>
+                                </li>
                             </ul>
                         </li>
                     <li class="chapter">
@@ -183,6 +186,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/Env.html" data-type="entity-link" >Env</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/FileParams.html" data-type="entity-link" >FileParams</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/GetAccountModel.html" data-type="entity-link" >GetAccountModel</a>

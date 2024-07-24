@@ -144,6 +144,12 @@
 
 
 
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                                <code><a href="../injectables/UploadService.html" target="_self" >UploadService</a></code>
+                </td>
+            </tr>
 
 
             <tr>
@@ -168,6 +174,9 @@
                             <code>TuiInputInlineModule</code>
                             <code>TuiToggleModule</code>
                             <code>TuiChipModule</code>
+                            <code>TuiSvgModule</code>
+                            <code>TuiLineClampModule</code>
+                            <code>TuiLinkModule</code>
                 </td>
             </tr>
 
@@ -207,6 +216,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#alerts" >alerts</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Readonly</span>
                                 <a href="#control" >control</a>
                             </li>
@@ -214,11 +227,26 @@
                                 <a href="#currentStep" >currentStep</a>
                             </li>
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroyRef" >destroyRef</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Readonly</span>
                                 <a href="#fileForm" >fileForm</a>
                             </li>
                             <li>
                                 <a href="#isLoading" >isLoading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#upload" >upload</a>
+                            </li>
+                            <li>
+                                <a href="#uploaded" >uploaded</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#user" >user</a>
                             </li>
                         </ul>
                     </td>
@@ -286,8 +314,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="92"
+                                    class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:92</a></div>
                         </td>
                     </tr>
 
@@ -323,8 +351,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="51"
-                                    class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:51</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:84</a></div>
                         </td>
                     </tr>
 
@@ -360,8 +388,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="55"
-                                    class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:55</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:88</a></div>
                         </td>
                     </tr>
 
@@ -397,8 +425,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:65</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="105"
+                                    class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:105</a></div>
                         </td>
                     </tr>
 
@@ -424,6 +452,32 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="alerts"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>alerts</b></span>
+                        <a href="#alerts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(TuiAlertService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="control"></a>
                     <span class="name">
                             <span class="modifier">Readonly</span>
@@ -439,7 +493,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:40</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:71</a></div>
                         </td>
                     </tr>
 
@@ -470,7 +524,33 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:49</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroyRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroyRef</b></span>
+                        <a href="#destroyRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(DestroyRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:65</a></div>
                         </td>
                     </tr>
 
@@ -492,7 +572,9 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>new FormGroup({
-    name: new FormControl(&#x27;avatar&#x27;),
+    name: new FormControl(&#x27;file&#x27;, {
+      validators: [Validators.required, Validators.minLength(2)],
+    }),
     ext: new FormControl(&#x27;.png&#x27;),
     compress: new FormControl(true),
     private: new FormControl(false),
@@ -501,7 +583,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:42</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:73</a></div>
                         </td>
                     </tr>
 
@@ -532,7 +614,102 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="upload"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>upload</b></span>
+                        <a href="#upload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/UploadService.html" target="_self" >UploadService</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(UploadService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uploaded"></a>
+                    <span class="name">
+                        <span ><b>uploaded</b></span>
+                        <a href="#uploaded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/UploadModel.html" target="_self" >WritableSignal&lt;UploadModel | null&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>user</b></span>
+                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/AuthenticatedUser.html" target="_self" >AuthenticatedUser</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(AuthService).$user()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/uploads/upload-file/upload-file.component.ts:63</a></div>
                         </td>
                     </tr>
 
@@ -549,18 +726,40 @@
   TuiFileLike,
   TuiInputFilesModule,
   TuiInputInlineModule,
+  TuiLineClampModule,
   TuiStepperModule,
   TuiToggleModule,
 } from &#x27;@taiga-ui/kit&#x27;
 
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;
-import { Component, OnInit, signal, WritableSignal } from &#x27;@angular/core&#x27;
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from &#x27;@angular/forms&#x27;
+import {
+  Component,
+  DestroyRef,
+  inject,
+  OnInit,
+  signal,
+  WritableSignal,
+} from &#x27;@angular/core&#x27;
+import {
+  TuiAlertService,
+  TuiLoaderModule,
+  TuiSvgModule,
+  TuiLinkModule,
+} from &#x27;@taiga-ui/core&#x27;
+import { takeUntilDestroyed } from &#x27;@angular/core/rxjs-interop&#x27;
 import { TuiChipModule } from &#x27;@taiga-ui/experimental&#x27;
-import { TuiLoaderModule } from &#x27;@taiga-ui/core&#x27;
 import { CommonModule } from &#x27;@angular/common&#x27;
 import * as Sentry from &#x27;@sentry/angular&#x27;
 
-import { enterLeaveAnimation } from &#x27;@animations&#x27;
+import { AuthService, UploadService } from &#x27;@services&#x27;
+import { AuthenticatedUser } from &#x27;@interfaces&#x27;
+import { UploadModel } from &#x27;@models&#x27;
 
 @Component({
   selector: &#x27;spomen-upload-file&#x27;,
@@ -574,20 +773,31 @@ import { enterLeaveAnimation } from &#x27;@animations&#x27;
     TuiStepperModule,
     TuiInputInlineModule,
     TuiToggleModule,
-    TuiChipModule
+    TuiChipModule,
+    TuiSvgModule,
+    TuiLineClampModule,
+    TuiLinkModule,
   ],
-  animations: [enterLeaveAnimation],
+  providers: [UploadService],
   templateUrl: &#x27;./upload-file.component.html&#x27;,
   styleUrl: &#x27;./upload-file.component.scss&#x27;,
 })
 @Sentry.TraceClass({ name: &#x27;UploadFile&#x27; })
 export class UploadFileComponent implements OnInit {
+  private user: AuthenticatedUser &#x3D; inject(AuthService).$user()
+  private upload: UploadService &#x3D; inject(UploadService)
+  private destroyRef &#x3D; inject(DestroyRef)
+  private alerts &#x3D; inject(TuiAlertService)
+
   isLoading: WritableSignal&lt;boolean&gt; &#x3D; signal(false)
+  uploaded: WritableSignal&lt;UploadModel | null&gt; &#x3D; signal(null)
 
   readonly control &#x3D; new FormControl&lt;TuiFileLike | null&gt;(null)
 
   readonly fileForm &#x3D; new FormGroup({
-    name: new FormControl(&#x27;avatar&#x27;),
+    name: new FormControl(&#x27;file&#x27;, {
+      validators: [Validators.required, Validators.minLength(2)],
+    }),
     ext: new FormControl(&#x27;.png&#x27;),
     compress: new FormControl(true),
     private: new FormControl(false),
@@ -604,33 +814,78 @@ export class UploadFileComponent implements OnInit {
   }
 
   nextStep() {
-    if (this.control.value) {
-      this.currentStep++
+    if (!this.control.value) {
+      return
     }
+
+    const selectedFile &#x3D; this.upload.getFileParams(this.control.value)
+
+    this.fileForm.controls[&#x27;name&#x27;].setValue(selectedFile.name)
+    this.fileForm.controls[&#x27;ext&#x27;].setValue(&#x27;.&#x27; + selectedFile.ext)
+
+    this.currentStep++
   }
 
   uploadFile() {
+    if (
+      !this.fileForm.controls[&#x27;name&#x27;].valid ||
+      this.fileForm.controls[&#x27;name&#x27;].value!.trim().length &#x3D;&#x3D;&#x3D; 0
+    ) {
+      this.alerts
+        .open(&#x27;Название файла не может быть меньше 2 символов&#x27;)
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe()
+
+      return
+    }
+
+    const isCustomName &#x3D;
+      this.control.value!.name !&#x3D;&#x3D;
+      this.fileForm.controls[&#x27;name&#x27;].value! +
+        &#x27;&#x27; +
+        this.fileForm.controls[&#x27;ext&#x27;].value!
+
     this.isLoading.set(true)
+
+    this.upload
+      .uploadFile({
+        file: this.control.value!,
+        compress: this.fileForm.controls[&#x27;compress&#x27;].value!,
+        private: this.fileForm.controls[&#x27;private&#x27;].value!,
+        path: this.user.id!,
+        name: isCustomName ? this.fileForm.controls[&#x27;name&#x27;].value! : undefined,
+      })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (res) &#x3D;&gt; {
+          this.isLoading.set(false)
+
+          this.uploaded.set(res)
+
+          this.alerts
+            .open(&#x27;Файл успешно загружен&#x27;, {
+              status: &#x27;success&#x27;,
+            })
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe()
+
+          this.currentStep++
+        },
+        error: () &#x3D;&gt; {
+          this.isLoading.set(false)
+
+          this.alerts
+            .open(&#x27;Ошибка загрузки файла&#x27;, {
+              status: &#x27;error&#x27;,
+            })
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe()
+
+          // TODO: Обработка превышенного лимита файлов
+        },
+      })
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </code></pre>
     </div>
 
@@ -641,56 +896,82 @@ export class UploadFileComponent implements OnInit {
   [showLoader]&#x3D;&quot;this.isLoading()&quot;
 &gt;
   &lt;div class&#x3D;&quot;upload-file-container&quot; [attr.data-step]&#x3D;&quot;this.currentStep&quot; [attr.data-selected]&#x3D;&quot;!!this.control.value&quot;&gt;
-    @if (this.currentStep &#x3D;&#x3D;&#x3D; 1) {
-      &lt;div class&#x3D;&quot;upload-file-input&quot; @enterLeave&gt;
-        &lt;tui-input-files
-          *ngIf&#x3D;&quot;!control.value&quot;
-          [formControl]&#x3D;&quot;control&quot;
-          [maxFileSize]&#x3D;&quot;1048576&quot;
-        &gt;
-          &lt;input title&#x3D;&quot;Выберите файл&quot; tuiInputFiles /&gt;
-        &lt;/tui-input-files&gt;
-        &lt;tui-files class&#x3D;&quot;tui-space_top-1&quot;&gt;
-          &lt;tui-file
-            *ngIf&#x3D;&quot;control.valueChanges | async as file&quot;
-            [file]&#x3D;&quot;file&quot;
-            (removed)&#x3D;&quot;removeFile()&quot;
-          &gt;&lt;/tui-file&gt;
-        &lt;/tui-files&gt;
-        @if (this.control.value) {
-          &lt;button class&#x3D;&quot;button&quot; [disabled]&#x3D;&quot;!this.control.value&quot; (click)&#x3D;&quot;nextStep()&quot;&gt;&lt;span&gt;Далее&lt;/span&gt;&lt;/button&gt;
-        }
-      &lt;/div&gt;
-    }
+    @switch (this.currentStep) {
+      @case (1) {
+        &lt;ng-container [ngTemplateOutlet]&#x3D;&quot;step1&quot;/&gt;
+      }
 
-    @if (this.currentStep &#x3D;&#x3D;&#x3D; 2) {
-      &lt;div @enterLeave [formGroup]&#x3D;&quot;this.fileForm&quot; class&#x3D;&quot;upload-file-info&quot;&gt;
-        &lt;div class&#x3D;&quot;upload-file-info__row&quot;&gt;
-          &lt;tui-input-inline formControlName&#x3D;&quot;name&quot;&gt;
-          &lt;/tui-input-inline&gt;
-          &lt;tui-chip size&#x3D;&quot;m&quot;&gt;{{ this.fileForm.controls[&#x27;ext&#x27;].value }}&lt;/tui-chip&gt;
-        &lt;/div&gt;
-        &lt;div class&#x3D;&quot;upload-file-info__row&quot;&gt;
-          &lt;div class&#x3D;&quot;upload-file-info__col&quot;&gt;
-            &lt;div class&#x3D;&quot;upload-file-toggle&quot;&gt;
-              &lt;span&gt;Сжать&lt;/span&gt;
-              &lt;tui-toggle formControlName&#x3D;&quot;compress&quot; size&#x3D;&quot;l&quot;&gt;&lt;/tui-toggle&gt;
+      @case (2) {
+        &lt;div [formGroup]&#x3D;&quot;this.fileForm&quot; class&#x3D;&quot;upload-file-info&quot;&gt;
+          &lt;div class&#x3D;&quot;upload-file-info__row&quot;&gt;
+            &lt;tui-input-inline formControlName&#x3D;&quot;name&quot;&gt;
+            &lt;/tui-input-inline&gt;
+            &lt;tui-chip size&#x3D;&quot;m&quot;&gt;{{ this.fileForm.controls[&#x27;ext&#x27;].value }}&lt;/tui-chip&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;upload-file-info__row&quot;&gt;
+            &lt;div class&#x3D;&quot;upload-file-info__col&quot;&gt;
+              &lt;div class&#x3D;&quot;upload-file-toggle&quot;&gt;
+                &lt;span&gt;Сжать&lt;/span&gt;
+                &lt;tui-toggle formControlName&#x3D;&quot;compress&quot; size&#x3D;&quot;l&quot;&gt;&lt;/tui-toggle&gt;
+              &lt;/div
+              &lt;div class&#x3D;&quot;upload-file-toggle&quot;&gt;
+                &lt;span&gt;Личный&lt;/span&gt;
+                &lt;tui-toggle formControlName&#x3D;&quot;private&quot; size&#x3D;&quot;l&quot;&gt;&lt;/tui-toggle&gt;
+              &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class&#x3D;&quot;upload-file-toggle&quot;&gt;
-              &lt;span&gt;Личный&lt;/span&gt;
-              &lt;tui-toggle formControlName&#x3D;&quot;private&quot; size&#x3D;&quot;l&quot;&gt;&lt;/tui-toggle&gt;
+            &lt;div class&#x3D;&quot;upload-file-info__col&quot;&gt;
+              &lt;button class&#x3D;&quot;button&quot; (click)&#x3D;&quot;uploadFile()&quot;&gt;
+                &lt;span&gt;Загрузить&lt;/span&gt;
+              &lt;/button&gt;
             &lt;/div&gt;
           &lt;/div&gt;
-          &lt;div class&#x3D;&quot;upload-file-info__col&quot;&gt;
-            &lt;button class&#x3D;&quot;button&quot; (click)&#x3D;&quot;uploadFile()&quot;&gt;
-              &lt;span&gt;Загрузить&lt;/span&gt;
-            &lt;/button&gt;
-          &lt;/div&gt;
         &lt;/div&gt;
-      &lt;/div&gt;
+      }
+
+      @case (3) {
+            &lt;div class&#x3D;&quot;upload-file-result__title&quot;&gt;
+              &lt;tui-svg src&#x3D;&quot;tuiIconCheckCircleLarge&quot; /&gt;
+              &lt;span&gt;Файл успешно загружен&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;upload-file-result__grid&quot;&gt;
+              &lt;tui-chip&gt;Название&lt;/tui-chip&gt;
+              &lt;tui-line-clamp [linesLimit]&#x3D;&quot;1&quot; [content]&#x3D;&quot;this.uploaded() ? this.uploaded()!.name! : &#x27;name&#x27;&quot;/&gt;
+              &lt;tui-chip&gt;Файл&lt;/tui-chip&gt;
+              &lt;tui-line-clamp [linesLimit]&#x3D;&quot;1&quot; [content]&#x3D;&quot;this.uploaded() ? this.uploaded()!.file_name!+&#x27;.&#x27;+this.uploaded()!.ext! : &#x27;file_name&#x27;&quot; /&gt;
+              &lt;tui-chip&gt;Ссылка&lt;/tui-chip&gt;
+              &lt;a tuiLink [href]&#x3D;&quot;this.uploaded() ? this.uploaded()!.url! : &#x27;#&#x27;&quot; target&#x3D;&quot;_blank&quot;&gt;
+              &lt;tui-line-clamp [linesLimit]&#x3D;&quot;1&quot; [content]&#x3D;&quot;this.uploaded() ? this.uploaded()!.url! : &#x27;url&#x27;&quot;/&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+      }
+      @default {
+        &lt;ng-container [ngTemplateOutlet]&#x3D;&quot;step1&quot;/&gt;
+      }
     }
   &lt;/div&gt;
 &lt;/tui-loader&gt;
+
+&lt;ng-template #step1&gt;
+  &lt;div class&#x3D;&quot;upload-file-input&quot;&gt;
+    &lt;tui-input-files
+      *ngIf&#x3D;&quot;!control.value&quot;
+      [formControl]&#x3D;&quot;control&quot;
+      [maxFileSize]&#x3D;&quot;1048576&quot;
+    &gt;
+      &lt;input title&#x3D;&quot;Выберите файл&quot; tuiInputFiles /&gt;
+    &lt;/tui-input-files&gt;
+    &lt;tui-files class&#x3D;&quot;tui-space_top-1&quot;&gt;
+      &lt;tui-file
+        *ngIf&#x3D;&quot;control.valueChanges | async as file&quot;
+        [file]&#x3D;&quot;file&quot;
+        (removed)&#x3D;&quot;removeFile()&quot;
+      &gt;&lt;/tui-file&gt;
+    &lt;/tui-files&gt;
+    @if (this.control.value) {
+      &lt;button class&#x3D;&quot;button&quot; [disabled]&#x3D;&quot;!this.control.value&quot; (click)&#x3D;&quot;nextStep()&quot;&gt;&lt;span&gt;Далее&lt;/span&gt;&lt;/button&gt;
+    }
+  &lt;/div&gt;
+&lt;/ng-template&gt;
 </code></pre>
     </div>
 
@@ -720,7 +1001,7 @@ export class UploadFileComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><tui-loader  [inheritColor]="true"  [overlay]="true"  [showLoader]="this.isLoading()">  <div class="upload-file-container" [attr.data-step]="this.currentStep" [attr.data-selected]="!!this.control.value">    @if (this.currentStep === 1) {      <div class="upload-file-input" @enterLeave>        <tui-input-files          *ngIf="!control.value"          [formControl]="control"          [maxFileSize]="1048576"        >          <input title="Выберите файл" tuiInputFiles />        </tui-input-files>        <tui-files class="tui-space_top-1">          <tui-file            *ngIf="control.valueChanges | async as file"            [file]="file"            (removed)="removeFile()"          ></tui-file>        </tui-files>        @if (this.control.value) {          <button class="button" [disabled]="!this.control.value" (click)="nextStep()"><span>Далее</span></button>        }      </div>    }    @if (this.currentStep === 2) {      <div @enterLeave [formGroup]="this.fileForm" class="upload-file-info">        <div class="upload-file-info__row">          <tui-input-inline formControlName="name">          </tui-input-inline>          <tui-chip size="m">{{ this.fileForm.controls[\'ext\'].value }}</tui-chip>        </div>        <div class="upload-file-info__row">          <div class="upload-file-info__col">            <div class="upload-file-toggle">              <span>Сжать</span>              <tui-toggle formControlName="compress" size="l"></tui-toggle>            </div>            <div class="upload-file-toggle">              <span>Личный</span>              <tui-toggle formControlName="private" size="l"></tui-toggle>            </div>          </div>          <div class="upload-file-info__col">            <button class="button" (click)="uploadFile()">              <span>Загрузить</span>            </button>          </div>        </div>      </div>    }  </div></tui-loader></div>'
+        var COMPONENT_TEMPLATE = '<div><tui-loader  [inheritColor]="true"  [overlay]="true"  [showLoader]="this.isLoading()">  <div class="upload-file-container" [attr.data-step]="this.currentStep" [attr.data-selected]="!!this.control.value">    @switch (this.currentStep) {      @case (1) {        <ng-container [ngTemplateOutlet]="step1"/>      }      @case (2) {        <div [formGroup]="this.fileForm" class="upload-file-info">          <div class="upload-file-info__row">            <tui-input-inline formControlName="name">            </tui-input-inline>            <tui-chip size="m">{{ this.fileForm.controls[\'ext\'].value }}</tui-chip>          </div>          <div class="upload-file-info__row">            <div class="upload-file-info__col">              <div class="upload-file-toggle">                <span>Сжать</span>                <tui-toggle formControlName="compress" size="l"></tui-toggle>              </div              <div class="upload-file-toggle">                <span>Личный</span>                <tui-toggle formControlName="private" size="l"></tui-toggle>              </div>            </div>            <div class="upload-file-info__col">              <button class="button" (click)="uploadFile()">                <span>Загрузить</span>              </button>            </div>          </div>        </div>      }      @case (3) {            <div class="upload-file-result__title">              <tui-svg src="tuiIconCheckCircleLarge" />              <span>Файл успешно загружен</span>            </div>            <div class="upload-file-result__grid">              <tui-chip>Название</tui-chip>              <tui-line-clamp [linesLimit]="1" [content]="this.uploaded() ? this.uploaded()!.name! : \'name\'"/>              <tui-chip>Файл</tui-chip>              <tui-line-clamp [linesLimit]="1" [content]="this.uploaded() ? this.uploaded()!.file_name!+\'.\'+this.uploaded()!.ext! : \'file_name\'" />              <tui-chip>Ссылка</tui-chip>              <a tuiLink [href]="this.uploaded() ? this.uploaded()!.url! : \'#\'" target="_blank">              <tui-line-clamp [linesLimit]="1" [content]="this.uploaded() ? this.uploaded()!.url! : \'url\'"/>              </a>            </div>      }      @default {        <ng-container [ngTemplateOutlet]="step1"/>      }    }  </div></tui-loader><ng-template #step1>  <div class="upload-file-input">    <tui-input-files      *ngIf="!control.value"      [formControl]="control"      [maxFileSize]="1048576"    >      <input title="Выберите файл" tuiInputFiles />    </tui-input-files>    <tui-files class="tui-space_top-1">      <tui-file        *ngIf="control.valueChanges | async as file"        [file]="file"        (removed)="removeFile()"      ></tui-file>    </tui-files>    @if (this.control.value) {      <button class="button" [disabled]="!this.control.value" (click)="nextStep()"><span>Далее</span></button>    }  </div></ng-template></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'UploadFileComponent'};

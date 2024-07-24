@@ -8,6 +8,9 @@ import { API } from '@enums'
 
 import { env } from '@env'
 
+/**
+ * Сервис для работы с аккаунтами
+ */
 @Injectable({
   providedIn: 'root',
 })

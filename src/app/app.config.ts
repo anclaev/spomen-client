@@ -16,7 +16,12 @@ import {
   LOCALE_ID,
 } from '@angular/core'
 
-import { AuthService, ConfigService, AccountService } from '@services'
+import {
+  AuthService,
+  ConfigService,
+  AccountService,
+  UploadService,
+} from '@services'
 
 import { httpRequestIntercepor } from '@interceptors'
 import { graphqlProvider } from '@graphql'
@@ -64,5 +69,6 @@ export const appConfig: ApplicationConfig = {
     ConfigService,
     AuthService,
     AccountService,
+    UploadService,
   ],
 }

@@ -195,3 +195,7 @@ div[data-appearance='textfield']:after {
 ._expandable {
   border-radius: 0 !important;
 }
+
+.t-native {
+  user-select: none;
+}

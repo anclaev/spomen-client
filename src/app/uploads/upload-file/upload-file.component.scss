@@ -16,11 +16,16 @@
   max-height: 500px;
 }
 
+.upload-file-container[data-step="3"] {
+  max-height: unset;
+}
+
 .upload-file-input, .upload-file-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  user-select: none;
 }
 
 .upload-file-input > button {
@@ -34,6 +39,7 @@
 }
 
 .upload-file-info__row > tui-input-inline {
+  font: var(--tui-font-text-xl);
   flex-grow: 1 !important;
   margin-right: 15px;
 }
@@ -75,13 +81,38 @@
 }
 
 .upload-file-toggle > span {
+  font: var(--tui-font-text-s);
   display: block;
   margin-right: 10px;
   width: 60px;
 }
 
+
 .upload-file-toggle:not(:last-child) {
   margin-bottom: 15px;
 }
 
+.upload-file-result__title {
+  display: flex;
+  margin-bottom: 20px;
+}
 
+.upload-file-result__title > tui-svg {
+  color: var(--tui-success-fill)
+}
+
+.upload-file-result__title > span {
+  display: block;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.upload-file-result__grid {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-gap: 15px 20px;
+}
+
+.upload-file-result__grid tui-line-clamp {
+  max-width: 250px;
+}
