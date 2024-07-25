@@ -23,7 +23,7 @@ import {
   UploadService,
 } from '@services'
 
-import { httpRequestIntercepor } from '@interceptors'
+import { httpRequestInterceptor } from '@interceptors'
 import { graphqlProvider } from '@graphql'
 import { initSentry } from '@utils'
 
@@ -42,7 +42,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withViewTransitions()),
     importProvidersFrom(TuiRootModule),
-    provideHttpClient(withInterceptors([httpRequestIntercepor])),
+    provideHttpClient(withInterceptors([httpRequestInterceptor])),
     {
       provide: ErrorHandler,
       useValue: Sentry.createErrorHandler({

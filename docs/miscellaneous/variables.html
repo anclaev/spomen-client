@@ -151,7 +151,7 @@
                             <a href="#graphqlProvider" title="src/app/core/graphql/graphql.provider.ts" ><b>graphqlProvider</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.provider.ts)</a>
                         </li>
                         <li>
-                            <a href="#httpRequestIntercepor" title="src/app/core/interceptors/http.interceptor.ts" ><b>httpRequestIntercepor</b>&nbsp;&nbsp;&nbsp;(src/.../http.interceptor.ts)</a>
+                            <a href="#httpRequestInterceptor" title="src/app/core/interceptors/http.interceptor.ts" ><b>httpRequestInterceptor</b>&nbsp;&nbsp;&nbsp;(src/.../http.interceptor.ts)</a>
                         </li>
                         <li>
                             <a href="#initialAccount" title="src/types/interfaces/account.interface.ts" ><b>initialAccount</b>&nbsp;&nbsp;&nbsp;(src/.../account.interface.ts)</a>
@@ -211,7 +211,7 @@
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withViewTransitions()),
     importProvidersFrom(TuiRootModule),
-    provideHttpClient(withInterceptors([httpRequestIntercepor])),
+    provideHttpClient(withInterceptors([httpRequestInterceptor])),
     {
       provide: ErrorHandler,
       useValue: Sentry.createErrorHandler({
@@ -743,10 +743,10 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="httpRequestIntercepor"></a>
+                    <a name="httpRequestInterceptor"></a>
                     <span class="name">
-                        <span ><b>httpRequestIntercepor</b></span>
-                        <a href="#httpRequestIntercepor"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>httpRequestInterceptor</b></span>
+                        <a href="#httpRequestInterceptor"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -761,13 +761,14 @@
                         <i>Default value : </i><code>(req, next) &#x3D;&gt; {
   req &#x3D; req.clone({
     withCredentials: true,
-    headers: new HttpHeaders({
-      &#x27;Access-Control-Allow-Origin&#x27;: env.origin,
-      &#x27;Access-Control-Allow-Methods&#x27;: &#x27;GET,POST,PUT,DELETE,OPTIONS&#x27;,
-      &#x27;Access-Control-Allow-Headers&#x27;:
-        &#x27;Accept, Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With, sentry-trace, baggage&#x27;,
-      &#x27;Access-Control-Allow-Credentials&#x27;: &#x27;true&#x27;,
-    }),
+    headers: req.headers
+      .set(&#x27;Access-Control-Allow-Origin&#x27;, env.origin)
+      .set(&#x27;Access-Control-Allow-Methods&#x27;, &#x27;GET,POST,PUT,DELETE,OPTIONS&#x27;)
+      .set(
+        &#x27;Access-Control-Allow-Headers&#x27;,
+        &#x27;Accept, Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With, sentry-trace, baggage&#x27;
+      )
+      .set(&#x27;Access-Control-Allow-Credentials&#x27;, &#x27;true&#x27;),
   })
 
   return next(req).pipe(

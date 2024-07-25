@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { TuiFileLike } from '@taiga-ui/kit'
 
 import { FileParams } from '@interfaces'
@@ -26,6 +26,7 @@ export class UploadService {
     body.append('file', dto.file as unknown as Blob)
     body.append('path', dto.path)
     body.append('compress', dto.compress.toString())
+    body.append('originalName', dto.file.name)
 
     if (dto.name) {
       body.append('name', dto.name)

@@ -201,8 +201,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="46"
-                                    class="link-to-prism">src/app/core/services/upload.service.ts:46</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/core/services/upload.service.ts:47</a></div>
                         </td>
                     </tr>
 
@@ -368,7 +368,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { inject, Injectable } from &#x27;@angular/core&#x27;
-import { HttpClient } from &#x27;@angular/common/http&#x27;
+import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;
 import { TuiFileLike } from &#x27;@taiga-ui/kit&#x27;
 
 import { FileParams } from &#x27;@interfaces&#x27;
@@ -395,6 +395,7 @@ export class UploadService {
     body.append(&#x27;file&#x27;, dto.file as unknown as Blob)
     body.append(&#x27;path&#x27;, dto.path)
     body.append(&#x27;compress&#x27;, dto.compress.toString())
+    body.append(&#x27;originalName&#x27;, dto.file.name)
 
     if (dto.name) {
       body.append(&#x27;name&#x27;, dto.name)
