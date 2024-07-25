@@ -394,7 +394,7 @@ export class UploadService {
 
     body.append(&#x27;file&#x27;, dto.file as unknown as Blob)
     body.append(&#x27;path&#x27;, dto.path)
-    body.append(&#x27;compress&#x27;, String(dto.compress))
+    body.append(&#x27;compress&#x27;, dto.compress.toString())
 
     if (dto.name) {
       body.append(&#x27;name&#x27;, dto.name)

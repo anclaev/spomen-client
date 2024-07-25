@@ -75,7 +75,7 @@ export class UploadFileComponent implements OnInit {
       validators: [Validators.required, Validators.minLength(2)],
     }),
     ext: new FormControl('.png'),
-    compress: new FormControl(true),
+    compress: new FormControl(false),
     private: new FormControl(false),
   })
 
