@@ -22,6 +22,7 @@ export const getUploads = gql`
       ext
       file_name
       url
+      permissions
       owner {
         id
         username

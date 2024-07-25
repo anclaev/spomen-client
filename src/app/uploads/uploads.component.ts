@@ -61,6 +61,8 @@ import { AccountShortModel, UploadModel } from '@models'
 import { inOutGridAnimation200 } from '@animations'
 import { AuthService } from '@services'
 
+import { Permission } from '@enums'
+
 import { NotFoundComponent } from '@components/not-found/not-found.component'
 import { UploadInfoComponent } from './upload-info/upload-info.component'
 import { UploadFileComponent } from './upload-file/upload-file.component'
@@ -223,6 +225,7 @@ export class UploadsComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.$uploads.set(res.data.uploads)
+
           this.$uploadsLoading.set(false)
         },
         error: () => {
@@ -346,4 +349,6 @@ export class UploadsComponent implements OnInit {
       size: this.$uploadsSize(),
     })
   }
+
+  protected readonly Permission = Permission
 }

@@ -3,7 +3,8 @@
     formControlName="name"
     tuiTextfieldIcon="tuiIconSearch"
     [tuiTextfieldSize]="'s'"
-    >Название</tui-input
+  >Название
+  </tui-input
   >
   <tui-input-tag
     formControlName="ext"
@@ -11,7 +12,7 @@
     tuiTextfieldIcon="tuiIconSliders"
     [tuiTextfieldSize]="'s'"
     [rows]="1"
-    >Тип
+  >Тип
     <tui-data-list-wrapper
       *tuiDataList
       [items]="this.$extensionsList()"
@@ -25,12 +26,13 @@
     [tuiTextfieldSize]="'s'"
     (searchChange)="handleUsernameFilterChange($event)"
     [rows]="1"
-    >Аккаунт
+  >Аккаунт
     <tui-data-list-wrapper
       *tuiDataList
       [items]="this.$accountsList()"
     ></tui-data-list-wrapper
-  ></tui-input-tag>
+    >
+  </tui-input-tag>
   <button class="button uploads__upload" (click)="this.showUploadFile()">
     <tui-svg src="tuiIconUpload"></tui-svg>
   </button>
@@ -42,7 +44,7 @@
       @for (item of this.uploadSkeletonLimit; track $index) {
         <div class="uploads-list-item">
           <span [tuiSkeleton]="true"
-            ><tui-icon icon="tuiIconFolderLarge"></tui-icon>
+          ><tui-icon icon="tuiIconFolderLarge"></tui-icon>
           </span>
           <tui-line-clamp
             [tuiSkeleton]="true"
@@ -61,7 +63,8 @@
             [tuiSkeleton]="true"
             class="uploads-list-item__ext"
             [attr.data-type]="'primary'"
-            >loading</tui-chip
+          >loading
+          </tui-chip
           >
           <a class="uploads-list-item__owner">
             <tui-avatar
@@ -78,7 +81,7 @@
             ></tui-line-clamp>
           </a>
           <span class="uploads-list-item__date" [tuiSkeleton]="true"
-            >01.01.2001</span
+          >01.01.2001</span
           >
         </div>
       }
@@ -88,19 +91,31 @@
       @for (upload of this.$uploads(); track $index) {
         <div class="uploads-list-item">
           <a [href]="upload.url" target="_blank" tuiHint="Открыть файл"
-            ><tui-icon icon="tuiIconFolderLarge"></tui-icon>
+          >
+            <tui-icon icon="tuiIconFolderLarge"></tui-icon>
           </a>
-          <tui-line-clamp
-            class="uploads-list-item__title"
-            (click)="this.showUploadInfo(upload.id)"
-            [linesLimit]="1"
-            [content]="upload.name"
-          ></tui-line-clamp>
+          <div class="uploads-list-item__title">
+            <tui-line-clamp
+              (click)="this.showUploadInfo(upload.id)"
+              [linesLimit]="1"
+              [content]="upload.name"
+            >
+            </tui-line-clamp>
+            @if (!upload.permissions.includes(Permission.Public)) {
+              <tui-svg
+                src="tuiIconLock"
+                class="upload-list-item--private"
+                tuiHint="Личный файл"
+              [tuiHintShowDelay]="1000"
+              ></tui-svg>
+            }
+          </div>
           <div class="uploads-list-item__meta">
             <tui-line-clamp
               [linesLimit]="1"
               [content]="upload.file_name"
-            ></tui-line-clamp>
+            >
+            </tui-line-clamp>
           </div>
           <tui-chip
             class="uploads-list-item__ext"
@@ -108,7 +123,8 @@
             tuiHint="Выбрать тип"
             [tuiHintShowDelay]="1000"
             (click)="this.handleSetExt(upload.ext)"
-            >{{ upload.ext }}</tui-chip
+          >{{ upload.ext }}
+          </tui-chip
           >
           <a
             class="uploads-list-item__owner"
@@ -150,8 +166,8 @@
             ></tui-line-clamp>
           </a>
           <span class="uploads-list-item__date">{{
-            upload.created_at | date: 'd MMMM, YYYY г.'
-          }}</span>
+              upload.created_at | date: 'd MMMM, YYYY г.'
+            }}</span>
         </div>
       }
     </div>
