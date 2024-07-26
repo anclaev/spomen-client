@@ -230,8 +230,6 @@ input.t-native::placeholder {
 }
 
 .avatar {
-  border: 1px solid transparent !important;
-  background-image: var(--gradient-h) !important;
-  background-origin: border-box !important;
+  @include avatarBorder(1px);
   margin-right: 10px;
 }

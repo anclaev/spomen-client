@@ -47,7 +47,7 @@ export class UploadListItemComponent {
   isLoading = input.required<boolean>()
 
   showPreview = output<UploadModel>()
-  onDelete = output()
+  onDelete = output<string>()
   clickUpload = output()
   selectExtension = output()
 

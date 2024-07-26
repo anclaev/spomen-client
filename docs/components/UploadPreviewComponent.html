@@ -1378,7 +1378,7 @@ export class UploadPreviewComponent {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ng-template #preview&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;ng-template #preview  let-preview&gt;
   &lt;tui-preview [rotatable]&#x3D;&quot;this.isRotatable()&quot; [zoomable]&#x3D;&quot;this.isZoomable()&quot;&gt;
     &lt;tui-preview-title class&#x3D;&quot;t-preview-title&quot;&gt;
       {{ this.title() }}
@@ -1389,11 +1389,13 @@ export class UploadPreviewComponent {
     &gt;&lt;/tui-preview-pagination&gt;
 
     &lt;spomen-upload-actions
+      [preview]&#x3D;&quot;preview&quot;
       [url]&#x3D;&quot;this.url()&quot;
       [actions]&#x3D;&quot;this.uploadActions()&quot;
       (handleOpen)&#x3D;&quot;this.handleOpen.emit()&quot;
       (handleDelete)&#x3D;&quot;this.handleDelete.emit()&quot;
-      tuiPreviewAction /&gt;
+      tuiPreviewAction
+    /&gt;
 
     @switch (this.ext()) {
       @case (&#x27;webp&#x27;) {
@@ -1466,7 +1468,7 @@ export class UploadPreviewComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-template #preview>  <tui-preview [rotatable]="this.isRotatable()" [zoomable]="this.isZoomable()">    <tui-preview-title class="t-preview-title">      {{ this.title() }}    </tui-preview-title>    <tui-preview-pagination      [length]="1"      [(index)]="index"    ></tui-preview-pagination>    <spomen-upload-actions      [url]="this.url()"      [actions]="this.uploadActions()"      (handleOpen)="this.handleOpen.emit()"      (handleDelete)="this.handleDelete.emit()"      tuiPreviewAction />    @switch (this.ext()) {      @case (\'webp\') {        <img          *polymorpheusOutlet="previewContent as src"          [alt]="this.name()"          [src]="src"        />      }      @case (\'mpga\') {        <iframe          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"          allowfullscreen          [src]="this.url() | iframeUrl"          class="content"        ></iframe>      }      @default {        <div class="t-container uploads-list-item-preview__fail">          <tui-svg            src="tuiIconFileLarge"            class="t-icon"          ></tui-svg>          <div>Просмотр не поддерживается</div>        </div>      }    }  </tui-preview></ng-template><ng-template  #actions  let-content="content">  <spomen-upload-actions    [url]="content"    [id]="this.id()"    [actions]="this.uploadActions()"    (handleOpen)="this.handleOpen.emit()"    (handleDelete)="this.handleDelete.emit()"  /></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-template #preview  let-preview>  <tui-preview [rotatable]="this.isRotatable()" [zoomable]="this.isZoomable()">    <tui-preview-title class="t-preview-title">      {{ this.title() }}    </tui-preview-title>    <tui-preview-pagination      [length]="1"      [(index)]="index"    ></tui-preview-pagination>    <spomen-upload-actions      [preview]="preview"      [url]="this.url()"      [actions]="this.uploadActions()"      (handleOpen)="this.handleOpen.emit()"      (handleDelete)="this.handleDelete.emit()"      tuiPreviewAction    />    @switch (this.ext()) {      @case (\'webp\') {        <img          *polymorpheusOutlet="previewContent as src"          [alt]="this.name()"          [src]="src"        />      }      @case (\'mpga\') {        <iframe          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"          allowfullscreen          [src]="this.url() | iframeUrl"          class="content"        ></iframe>      }      @default {        <div class="t-container uploads-list-item-preview__fail">          <tui-svg            src="tuiIconFileLarge"            class="t-icon"          ></tui-svg>          <div>Просмотр не поддерживается</div>        </div>      }    }  </tui-preview></ng-template><ng-template  #actions  let-content="content">  <spomen-upload-actions    [url]="content"    [id]="this.id()"    [actions]="this.uploadActions()"    (handleOpen)="this.handleOpen.emit()"    (handleDelete)="this.handleDelete.emit()"  /></ng-template></div>'
     var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'PermissionInputComponent', 'selector': 'spomen-permission-input'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadActionsComponent', 'selector': 'spomen-upload-actions'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadPreviewComponent', 'selector': 'spomen-upload-preview'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
     var DIRECTIVES = [{'name': 'ScrollNearEndDirective', 'selector': '[scrollNearEnd]'}];
     var ACTUAL_COMPONENT = {'name': 'UploadPreviewComponent'};

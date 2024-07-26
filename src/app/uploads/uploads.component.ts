@@ -1,5 +1,6 @@
 import {
   TuiAlertService,
+  TuiDialogContext,
   TuiDialogModule,
   TuiDialogService,
   TuiHintModule,
@@ -14,6 +15,8 @@ import {
   Injector,
   OnInit,
   signal,
+  TemplateRef,
+  ViewChild,
   WritableSignal,
 } from '@angular/core'
 
@@ -34,7 +37,7 @@ import {
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus'
 import { TuiTablePaginationModule } from '@taiga-ui/addon-table'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
-import { debounceTime, distinctUntilChanged } from 'rxjs'
+import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs'
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 import * as Sentry from '@sentry/angular'
@@ -78,6 +81,7 @@ import { UploadInfoComponent } from './upload-info/upload-info.component'
     PermissionInputComponent,
     NotFoundComponent,
     UploadPreviewComponent,
+    UploadInfoComponent,
   ],
   providers: [UploadsGQL, DeleteUploadByIdGQL],
   animations: [inOutGridAnimation200],
@@ -104,6 +108,9 @@ export class UploadsComponent implements OnInit {
   skeletonRows = new Array(10)
   modalFiltersIsOpen = false
 
+  infoSub: Subscription | null = null
+  $infoUpload: WritableSignal<string | null> = signal(null)
+
   $previewStatus: WritableSignal<boolean> = signal(false)
   $previewUpload: WritableSignal<UploadModel | null> = signal(null)
 
@@ -112,6 +119,9 @@ export class UploadsComponent implements OnInit {
 
   $uploads: WritableSignal<UploadModel[]> = signal([])
   $uploadsLoading: WritableSignal<boolean> = signal(true)
+
+  @ViewChild('info')
+  readonly info?: TemplateRef<TuiDialogContext>
 
   uploadFiltersForm = new FormGroup({
     name: new FormControl(),
@@ -220,7 +230,9 @@ export class UploadsComponent implements OnInit {
       this.$previewUpload.set(null)
     }
 
-    this.showUploadInfoDialog(uploadId)
+    this.$infoUpload.set(uploadId)
+
+    this.infoSub = this.showUploadInfoDialog()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe()
   }
@@ -240,6 +252,10 @@ export class UploadsComponent implements OnInit {
   }
 
   handleDeletedUpload(id: string) {
+    if (this.infoSub) this.infoSub.unsubscribe()
+
+    this.$infoUpload.set(null)
+
     this.alerts
       .open('Файл успешно удалён', {
         status: 'success',
@@ -350,16 +366,13 @@ export class UploadsComponent implements OnInit {
       }
     )
 
-  private showUploadInfoDialog = (uploadId: string) =>
-    this.dialogs.open<string | null>(
-      new PolymorpheusComponent(UploadInfoComponent, this.injector),
-      {
-        size: 's',
-        data: {
-          uploadId,
-        },
-      }
-    )
+  private showUploadInfoDialog = () =>
+    this.dialogs.open<string | null>(this.info, {
+      size: 's',
+    })
+
+  // TODO: Uploads filters из query params
+  // TODO: Uploads list в отдельный компонент
 
   private showPrompt(label: string) {
     return this.dialogs

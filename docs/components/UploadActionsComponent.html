@@ -155,6 +155,7 @@
                 <td class="col-md-9">
                             <code>TuiSvgModule</code>
                             <code>TuiPreviewActionModule</code>
+                            <code>TuiHintModule</code>
                 </td>
             </tr>
 
@@ -204,6 +205,9 @@
                             </li>
                             <li>
                                 <a href="#handleSave" >handleSave</a>
+                            </li>
+                            <li>
+                                <a href="#preview" >preview</a>
                             </li>
                             <li>
                                 <a href="#url" >url</a>
@@ -291,7 +295,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/uploads/upload-actions/upload-actions.component.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/uploads/upload-actions/upload-actions.component.ts:24</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -306,7 +310,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/uploads/upload-actions/upload-actions.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/uploads/upload-actions/upload-actions.component.ts:22</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -321,7 +325,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/uploads/upload-actions/upload-actions.component.ts:21</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/uploads/upload-actions/upload-actions.component.ts:23</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -373,7 +377,7 @@
             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/uploads/upload-actions/upload-actions.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/uploads/upload-actions/upload-actions.component.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -393,7 +397,7 @@
             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/uploads/upload-actions/upload-actions.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/uploads/upload-actions/upload-actions.component.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -413,7 +417,32 @@
             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/uploads/upload-actions/upload-actions.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/uploads/upload-actions/upload-actions.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="preview"></a>
+                    <span class="name">
+                        <span ><b>preview</b></span>
+                        <a href="#preview"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;{ complete: () &#x3D;&gt; void } | null&gt;(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/uploads/upload-actions/upload-actions.component.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -447,8 +476,8 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { TuiPreviewActionModule } from &#x27;@taiga-ui/addon-preview&#x27;
+import { TuiHintModule, TuiSvgModule } from &#x27;@taiga-ui/core&#x27;
 import { Component, input, output } from &#x27;@angular/core&#x27;
-import { TuiSvgModule } from &#x27;@taiga-ui/core&#x27;
 import * as Sentry from &#x27;@sentry/angular&#x27;
 
 import { UploadActionsParams } from &#x27;@interfaces&#x27;
@@ -456,7 +485,7 @@ import { UploadActionsParams } from &#x27;@interfaces&#x27;
 @Component({
   selector: &#x27;spomen-upload-actions&#x27;,
   standalone: true,
-  imports: [TuiSvgModule, TuiPreviewActionModule],
+  imports: [TuiSvgModule, TuiPreviewActionModule, TuiHintModule],
   templateUrl: &#x27;./upload-actions.component.html&#x27;,
   styleUrl: &#x27;./upload-actions.component.scss&#x27;,
 })
@@ -464,6 +493,8 @@ import { UploadActionsParams } from &#x27;@interfaces&#x27;
 export class UploadActionsComponent {
   _actions &#x3D; input.required&lt;UploadActionsParams&gt;({ alias: &#x27;actions&#x27; })
   url &#x3D; input.required&lt;string&gt;()
+
+  preview &#x3D; input&lt;{ complete: () &#x3D;&gt; void } | null&gt;(null)
 
   handleOpen &#x3D; output()
   handleSave &#x3D; output()
@@ -476,8 +507,10 @@ export class UploadActionsComponent {
         <pre class="line-numbers"><code class="language-html">@if (this._actions().save) {
   &lt;button
     tuiPreviewAction
-    title&#x3D;&quot;Сохранить&quot;
     (click)&#x3D;&quot;this.handleSave.emit()&quot;
+    tuiHint&#x3D;&quot;Сохранить&quot;
+    [tuiHintShowDelay]&#x3D;&quot;1000&quot;
+    tuiHintDirection&#x3D;&quot;bottom&quot;
   &gt;
     &lt;tui-svg src&#x3D;&quot;tuiIconSave&quot; /&gt;
   &lt;/button&gt;
@@ -486,8 +519,10 @@ export class UploadActionsComponent {
 @if (this._actions().open) {
   &lt;button
     tuiPreviewAction
-    title&#x3D;&quot;Перейти к&quot;
     (click)&#x3D;&quot;this.handleOpen.emit()&quot;
+    tuiHint&#x3D;&quot;Перейти к&quot;
+    [tuiHintShowDelay]&#x3D;&quot;1000&quot;
+    tuiHintDirection&#x3D;&quot;bottom&quot;
   &gt;
     &lt;tui-svg src&#x3D;&quot;tuiIconExternalLink&quot;/&gt;
   &lt;/button&gt;
@@ -496,7 +531,9 @@ export class UploadActionsComponent {
 @if (this._actions().delete) {
   &lt;button
     tuiPreviewAction
-    title&#x3D;&quot;Удалить&quot;
+    tuiHint&#x3D;&quot;Удалить&quot;
+    [tuiHintShowDelay]&#x3D;&quot;1000&quot;
+    tuiHintDirection&#x3D;&quot;bottom&quot;
     (click)&#x3D;&quot;this.handleDelete.emit()&quot;
   &gt;
     &lt;tui-svg src&#x3D;&quot;tuiIconTrash&quot;&gt;&lt;/tui-svg&gt;
@@ -505,11 +542,24 @@ export class UploadActionsComponent {
 &lt;a
   [href]&#x3D;&quot;this.url()&quot;
   tuiPreviewAction
-  title&#x3D;&quot;Скачать&quot;
-
+  tuiHint&#x3D;&quot;Скачать&quot;
+  [tuiHintShowDelay]&#x3D;&quot;1000&quot;
+  tuiHintDirection&#x3D;&quot;bottom&quot;
 &gt;
   &lt;tui-svg src&#x3D;&quot;tuiIconDownload&quot;&gt;&lt;/tui-svg&gt;
 &lt;/a&gt;
+
+@if(this.preview()) {
+  &lt;button
+    tuiHint&#x3D;&quot;Закрыть&quot;
+    [tuiHintShowDelay]&#x3D;&quot;1000&quot;
+    tuiHintDirection&#x3D;&quot;bottom&quot;
+    tuiPreviewAction
+    (click)&#x3D;&quot;this.preview()!.complete()&quot;
+  &gt;
+    &lt;tui-svg src&#x3D;&quot;tuiIconClose&quot;&gt;&lt;/tui-svg&gt;
+  &lt;/button&gt;
+}
 </code></pre>
     </div>
 
@@ -539,7 +589,7 @@ export class UploadActionsComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>@if (this._actions().save) {  <button    tuiPreviewAction    title="Сохранить"    (click)="this.handleSave.emit()"  >    <tui-svg src="tuiIconSave" />  </button>}@if (this._actions().open) {  <button    tuiPreviewAction    title="Перейти к"    (click)="this.handleOpen.emit()"  >    <tui-svg src="tuiIconExternalLink"/>  </button>}@if (this._actions().delete) {  <button    tuiPreviewAction    title="Удалить"    (click)="this.handleDelete.emit()"  >    <tui-svg src="tuiIconTrash"></tui-svg>  </button>}<a  [href]="this.url()"  tuiPreviewAction  title="Скачать">  <tui-svg src="tuiIconDownload"></tui-svg></a></div>'
+        var COMPONENT_TEMPLATE = '<div>@if (this._actions().save) {  <button    tuiPreviewAction    (click)="this.handleSave.emit()"    tuiHint="Сохранить"    [tuiHintShowDelay]="1000"    tuiHintDirection="bottom"  >    <tui-svg src="tuiIconSave" />  </button>}@if (this._actions().open) {  <button    tuiPreviewAction    (click)="this.handleOpen.emit()"    tuiHint="Перейти к"    [tuiHintShowDelay]="1000"    tuiHintDirection="bottom"  >    <tui-svg src="tuiIconExternalLink"/>  </button>}@if (this._actions().delete) {  <button    tuiPreviewAction    tuiHint="Удалить"    [tuiHintShowDelay]="1000"    tuiHintDirection="bottom"    (click)="this.handleDelete.emit()"  >    <tui-svg src="tuiIconTrash"></tui-svg>  </button>}<a  [href]="this.url()"  tuiPreviewAction  tuiHint="Скачать"  [tuiHintShowDelay]="1000"  tuiHintDirection="bottom">  <tui-svg src="tuiIconDownload"></tui-svg></a>@if(this.preview()) {  <button    tuiHint="Закрыть"    [tuiHintShowDelay]="1000"    tuiHintDirection="bottom"    tuiPreviewAction    (click)="this.preview()!.complete()"  >    <tui-svg src="tuiIconClose"></tui-svg>  </button>}</div>'
     var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'PermissionInputComponent', 'selector': 'spomen-permission-input'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadActionsComponent', 'selector': 'spomen-upload-actions'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadPreviewComponent', 'selector': 'spomen-upload-preview'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
     var DIRECTIVES = [{'name': 'ScrollNearEndDirective', 'selector': '[scrollNearEnd]'}];
     var ACTUAL_COMPONENT = {'name': 'UploadActionsComponent'};

@@ -1,5 +1,4 @@
 @if (this.$upload()) {
-
   <form class="upload-info-container" [formGroup]="this.uploadInfoForm">
     <tui-input-inline formControlName="name" class="upload-info__name" />
 
@@ -54,23 +53,31 @@
         <span>Не найден</span>
       }
     </div>
-    <div class="upload-info__row upload-info__row--between">
-      <div class="upload-info__column upload-info__column--50">
-        <span>Личный</span>
-        <tui-toggle
-          formControlName="isPrivate"
-          [showIcons]="true"
-          size="l"
-        ></tui-toggle>
+    @if (this.editable()) {
+      <div class="upload-info__row upload-info__row--between">
+        <div class="upload-info__column upload-info__column--50">
+          <span>Личный</span>
+          <tui-toggle
+            formControlName="isPrivate"
+            [showIcons]="true"
+            size="l"
+          ></tui-toggle>
+        </div>
+        <div class="upload-info__column upload-info__column--50">
+          <span>Системный</span>
+          <tui-toggle
+            formControlName="isSystem"
+            [showIcons]="true"
+            size="l"
+          ></tui-toggle>
+        </div>
       </div>
-      <div class="upload-info__column upload-info__column--50">
-        <span>Системный</span>
-        <tui-toggle
-          formControlName="isSystem"
-          [showIcons]="true"
-          size="l"
-        ></tui-toggle>
-      </div>
-    </div>
+    }
   </form>
+  <spomen-upload-actions
+    [actions]="this._actions()"
+    [url]="this.$upload()!.url"
+    (handleSave)="this.handleSaveUpload()"
+    (handleDelete)="this.handleDeleteUpload()"
+  />
 }

@@ -1,11 +1,13 @@
 import {
   Component,
   DestroyRef,
-  Inject,
   OnInit,
   WritableSignal,
   inject,
   signal,
+  computed,
+  input,
+  output,
 } from '@angular/core'
 
 import {
@@ -16,22 +18,27 @@ import {
 } from '@angular/forms'
 
 import {
+  TUI_PROMPT,
   TuiAvatarModule,
   TuiInputInlineModule,
   TuiLineClampModule,
   TuiToggleModule,
 } from '@taiga-ui/kit'
-import { TuiAlertService, TuiDialogContext } from '@taiga-ui/core'
-import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus'
+
+import { TuiAlertService, TuiDialogService } from '@taiga-ui/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { TuiChipModule } from '@taiga-ui/experimental'
 import { CommonModule } from '@angular/common'
 import * as Sentry from '@sentry/angular'
-
 import { Router } from '@angular/router'
-import { UploadByIdGQL } from '@graphql'
+
+import { UploadActionsParams } from '@interfaces'
+import { DeleteUploadByIdGQL, UploadByIdGQL } from '@graphql'
+import { AuthService } from '@services'
 import { UploadModel } from '@models'
 import { Permission } from '@enums'
+
+import { UploadActionsComponent } from '../upload-actions/upload-actions.component'
 
 @Component({
   selector: 'spomen-upload-info',
@@ -45,17 +52,24 @@ import { Permission } from '@enums'
     TuiLineClampModule,
     TuiToggleModule,
     TuiAvatarModule,
+    UploadActionsComponent,
   ],
-  providers: [UploadByIdGQL],
+  providers: [UploadByIdGQL, DeleteUploadByIdGQL],
   templateUrl: './upload-info.component.html',
   styleUrl: './upload-info.component.scss',
 })
 @Sentry.TraceClass({ name: 'UploadInfo' })
 export class UploadInfoComponent implements OnInit {
   private uploadByIdGQL = inject(UploadByIdGQL)
-  private destroyRef = inject(DestroyRef)
+  private dialogs = inject(TuiDialogService)
   private alerts = inject(TuiAlertService)
+  private destroyRef = inject(DestroyRef)
   private router = inject(Router)
+
+  private deleteUploadByIdGQL = inject(DeleteUploadByIdGQL)
+
+  userId = inject(AuthService).$user().id!
+  isAdmin = inject(AuthService).$isAdmin()
 
   uploadInfoForm: FormGroup = new FormGroup({
     name: new FormControl(),
@@ -66,29 +80,30 @@ export class UploadInfoComponent implements OnInit {
     ownerAvatar: new FormControl(null),
   })
 
-  constructor(
-    @Inject(POLYMORPHEUS_CONTEXT)
-    private readonly context: TuiDialogContext<
-      any,
-      {
-        uploadId: string
-      }
-    >
-  ) {
-    this.uploadId = context.data.uploadId
-  }
-
-  private uploadId: string
+  uploadId = input.required<string>()
+  onDelete = output<string>()
 
   $upload: WritableSignal<UploadModel | null> = signal(null)
   $loading: WritableSignal<boolean> = signal(true)
+
+  editable = computed<boolean>(() =>
+    this.$upload()
+      ? this.isAdmin || this.$upload()!.owner_id === this.userId
+      : false
+  )
+
+  _actions = computed<UploadActionsParams>(() => ({
+    open: false,
+    save: this.editable(),
+    delete: this.editable(),
+  }))
 
   ngOnInit(): void {
     this.uploadInfoForm.controls['isSystem'].disable()
 
     this.uploadByIdGQL
       .watch({
-        id: this.uploadId,
+        id: this.uploadId()!,
       })
       .valueChanges.subscribe({
         next: (res) => {
@@ -134,11 +149,60 @@ export class UploadInfoComponent implements OnInit {
         },
       })
   }
-  // TODO: Кнопки предпросмотра, скачивания, удаления и обновления
-  // TODO: Скрытие прав доступа и флага системного, если файл не принадлежит пользователю
+
   clickOwner() {
     if (this.uploadInfoForm.controls['owner'].value) {
       this.router.navigate(['/' + this.$upload()!.owner!.username])
     }
+  }
+
+  handleSaveUpload() {}
+
+  handleDeleteUpload() {
+    this.showPrompt('Удалить файл?').subscribe((res) => {
+      if (res) {
+        this.showPrompt('Вы уверены?').subscribe((res) => {
+          if (res) this.deleteUpload()
+        })
+      }
+    })
+  }
+
+  private deleteUpload() {
+    if (!this.$upload() || !this.editable) return
+
+    this.deleteUploadByIdGQL
+      .mutate({
+        id: this.$upload()!.id,
+      })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: ({ data }) => {
+          this.onDelete.emit(this.$upload()!.id)
+        },
+        error: (err) => {
+          console.log(err)
+
+          this.alerts
+            .open('Удалить файл не удалось', {
+              status: 'error',
+            })
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe()
+        },
+      })
+  }
+
+  private showPrompt(label: string) {
+    return this.dialogs
+      .open<boolean>(TUI_PROMPT, {
+        label,
+        size: 's',
+        data: {
+          yes: 'Да',
+          no: 'Нет',
+        },
+      })
+      .pipe(takeUntilDestroyed(this.destroyRef))
   }
 }

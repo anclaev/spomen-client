@@ -1,4 +1,4 @@
-<ng-template #preview>
+<ng-template #preview  let-preview>
   <tui-preview [rotatable]="this.isRotatable()" [zoomable]="this.isZoomable()">
     <tui-preview-title class="t-preview-title">
       {{ this.title() }}
@@ -9,11 +9,13 @@
     ></tui-preview-pagination>
 
     <spomen-upload-actions
+      [preview]="preview"
       [url]="this.url()"
       [actions]="this.uploadActions()"
       (handleOpen)="this.handleOpen.emit()"
       (handleDelete)="this.handleDelete.emit()"
-      tuiPreviewAction />
+      tuiPreviewAction
+    />
 
     @switch (this.ext()) {
       @case ('webp') {
