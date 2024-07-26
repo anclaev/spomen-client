@@ -2,13 +2,13 @@
   <tui-input-tag
     [formControlName]="this.formControlName"
     [placeholder]="this.placeholder"
-    tuiTextfieldIcon="tuiIconSliders"
+    tuiTextfieldIcon="tuiIconLock"
     [tuiTextfieldSize]="this.size"
     [rows]="1"
   >{{this.placeholder}}
     <tui-data-list-wrapper
       *tuiDataList
-      [items]="this.$extensions()"
+      [items]="this.permissions"
     ></tui-data-list-wrapper>
   </tui-input-tag>
 </ng-container>

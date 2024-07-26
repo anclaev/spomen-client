@@ -1,4 +1,4 @@
-import { Role } from '../types/enums/role.enum'
+import { Permission, Role } from '@enums'
 
 export function serializeRole(role: Role): string {
   switch (role) {
@@ -12,4 +12,26 @@ export function serializeRole(role: Role): string {
       return 'Участник'
     }
   }
+}
+
+export function serializePermissions(permissions: string[]): Permission[] {
+  return permissions.map((permission) => {
+    switch (permission) {
+      case 'Публичный': {
+        return Permission.Public
+      }
+      case 'Воспоминание': {
+        return Permission.MemberOnly
+      }
+      case 'Чат': {
+        return Permission.ChatOnly
+      }
+      case 'Личный': {
+        return Permission.OwnerOnly
+      }
+      default: {
+        return Permission.Public
+      }
+    }
+  })
 }

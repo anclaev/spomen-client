@@ -171,11 +171,16 @@
                             <code>ReactiveFormsModule</code>
                             <code>TuiInputModule</code>
                             <code>TuiTextfieldControllerModule</code>
+                            <code>TuiSelectModule</code>
+                            <code>TuiDataListWrapperModule</code>
                             <code>TuiSvgModule</code>
                                 <code><a href="../miscellaneous/typealiases.html#Pagination" target="_self" >TuiTablePaginationModule</a></code>
+                            <code>TuiDialogModule</code>
+                            <code>TuiHintModule</code>
                                 <code><a href="../components/UploadListItemComponent.html" target="_self" >UploadListItemComponent</a></code>
                                 <code><a href="../components/ExtensionInputComponent.html" target="_self" >ExtensionInputComponent</a></code>
                                 <code><a href="../components/AccountInputComponent.html" target="_self" >AccountInputComponent</a></code>
+                                <code><a href="../components/PermissionInputComponent.html" target="_self" >PermissionInputComponent</a></code>
                                 <code><a href="../components/NotFoundComponent.html" target="_self" >NotFoundComponent</a></code>
                 </td>
             </tr>
@@ -231,6 +236,10 @@
                                 <a href="#$page" >$page</a>
                             </li>
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#$permissions" >$permissions</a>
+                            </li>
+                            <li>
                                 <a href="#$size" >$size</a>
                             </li>
                             <li>
@@ -265,6 +274,9 @@
                             <li>
                                     <span class="modifier">Private</span>
                                 <a href="#isLastPage" >isLastPage</a>
+                            </li>
+                            <li>
+                                <a href="#modalFiltersIsOpen" >modalFiltersIsOpen</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
@@ -324,6 +336,9 @@
                             </li>
                             <li>
                                 <a href="#setExtensionFilter" >setExtensionFilter</a>
+                            </li>
+                            <li>
+                                <a href="#showModalFilters" >showModalFilters</a>
                             </li>
                             <li>
                                 <a href="#showUploadFile" >showUploadFile</a>
@@ -389,8 +404,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="231"
-                                    class="link-to-prism">src/app/uploads/uploads.component.ts:231</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="267"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:267</a></div>
                         </td>
                     </tr>
 
@@ -426,8 +441,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="184"
-                                    class="link-to-prism">src/app/uploads/uploads.component.ts:184</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="218"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:218</a></div>
                         </td>
                     </tr>
 
@@ -493,8 +508,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="100"
-                                    class="link-to-prism">src/app/uploads/uploads.component.ts:100</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:119</a></div>
                         </td>
                     </tr>
 
@@ -532,8 +547,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="217"
-                                    class="link-to-prism">src/app/uploads/uploads.component.ts:217</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="253"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:253</a></div>
                         </td>
                     </tr>
 
@@ -571,8 +586,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="223"
-                                    class="link-to-prism">src/app/uploads/uploads.component.ts:223</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="259"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:259</a></div>
                         </td>
                     </tr>
 
@@ -608,8 +623,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="188"
-                                    class="link-to-prism">src/app/uploads/uploads.component.ts:188</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="222"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:222</a></div>
                         </td>
                     </tr>
 
@@ -659,6 +674,43 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="showModalFilters"></a>
+                    <span class="name">
+                        <span ><b>showModalFilters</b></span>
+                        <a href="#showModalFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showModalFilters()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="214"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:214</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="showUploadFile"></a>
                     <span class="name">
                         <span ><b>showUploadFile</b></span>
@@ -675,8 +727,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="172"
-                                    class="link-to-prism">src/app/uploads/uploads.component.ts:172</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="202"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:202</a></div>
                         </td>
                     </tr>
 
@@ -712,8 +764,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="178"
-                                    class="link-to-prism">src/app/uploads/uploads.component.ts:178</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="208"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:208</a></div>
                         </td>
                     </tr>
 
@@ -790,7 +842,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/app/uploads/uploads.component.ts:97</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/app/uploads/uploads.component.ts:116</a></div>
                         </td>
                     </tr>
 
@@ -822,7 +874,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/app/uploads/uploads.component.ts:96</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/app/uploads/uploads.component.ts:115</a></div>
                         </td>
                     </tr>
 
@@ -854,7 +906,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/app/uploads/uploads.component.ts:98</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">src/app/uploads/uploads.component.ts:117</a></div>
                         </td>
                     </tr>
 
@@ -885,7 +937,39 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/uploads/uploads.component.ts:84</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/app/uploads/uploads.component.ts:101</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$permissions"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>$permissions</b></span>
+                        <a href="#$permissions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#Permission" target="_self" >WritableSignal&lt;Permission[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/app/uploads/uploads.component.ts:114</a></div>
                         </td>
                     </tr>
 
@@ -916,7 +1000,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/uploads/uploads.component.ts:85</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/uploads/uploads.component.ts:102</a></div>
                         </td>
                     </tr>
 
@@ -947,7 +1031,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/app/uploads/uploads.component.ts:87</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/app/uploads/uploads.component.ts:104</a></div>
                         </td>
                     </tr>
 
@@ -978,7 +1062,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/uploads/uploads.component.ts:88</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/app/uploads/uploads.component.ts:105</a></div>
                         </td>
                     </tr>
 
@@ -1004,7 +1088,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/uploads/uploads.component.ts:72</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/app/uploads/uploads.component.ts:87</a></div>
                         </td>
                     </tr>
 
@@ -1030,7 +1114,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/uploads/uploads.component.ts:70</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/uploads/uploads.component.ts:85</a></div>
                         </td>
                     </tr>
 
@@ -1056,7 +1140,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/uploads/uploads.component.ts:73</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/uploads/uploads.component.ts:88</a></div>
                         </td>
                     </tr>
 
@@ -1082,7 +1166,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/uploads/uploads.component.ts:71</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/app/uploads/uploads.component.ts:86</a></div>
                         </td>
                     </tr>
 
@@ -1108,7 +1192,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/uploads/uploads.component.ts:76</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/app/uploads/uploads.component.ts:91</a></div>
                         </td>
                     </tr>
 
@@ -1133,7 +1217,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/uploads/uploads.component.ts:78</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/app/uploads/uploads.component.ts:93</a></div>
                         </td>
                     </tr>
 
@@ -1159,7 +1243,32 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/uploads/uploads.component.ts:82</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/app/uploads/uploads.component.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modalFiltersIsOpen"></a>
+                    <span class="name">
+                        <span ><b>modalFiltersIsOpen</b></span>
+                        <a href="#modalFiltersIsOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/app/uploads/uploads.component.ts:99</a></div>
                         </td>
                     </tr>
 
@@ -1185,7 +1294,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/uploads/uploads.component.ts:74</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/app/uploads/uploads.component.ts:89</a></div>
                         </td>
                     </tr>
 
@@ -1211,7 +1320,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="237" class="link-to-prism">src/app/uploads/uploads.component.ts:237</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="273" class="link-to-prism">src/app/uploads/uploads.component.ts:273</a></div>
                         </td>
                     </tr>
 
@@ -1237,7 +1346,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="245" class="link-to-prism">src/app/uploads/uploads.component.ts:245</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="281" class="link-to-prism">src/app/uploads/uploads.component.ts:281</a></div>
                         </td>
                     </tr>
 
@@ -1262,7 +1371,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/uploads/uploads.component.ts:79</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/app/uploads/uploads.component.ts:98</a></div>
                         </td>
                     </tr>
 
@@ -1286,12 +1395,13 @@
     name: new FormControl(),
     ext: new FormControl(),
     account: new FormControl(),
+    permissions: new FormControl(),
   })</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/app/uploads/uploads.component.ts:90</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/app/uploads/uploads.component.ts:107</a></div>
                         </td>
                     </tr>
 
@@ -1317,7 +1427,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/uploads/uploads.component.ts:75</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/app/uploads/uploads.component.ts:90</a></div>
                         </td>
                     </tr>
 
@@ -1349,7 +1459,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/uploads/uploads.component.ts:81</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/uploads/uploads.component.ts:95</a></div>
                         </td>
                     </tr>
 
@@ -1378,7 +1488,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/app/uploads/uploads.component.ts:201</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="235" class="link-to-prism">src/app/uploads/uploads.component.ts:235</a></div>
                                 </td>
                             </tr>
 
@@ -1391,7 +1501,9 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   TuiAlertService,
+  TuiDialogModule,
   TuiDialogService,
+  TuiHintModule,
   TuiSvgModule,
   TuiTextfieldControllerModule,
 } from &#x27;@taiga-ui/core&#x27;
@@ -1405,17 +1517,23 @@ import {
   signal,
   WritableSignal,
 } from &#x27;@angular/core&#x27;
+
 import {
   FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
 } from &#x27;@angular/forms&#x27;
-import { debounceTime, distinctUntilChanged, filter } from &#x27;rxjs&#x27;
+
+import {
+  TuiDataListWrapperModule,
+  TuiInputModule,
+  TuiSelectModule,
+} from &#x27;@taiga-ui/kit&#x27;
 import { PolymorpheusComponent } from &#x27;@tinkoff/ng-polymorpheus&#x27;
 import { TuiTablePaginationModule } from &#x27;@taiga-ui/addon-table&#x27;
 import { takeUntilDestroyed } from &#x27;@angular/core/rxjs-interop&#x27;
-import { TuiInputModule } from &#x27;@taiga-ui/kit&#x27;
+import { debounceTime, distinctUntilChanged } from &#x27;rxjs&#x27;
 import { CommonModule } from &#x27;@angular/common&#x27;
 import { RouterModule } from &#x27;@angular/router&#x27;
 import * as Sentry from &#x27;@sentry/angular&#x27;
@@ -1423,9 +1541,11 @@ import * as Sentry from &#x27;@sentry/angular&#x27;
 import { UploadsQueryRef, UploadsGQL } from &#x27;@graphql&#x27;
 import { AuthService, ScrollService } from &#x27;@services&#x27;
 import { inOutGridAnimation200 } from &#x27;@animations&#x27;
+import { serializePermissions } from &#x27;@utils&#x27;
 import { UploadModel } from &#x27;@models&#x27;
 import { Permission } from &#x27;@enums&#x27;
 
+import { PermissionInputComponent } from &#x27;@components/permission-input&#x27;
 import { ExtensionInputComponent } from &#x27;@components/extension-input&#x27;
 import { AccountInputComponent } from &#x27;@components/account-input&#x27;
 import { NotFoundComponent } from &#x27;@components/not-found&#x27;
@@ -1444,11 +1564,16 @@ import { UploadInfoComponent } from &#x27;./upload-info/upload-info.component&#x
     ReactiveFormsModule,
     TuiInputModule,
     TuiTextfieldControllerModule,
+    TuiSelectModule,
+    TuiDataListWrapperModule,
     TuiSvgModule,
     TuiTablePaginationModule,
+    TuiDialogModule,
+    TuiHintModule,
     UploadListItemComponent,
     ExtensionInputComponent,
     AccountInputComponent,
+    PermissionInputComponent,
     NotFoundComponent,
   ],
   providers: [UploadsGQL],
@@ -1467,10 +1592,12 @@ export class UploadsComponent implements OnInit {
   private injector &#x3D; inject(Injector)
 
   isAdministrator &#x3D; inject(AuthService).$isAdmin()
-  skeletonRows &#x3D; new Array(10)
 
   private uploadsQuery: UploadsQueryRef | null &#x3D; null
   private isLastPage &#x3D; false
+
+  skeletonRows &#x3D; new Array(10)
+  modalFiltersIsOpen &#x3D; false
 
   $page: WritableSignal&lt;number&gt; &#x3D; signal(1)
   $size: WritableSignal&lt;number&gt; &#x3D; signal(20)
@@ -1482,8 +1609,10 @@ export class UploadsComponent implements OnInit {
     name: new FormControl(),
     ext: new FormControl(),
     account: new FormControl(),
+    permissions: new FormControl(),
   })
 
+  private $permissions: WritableSignal&lt;Permission[]&gt; &#x3D; signal([])
   private $name: WritableSignal&lt;string&gt; &#x3D; signal(&#x27;&#x27;)
   private $ext: WritableSignal&lt;string[]&gt; &#x3D; signal([])
   private $owner: WritableSignal&lt;string[]&gt; &#x3D; signal([])
@@ -1558,6 +1687,17 @@ export class UploadsComponent implements OnInit {
         this.$name.set(items)
         this.resetUploads()
       })
+
+    this.uploadFiltersForm.controls[&#x27;permissions&#x27;].valueChanges
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        debounceTime(1000),
+        distinctUntilChanged()
+      )
+      .subscribe((permissions) &#x3D;&gt; {
+        this.$permissions.set(serializePermissions(permissions))
+        this.resetUploads()
+      })
   }
 
   showUploadFile() {
@@ -1570,6 +1710,10 @@ export class UploadsComponent implements OnInit {
     this.showUploadInfoDialog(uploadId)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe()
+  }
+
+  showModalFilters() {
+    this.modalFiltersIsOpen &#x3D; true
   }
 
   isPrivate(permissions: Permission[]) {
@@ -1602,6 +1746,8 @@ export class UploadsComponent implements OnInit {
       owner,
       name: this.$name().trim().length &#x3D;&#x3D;&#x3D; 0 ? undefined : this.$name(),
       ext: this.$ext().length &#x3D;&#x3D;&#x3D; 0 ? undefined : this.$ext(),
+      permissions:
+        this.$permissions().length &#x3D;&#x3D;&#x3D; 0 ? undefined : this.$permissions(),
     }
   }
 
@@ -1648,7 +1794,7 @@ export class UploadsComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;form class&#x3D;&quot;uploads-filters&quot; [formGroup]&#x3D;&quot;this.uploadFiltersForm&quot; [attr.data-public]&#x3D;&quot;!this.isAdministrator&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;form class&#x3D;&quot;uploads-filters&quot; [formGroup]&#x3D;&quot;this.uploadFiltersForm&quot;&gt;
   &lt;tui-input
     formControlName&#x3D;&quot;name&quot;
     tuiTextfieldIcon&#x3D;&quot;tuiIconSearch&quot;
@@ -1657,10 +1803,20 @@ export class UploadsComponent implements OnInit {
     Название
   &lt;/tui-input&gt;
   &lt;spomen-extension-input [formGroup]&#x3D;&quot;this.uploadFiltersForm&quot; formControlName&#x3D;&quot;ext&quot; /&gt;
-  @if (this.isAdministrator) {
-    &lt;spomen-account-input [formGroup]&#x3D;&quot;this.uploadFiltersForm&quot; formControlName&#x3D;&quot;account&quot; /&gt;
-  }
-  &lt;button class&#x3D;&quot;button uploads-filters__btn&quot; (click)&#x3D;&quot;this.showUploadFile()&quot;&gt;
+  &lt;button
+    class&#x3D;&quot;button uploads-filters__btn&quot;
+    (click)&#x3D;&quot;this.showModalFilters()&quot;
+    tuiHint&#x3D;&quot;Параметры поиска&quot;
+    [tuiHintShowDelay]&#x3D;&quot;1000&quot;
+  &gt;
+    &lt;tui-svg src&#x3D;&quot;tuiIconCompass&quot;&gt;&lt;/tui-svg&gt;
+  &lt;/button&gt;
+  &lt;button
+    class&#x3D;&quot;button uploads-filters__btn&quot;
+    (click)&#x3D;&quot;this.showUploadFile()&quot;
+    tuiHint&#x3D;&quot;Загрузить файл&quot;
+    [tuiHintShowDelay]&#x3D;&quot;1000&quot;
+  &gt;
     &lt;tui-svg src&#x3D;&quot;tuiIconUpload&quot;&gt;&lt;/tui-svg&gt;
   &lt;/button&gt;
 &lt;/form&gt;
@@ -1696,6 +1852,26 @@ export class UploadsComponent implements OnInit {
     &gt;&lt;/spomen-not-found&gt;
   &lt;/section&gt;
 }
+
+&lt;ng-template
+  let-observer
+  [tuiDialogOptions]&#x3D;&quot;{size: &#x27;page&#x27;}&quot;
+  [(tuiDialog)]&#x3D;&quot;this.modalFiltersIsOpen&quot;
+&gt;
+  &lt;div class&#x3D;&quot;uploads-filters--modal&quot;&gt;
+    &lt;form [formGroup]&#x3D;&quot;this.uploadFiltersForm&quot; class&#x3D;&quot;uploads-filters--modal__form&quot;&gt;
+      &lt;spomen-extension-input [formGroup]&#x3D;&quot;this.uploadFiltersForm&quot; formControlName&#x3D;&quot;ext&quot; /&gt;
+
+      @if (this.isAdministrator) {
+        &lt;spomen-account-input [formGroup]&#x3D;&quot;this.uploadFiltersForm&quot; formControlName&#x3D;&quot;account&quot; /&gt;
+      }
+
+      &lt;spomen-permission-input [formGroup]&#x3D;&quot;this.uploadFiltersForm&quot; formControlName&#x3D;&quot;permissions&quot;/&gt;
+
+      &lt;button class&#x3D;&quot;button&quot; (click)&#x3D;&quot;observer.complete()&quot;&gt;&lt;span&gt;Найти&lt;/span&gt;&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/ng-template&gt;
 </code></pre>
     </div>
 
@@ -1725,8 +1901,8 @@ export class UploadsComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form class="uploads-filters" [formGroup]="this.uploadFiltersForm" [attr.data-public]="!this.isAdministrator">  <tui-input    formControlName="name"    tuiTextfieldIcon="tuiIconSearch"    [tuiTextfieldSize]="\'s\'"  >    Название  </tui-input>  <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" />  @if (this.isAdministrator) {    <spomen-account-input [formGroup]="this.uploadFiltersForm" formControlName="account" />  }  <button class="button uploads-filters__btn" (click)="this.showUploadFile()">    <tui-svg src="tuiIconUpload"></tui-svg>  </button></form><section class="uploads-list">  @if (this.$uploads().length > 0) {    <div @inOutGrid200>      @for (upload of this.$uploads(); track $index) {        <spomen-upload-list-item          [isLoading]="false"          [isPrivate]="this.isPrivate(upload.permissions)"          [upload]="upload"          (clickUpload)="this.showUploadInfo(upload.id)"          (selectExtension)="this.setExtensionFilter(upload.ext)"        />      }    </div>  }  @if (this.$uploadsLoading()) {    <div @inOutGrid200>      @for (row of this.skeletonRows; track $index) {        <spomen-upload-list-item [isLoading]="true" />      }    </div>  }</section>@if (this.$uploads().length === 0 && !this.$uploadsLoading()) {  <section class="uploads__not-found">    <spomen-not-found      title="Файлы не найдены"      [showRef]="false"    ></spomen-not-found>  </section>}</div>'
-    var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'},{'name': 'UploadsOldComponent', 'selector': 'spomen-uploads'}];
+        var COMPONENT_TEMPLATE = '<div><form class="uploads-filters" [formGroup]="this.uploadFiltersForm">  <tui-input    formControlName="name"    tuiTextfieldIcon="tuiIconSearch"    [tuiTextfieldSize]="\'s\'"  >    Название  </tui-input>  <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" />  <button    class="button uploads-filters__btn"    (click)="this.showModalFilters()"    tuiHint="Параметры поиска"    [tuiHintShowDelay]="1000"  >    <tui-svg src="tuiIconCompass"></tui-svg>  </button>  <button    class="button uploads-filters__btn"    (click)="this.showUploadFile()"    tuiHint="Загрузить файл"    [tuiHintShowDelay]="1000"  >    <tui-svg src="tuiIconUpload"></tui-svg>  </button></form><section class="uploads-list">  @if (this.$uploads().length > 0) {    <div @inOutGrid200>      @for (upload of this.$uploads(); track $index) {        <spomen-upload-list-item          [isLoading]="false"          [isPrivate]="this.isPrivate(upload.permissions)"          [upload]="upload"          (clickUpload)="this.showUploadInfo(upload.id)"          (selectExtension)="this.setExtensionFilter(upload.ext)"        />      }    </div>  }  @if (this.$uploadsLoading()) {    <div @inOutGrid200>      @for (row of this.skeletonRows; track $index) {        <spomen-upload-list-item [isLoading]="true" />      }    </div>  }</section>@if (this.$uploads().length === 0 && !this.$uploadsLoading()) {  <section class="uploads__not-found">    <spomen-not-found      title="Файлы не найдены"      [showRef]="false"    ></spomen-not-found>  </section>}<ng-template  let-observer  [tuiDialogOptions]="{size: \'page\'}"  [(tuiDialog)]="this.modalFiltersIsOpen">  <div class="uploads-filters--modal">    <form [formGroup]="this.uploadFiltersForm" class="uploads-filters--modal__form">      <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" />      @if (this.isAdministrator) {        <spomen-account-input [formGroup]="this.uploadFiltersForm" formControlName="account" />      }      <spomen-permission-input [formGroup]="this.uploadFiltersForm" formControlName="permissions"/>      <button class="button" (click)="observer.complete()"><span>Найти</span></button>    </form>  </div></ng-template></div>'
+    var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'PermissionInputComponent', 'selector': 'spomen-permission-input'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
     var DIRECTIVES = [{'name': 'ScrollNearEndDirective', 'selector': '[scrollNearEnd]'}];
     var ACTUAL_COMPONENT = {'name': 'UploadsComponent'};
 </script>

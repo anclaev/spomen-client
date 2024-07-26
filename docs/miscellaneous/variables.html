@@ -1040,12 +1040,14 @@
     $owner: [String!]
     $name: String
     $ext: [String!]
+    $permissions: [Permission!]
   ) {
     uploads(
       filters: {
         owner: { username: { in: $owner } }
         name: { contains: $name }
         ext: { in: $ext }
+        permissions: { hasEvery: $permissions }
       }
       size: $size
       page: $page

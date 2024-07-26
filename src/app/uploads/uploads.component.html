@@ -1,4 +1,4 @@
-<form class="uploads-filters" [formGroup]="this.uploadFiltersForm" [attr.data-public]="!this.isAdministrator">
+<form class="uploads-filters" [formGroup]="this.uploadFiltersForm">
   <tui-input
     formControlName="name"
     tuiTextfieldIcon="tuiIconSearch"
@@ -7,10 +7,20 @@
     Название
   </tui-input>
   <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" />
-  @if (this.isAdministrator) {
-    <spomen-account-input [formGroup]="this.uploadFiltersForm" formControlName="account" />
-  }
-  <button class="button uploads-filters__btn" (click)="this.showUploadFile()">
+  <button
+    class="button uploads-filters__btn"
+    (click)="this.showModalFilters()"
+    tuiHint="Параметры поиска"
+    [tuiHintShowDelay]="1000"
+  >
+    <tui-svg src="tuiIconCompass"></tui-svg>
+  </button>
+  <button
+    class="button uploads-filters__btn"
+    (click)="this.showUploadFile()"
+    tuiHint="Загрузить файл"
+    [tuiHintShowDelay]="1000"
+  >
     <tui-svg src="tuiIconUpload"></tui-svg>
   </button>
 </form>
@@ -46,3 +56,23 @@
     ></spomen-not-found>
   </section>
 }
+
+<ng-template
+  let-observer
+  [tuiDialogOptions]="{size: 'page'}"
+  [(tuiDialog)]="this.modalFiltersIsOpen"
+>
+  <div class="uploads-filters--modal">
+    <form [formGroup]="this.uploadFiltersForm" class="uploads-filters--modal__form">
+      <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" />
+
+      @if (this.isAdministrator) {
+        <spomen-account-input [formGroup]="this.uploadFiltersForm" formControlName="account" />
+      }
+
+      <spomen-permission-input [formGroup]="this.uploadFiltersForm" formControlName="permissions"/>
+
+      <button class="button" (click)="observer.complete()"><span>Найти</span></button>
+    </form>
+  </div>
+</ng-template>

@@ -107,6 +107,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/OopsComponent.html" data-type="entity-link" >OopsComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/PermissionInputComponent.html" data-type="entity-link" >PermissionInputComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/ProfileComponent.html" data-type="entity-link" >ProfileComponent</a>
                             </li>
                             <li class="link">
@@ -129,9 +132,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="components/UploadsComponent.html" data-type="entity-link" >UploadsComponent</a>
-                            </li>
-                            <li class="link">
-                                <a href="components/UploadsOldComponent.html" data-type="entity-link" >UploadsOldComponent</a>
                             </li>
                         </ul>
                     </li>

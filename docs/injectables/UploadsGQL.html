@@ -181,7 +181,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/core/graphql/queries/uploads.gql.ts:59</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/core/graphql/queries/uploads.gql.ts:63</a></div>
                         </td>
                     </tr>
 
@@ -199,6 +199,7 @@ import { Injectable } from &#x27;@angular/core&#x27;
 
 import { Pagination } from &#x27;@graphql&#x27;
 import { UploadModel } from &#x27;@models&#x27;
+import { Permission } from &#x27;@enums&#x27;
 
 export type UploadsResponse &#x3D; {
   uploads: UploadModel[]
@@ -208,6 +209,7 @@ export type UploadsVariables &#x3D; Pagination &amp; {
   owner?: string[]
   name?: string
   ext?: string[]
+  permissions?: Permission[]
 }
 
 export type UploadsQueryRef &#x3D; QueryRef&lt;UploadsResponse, UploadsVariables&gt;
@@ -219,12 +221,14 @@ export const UploadsQuery &#x3D; gql&#x60;
     $owner: [String!]
     $name: String
     $ext: [String!]
+    $permissions: [Permission!]
   ) {
     uploads(
       filters: {
         owner: { username: { in: $owner } }
         name: { contains: $name }
         ext: { in: $ext }
+        permissions: { hasEvery: $permissions }
       }
       size: $size
       page: $page

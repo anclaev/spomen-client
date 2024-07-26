@@ -30,8 +30,8 @@ import { UploadService } from '@services'
   imports: [
     CommonModule,
     FormsModule,
-    TuiInputTagModule,
     ReactiveFormsModule,
+    TuiInputTagModule,
     TuiDataListWrapperModule,
     TuiTextfieldControllerModule,
   ],

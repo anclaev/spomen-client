@@ -18,20 +18,12 @@
   align-items: center;
 }
 
-.uploads-filters[data-public="true"] > *:first-child {
+.uploads-filters > *:first-child {
   flex-grow: 1;
 }
 
-.uploads-filters[data-public="true"] > spomen-extension-input {
+.uploads-filters > spomen-extension-input {
   min-width: 200px;
-}
-
-.uploads-filters {
-  flex-direction: row;
-}
-
-.uploads-filters:not([data-public="true"]) > * {
-  flex: 1 1 0px;
 }
 
 .uploads-filters > *:not(:last-child) {
@@ -79,9 +71,34 @@
   font-size: 24px !important;
 }
 
+.uploads-filters--modal {
+  height: calc(100vh - 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploads-filters--modal__form {
+  width: 95%;
+  max-width: 300px;
+}
+
+.uploads-filters--modal__form > *:not(button) {
+  margin-bottom: 30px;
+}
+
+.uploads-filters--modal__form > button {
+  margin-top: 50px;
+}
+
 @media only screen and (max-width: 576px) {
-  .uploads-filters[data-public="true"] > spomen-extension-input {
-    min-width: 100px;
+  .uploads-filters > spomen-account-input,
+  .uploads-filters > spomen-extension-input {
+    display: none;
+  }
+
+  .uploads-filters > *:not(:last-child) {
+    margin-right: 15px;
   }
 
   .uploads__not-found {

@@ -75,6 +75,16 @@
   color: var(--color-accent);
 }
 
+@media only screen and (max-width: 992px) {
+  .uploads-list-item {
+    grid-template-columns: min-content 1fr min(10%, 60px) max(15%, 150px) max(10%, 100px);
+  }
+
+  .uploads-list-item__meta {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .uploads-list-item {
     grid-template-columns: min-content 1fr 50px 32px;

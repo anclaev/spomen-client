@@ -1,6 +1,8 @@
 import {
   TuiAlertService,
+  TuiDialogModule,
   TuiDialogService,
+  TuiHintModule,
   TuiSvgModule,
   TuiTextfieldControllerModule,
 } from '@taiga-ui/core'
@@ -14,17 +16,23 @@ import {
   signal,
   WritableSignal,
 } from '@angular/core'
+
 import {
   FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms'
-import { debounceTime, distinctUntilChanged, filter } from 'rxjs'
+
+import {
+  TuiDataListWrapperModule,
+  TuiInputModule,
+  TuiSelectModule,
+} from '@taiga-ui/kit'
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus'
 import { TuiTablePaginationModule } from '@taiga-ui/addon-table'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
-import { TuiInputModule } from '@taiga-ui/kit'
+import { debounceTime, distinctUntilChanged } from 'rxjs'
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 import * as Sentry from '@sentry/angular'
@@ -32,9 +40,11 @@ import * as Sentry from '@sentry/angular'
 import { UploadsQueryRef, UploadsGQL } from '@graphql'
 import { AuthService, ScrollService } from '@services'
 import { inOutGridAnimation200 } from '@animations'
+import { serializePermissions } from '@utils'
 import { UploadModel } from '@models'
 import { Permission } from '@enums'
 
+import { PermissionInputComponent } from '@components/permission-input'
 import { ExtensionInputComponent } from '@components/extension-input'
 import { AccountInputComponent } from '@components/account-input'
 import { NotFoundComponent } from '@components/not-found'
@@ -53,11 +63,16 @@ import { UploadInfoComponent } from './upload-info/upload-info.component'
     ReactiveFormsModule,
     TuiInputModule,
     TuiTextfieldControllerModule,
+    TuiSelectModule,
+    TuiDataListWrapperModule,
     TuiSvgModule,
     TuiTablePaginationModule,
+    TuiDialogModule,
+    TuiHintModule,
     UploadListItemComponent,
     ExtensionInputComponent,
     AccountInputComponent,
+    PermissionInputComponent,
     NotFoundComponent,
   ],
   providers: [UploadsGQL],
@@ -76,10 +91,12 @@ export class UploadsComponent implements OnInit {
   private injector = inject(Injector)
 
   isAdministrator = inject(AuthService).$isAdmin()
-  skeletonRows = new Array(10)
 
   private uploadsQuery: UploadsQueryRef | null = null
   private isLastPage = false
+
+  skeletonRows = new Array(10)
+  modalFiltersIsOpen = false
 
   $page: WritableSignal<number> = signal(1)
   $size: WritableSignal<number> = signal(20)
@@ -91,8 +108,10 @@ export class UploadsComponent implements OnInit {
     name: new FormControl(),
     ext: new FormControl(),
     account: new FormControl(),
+    permissions: new FormControl(),
   })
 
+  private $permissions: WritableSignal<Permission[]> = signal([])
   private $name: WritableSignal<string> = signal('')
   private $ext: WritableSignal<string[]> = signal([])
   private $owner: WritableSignal<string[]> = signal([])
@@ -167,6 +186,17 @@ export class UploadsComponent implements OnInit {
         this.$name.set(items)
         this.resetUploads()
       })
+
+    this.uploadFiltersForm.controls['permissions'].valueChanges
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        debounceTime(1000),
+        distinctUntilChanged()
+      )
+      .subscribe((permissions) => {
+        this.$permissions.set(serializePermissions(permissions))
+        this.resetUploads()
+      })
   }
 
   showUploadFile() {
@@ -179,6 +209,10 @@ export class UploadsComponent implements OnInit {
     this.showUploadInfoDialog(uploadId)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe()
+  }
+
+  showModalFilters() {
+    this.modalFiltersIsOpen = true
   }
 
   isPrivate(permissions: Permission[]) {
@@ -211,6 +245,8 @@ export class UploadsComponent implements OnInit {
       owner,
       name: this.$name().trim().length === 0 ? undefined : this.$name(),
       ext: this.$ext().length === 0 ? undefined : this.$ext(),
+      permissions:
+        this.$permissions().length === 0 ? undefined : this.$permissions(),
     }
   }
 

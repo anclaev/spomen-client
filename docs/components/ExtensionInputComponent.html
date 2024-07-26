@@ -172,8 +172,8 @@
                 <td class="col-md-9">
                             <code>CommonModule</code>
                             <code>FormsModule</code>
-                            <code>TuiInputTagModule</code>
                             <code>ReactiveFormsModule</code>
+                            <code>TuiInputTagModule</code>
                             <code>TuiDataListWrapperModule</code>
                             <code>TuiTextfieldControllerModule</code>
                 </td>
@@ -918,8 +918,8 @@ import { UploadService } from &#x27;@services&#x27;
   imports: [
     CommonModule,
     FormsModule,
-    TuiInputTagModule,
     ReactiveFormsModule,
+    TuiInputTagModule,
     TuiDataListWrapperModule,
     TuiTextfieldControllerModule,
   ],
@@ -1001,7 +1001,7 @@ export class ExtensionInputComponent implements OnInit, ControlValueAccessor {
     tuiTextfieldIcon&#x3D;&quot;tuiIconSliders&quot;
     [tuiTextfieldSize]&#x3D;&quot;this.size&quot;
     [rows]&#x3D;&quot;1&quot;
-  &gt;Тип
+  &gt;{{this.placeholder}}
     &lt;tui-data-list-wrapper
       *tuiDataList
       [items]&#x3D;&quot;this.$extensions()&quot;
@@ -1037,8 +1037,8 @@ export class ExtensionInputComponent implements OnInit, ControlValueAccessor {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container [formGroup]="this.formGroup">  <tui-input-tag    [formControlName]="this.formControlName"    [placeholder]="this.placeholder"    tuiTextfieldIcon="tuiIconSliders"    [tuiTextfieldSize]="this.size"    [rows]="1"  >Тип    <tui-data-list-wrapper      *tuiDataList      [items]="this.$extensions()"    ></tui-data-list-wrapper>  </tui-input-tag></ng-container></div>'
-    var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'},{'name': 'UploadsOldComponent', 'selector': 'spomen-uploads'}];
+        var COMPONENT_TEMPLATE = '<div><ng-container [formGroup]="this.formGroup">  <tui-input-tag    [formControlName]="this.formControlName"    [placeholder]="this.placeholder"    tuiTextfieldIcon="tuiIconSliders"    [tuiTextfieldSize]="this.size"    [rows]="1"  >{{this.placeholder}}    <tui-data-list-wrapper      *tuiDataList      [items]="this.$extensions()"    ></tui-data-list-wrapper>  </tui-input-tag></ng-container></div>'
+    var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'PermissionInputComponent', 'selector': 'spomen-permission-input'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
     var DIRECTIVES = [{'name': 'ScrollNearEndDirective', 'selector': '[scrollNearEnd]'}];
     var ACTUAL_COMPONENT = {'name': 'ExtensionInputComponent'};
 </script>
