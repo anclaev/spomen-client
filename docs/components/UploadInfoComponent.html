@@ -793,79 +793,82 @@ export class UploadInfoComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;form class&#x3D;&quot;upload-info-container&quot; [formGroup]&#x3D;&quot;this.uploadInfoForm&quot;&gt;
-  &lt;tui-input-inline formControlName&#x3D;&quot;name&quot; class&#x3D;&quot;upload-info__name&quot; /&gt;
+        <pre class="line-numbers"><code class="language-html">@if (this.$upload()) {
 
-  &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
-    &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
-      &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Имя&lt;/tui-chip&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
-      &lt;tui-input-inline formControlName&#x3D;&quot;originalName&quot; /&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
-    &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
-      &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Тип&lt;/tui-chip&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
-      &lt;tui-chip size&#x3D;&quot;s&quot; data-type&#x3D;&quot;primary&quot;&gt;
-      {{ this.$upload()!.ext }}
-      &lt;/tui-chip&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
-    &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
-      &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Ссылка&lt;/tui-chip&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;upload-info__column upload-info__url&quot;&gt;
-      &lt;a
-        [href]&#x3D;&quot;this.$upload()!.url&quot;
-        target&#x3D;&quot;_blank&quot;
-      &gt;
-        &lt;tui-line-clamp [content]&#x3D;&quot;this.$upload()!.url&quot; [linesLimit]&#x3D;&quot;1&quot; /&gt;
-      &lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
-    &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
-      &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Владелец&lt;/tui-chip&gt;
-    &lt;/div&gt;
+  &lt;form class&#x3D;&quot;upload-info-container&quot; [formGroup]&#x3D;&quot;this.uploadInfoForm&quot;&gt;
+    &lt;tui-input-inline formControlName&#x3D;&quot;name&quot; class&#x3D;&quot;upload-info__name&quot; /&gt;
 
-    @if (this.$upload()!.owner!) {
-      &lt;div class&#x3D;&quot;upload-info__column upload-info__owner&quot; (click)&#x3D;&quot;this.clickOwner()&quot;&gt;
-        &lt;tui-avatar
-          [rounded]&#x3D;&quot;true&quot;
-          class&#x3D;&quot;avatar&quot;
-          [avatarUrl]&#x3D;&quot;this.uploadInfoForm.controls[&#x27;ownerAvatar&#x27;].value&quot;
-          [text]&#x3D;&quot;this.uploadInfoForm.controls[&#x27;owner&#x27;].value&quot;
-          size&#x3D;&quot;s&quot;
-        /&gt;
-        &lt;span&gt;{{ this.uploadInfoForm.controls[&#x27;owner&#x27;].value }}&lt;/span&gt;
+    &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
+      &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
+        &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Имя&lt;/tui-chip&gt;
       &lt;/div&gt;
-    } @else {
-      &lt;span&gt;Не найден&lt;/span&gt;
-    }
-  &lt;/div&gt;
-  &lt;div class&#x3D;&quot;upload-info__row upload-info__row--between&quot;&gt;
-    &lt;div class&#x3D;&quot;upload-info__column upload-info__column--50&quot;&gt;
-      &lt;span&gt;Личный&lt;/span&gt;
-      &lt;tui-toggle
-        formControlName&#x3D;&quot;isPrivate&quot;
-        [showIcons]&#x3D;&quot;true&quot;
-        size&#x3D;&quot;l&quot;
-      &gt;&lt;/tui-toggle&gt;
+      &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
+        &lt;tui-input-inline formControlName&#x3D;&quot;originalName&quot; /&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class&#x3D;&quot;upload-info__column upload-info__column--50&quot;&gt;
-      &lt;span&gt;Системный&lt;/span&gt;
-      &lt;tui-toggle
-        formControlName&#x3D;&quot;isSystem&quot;
-        [showIcons]&#x3D;&quot;true&quot;
-        size&#x3D;&quot;l&quot;
-      &gt;&lt;/tui-toggle&gt;
+    &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
+      &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
+        &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Тип&lt;/tui-chip&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
+        &lt;tui-chip size&#x3D;&quot;s&quot; data-type&#x3D;&quot;primary&quot;&gt;
+          {{ this.$upload()!.ext }}
+        &lt;/tui-chip&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/form&gt;
+    &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
+      &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
+        &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Ссылка&lt;/tui-chip&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;upload-info__column upload-info__url&quot;&gt;
+        &lt;a
+          [href]&#x3D;&quot;this.$upload()!.url&quot;
+          target&#x3D;&quot;_blank&quot;
+        &gt;
+          &lt;tui-line-clamp [content]&#x3D;&quot;this.$upload()!.url&quot; [linesLimit]&#x3D;&quot;1&quot; /&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
+      &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
+        &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Владелец&lt;/tui-chip&gt;
+      &lt;/div&gt;
+
+      @if (this.$upload()!.owner!) {
+        &lt;div class&#x3D;&quot;upload-info__column upload-info__owner&quot; (click)&#x3D;&quot;this.clickOwner()&quot;&gt;
+          &lt;tui-avatar
+            [rounded]&#x3D;&quot;true&quot;
+            class&#x3D;&quot;avatar&quot;
+            [avatarUrl]&#x3D;&quot;this.uploadInfoForm.controls[&#x27;ownerAvatar&#x27;].value&quot;
+            [text]&#x3D;&quot;this.uploadInfoForm.controls[&#x27;owner&#x27;].value&quot;
+            size&#x3D;&quot;s&quot;
+          /&gt;
+          &lt;span&gt;{{ this.uploadInfoForm.controls[&#x27;owner&#x27;].value }}&lt;/span&gt;
+        &lt;/div&gt;
+      } @else {
+        &lt;span&gt;Не найден&lt;/span&gt;
+      }
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;upload-info__row upload-info__row--between&quot;&gt;
+      &lt;div class&#x3D;&quot;upload-info__column upload-info__column--50&quot;&gt;
+        &lt;span&gt;Личный&lt;/span&gt;
+        &lt;tui-toggle
+          formControlName&#x3D;&quot;isPrivate&quot;
+          [showIcons]&#x3D;&quot;true&quot;
+          size&#x3D;&quot;l&quot;
+        &gt;&lt;/tui-toggle&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;upload-info__column upload-info__column--50&quot;&gt;
+        &lt;span&gt;Системный&lt;/span&gt;
+        &lt;tui-toggle
+          formControlName&#x3D;&quot;isSystem&quot;
+          [showIcons]&#x3D;&quot;true&quot;
+          size&#x3D;&quot;l&quot;
+        &gt;&lt;/tui-toggle&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+}
 </code></pre>
     </div>
 
@@ -895,8 +898,8 @@ export class UploadInfoComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form class="upload-info-container" [formGroup]="this.uploadInfoForm">  <tui-input-inline formControlName="name" class="upload-info__name" />  <div class="upload-info__row">    <div class="upload-info__column">      <tui-chip size="s">Имя</tui-chip>    </div>    <div class="upload-info__column">      <tui-input-inline formControlName="originalName" />    </div>  </div>  <div class="upload-info__row">    <div class="upload-info__column">      <tui-chip size="s">Тип</tui-chip>    </div>    <div class="upload-info__column">      <tui-chip size="s" data-type="primary">      {{ this.$upload()!.ext }}      </tui-chip>    </div>  </div>  <div class="upload-info__row">    <div class="upload-info__column">      <tui-chip size="s">Ссылка</tui-chip>    </div>    <div class="upload-info__column upload-info__url">      <a        [href]="this.$upload()!.url"        target="_blank"      >        <tui-line-clamp [content]="this.$upload()!.url" [linesLimit]="1" />      </a>    </div>  </div>  <div class="upload-info__row">    <div class="upload-info__column">      <tui-chip size="s">Владелец</tui-chip>    </div>    @if (this.$upload()!.owner!) {      <div class="upload-info__column upload-info__owner" (click)="this.clickOwner()">        <tui-avatar          [rounded]="true"          class="avatar"          [avatarUrl]="this.uploadInfoForm.controls[\'ownerAvatar\'].value"          [text]="this.uploadInfoForm.controls[\'owner\'].value"          size="s"        />        <span>{{ this.uploadInfoForm.controls[\'owner\'].value }}</span>      </div>    } @else {      <span>Не найден</span>    }  </div>  <div class="upload-info__row upload-info__row--between">    <div class="upload-info__column upload-info__column--50">      <span>Личный</span>      <tui-toggle        formControlName="isPrivate"        [showIcons]="true"        size="l"      ></tui-toggle>    </div>    <div class="upload-info__column upload-info__column--50">      <span>Системный</span>      <tui-toggle        formControlName="isSystem"        [showIcons]="true"        size="l"      ></tui-toggle>    </div>  </div></form></div>'
-    var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'PermissionInputComponent', 'selector': 'spomen-permission-input'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
+        var COMPONENT_TEMPLATE = '<div>@if (this.$upload()) {  <form class="upload-info-container" [formGroup]="this.uploadInfoForm">    <tui-input-inline formControlName="name" class="upload-info__name" />    <div class="upload-info__row">      <div class="upload-info__column">        <tui-chip size="s">Имя</tui-chip>      </div>      <div class="upload-info__column">        <tui-input-inline formControlName="originalName" />      </div>    </div>    <div class="upload-info__row">      <div class="upload-info__column">        <tui-chip size="s">Тип</tui-chip>      </div>      <div class="upload-info__column">        <tui-chip size="s" data-type="primary">          {{ this.$upload()!.ext }}        </tui-chip>      </div>    </div>    <div class="upload-info__row">      <div class="upload-info__column">        <tui-chip size="s">Ссылка</tui-chip>      </div>      <div class="upload-info__column upload-info__url">        <a          [href]="this.$upload()!.url"          target="_blank"        >          <tui-line-clamp [content]="this.$upload()!.url" [linesLimit]="1" />        </a>      </div>    </div>    <div class="upload-info__row">      <div class="upload-info__column">        <tui-chip size="s">Владелец</tui-chip>      </div>      @if (this.$upload()!.owner!) {        <div class="upload-info__column upload-info__owner" (click)="this.clickOwner()">          <tui-avatar            [rounded]="true"            class="avatar"            [avatarUrl]="this.uploadInfoForm.controls[\'ownerAvatar\'].value"            [text]="this.uploadInfoForm.controls[\'owner\'].value"            size="s"          />          <span>{{ this.uploadInfoForm.controls[\'owner\'].value }}</span>        </div>      } @else {        <span>Не найден</span>      }    </div>    <div class="upload-info__row upload-info__row--between">      <div class="upload-info__column upload-info__column--50">        <span>Личный</span>        <tui-toggle          formControlName="isPrivate"          [showIcons]="true"          size="l"        ></tui-toggle>      </div>      <div class="upload-info__column upload-info__column--50">        <span>Системный</span>        <tui-toggle          formControlName="isSystem"          [showIcons]="true"          size="l"        ></tui-toggle>      </div>    </div>  </form>}</div>'
+    var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'PermissionInputComponent', 'selector': 'spomen-permission-input'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadActionsComponent', 'selector': 'spomen-upload-actions'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadPreviewComponent', 'selector': 'spomen-upload-preview'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
     var DIRECTIVES = [{'name': 'ScrollNearEndDirective', 'selector': '[scrollNearEnd]'}];
     var ACTUAL_COMPONENT = {'name': 'UploadInfoComponent'};
 </script>

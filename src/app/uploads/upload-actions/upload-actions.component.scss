@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+}
+
+:host > *:not(:last-child) {
+  margin-right: 7px;
+}
+
+:host > * {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(104,104,104,.96);
+}

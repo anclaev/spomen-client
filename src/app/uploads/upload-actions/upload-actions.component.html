@@ -1,0 +1,37 @@
+@if (this._actions().save) {
+  <button
+    tuiPreviewAction
+    title="Сохранить"
+    (click)="this.handleSave.emit()"
+  >
+    <tui-svg src="tuiIconSave" />
+  </button>
+}
+
+@if (this._actions().open) {
+  <button
+    tuiPreviewAction
+    title="Перейти к"
+    (click)="this.handleOpen.emit()"
+  >
+    <tui-svg src="tuiIconExternalLink"/>
+  </button>
+}
+
+@if (this._actions().delete) {
+  <button
+    tuiPreviewAction
+    title="Удалить"
+    (click)="this.handleDelete.emit()"
+  >
+    <tui-svg src="tuiIconTrash"></tui-svg>
+  </button>
+}
+<a
+  [href]="this.url()"
+  tuiPreviewAction
+  title="Скачать"
+
+>
+  <tui-svg src="tuiIconDownload"></tui-svg>
+</a>

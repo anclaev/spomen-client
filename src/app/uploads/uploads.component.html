@@ -32,7 +32,8 @@
           [isLoading]="false"
           [isPrivate]="this.isPrivate(upload.permissions)"
           [upload]="upload"
-          (onDelete)="this.handleUploadDeleted(upload.id)"
+          (onDelete)="this.handleDeletedUpload(upload.id)"
+          (showPreview)="this.showUploadPreview($event)"
           (clickUpload)="this.showUploadInfo(upload.id)"
           (selectExtension)="this.setExtensionFilter(upload.ext)"
         />
@@ -43,7 +44,7 @@
   @if (this.$uploadsLoading()) {
     <div @inOutGrid200>
       @for (row of this.skeletonRows; track $index) {
-        <spomen-upload-list-item [isLoading]="true" />
+        <spomen-upload-list-item [isLoading]="true" [upload]="null" [isPrivate]="false"/>
       }
     </div>
   }
@@ -57,6 +58,15 @@
     ></spomen-not-found>
   </section>
 }
+
+<spomen-upload-preview
+  [upload]="this.$previewUpload()"
+  [isOpen]="this.$previewStatus()"
+  (handleOpen)="this.showUploadInfo(this.$previewUpload()!.id)"
+  (handleDelete)="this.handleDeletePreviewedUpload()"
+  (handleClose)="this.handleClosePreview()"
+/>
+
 
 <ng-template
   let-observer

@@ -25,10 +25,12 @@ import {
 } from '@angular/forms'
 
 import {
+  TUI_PROMPT,
   TuiDataListWrapperModule,
   TuiInputModule,
   TuiSelectModule,
 } from '@taiga-ui/kit'
+
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus'
 import { TuiTablePaginationModule } from '@taiga-ui/addon-table'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
@@ -37,7 +39,7 @@ import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 import * as Sentry from '@sentry/angular'
 
-import { UploadsQueryRef, UploadsGQL } from '@graphql'
+import { UploadsQueryRef, UploadsGQL, DeleteUploadByIdGQL } from '@graphql'
 import { AuthService, ScrollService } from '@services'
 import { inOutGridAnimation200 } from '@animations'
 import { serializePermissions } from '@utils'
@@ -50,6 +52,7 @@ import { AccountInputComponent } from '@components/account-input'
 import { NotFoundComponent } from '@components/not-found'
 
 import { UploadListItemComponent } from './upload-list-item/upload-list-item.component'
+import { UploadPreviewComponent } from './upload-preview/upload-preview.component'
 import { UploadFileComponent } from './upload-file/upload-file.component'
 import { UploadInfoComponent } from './upload-info/upload-info.component'
 
@@ -74,8 +77,9 @@ import { UploadInfoComponent } from './upload-info/upload-info.component'
     AccountInputComponent,
     PermissionInputComponent,
     NotFoundComponent,
+    UploadPreviewComponent,
   ],
-  providers: [UploadsGQL],
+  providers: [UploadsGQL, DeleteUploadByIdGQL],
   animations: [inOutGridAnimation200],
   templateUrl: './uploads.component.html',
   styleUrl: './uploads.component.scss',
@@ -87,8 +91,10 @@ export class UploadsComponent implements OnInit {
   private alerts = inject(TuiAlertService)
   private destroyRef = inject(DestroyRef)
   private scroll = inject(ScrollService)
-  private uploadsGQL = inject(UploadsGQL)
   private injector = inject(Injector)
+
+  private deleteUploadByIdGQL = inject(DeleteUploadByIdGQL)
+  private uploadsGQL = inject(UploadsGQL)
 
   isAdministrator = inject(AuthService).$isAdmin()
 
@@ -97,6 +103,9 @@ export class UploadsComponent implements OnInit {
 
   skeletonRows = new Array(10)
   modalFiltersIsOpen = false
+
+  $previewStatus: WritableSignal<boolean> = signal(false)
+  $previewUpload: WritableSignal<UploadModel | null> = signal(null)
 
   $page: WritableSignal<number> = signal(1)
   $size: WritableSignal<number> = signal(20)
@@ -206,17 +215,49 @@ export class UploadsComponent implements OnInit {
   }
 
   showUploadInfo(uploadId: string) {
+    if (this.$previewStatus()) {
+      this.$previewStatus.set(false)
+      this.$previewUpload.set(null)
+    }
+
     this.showUploadInfoDialog(uploadId)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe()
+  }
+
+  showUploadPreview(upload: UploadModel) {
+    this.$previewUpload.set(upload)
+    this.$previewStatus.set(true)
   }
 
   showModalFilters() {
     this.modalFiltersIsOpen = true
   }
 
-  handleUploadDeleted(id: string) {
+  handleClosePreview() {
+    this.$previewStatus.set(false)
+    this.$previewUpload.set(null)
+  }
+
+  handleDeletedUpload(id: string) {
+    this.alerts
+      .open('Файл успешно удалён', {
+        status: 'success',
+      })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe()
+
     this.$uploads.update((items) => items.filter((item) => item.id !== id))
+  }
+
+  handleDeletePreviewedUpload() {
+    this.showPrompt('Удалить файл?').subscribe((res) => {
+      if (res) {
+        this.showPrompt('Вы уверены?').subscribe((res) => {
+          if (res) this.deletePreviewedUpload()
+        })
+      }
+    })
   }
 
   isPrivate(permissions: Permission[]) {
@@ -234,6 +275,33 @@ export class UploadsComponent implements OnInit {
         ext,
       ])
     }
+  }
+
+  private deletePreviewedUpload() {
+    this.deleteUploadByIdGQL
+      .mutate({
+        id: this.$previewUpload()!.id,
+      })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: ({ data }) => {
+          this.handleDeletedUpload(this.$previewUpload()!.id)
+
+          this.handleClosePreview()
+        },
+        error: (err) => {
+          console.log(err)
+
+          this.handleClosePreview()
+
+          this.alerts
+            .open('Удалить файл не удалось', {
+              status: 'error',
+            })
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe()
+        },
+      })
   }
 
   private get params() {
@@ -292,4 +360,17 @@ export class UploadsComponent implements OnInit {
         },
       }
     )
+
+  private showPrompt(label: string) {
+    return this.dialogs
+      .open<boolean>(TUI_PROMPT, {
+        label,
+        size: 's',
+        data: {
+          yes: 'Да',
+          no: 'Нет',
+        },
+      })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+  }
 }

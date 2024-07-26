@@ -122,6 +122,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/TimelinesComponent.html" data-type="entity-link" >TimelinesComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/UploadActionsComponent.html" data-type="entity-link" >UploadActionsComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/UploadFileComponent.html" data-type="entity-link" >UploadFileComponent</a>
                             </li>
                             <li class="link">
@@ -129,6 +132,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="components/UploadListItemComponent.html" data-type="entity-link" >UploadListItemComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/UploadPreviewComponent.html" data-type="entity-link" >UploadPreviewComponent</a>
                             </li>
                             <li class="link">
                                 <a href="components/UploadsComponent.html" data-type="entity-link" >UploadsComponent</a>
@@ -244,6 +250,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/Route.html" data-type="entity-link" >Route</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/UploadActionsParams.html" data-type="entity-link" >UploadActionsParams</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/UploadModel.html" data-type="entity-link" >UploadModel</a>

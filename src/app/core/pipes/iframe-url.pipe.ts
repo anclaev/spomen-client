@@ -8,7 +8,7 @@ import { Pipe, PipeTransform } from '@angular/core'
 export class IFrameUrlPipe implements PipeTransform {
   constructor(private domSanitizer: DomSanitizer) {}
 
-  transform(url?: string): any {
+  transform(url: string | null): any {
     return url ? this.domSanitizer.bypassSecurityTrustResourceUrl(url) : null
   }
 }

@@ -164,23 +164,6 @@ tui-preview div.t-actions {
   align-items: flex-end;
 }
 
-tui-preview div.t-actions > *,
-tui-pdf-viewer div.t-actions > * {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(104,104,104,.96);
-}
-
-tui-preview div.t-actions > *:not(:last-child),
-tui-pdf-viewer div.t-actions > *:not(:last-child){
-  margin-right: 7px;
-}
-
 tui-prompt > div.t-buttons {
   flex-wrap: nowrap !important;
 }
