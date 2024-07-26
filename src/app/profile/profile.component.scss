@@ -1,12 +1,15 @@
 @import '../../styles/effects.scss';
 
 :host {
+  @include page;
+
   display: grid;
   grid-template-areas: 'side info';
   grid-template-columns: max-content 1fr;
   grid-gap: 40px;
 
-  @include page;
+
+  padding-top: 20px;
 }
 
 .profile-info,

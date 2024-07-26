@@ -144,6 +144,12 @@
 
 
 
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                                <code><a href="../injectables/UploadByIdGQL.html" target="_self" >UploadByIdGQL</a></code>
+                </td>
+            </tr>
 
 
             <tr>
@@ -204,11 +210,11 @@
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#apollo" >apollo</a>
+                                <a href="#destroyRef" >destroyRef</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#destroyRef" >destroyRef</a>
+                                <a href="#uploadByIdGQL" >uploadByIdGQL</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
@@ -423,32 +429,6 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:30</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="apollo"></a>
-                    <span class="name">
-                            <span class="modifier">Private</span>
-                        <span ><b>apollo</b></span>
-                        <a href="#apollo"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>inject(Apollo)</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
                                 <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:31</a></div>
                         </td>
                     </tr>
@@ -471,6 +451,32 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>inject(DestroyRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uploadByIdGQL"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>uploadByIdGQL</b></span>
+                        <a href="#uploadByIdGQL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(UploadByIdGQL)</code>
                     </td>
                 </tr>
                     <tr>
@@ -529,23 +535,23 @@ import { TuiAlertService, TuiDialogContext } from &#x27;@taiga-ui/core&#x27;
 import { POLYMORPHEUS_CONTEXT } from &#x27;@tinkoff/ng-polymorpheus&#x27;
 import { takeUntilDestroyed } from &#x27;@angular/core/rxjs-interop&#x27;
 import * as Sentry from &#x27;@sentry/angular&#x27;
-import { Apollo } from &#x27;apollo-angular&#x27;
 
-import { getUploadById } from &#x27;@graphql&#x27;
+import { UploadByIdGQL } from &#x27;@graphql&#x27;
 import { UploadModel } from &#x27;@models&#x27;
 
 @Component({
   selector: &#x27;spomen-upload-info&#x27;,
   standalone: true,
   imports: [],
+  providers: [UploadByIdGQL],
   templateUrl: &#x27;./upload-info.component.html&#x27;,
   styleUrl: &#x27;./upload-info.component.scss&#x27;,
 })
 @Sentry.TraceClass({ name: &#x27;UploadInfo&#x27; })
 export class UploadInfoComponent implements OnInit {
+  private uploadByIdGQL &#x3D; inject(UploadByIdGQL)
   private destroyRef &#x3D; inject(DestroyRef)
   private alerts &#x3D; inject(TuiAlertService)
-  private apollo &#x3D; inject(Apollo)
 
   constructor(
     @Inject(POLYMORPHEUS_CONTEXT)
@@ -565,23 +571,18 @@ export class UploadInfoComponent implements OnInit {
   $loading: WritableSignal&lt;boolean&gt; &#x3D; signal(true)
 
   ngOnInit(): void {
-    this.apollo
-      .watchQuery&lt;{ upload: UploadModel }, { id: string }&gt;({
-        query: getUploadById,
-        variables: {
-          id: this.uploadId,
-        },
-        fetchPolicy: &#x27;cache-and-network&#x27;,
+    this.uploadByIdGQL
+      .watch({
+        id: this.uploadId,
       })
-      .valueChanges.pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
+      .valueChanges.subscribe({
         next: (res) &#x3D;&gt; {
           this.$upload.set(res.data.upload)
           this.$loading.set(false)
         },
         error: () &#x3D;&gt; {
           this.alerts
-            .open(&#x27;Сервер временно недоступен&#x27;, {
+            .open(&#x27;Не удалось получить информацию о загрузке&#x27;, {
               status: &#x27;error&#x27;,
             })
             .pipe(takeUntilDestroyed(this.destroyRef))
@@ -627,8 +628,8 @@ export class UploadInfoComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><p>upload-info works!</p>{{ this.$upload() ? this.$upload()!.id : null }}</div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
-    var DIRECTIVES = [];
+    var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'},{'name': 'UploadsOldComponent', 'selector': 'spomen-uploads'}];
+    var DIRECTIVES = [{'name': 'ScrollNearEndDirective', 'selector': '[scrollNearEnd]'}];
     var ACTUAL_COMPONENT = {'name': 'UploadInfoComponent'};
 </script>
 <script src="../js/tree.js"></script>

@@ -21,10 +21,11 @@ import {
   ConfigService,
   AccountService,
   UploadService,
+  ScrollService,
 } from '@services'
 
 import { httpRequestInterceptor } from '@interceptors'
-import { graphqlProvider } from '@graphql'
+import { AccountGQL, graphqlProvider } from '@graphql'
 import { initSentry } from '@utils'
 
 import { routes } from './app.routes'
@@ -70,5 +71,7 @@ export const appConfig: ApplicationConfig = {
     AuthService,
     AccountService,
     UploadService,
+    ScrollService,
+    AccountGQL,
   ],
 }

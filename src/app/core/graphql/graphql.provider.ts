@@ -1,4 +1,5 @@
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core'
+import { offsetLimitPagination } from '@apollo/client/utilities'
 import { ApplicationConfig, inject } from '@angular/core'
 import { Apollo, APOLLO_OPTIONS } from 'apollo-angular'
 import { HttpLink } from 'apollo-angular/http'
@@ -11,7 +12,15 @@ export function apolloOptionsFactory(): ApolloClientOptions<any> {
       uri: `${env.apiUrl}/graphql`,
       withCredentials: true,
     }),
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      typePolicies: {
+        Query: {
+          fields: {
+            uploads: offsetLimitPagination(['page', 'size']),
+          },
+        },
+      },
+    }),
     connectToDevTools: true,
   }
 }

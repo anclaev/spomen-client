@@ -1,305 +1,178 @@
 import {
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms'
-
-import {
-  Component,
-  DestroyRef,
-  Injector,
-  OnInit,
-  Signal,
-  WritableSignal,
-  computed,
-  inject,
-  signal,
-} from '@angular/core'
-
-import {
-  TuiAvatarModule,
-  TuiDataListWrapperModule,
-  TuiInputModule,
-  TuiInputTagModule,
-  TuiLineClampModule,
-} from '@taiga-ui/kit'
-
-import {
   TuiAlertService,
-  TuiDialogModule,
   TuiDialogService,
-  TuiDropdownModule,
-  TuiHintModule,
   TuiSvgModule,
   TuiTextfieldControllerModule,
 } from '@taiga-ui/core'
 
 import {
-  TuiChipModule,
-  TuiIconModule,
-  TuiSkeletonModule,
-} from '@taiga-ui/experimental'
-
-import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop'
-import { Observable, debounceTime, distinctUntilChanged } from 'rxjs'
+  Component,
+  DestroyRef,
+  inject,
+  Injector,
+  OnInit,
+  signal,
+  WritableSignal,
+} from '@angular/core'
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms'
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs'
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus'
-import { CommonModule, DatePipe } from '@angular/common'
-import { Apollo, QueryRef } from 'apollo-angular'
+import { TuiTablePaginationModule } from '@taiga-ui/addon-table'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { TuiInputModule } from '@taiga-ui/kit'
+import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 import * as Sentry from '@sentry/angular'
 
-import {
-  getAccountsInfoByUsernameQuery,
-  getUploads,
-  getExtensions,
-  PaginatedQuery,
-  Pagination,
-} from '@graphql'
-
-import { AccountShortModel, UploadModel } from '@models'
+import { UploadsQueryRef, UploadsGQL } from '@graphql'
+import { AuthService, ScrollService } from '@services'
 import { inOutGridAnimation200 } from '@animations'
-import { AuthService } from '@services'
-
+import { UploadModel } from '@models'
 import { Permission } from '@enums'
 
-import { NotFoundComponent } from '@components/not-found/not-found.component'
-import { UploadInfoComponent } from './upload-info/upload-info.component'
+import { ExtensionInputComponent } from '@components/extension-input'
+import { AccountInputComponent } from '@components/account-input'
+import { NotFoundComponent } from '@components/not-found'
+
+import { UploadListItemComponent } from './upload-list-item/upload-list-item.component'
 import { UploadFileComponent } from './upload-file/upload-file.component'
+import { UploadInfoComponent } from './upload-info/upload-info.component'
 
 @Component({
   selector: 'spomen-uploads',
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    TuiTextfieldControllerModule,
-    TuiInputTagModule,
-    TuiDropdownModule,
-    TuiDataListWrapperModule,
     TuiInputModule,
-    TuiIconModule,
-    TuiAvatarModule,
-    RouterModule,
-    TuiChipModule,
-    TuiLineClampModule,
-    TuiDialogModule,
-    TuiSkeletonModule,
-    TuiHintModule,
+    TuiTextfieldControllerModule,
     TuiSvgModule,
-    UploadInfoComponent,
-    UploadFileComponent,
+    TuiTablePaginationModule,
+    UploadListItemComponent,
+    ExtensionInputComponent,
+    AccountInputComponent,
     NotFoundComponent,
   ],
-  providers: [DatePipe],
+  providers: [UploadsGQL],
   animations: [inOutGridAnimation200],
   templateUrl: './uploads.component.html',
   styleUrl: './uploads.component.scss',
 })
 @Sentry.TraceClass({ name: 'Uploads' })
 export class UploadsComponent implements OnInit {
+  private currentUser = inject(AuthService).$user().username
   private dialogs = inject(TuiDialogService)
   private alerts = inject(TuiAlertService)
   private destroyRef = inject(DestroyRef)
+  private scroll = inject(ScrollService)
+  private uploadsGQL = inject(UploadsGQL)
   private injector = inject(Injector)
-  private apollo = inject(Apollo)
 
-  private currentUser = inject(AuthService).$user().username
+  isAdministrator = inject(AuthService).$isAdmin()
+  skeletonRows = new Array(10)
 
-  filters: FormGroup = new FormGroup({
-    username: new FormControl(),
+  private uploadsQuery: UploadsQueryRef | null = null
+  private isLastPage = false
+
+  $page: WritableSignal<number> = signal(1)
+  $size: WritableSignal<number> = signal(20)
+
+  $uploads: WritableSignal<UploadModel[]> = signal([])
+  $uploadsLoading: WritableSignal<boolean> = signal(true)
+
+  uploadFiltersForm = new FormGroup({
     name: new FormControl(),
     ext: new FormControl(),
+    account: new FormControl(),
   })
 
-  $accounts: WritableSignal<AccountShortModel[]> = signal([])
-  $accountsList: Signal<string[]> = computed(() =>
-    this.$accounts().map((val) => val.username)
-  )
-  $accountsFilter: WritableSignal<string> = signal('')
-  $$accountFilter: Observable<string> = toObservable(this.$accountsFilter)
+  private $name: WritableSignal<string> = signal('')
+  private $ext: WritableSignal<string[]> = signal([])
+  private $owner: WritableSignal<string[]> = signal([])
 
-  $extensionsList: WritableSignal<string[]> = signal([])
+  ngOnInit() {
+    this.scroll.isEnd
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.scroll.next(false, 0)
 
-  $uploadsOwners: WritableSignal<string[]> = signal([])
-  $uploadsName: WritableSignal<string> = signal('')
-  $uploadsExt: WritableSignal<string[]> = signal([])
+        if (this.$uploadsLoading() || this.isLastPage) return
 
-  $uploadsSize: WritableSignal<number> = signal(10)
-  $uploadsPage: WritableSignal<number> = signal(1)
-  $uploadsLoading: WritableSignal<boolean> = signal(true)
-  $uploads: WritableSignal<UploadModel[]> = signal([])
+        this.fetchMoreUploads()
+      })
 
-  uploadSkeletonLimit = new Array(10)
-
-  // tagValidator: (tag: string) => boolean = () => true
-
-  private accountsQuery: QueryRef<
-    { accounts: AccountShortModel[] },
-    { username: string }
-  > = this.apollo.watchQuery<
-    { accounts: AccountShortModel[] },
-    { username: string }
-  >({
-    query: getAccountsInfoByUsernameQuery,
-    variables: {
-      username: this.$accountsFilter(),
-    },
-    fetchPolicy: 'cache-first',
-  })
-
-  private extenstionsQuery: PaginatedQuery<{ uploadExtensions: string[] }, {}> =
-    this.apollo.watchQuery<{ uploadExtensions: string[] }, Pagination>({
-      query: getExtensions,
-      variables: {
-        size: 10,
-        page: 1,
-      },
-    })
-
-  private uploadsQuery: QueryRef<
-    { uploads: UploadModel[] },
-    Pagination & {
-      owner?: string[]
-      name?: string
-      ext?: string[]
-    }
-  > | null = null
-
-  ngOnInit(): void {
     if (this.currentUser) {
-      this.filters.controls['username'].setValue([this.currentUser])
-      this.$uploadsOwners.set([this.currentUser])
+      this.uploadFiltersForm.controls['account'].setValue([this.currentUser])
+
+      this.$owner.set([this.currentUser])
     }
 
-    this.accountsQuery.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (res) => {
-          this.$accounts.set(res.data.accounts)
-        },
-        error: () => {
-          this.alerts
-            .open('Сервер временно недоступен', { status: 'error' })
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe()
-        },
-      })
-
-    this.extenstionsQuery.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (res) => {
-          this.$extensionsList.set(res.data.uploadExtensions)
-        },
-      })
-
-    this.uploadsQuery = this.apollo.watchQuery<
-      { uploads: UploadModel[] },
-      Pagination & {
-        owner?: string[]
-        name?: string
-        ext?: string[]
-      }
-    >({
-      query: getUploads,
-      variables: {
-        size: this.$uploadsSize(),
-        page: this.$uploadsPage(),
-        owner:
-          this.$uploadsOwners().length === 0
-            ? undefined
-            : this.$uploadsOwners(),
-        name:
-          this.$uploadsName().trim().length === 0
-            ? undefined
-            : this.$uploadsName(),
-        ext: this.$uploadsExt().length === 0 ? undefined : this.$uploadsExt(),
-      },
-      fetchPolicy: 'cache-and-network',
-    })
+    this.uploadsQuery = this.uploadsGQL.watch(this.params)
 
     this.uploadsQuery.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (res) => {
-          this.$uploads.set(res.data.uploads)
+          if (res.data.uploads.length === 0) this.isLastPage = true
+
+          this.$uploads.update((prev) => prev.concat(res.data.uploads))
 
           this.$uploadsLoading.set(false)
         },
         error: () => {
           this.alerts
-            .open('Сервер временно недоступен', { status: 'error' })
+            .open('Не удалось получить список загрузок', { status: 'error' })
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe()
           this.$uploadsLoading.set(false)
         },
       })
 
-    this.$$accountFilter
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-        debounceTime(1000),
-        distinctUntilChanged()
-      )
-      .subscribe(() => {
-        this.accountsQuery.refetch({
-          username: this.$accountsFilter(),
-        })
-      })
-
-    this.filters.controls['username'].valueChanges
+    this.uploadFiltersForm.controls['account'].valueChanges
       .pipe(
         takeUntilDestroyed(this.destroyRef),
         debounceTime(1000),
         distinctUntilChanged()
       )
       .subscribe((items) => {
-        this.$uploadsOwners.set(items)
-        this.refetchUploads()
+        this.$owner.set(items)
+        this.resetUploads()
       })
 
-    this.filters.controls['ext'].valueChanges
+    this.uploadFiltersForm.controls['ext'].valueChanges
       .pipe(
         takeUntilDestroyed(this.destroyRef),
         debounceTime(1000),
         distinctUntilChanged()
       )
       .subscribe((items) => {
-        this.$uploadsExt.set(items)
-        this.refetchUploads()
+        this.$ext.set(items)
+        this.resetUploads()
       })
 
-    this.filters.controls['name'].valueChanges
+    this.uploadFiltersForm.controls['name'].valueChanges
       .pipe(
         takeUntilDestroyed(this.destroyRef),
         debounceTime(1000),
         distinctUntilChanged()
       )
       .subscribe((items) => {
-        this.$uploadsName.set(items)
-        this.refetchUploads()
+        this.$name.set(items)
+        this.resetUploads()
       })
   }
 
-  handleUsernameFilterChange(val: string) {
-    if (val.trim().length > 0 && val.trim() !== this.$accountsFilter()) {
-      this.$accountsFilter.set(val.trim())
-    }
-  }
-
-  handleSetExt(ext: string) {
-    const currentValue = this.filters.controls['ext'].value
-
-    if (!currentValue) this.filters.controls['ext'].setValue([ext])
-
-    if (Array.isArray(currentValue) && !currentValue.includes(ext.trim())) {
-      this.filters.controls['ext'].setValue([
-        ...this.filters.controls['ext'].value,
-        ext,
-      ])
-    }
+  showUploadFile() {
+    this.showUploadFileDialog()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe()
   }
 
   showUploadInfo(uploadId: string) {
@@ -308,11 +181,66 @@ export class UploadsComponent implements OnInit {
       .subscribe()
   }
 
-  showUploadFile() {
-    this.showUploadFileDialog()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe()
+  isPrivate(permissions: Permission[]) {
+    return !permissions.includes(Permission.Public)
   }
+
+  setExtensionFilter(ext: string) {
+    const currentValue = this.uploadFiltersForm.controls['ext'].value
+
+    if (!currentValue) this.uploadFiltersForm.controls['ext'].setValue([ext])
+
+    if (Array.isArray(currentValue) && !currentValue.includes(ext.trim())) {
+      this.uploadFiltersForm.controls['ext'].setValue([
+        ...this.uploadFiltersForm.controls['ext'].value,
+        ext,
+      ])
+    }
+  }
+
+  private get params() {
+    const owner = !this.isAdministrator
+      ? [this.currentUser!]
+      : this.$owner().length === 0
+        ? undefined
+        : this.$owner()
+
+    return {
+      size: this.$size(),
+      page: this.$page(),
+      owner,
+      name: this.$name().trim().length === 0 ? undefined : this.$name(),
+      ext: this.$ext().length === 0 ? undefined : this.$ext(),
+    }
+  }
+
+  private refetchUploads() {
+    this.$uploadsLoading.set(true)
+
+    this.uploadsQuery!.refetch(this.params)
+  }
+
+  private resetUploads() {
+    this.$page.set(1)
+    this.$uploads.set([])
+    this.isLastPage = false
+
+    this.refetchUploads()
+  }
+
+  private fetchMoreUploads() {
+    this.$page.set(this.$page() + 1)
+
+    this.refetchUploads()
+  }
+
+  private showUploadFileDialog = () =>
+    this.dialogs.open<string | null>(
+      new PolymorpheusComponent(UploadFileComponent, this.injector),
+      {
+        size: 's',
+      }
+    )
 
   private showUploadInfoDialog = (uploadId: string) =>
     this.dialogs.open<string | null>(
@@ -324,31 +252,4 @@ export class UploadsComponent implements OnInit {
         },
       }
     )
-
-  private showUploadFileDialog = () =>
-    this.dialogs.open<string | null>(
-      new PolymorpheusComponent(UploadFileComponent, this.injector),
-      {
-        size: 's',
-      }
-    )
-
-  private refetchUploads() {
-    if (!this.uploadsQuery) return
-
-    this.$uploadsLoading.set(true)
-    this.uploadsQuery.refetch({
-      owner:
-        this.$uploadsOwners().length === 0 ? undefined : this.$uploadsOwners(),
-      name:
-        this.$uploadsName().trim().length === 0
-          ? undefined
-          : this.$uploadsName().trim(),
-      ext: this.$uploadsExt().length === 0 ? undefined : this.$uploadsExt(),
-      page: this.$uploadsPage(),
-      size: this.$uploadsSize(),
-    })
-  }
-
-  protected readonly Permission = Permission
 }

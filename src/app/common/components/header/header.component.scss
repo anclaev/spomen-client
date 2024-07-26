@@ -54,6 +54,10 @@ header,
   position: relative;
 }
 
+.header__burger[data-visible="false"] {
+  visibility: hidden;
+}
+
 .header__burger > span {
   visibility: hidden;
 }

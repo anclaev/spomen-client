@@ -24,8 +24,9 @@ import * as VKID from '@vkid/sdk'
 
 import { env } from '@env'
 
+import { AuthService, ConfigService, ScrollService } from '@services'
 import { inOutAnimation200, inOutAnimation500 } from '@animations'
-import { AuthService, ConfigService } from '@services'
+import { ScrollNearEndDirective } from '@directives'
 import { getCurrentPath } from '@utils'
 
 import { HeaderComponent } from '@components/header'
@@ -47,14 +48,17 @@ import { NavComponent } from '@components/nav'
     NavComponent,
     OopsComponent,
     MenuComponent,
+    ScrollNearEndDirective,
   ],
   animations: [inOutAnimation200, inOutAnimation500],
+  providers: [ScrollNearEndDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 @Sentry.TraceClass({ name: 'App' })
 export class AppComponent implements OnInit, OnDestroy {
   private alerts = inject(TuiAlertService)
+  private scroll = inject(ScrollService)
   private router = inject(Router)
   config = inject(ConfigService)
   auth = inject(AuthService)
@@ -106,6 +110,10 @@ export class AppComponent implements OnInit, OnDestroy {
         },
       })
     )
+  }
+
+  nearEnd(posY: number) {
+    this.scroll.next(true, posY)
   }
 
   @Sentry.TraceMethod({ name: 'App.ngOnDestroy' })

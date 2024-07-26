@@ -133,21 +133,6 @@
                             <a href="#env" title="src/envs/env.ts" ><b>env</b>&nbsp;&nbsp;&nbsp;(src/.../env.ts)</a>
                         </li>
                         <li>
-                            <a href="#getAccountQuery" title="src/app/core/graphql/queries/accounts.query.ts" ><b>getAccountQuery</b>&nbsp;&nbsp;&nbsp;(src/.../accounts.query.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#getAccountsInfoByUsernameQuery" title="src/app/core/graphql/queries/accounts.query.ts" ><b>getAccountsInfoByUsernameQuery</b>&nbsp;&nbsp;&nbsp;(src/.../accounts.query.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#getExtensions" title="src/app/core/graphql/queries/uploads.query.ts" ><b>getExtensions</b>&nbsp;&nbsp;&nbsp;(src/.../uploads.query.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#getUploadById" title="src/app/core/graphql/queries/uploads.query.ts" ><b>getUploadById</b>&nbsp;&nbsp;&nbsp;(src/.../uploads.query.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#getUploads" title="src/app/core/graphql/queries/uploads.query.ts" ><b>getUploads</b>&nbsp;&nbsp;&nbsp;(src/.../uploads.query.ts)</a>
-                        </li>
-                        <li>
                             <a href="#graphqlProvider" title="src/app/core/graphql/graphql.provider.ts" ><b>graphqlProvider</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.provider.ts)</a>
                         </li>
                         <li>
@@ -176,6 +161,9 @@
                         </li>
                         <li>
                             <a href="#sexIcons" title="src/app/profile/profile.component.ts" ><b>sexIcons</b>&nbsp;&nbsp;&nbsp;(src/.../profile.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UploadsQuery" title="src/app/core/graphql/queries/uploads.gql.ts" ><b>UploadsQuery</b>&nbsp;&nbsp;&nbsp;(src/.../uploads.gql.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -239,6 +227,8 @@
     AuthService,
     AccountService,
     UploadService,
+    ScrollService,
+    AccountGQL,
   ],
 }</code>
                     </td>
@@ -503,205 +493,6 @@
   origin: &#x27;&#x27;,
   sentryDsn: &#x27;&#x27;,
 }</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-</section>
-    <h3>src/app/core/graphql/queries/accounts.query.ts</h3>
-    <section data-compodoc="block-properties">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getAccountQuery"></a>
-                    <span class="name">
-                        <span ><b>getAccountQuery</b></span>
-                        <a href="#getAccountQuery"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>gql&#x60;
-  query getAccount($username: String!) {
-    account(args: { username: $username }) {
-      id
-      username
-      email
-      roles
-      avatar {
-        url
-      }
-      vk_id
-      vk_avatar
-      first_name
-      last_name
-      birthday
-    }
-  }
-&#x60;</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getAccountsInfoByUsernameQuery"></a>
-                    <span class="name">
-                        <span ><b>getAccountsInfoByUsernameQuery</b></span>
-                        <a href="#getAccountsInfoByUsernameQuery"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>gql&#x60;
-  query getAccountsInfoByUsername($username: String!) {
-    accounts(filters: { username: { contains: $username } }, size: 5, page: 1) {
-      id
-      username
-      first_name
-      last_name
-    }
-  }
-&#x60;</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-</section>
-    <h3>src/app/core/graphql/queries/uploads.query.ts</h3>
-    <section data-compodoc="block-properties">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getExtensions"></a>
-                    <span class="name">
-                        <span ><b>getExtensions</b></span>
-                        <a href="#getExtensions"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>gql&#x60;
-  query getExtensions($size: Float!, $page: Float!) {
-    uploadExtensions(page: $page, size: $size)
-  }
-&#x60;</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getUploadById"></a>
-                    <span class="name">
-                        <span ><b>getUploadById</b></span>
-                        <a href="#getUploadById"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>gql&#x60;
-  query getUploadById($id: String!) {
-    upload(where: { id: $id }) {
-      id
-      name
-      ext
-      url
-      bucket
-      is_system
-      path
-      url
-      file_name
-      permissions
-      owner {
-        id
-        username
-        first_name
-        last_name
-        avatar {
-          url
-        }
-        vk_avatar
-      }
-      created_at
-      updated_at
-    }
-  }
-&#x60;</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getUploads"></a>
-                    <span class="name">
-                        <span ><b>getUploads</b></span>
-                        <a href="#getUploads"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>gql&#x60;
-  query getUploads(
-    $size: Float!
-    $page: Float!
-    $owner: [String!]
-    $name: String
-    $ext: [String!]
-  ) {
-    uploads(
-      filters: {
-        owner: { username: { in: $owner } }
-        name: { contains: $name }
-        ext: { in: $ext }
-      }
-      size: $size
-      page: $page
-    ) {
-      id
-      name
-      ext
-      file_name
-      url
-      permissions
-      owner {
-        id
-        username
-        avatar {
-          url
-        }
-        vk_avatar
-        first_name
-        last_name
-      }
-      created_at
-    }
-  }
-&#x60;</code>
                     </td>
                 </tr>
 
@@ -1220,6 +1011,65 @@
   1: &#x27;/images/man.svg&#x27;,
   2: &#x27;/images/woman.svg&#x27;,
 }</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/graphql/queries/uploads.gql.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UploadsQuery"></a>
+                    <span class="name">
+                        <span ><b>UploadsQuery</b></span>
+                        <a href="#UploadsQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>gql&#x60;
+  query uploads(
+    $size: Float!
+    $page: Float!
+    $owner: [String!]
+    $name: String
+    $ext: [String!]
+  ) {
+    uploads(
+      filters: {
+        owner: { username: { in: $owner } }
+        name: { contains: $name }
+        ext: { in: $ext }
+      }
+      size: $size
+      page: $page
+    ) {
+      id
+      name
+      ext
+      file_name
+      url
+      permissions
+      owner {
+        id
+        username
+        avatar {
+          url
+        }
+        vk_avatar
+        first_name
+        last_name
+      }
+      created_at
+    }
+  }
+&#x60;</code>
                     </td>
                 </tr>
 

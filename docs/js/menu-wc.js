@@ -56,6 +56,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="components-links"' : 'id="xs-components-links"' }>
                             <li class="link">
+                                <a href="components/AccountInputComponent.html" data-type="entity-link" >AccountInputComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/AppComponent.html" data-type="entity-link" >AppComponent</a>
                             </li>
                             <li class="link">
@@ -78,6 +81,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="components/EventsComponent.html" data-type="entity-link" >EventsComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/ExtensionInputComponent.html" data-type="entity-link" >ExtensionInputComponent</a>
                             </li>
                             <li class="link">
                                 <a href="components/HeaderComponent.html" data-type="entity-link" >HeaderComponent</a>
@@ -119,10 +125,29 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/UploadInfoComponent.html" data-type="entity-link" >UploadInfoComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/UploadListItemComponent.html" data-type="entity-link" >UploadListItemComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/UploadsComponent.html" data-type="entity-link" >UploadsComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/UploadsOldComponent.html" data-type="entity-link" >UploadsOldComponent</a>
                             </li>
                         </ul>
                     </li>
+                        <li class="chapter">
+                            <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#directives-links"' :
+                                'data-bs-target="#xs-directives-links"' }>
+                                <span class="icon ion-md-code-working"></span>
+                                <span>Directives</span>
+                                <span class="icon ion-ios-arrow-down"></span>
+                            </div>
+                            <ul class="links collapse " ${ isNormalMode ? 'id="directives-links"' : 'id="xs-directives-links"' }>
+                                <li class="link">
+                                    <a href="directives/ScrollNearEndDirective.html" data-type="entity-link" >ScrollNearEndDirective</a>
+                                </li>
+                            </ul>
+                        </li>
                     <li class="chapter">
                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#classes-links"' :
                             'data-bs-target="#xs-classes-links"' }>
@@ -145,7 +170,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
+                                    <a href="injectables/AccountGQL.html" data-type="entity-link" >AccountGQL</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/AccountService.html" data-type="entity-link" >AccountService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/AccountsInfoByUsernameGQL.html" data-type="entity-link" >AccountsInfoByUsernameGQL</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/AuthService.html" data-type="entity-link" >AuthService</a>
@@ -154,7 +185,19 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/ConfigService.html" data-type="entity-link" >ConfigService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/ScrollService.html" data-type="entity-link" >ScrollService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/UploadByIdGQL.html" data-type="entity-link" >UploadByIdGQL</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/UploadExtensionsGQL.html" data-type="entity-link" >UploadExtensionsGQL</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/UploadService.html" data-type="entity-link" >UploadService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/UploadsGQL.html" data-type="entity-link" >UploadsGQL</a>
                                 </li>
                             </ul>
                         </li>

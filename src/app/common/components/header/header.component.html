@@ -1,5 +1,5 @@
 <header [attr.nf]="this.config.$isNotFoundPage()">
-  <div class="header__burger">
+  <div class="header__burger" [attr.data-visible]="this.auth.$isAuth()">
     <button
       (click)="this.config.toggleMenuStatus()"
       [attr.data-open]="this.config.$menuIsOpen()"

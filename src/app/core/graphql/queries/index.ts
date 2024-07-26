@@ -1,2 +1,5 @@
-export * from './accounts.query'
-export * from './uploads.query'
+export * from './upload-extensions.gql'
+export * from './upload-by-id.gql'
+export * from './uploads.gql'
+export * from './account.gql'
+export * from './accounts-info-by-username.gql'

@@ -12,23 +12,23 @@ import { TuiAlertService, TuiDialogContext } from '@taiga-ui/core'
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import * as Sentry from '@sentry/angular'
-import { Apollo } from 'apollo-angular'
 
-import { getUploadById } from '@graphql'
+import { UploadByIdGQL } from '@graphql'
 import { UploadModel } from '@models'
 
 @Component({
   selector: 'spomen-upload-info',
   standalone: true,
   imports: [],
+  providers: [UploadByIdGQL],
   templateUrl: './upload-info.component.html',
   styleUrl: './upload-info.component.scss',
 })
 @Sentry.TraceClass({ name: 'UploadInfo' })
 export class UploadInfoComponent implements OnInit {
+  private uploadByIdGQL = inject(UploadByIdGQL)
   private destroyRef = inject(DestroyRef)
   private alerts = inject(TuiAlertService)
-  private apollo = inject(Apollo)
 
   constructor(
     @Inject(POLYMORPHEUS_CONTEXT)
@@ -48,23 +48,18 @@ export class UploadInfoComponent implements OnInit {
   $loading: WritableSignal<boolean> = signal(true)
 
   ngOnInit(): void {
-    this.apollo
-      .watchQuery<{ upload: UploadModel }, { id: string }>({
-        query: getUploadById,
-        variables: {
-          id: this.uploadId,
-        },
-        fetchPolicy: 'cache-and-network',
+    this.uploadByIdGQL
+      .watch({
+        id: this.uploadId,
       })
-      .valueChanges.pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
+      .valueChanges.subscribe({
         next: (res) => {
           this.$upload.set(res.data.upload)
           this.$loading.set(false)
         },
         error: () => {
           this.alerts
-            .open('Сервер временно недоступен', {
+            .open('Не удалось получить информацию о загрузке', {
               status: 'error',
             })
             .pipe(takeUntilDestroyed(this.destroyRef))
