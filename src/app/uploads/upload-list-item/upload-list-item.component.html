@@ -1,13 +1,12 @@
 @if (upload && !isLoading) {
   <div class="uploads-list-item" [attr.data-private]="this.isPrivate">
-    <a
-      [href]="upload.url"
-      target="_blank"
+    <button
+      (click)="this.showPreview(actions)"
       tuiHint="Открыть файл"
       [tuiHintShowDelay]="1000"
     >
       <tui-svg src="tuiIconFolderLarge"></tui-svg>
-    </a>
+    </button>
     <div class="uploads-list-item__title">
       <tui-line-clamp
         (click)="this.handleClickUpload()"
@@ -126,3 +125,86 @@
     >
   </div>
 }
+
+<ng-template #preview let-preview>
+  <tui-preview [rotatable]="this.upload!.ext === 'webp'" [zoomable]="this.upload!.ext === 'webp'">
+    <tui-preview-title class="t-preview-title">{{ this.upload!.file_name }}.{{ this.upload!.ext }}</tui-preview-title>
+    <tui-preview-pagination
+      [length]="1"
+      [(index)]="index"
+    ></tui-preview-pagination>
+    <button
+      tuiPreviewAction
+      title="Удалить"
+      (click)="delete()"
+    >
+      <tui-svg src="tuiIconTrash" />
+    </button>
+    <a
+      [href]="this.upload!.url"
+      target="_blank"
+      tuiPreviewAction
+      title="Скачать"
+
+    >
+      <tui-svg src="tuiIconDownload" />
+    </a>
+    <button
+      title="Закрыть"
+      tuiPreviewAction
+      type="button"
+      (click)="preview.complete()"
+    >
+      <tui-svg src="tuiIconClose" />
+    </button>
+
+    @switch (this.upload!.ext) {
+      @case ('webp') {
+        <img
+          *polymorpheusOutlet="previewContent as src"
+          [alt]="this.upload!.name"
+          [src]="src"
+        />
+      }
+      @case ('mpga') {
+        <iframe
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          [src]="this.upload!.url ?? null | iframeUrl"
+          class="content"
+        ></iframe>
+      }
+      @default {
+        <div class="t-container uploads-list-item-preview__fail">
+          <tui-svg
+            src="tuiIconFileLarge"
+            class="t-icon"
+          ></tui-svg>
+          <div >Просмотр не поддерживается</div>
+        </div>
+      }
+    }
+
+  </tui-preview>
+</ng-template>
+
+<ng-template
+  #actions
+  let-content="content"
+>
+  <button
+    tuiPreviewAction
+    title="Удалить"
+    (click)="delete()"
+  >
+    <tui-svg src="tuiIconTrash" />
+  </button>
+  <a
+    [href]="content"
+    tuiPreviewAction
+    title="Скачать"
+
+  >
+    <tui-svg src="tuiIconDownload" />
+  </a>
+</ng-template>

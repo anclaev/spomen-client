@@ -215,6 +215,10 @@ export class UploadsComponent implements OnInit {
     this.modalFiltersIsOpen = true
   }
 
+  handleUploadDeleted(id: string) {
+    this.$uploads.update((items) => items.filter((item) => item.id !== id))
+  }
+
   isPrivate(permissions: Permission[]) {
     return !permissions.includes(Permission.Public)
   }
@@ -282,7 +286,7 @@ export class UploadsComponent implements OnInit {
     this.dialogs.open<string | null>(
       new PolymorpheusComponent(UploadInfoComponent, this.injector),
       {
-        size: 's',
+        size: 'page',
         data: {
           uploadId,
         },

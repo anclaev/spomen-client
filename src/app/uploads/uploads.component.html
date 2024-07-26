@@ -32,6 +32,7 @@
           [isLoading]="false"
           [isPrivate]="this.isPrivate(upload.permissions)"
           [upload]="upload"
+          (onDelete)="this.handleUploadDeleted(upload.id)"
           (clickUpload)="this.showUploadInfo(upload.id)"
           (selectExtension)="this.setExtensionFilter(upload.ext)"
         />

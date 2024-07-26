@@ -8,9 +8,18 @@ import {
   signal,
 } from '@angular/core'
 
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms'
+import { TuiInputInlineModule, TuiLineClampModule } from '@taiga-ui/kit'
 import { TuiAlertService, TuiDialogContext } from '@taiga-ui/core'
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { TuiChipModule } from '@taiga-ui/experimental'
+import { CommonModule } from '@angular/common'
 import * as Sentry from '@sentry/angular'
 
 import { UploadByIdGQL } from '@graphql'
@@ -19,7 +28,14 @@ import { UploadModel } from '@models'
 @Component({
   selector: 'spomen-upload-info',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TuiInputInlineModule,
+    TuiChipModule,
+    TuiLineClampModule,
+  ],
   providers: [UploadByIdGQL],
   templateUrl: './upload-info.component.html',
   styleUrl: './upload-info.component.scss',
@@ -29,6 +45,11 @@ export class UploadInfoComponent implements OnInit {
   private uploadByIdGQL = inject(UploadByIdGQL)
   private destroyRef = inject(DestroyRef)
   private alerts = inject(TuiAlertService)
+
+  uploadInfoForm: FormGroup = new FormGroup({
+    name: new FormControl(),
+    originalName: new FormControl(),
+  })
 
   constructor(
     @Inject(POLYMORPHEUS_CONTEXT)
@@ -54,7 +75,15 @@ export class UploadInfoComponent implements OnInit {
       })
       .valueChanges.subscribe({
         next: (res) => {
-          this.$upload.set(res.data.upload)
+          const { upload } = res.data
+
+          this.$upload.set(upload)
+
+          this.uploadInfoForm.controls['name'].setValue(upload.name)
+          this.uploadInfoForm.controls['originalName'].setValue(
+            upload.file_name
+          )
+
           this.$loading.set(false)
         },
         error: () => {

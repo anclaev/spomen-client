@@ -121,6 +121,9 @@
                             <a href="#authGuard" title="src/app/core/guards/auth.guard.ts" ><b>authGuard</b>&nbsp;&nbsp;&nbsp;(src/.../auth.guard.ts)</a>
                         </li>
                         <li>
+                            <a href="#DeleteUploadByIdQuery" title="src/app/core/graphql/mutations/delete-upload-by-id.gql.ts" ><b>DeleteUploadByIdQuery</b>&nbsp;&nbsp;&nbsp;(src/.../delete-upload-by-id.gql.ts)</a>
+                        </li>
+                        <li>
                             <a href="#enterLeaveAnimation" title="src/app/common/animations/enter-leave.animation.ts" ><b>enterLeaveAnimation</b>&nbsp;&nbsp;&nbsp;(src/.../enter-leave.animation.ts)</a>
                         </li>
                         <li>
@@ -326,6 +329,35 @@
     })
   )
 }</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/graphql/mutations/delete-upload-by-id.gql.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DeleteUploadByIdQuery"></a>
+                    <span class="name">
+                        <span ><b>DeleteUploadByIdQuery</b></span>
+                        <a href="#DeleteUploadByIdQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>gql&#x60;
+  mutation deleteUploadById($id: String!) {
+    deleteUpload(where: { id: $id }) {
+      id
+    }
+  }
+&#x60;</code>
                     </td>
                 </tr>
 

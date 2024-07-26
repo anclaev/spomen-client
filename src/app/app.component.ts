@@ -15,6 +15,7 @@ import {
   untracked,
 } from '@angular/core'
 
+import { TuiPreviewModule } from '@taiga-ui/addon-preview'
 import { HttpErrorResponse } from '@angular/common/http'
 import { Router, RouterOutlet } from '@angular/router'
 import { CommonModule } from '@angular/common'
@@ -27,6 +28,7 @@ import { env } from '@env'
 import { AuthService, ConfigService, ScrollService } from '@services'
 import { inOutAnimation200, inOutAnimation500 } from '@animations'
 import { ScrollNearEndDirective } from '@directives'
+import { TuiPdfViewerModule } from '@taiga-ui/kit'
 import { getCurrentPath } from '@utils'
 
 import { HeaderComponent } from '@components/header'
@@ -43,6 +45,8 @@ import { NavComponent } from '@components/nav'
     TuiRootModule,
     TuiDialogModule,
     TuiAlertModule,
+    TuiPreviewModule,
+    TuiPdfViewerModule,
     TuiLoaderModule,
     HeaderComponent,
     NavComponent,

@@ -185,6 +185,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/ConfigService.html" data-type="entity-link" >ConfigService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/DeleteUploadByIdGQL.html" data-type="entity-link" >DeleteUploadByIdGQL</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/ScrollService.html" data-type="entity-link" >ScrollService</a>
                                 </li>
                                 <li class="link">
@@ -255,6 +258,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <span class="icon ion-ios-arrow-down"></span>
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="pipes-links"' : 'id="xs-pipes-links"' }>
+                                <li class="link">
+                                    <a href="pipes/IFrameUrlPipe.html" data-type="entity-link" >IFrameUrlPipe</a>
+                                </li>
                                 <li class="link">
                                     <a href="pipes/SexPipe.html" data-type="entity-link" >SexPipe</a>
                                 </li>

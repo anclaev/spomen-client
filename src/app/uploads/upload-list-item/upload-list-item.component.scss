@@ -60,19 +60,23 @@
   background-color: var(--tui-info-bg);
 }
 
-.uploads-list-item > a > tui-svg,
+.uploads-list-item > button > tui-svg,
 .uploads-list-item__title > tui-line-clamp,
 .uploads-list-item__owner {
   transition: 0.2s;
 }
 
-.uploads-list-item > a:hover > tui-svg,
+.uploads-list-item > button:hover > tui-svg,
 .uploads-list-item__title > tui-line-clamp:hover {
   color: var(--color-accent-dark);
 }
 
 .uploads-list-item__owner[data-system='false']:hover {
   color: var(--color-accent);
+}
+
+.uploads-list-item-preview__fail > tui-svg {
+  margin-bottom: 15px;
 }
 
 @media only screen and (max-width: 992px) {

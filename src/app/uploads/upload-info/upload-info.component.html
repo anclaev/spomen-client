@@ -1,2 +1,18 @@
-<p>upload-info works!</p>
-{{ this.$upload() ? this.$upload()!.id : null }}
+<form class="upload-info-container" [formGroup]="this.uploadInfoForm">
+  <tui-input-inline formControlName="name" class="upload-info__name" />
+
+  <div class="upload-info__row">
+    <div class="upload-info__column">
+      <tui-chip size="s">Имя</tui-chip>
+    </div>
+    <div class="upload-info__column">
+      <tui-input-inline formControlName="originalName" class="upload-info__name" />
+    </div>
+  </div>
+  <div class="upload-info__row">
+    <div class="upload-info__column">
+      <tui-chip size="s">Тип</tui-chip>
+    </div>
+    <div class="upload-info__column"><span>{{ this.$upload()!.ext }}</span></div>
+  </div>
+</form>

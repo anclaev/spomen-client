@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-info-container {
+  width: 95%;
+  max-width: 500px;
+}
+
+.upload-info__row {
+  display: flex;
+  flex-direction: row;
+}
+
+.upload-info-row > div:first-child {
+  width: 300px;
+}
+
+.upload-info__name {
+  font: var(--tui-font-heading-6)
+}
