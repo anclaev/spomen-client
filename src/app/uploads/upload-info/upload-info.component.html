@@ -6,13 +6,68 @@
       <tui-chip size="s">Имя</tui-chip>
     </div>
     <div class="upload-info__column">
-      <tui-input-inline formControlName="originalName" class="upload-info__name" />
+      <tui-input-inline formControlName="originalName" />
     </div>
   </div>
   <div class="upload-info__row">
     <div class="upload-info__column">
       <tui-chip size="s">Тип</tui-chip>
     </div>
-    <div class="upload-info__column"><span>{{ this.$upload()!.ext }}</span></div>
+    <div class="upload-info__column">
+      <tui-chip size="s" data-type="primary">
+      {{ this.$upload()!.ext }}
+      </tui-chip>
+    </div>
+  </div>
+  <div class="upload-info__row">
+    <div class="upload-info__column">
+      <tui-chip size="s">Ссылка</tui-chip>
+    </div>
+    <div class="upload-info__column upload-info__url">
+      <a
+        [href]="this.$upload()!.url"
+        target="_blank"
+      >
+        <tui-line-clamp [content]="this.$upload()!.url" [linesLimit]="1" />
+      </a>
+    </div>
+  </div>
+  <div class="upload-info__row">
+    <div class="upload-info__column">
+      <tui-chip size="s">Владелец</tui-chip>
+    </div>
+
+    @if (this.$upload()!.owner!) {
+      <div class="upload-info__column upload-info__owner" (click)="this.clickOwner()">
+        <tui-avatar
+          [rounded]="true"
+          class="avatar"
+          [avatarUrl]="this.uploadInfoForm.controls['ownerAvatar'].value"
+          [text]="this.uploadInfoForm.controls['owner'].value"
+          size="s"
+        />
+        <span>{{ this.uploadInfoForm.controls['owner'].value }}</span>
+      </div>
+    } @else {
+      <span>Не найден</span>
+    }
+  </div>
+  <div class="upload-info__row upload-info__row--between">
+    <div class="upload-info__column upload-info__column--50">
+      <span>Личный</span>
+      <tui-toggle
+        formControlName="isPrivate"
+        [showIcons]="true"
+        size="l"
+      ></tui-toggle>
+    </div>
+    <div class="upload-info__column upload-info__column--50">
+      <span>Системный</span>
+      <tui-toggle
+        formControlName="isSystem"
+        [showIcons]="true"
+        size="l"
+      ></tui-toggle>
+    </div>
   </div>
 </form>

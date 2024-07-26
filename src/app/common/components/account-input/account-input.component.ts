@@ -64,6 +64,7 @@ export class AccountInputComponent implements OnInit, ControlValueAccessor {
 
   @Input() formGroup!: FormGroup
   @Input() formControlName: string = ''
+  @Input() placeholder: string = 'Аккаунт'
 
   @Input() onChange = () => {}
 

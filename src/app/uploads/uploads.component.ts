@@ -286,7 +286,7 @@ export class UploadsComponent implements OnInit {
     this.dialogs.open<string | null>(
       new PolymorpheusComponent(UploadInfoComponent, this.injector),
       {
-        size: 'page',
+        size: 's',
         data: {
           uploadId,
         },

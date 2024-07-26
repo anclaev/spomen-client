@@ -17,6 +17,7 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core'
+
 import {
   TuiAlertService,
   TuiDialogContext,
@@ -24,19 +25,23 @@ import {
   TuiHintModule,
   TuiSvgModule,
 } from '@taiga-ui/core'
+
 import {
   TuiButtonModule,
   TuiChipModule,
   TuiSkeletonModule,
 } from '@taiga-ui/experimental'
+
 import {
   TuiPreviewDialogService,
   TuiPreviewModule,
 } from '@taiga-ui/addon-preview'
+
 import {
   PolymorpheusContent,
   PolymorpheusModule,
 } from '@tinkoff/ng-polymorpheus'
+
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { CommonModule, DatePipe } from '@angular/common'
 import { DomSanitizer } from '@angular/platform-browser'

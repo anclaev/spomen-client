@@ -45,13 +45,6 @@
   display: flex;
 }
 
-.uploads-list-item__owner > tui-avatar {
-  margin-right: 10px;
-  border: 1px solid transparent !important;
-  background-image: var(--gradient-h) !important;
-  background-origin: border-box !important;
-}
-
 .uploads-list-item__date--short {
   display: none;
 }

@@ -241,3 +241,14 @@ div[data-appearance='textfield']:after {
 .t-native {
   user-select: none;
 }
+
+input.t-native::placeholder {
+  opacity: 1 !important;
+}
+
+.avatar {
+  border: 1px solid transparent !important;
+  background-image: var(--gradient-h) !important;
+  background-origin: border-box !important;
+  margin-right: 10px;
+}

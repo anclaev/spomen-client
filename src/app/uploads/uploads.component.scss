@@ -72,23 +72,27 @@
 }
 
 .uploads-filters--modal {
-  height: calc(100vh - 48px);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .uploads-filters--modal__form {
-  width: 95%;
-  max-width: 300px;
+  width: 100%;
 }
 
 .uploads-filters--modal__form > *:not(button) {
   margin-bottom: 30px;
 }
 
+.uploads-filters--modal__title {
+  display: block;
+  margin-bottom: 10px !important;
+}
+
+
 .uploads-filters--modal__form > button {
-  margin-top: 50px;
+  font: var(--tui-font-text-m);
 }
 
 @media only screen and (max-width: 576px) {

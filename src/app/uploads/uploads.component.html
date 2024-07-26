@@ -60,15 +60,16 @@
 
 <ng-template
   let-observer
-  [tuiDialogOptions]="{size: 'page'}"
+  [tuiDialogOptions]="{size: 's'}"
   [(tuiDialog)]="this.modalFiltersIsOpen"
 >
   <div class="uploads-filters--modal">
-    <form [formGroup]="this.uploadFiltersForm" class="uploads-filters--modal__form">
-      <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" />
+    <form class="uploads-filters--modal__form" [formGroup]="this.uploadFiltersForm">
+      <span class="uploads-filters--modal__title">Поиск</span>
+      <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" placeholder="Тип файла" />
 
       @if (this.isAdministrator) {
-        <spomen-account-input [formGroup]="this.uploadFiltersForm" formControlName="account" />
+        <spomen-account-input [formGroup]="this.uploadFiltersForm" formControlName="account" placeholder="Аккаунт владельца"/>
       }
 
       <spomen-permission-input [formGroup]="this.uploadFiltersForm" formControlName="permissions"/>
@@ -76,4 +77,4 @@
       <button class="button" (click)="observer.complete()"><span>Найти</span></button>
     </form>
   </div>
-</ng-template>
+ </ng-template>
