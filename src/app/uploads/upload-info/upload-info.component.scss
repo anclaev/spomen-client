@@ -40,6 +40,10 @@
   align-items: center;
 }
 
+.upload-info__column > tui-chip {
+  user-select: none;
+}
+
 .upload-info__column:last-child {
   max-width: calc(100% - 95px);
   flex-grow: 1;

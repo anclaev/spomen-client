@@ -70,6 +70,14 @@ export class UploadPreviewComponent {
   isZoomable = computed(() =>
     this.upload() ? this.upload()!.ext === 'webp' : false
   )
+  isEditable = computed<boolean>(() => {
+    const upload = this.upload()
+
+    return this.upload()
+      ? this.isAdmin ||
+          (upload!.owner ? upload!.owner!.id === this.userId : false)
+      : false
+  })
 
   id = computed(() => (this.upload() ? this.upload()!.id : ''))
   title = computed(() =>
@@ -82,7 +90,7 @@ export class UploadPreviewComponent {
   uploadActions = computed(() => ({
     open: true,
     save: false,
-    delete: this.isAdmin || this.userId === this.upload()!.owner_id,
+    delete: this.isEditable(),
   }))
 
   private previewSub: Subscription | null = null

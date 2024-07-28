@@ -1,15 +1,3 @@
-@if (this._actions().save) {
-  <button
-    tuiPreviewAction
-    (click)="this.handleSave.emit()"
-    tuiHint="Сохранить"
-    [tuiHintShowDelay]="1000"
-    tuiHintDirection="bottom"
-  >
-    <tui-svg src="tuiIconSave" />
-  </button>
-}
-
 @if (this._actions().open) {
   <button
     tuiPreviewAction
@@ -33,6 +21,19 @@
     <tui-svg src="tuiIconTrash"></tui-svg>
   </button>
 }
+
+@if (this._actions().save) {
+  <button
+    tuiPreviewAction
+    (click)="this.handleSave.emit()"
+    tuiHint="Сохранить"
+    [tuiHintShowDelay]="1000"
+    tuiHintDirection="bottom"
+  >
+    <tui-svg src="tuiIconSave" />
+  </button>
+}
+
 <a
   [href]="this.url()"
   tuiPreviewAction

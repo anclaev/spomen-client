@@ -300,7 +300,7 @@ export class UploadsComponent implements OnInit {
       })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: ({ data }) => {
+        next: () => {
           this.handleDeletedUpload(this.$previewUpload()!.id)
 
           this.handleClosePreview()

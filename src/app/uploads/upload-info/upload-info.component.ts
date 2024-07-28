@@ -15,6 +15,7 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  ControlEvent,
 } from '@angular/forms'
 
 import {
@@ -31,9 +32,10 @@ import { TuiChipModule } from '@taiga-ui/experimental'
 import { CommonModule } from '@angular/common'
 import * as Sentry from '@sentry/angular'
 import { Router } from '@angular/router'
+import { filter, map, take } from 'rxjs'
 
-import { UploadActionsParams } from '@interfaces'
 import { DeleteUploadByIdGQL, UploadByIdGQL } from '@graphql'
+import { UploadActionsParams } from '@interfaces'
 import { AuthService } from '@services'
 import { UploadModel } from '@models'
 import { Permission } from '@enums'
@@ -85,21 +87,35 @@ export class UploadInfoComponent implements OnInit {
 
   $upload: WritableSignal<UploadModel | null> = signal(null)
   $loading: WritableSignal<boolean> = signal(true)
+  $edited: WritableSignal<boolean> = signal(false)
 
-  editable = computed<boolean>(() =>
-    this.$upload()
-      ? this.isAdmin || this.$upload()!.owner_id === this.userId
+  $editable = computed<boolean>(() => {
+    const upload = this.$upload()
+
+    return this.$upload()
+      ? this.isAdmin ||
+          (upload!.owner ? upload!.owner!.id === this.userId : false)
       : false
-  )
+  })
 
-  _actions = computed<UploadActionsParams>(() => ({
+  $actions = computed<UploadActionsParams>(() => ({
     open: false,
-    save: this.editable(),
-    delete: this.editable(),
+    save: this.$editable() && this.$edited(),
+    delete: this.$editable(),
   }))
 
   ngOnInit(): void {
     this.uploadInfoForm.controls['isSystem'].disable()
+
+    this.uploadInfoForm.events
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        filter((e: ControlEvent<unknown>) => e.source.dirty),
+        map((e) => {
+          this.$edited.set(true)
+        })
+      )
+      .subscribe()
 
     this.uploadByIdGQL
       .watch({
@@ -156,7 +172,17 @@ export class UploadInfoComponent implements OnInit {
     }
   }
 
-  handleSaveUpload() {}
+  handleSaveUpload() {
+    const editedControls = Object.keys(this.uploadInfoForm.controls)
+      .map((control) => {
+        return this.uploadInfoForm.controls[control].dirty
+          ? { [control]: this.uploadInfoForm.controls[control].value }
+          : null
+      })
+      .filter((val) => val)
+
+    console.log(editedControls)
+  }
 
   handleDeleteUpload() {
     this.showPrompt('Удалить файл?').subscribe((res) => {
@@ -169,7 +195,7 @@ export class UploadInfoComponent implements OnInit {
   }
 
   private deleteUpload() {
-    if (!this.$upload() || !this.editable) return
+    if (!this.$upload() || !this.$editable()) return
 
     this.deleteUploadByIdGQL
       .mutate({
@@ -177,7 +203,7 @@ export class UploadInfoComponent implements OnInit {
       })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: ({ data }) => {
+        next: () => {
           this.onDelete.emit(this.$upload()!.id)
         },
         error: (err) => {

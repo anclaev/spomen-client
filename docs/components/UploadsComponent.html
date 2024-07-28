@@ -2350,7 +2350,7 @@ export class UploadsComponent implements OnInit {
       })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: ({ data }) &#x3D;&gt; {
+        next: () &#x3D;&gt; {
           this.handleDeletedUpload(this.$previewUpload()!.id)
 
           this.handleClosePreview()

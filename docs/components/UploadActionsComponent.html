@@ -504,19 +504,7 @@ export class UploadActionsComponent {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">@if (this._actions().save) {
-  &lt;button
-    tuiPreviewAction
-    (click)&#x3D;&quot;this.handleSave.emit()&quot;
-    tuiHint&#x3D;&quot;Сохранить&quot;
-    [tuiHintShowDelay]&#x3D;&quot;1000&quot;
-    tuiHintDirection&#x3D;&quot;bottom&quot;
-  &gt;
-    &lt;tui-svg src&#x3D;&quot;tuiIconSave&quot; /&gt;
-  &lt;/button&gt;
-}
-
-@if (this._actions().open) {
+        <pre class="line-numbers"><code class="language-html">@if (this._actions().open) {
   &lt;button
     tuiPreviewAction
     (click)&#x3D;&quot;this.handleOpen.emit()&quot;
@@ -539,6 +527,19 @@ export class UploadActionsComponent {
     &lt;tui-svg src&#x3D;&quot;tuiIconTrash&quot;&gt;&lt;/tui-svg&gt;
   &lt;/button&gt;
 }
+
+@if (this._actions().save) {
+  &lt;button
+    tuiPreviewAction
+    (click)&#x3D;&quot;this.handleSave.emit()&quot;
+    tuiHint&#x3D;&quot;Сохранить&quot;
+    [tuiHintShowDelay]&#x3D;&quot;1000&quot;
+    tuiHintDirection&#x3D;&quot;bottom&quot;
+  &gt;
+    &lt;tui-svg src&#x3D;&quot;tuiIconSave&quot; /&gt;
+  &lt;/button&gt;
+}
+
 &lt;a
   [href]&#x3D;&quot;this.url()&quot;
   tuiPreviewAction
@@ -589,7 +590,7 @@ export class UploadActionsComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>@if (this._actions().save) {  <button    tuiPreviewAction    (click)="this.handleSave.emit()"    tuiHint="Сохранить"    [tuiHintShowDelay]="1000"    tuiHintDirection="bottom"  >    <tui-svg src="tuiIconSave" />  </button>}@if (this._actions().open) {  <button    tuiPreviewAction    (click)="this.handleOpen.emit()"    tuiHint="Перейти к"    [tuiHintShowDelay]="1000"    tuiHintDirection="bottom"  >    <tui-svg src="tuiIconExternalLink"/>  </button>}@if (this._actions().delete) {  <button    tuiPreviewAction    tuiHint="Удалить"    [tuiHintShowDelay]="1000"    tuiHintDirection="bottom"    (click)="this.handleDelete.emit()"  >    <tui-svg src="tuiIconTrash"></tui-svg>  </button>}<a  [href]="this.url()"  tuiPreviewAction  tuiHint="Скачать"  [tuiHintShowDelay]="1000"  tuiHintDirection="bottom">  <tui-svg src="tuiIconDownload"></tui-svg></a>@if(this.preview()) {  <button    tuiHint="Закрыть"    [tuiHintShowDelay]="1000"    tuiHintDirection="bottom"    tuiPreviewAction    (click)="this.preview()!.complete()"  >    <tui-svg src="tuiIconClose"></tui-svg>  </button>}</div>'
+        var COMPONENT_TEMPLATE = '<div>@if (this._actions().open) {  <button    tuiPreviewAction    (click)="this.handleOpen.emit()"    tuiHint="Перейти к"    [tuiHintShowDelay]="1000"    tuiHintDirection="bottom"  >    <tui-svg src="tuiIconExternalLink"/>  </button>}@if (this._actions().delete) {  <button    tuiPreviewAction    tuiHint="Удалить"    [tuiHintShowDelay]="1000"    tuiHintDirection="bottom"    (click)="this.handleDelete.emit()"  >    <tui-svg src="tuiIconTrash"></tui-svg>  </button>}@if (this._actions().save) {  <button    tuiPreviewAction    (click)="this.handleSave.emit()"    tuiHint="Сохранить"    [tuiHintShowDelay]="1000"    tuiHintDirection="bottom"  >    <tui-svg src="tuiIconSave" />  </button>}<a  [href]="this.url()"  tuiPreviewAction  tuiHint="Скачать"  [tuiHintShowDelay]="1000"  tuiHintDirection="bottom">  <tui-svg src="tuiIconDownload"></tui-svg></a>@if(this.preview()) {  <button    tuiHint="Закрыть"    [tuiHintShowDelay]="1000"    tuiHintDirection="bottom"    tuiPreviewAction    (click)="this.preview()!.complete()"  >    <tui-svg src="tuiIconClose"></tui-svg>  </button>}</div>'
     var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'PermissionInputComponent', 'selector': 'spomen-permission-input'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadActionsComponent', 'selector': 'spomen-upload-actions'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadPreviewComponent', 'selector': 'spomen-upload-preview'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
     var DIRECTIVES = [{'name': 'ScrollNearEndDirective', 'selector': '[scrollNearEnd]'}];
     var ACTUAL_COMPONENT = {'name': 'UploadActionsComponent'};

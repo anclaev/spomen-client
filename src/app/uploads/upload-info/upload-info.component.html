@@ -53,7 +53,7 @@
         <span>Не найден</span>
       }
     </div>
-    @if (this.editable()) {
+    @if (this.$editable()) {
       <div class="upload-info__row upload-info__row--between">
         <div class="upload-info__column upload-info__column--50">
           <span>Личный</span>
@@ -75,7 +75,7 @@
     }
   </form>
   <spomen-upload-actions
-    [actions]="this._actions()"
+    [actions]="this.$actions()"
     [url]="this.$upload()!.url"
     (handleSave)="this.handleSaveUpload()"
     (handleDelete)="this.handleDeleteUpload()"
