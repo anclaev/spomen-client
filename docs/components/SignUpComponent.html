@@ -439,8 +439,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="232"
-                                    class="link-to-prism">src/app/auth/sign-up/sign-up.component.ts:232</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="237"
+                                    class="link-to-prism">src/app/auth/sign-up/sign-up.component.ts:237</a></div>
                         </td>
                     </tr>
 
@@ -1011,6 +1011,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
             ])
           },
           error: (err: HttpErrorResponse) &#x3D;&gt; {
+            this.confirmForm.controls.confirmPass.reset()
+            this.form.controls.pass.reset()
+
             if (err.status &#x3D;&#x3D;&#x3D; 409) {
               if (this.form.controls.email.value!.trim().length &#x3D;&#x3D;&#x3D; 0) {
                 this.subs$.push(
@@ -1037,7 +1040,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
             }
 
             this.subs$.push(
-              this.alerts.open(&#x27;Сервер временно недоступен&#x27;).subscribe()
+              this.alerts
+                .open(&#x27;Сервер временно недоступен&#x27;, { status: &#x27;error&#x27; })
+                .subscribe()
             )
 
             this.isLoading.next(false)
@@ -1055,8 +1060,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
     this.subs$.forEach((sub) &#x3D;&gt; sub.unsubscribe())
   }
 }
-
-// TODO: Сброс паролей в обеих формах при неудачной регистрации
 </code></pre>
     </div>
 
