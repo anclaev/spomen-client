@@ -10,10 +10,13 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "sentry:sourcemaps": "sentry-cli sourcemaps inject --org anclaev-ti --project spomen-client ./dist/spomen/client/browser && sentry-cli sourcemaps upload --org anclaev-ti --project spomen-client ./dist/spomen/client/browser",
-    "push": "git push origin && git push gitverse",
     "docs": "compodoc -c .compodocrc",
     "docs:serve": "compodoc -c .compodocrc -s",
-    "prepare": "husky"
+    "prepare": "husky",
+    "commit": "npx git-cz",
+    "push": "git push --follow-tags origin && git push --follow-tags gitverse",
+    "changelog": "npx conventional-changelog -p angular -i CHANGELOG.md -s",
+    "bump": "npx standard-version"
   },
   "private": true,
   "dependencies": {
@@ -61,6 +64,9 @@
     "@schematics/angular": "^18.0.3",
     "@types/dompurify": "3.0.5",
     "@types/jasmine": "~5.1.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^7.2.1",
     "husky": "^9.1.1",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
@@ -77,5 +83,13 @@
       "prettier --write"
     ],
     "*.md": "prettier --write"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    },
+    "cz-customizable": {
+      "config": ".husky/commitizen.js"
+    }
   }
 }
