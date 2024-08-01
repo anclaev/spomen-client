@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core'
 import { gql, Mutation } from 'apollo-angular'
+import { Injectable } from '@angular/core'
 
 export type DeleteUploadByIdResponse = {
   id: string

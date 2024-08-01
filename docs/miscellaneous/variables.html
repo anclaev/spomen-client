@@ -166,6 +166,9 @@
                             <a href="#sexIcons" title="src/app/profile/profile.component.ts" ><b>sexIcons</b>&nbsp;&nbsp;&nbsp;(src/.../profile.component.ts)</a>
                         </li>
                         <li>
+                            <a href="#UpdateUploadByIdQuery" title="src/app/core/graphql/mutations/update-upload-by-id.gql.ts" ><b>UpdateUploadByIdQuery</b>&nbsp;&nbsp;&nbsp;(src/.../update-upload-by-id.gql.ts)</a>
+                        </li>
+                        <li>
                             <a href="#UploadsQuery" title="src/app/core/graphql/queries/uploads.gql.ts" ><b>UploadsQuery</b>&nbsp;&nbsp;&nbsp;(src/.../uploads.gql.ts)</a>
                         </li>
                     </ul>
@@ -1043,6 +1046,35 @@
   1: &#x27;/images/man.svg&#x27;,
   2: &#x27;/images/woman.svg&#x27;,
 }</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/graphql/mutations/update-upload-by-id.gql.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UpdateUploadByIdQuery"></a>
+                    <span class="name">
+                        <span ><b>UpdateUploadByIdQuery</b></span>
+                        <a href="#UpdateUploadByIdQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>gql&#x60;
+  mutation updateUploadById($data: UploadUpdateInput!, $id: String!) {
+    updateUpload(data: $data, where: { id: $id }) {
+      id
+    }
+  }
+&#x60;</code>
                     </td>
                 </tr>
 

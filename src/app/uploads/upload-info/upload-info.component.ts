@@ -26,15 +26,23 @@ import {
   TuiToggleModule,
 } from '@taiga-ui/kit'
 
-import { TuiAlertService, TuiDialogService } from '@taiga-ui/core'
+import {
+  TuiAlertService,
+  TuiDialogService,
+  TuiLoaderModule,
+} from '@taiga-ui/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { TuiChipModule } from '@taiga-ui/experimental'
 import { CommonModule } from '@angular/common'
 import * as Sentry from '@sentry/angular'
 import { Router } from '@angular/router'
-import { filter, map, take } from 'rxjs'
+import { filter, map } from 'rxjs'
 
-import { DeleteUploadByIdGQL, UploadByIdGQL } from '@graphql'
+import {
+  DeleteUploadByIdGQL,
+  UpdateUploadByIdGQL,
+  UploadByIdGQL,
+} from '@graphql'
 import { UploadActionsParams } from '@interfaces'
 import { AuthService } from '@services'
 import { UploadModel } from '@models'
@@ -54,9 +62,10 @@ import { UploadActionsComponent } from '../upload-actions/upload-actions.compone
     TuiLineClampModule,
     TuiToggleModule,
     TuiAvatarModule,
+    TuiLoaderModule,
     UploadActionsComponent,
   ],
-  providers: [UploadByIdGQL, DeleteUploadByIdGQL],
+  providers: [UploadByIdGQL, DeleteUploadByIdGQL, UpdateUploadByIdGQL],
   templateUrl: './upload-info.component.html',
   styleUrl: './upload-info.component.scss',
 })
@@ -69,6 +78,7 @@ export class UploadInfoComponent implements OnInit {
   private router = inject(Router)
 
   private deleteUploadByIdGQL = inject(DeleteUploadByIdGQL)
+  private updateUploadByIdGQL = inject(UpdateUploadByIdGQL)
 
   userId = inject(AuthService).$user().id!
   isAdmin = inject(AuthService).$isAdmin()
@@ -83,6 +93,8 @@ export class UploadInfoComponent implements OnInit {
   })
 
   uploadId = input.required<string>()
+
+  onUpdate = output<{ data: { [key: string]: any }; id: string }>()
   onDelete = output<string>()
 
   $upload: WritableSignal<UploadModel | null> = signal(null)
@@ -173,15 +185,17 @@ export class UploadInfoComponent implements OnInit {
   }
 
   handleSaveUpload() {
-    const editedControls = Object.keys(this.uploadInfoForm.controls)
-      .map((control) => {
-        return this.uploadInfoForm.controls[control].dirty
-          ? { [control]: this.uploadInfoForm.controls[control].value }
-          : null
-      })
-      .filter((val) => val)
+    const updatedFields = this.getUpdatedFields()
 
-    console.log(editedControls)
+    if (updatedFields.length === 0) return
+
+    const data: { [key: string]: any } = {}
+
+    updatedFields.forEach((val) => {
+      data[Object.keys(val)[0] as string] = val[Object.keys(val)[0]]
+    })
+
+    this.updateUpload(data)
   }
 
   handleDeleteUpload() {
@@ -194,8 +208,55 @@ export class UploadInfoComponent implements OnInit {
     })
   }
 
+  private updateUpload(data: { [key: string]: any }) {
+    this.$loading.set(true)
+
+    this.updateUploadByIdGQL
+      .mutate({
+        id: this.uploadId(),
+        data,
+      })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          this.onUpdate.emit({ data, id: this.uploadId() })
+
+          Object.keys(data).forEach((key) => {
+            this.$upload.update((item) =>
+              item
+                ? {
+                    ...item,
+                    [key]: data[key].set,
+                  }
+                : null
+            )
+          })
+
+          this.alerts
+            .open('Файл успешно изменён!', { status: 'success' })
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe()
+
+          this.$loading.set(false)
+        },
+        error: (err) => {
+          console.log(err)
+          this.alerts
+            .open('Изменить файл не удалось', {
+              status: 'error',
+            })
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe()
+
+          this.$loading.set(false)
+        },
+      })
+  }
+
   private deleteUpload() {
     if (!this.$upload() || !this.$editable()) return
+
+    this.$loading.set(true)
 
     this.deleteUploadByIdGQL
       .mutate({
@@ -205,9 +266,10 @@ export class UploadInfoComponent implements OnInit {
       .subscribe({
         next: () => {
           this.onDelete.emit(this.$upload()!.id)
+          this.$loading.set(false)
         },
         error: (err) => {
-          console.log(err)
+          this.$loading.set(false)
 
           this.alerts
             .open('Удалить файл не удалось', {
@@ -217,6 +279,68 @@ export class UploadInfoComponent implements OnInit {
             .subscribe()
         },
       })
+  }
+
+  private getUpdatedFields(): { [key: string]: any }[] {
+    return Object.keys(this.uploadInfoForm.controls)
+      .map((control) => {
+        return this.uploadInfoForm.controls[control].dirty
+          ? { [control]: this.uploadInfoForm.controls[control].value }
+          : null
+      })
+      .filter((val) => val)
+      .map((val: { [key: string]: any } | null) => {
+        const name = Object.keys(val!)[0]
+
+        let key
+        let value
+
+        switch (name) {
+          case 'name': {
+            key = 'name'
+            value =
+              this.$upload()![name] !== val![name]
+                ? { [key]: { set: val![name] } }
+                : null
+            break
+          }
+
+          case 'originalName': {
+            key = 'file_name'
+            value =
+              this.$upload()!.file_name !== val![name]
+                ? { [key]: { set: val![name] } }
+                : null
+            break
+          }
+
+          case 'isPrivate': {
+            const isPrivate = this.$upload()!.permissions.includes(
+              Permission.OwnerOnly
+            )
+            key = 'permissions'
+            value =
+              isPrivate !== val![name]
+                ? {
+                    [key]: {
+                      set: isPrivate
+                        ? this.$upload()!.permissions.filter(
+                            (p) => p !== Permission.OwnerOnly
+                          )
+                        : [
+                            ...this.$upload()!.permissions,
+                            Permission.OwnerOnly,
+                          ],
+                    },
+                  }
+                : null
+            break
+          }
+        }
+
+        return value
+      })
+      .filter((val) => val) as { [key: string]: any }[]
   }
 
   private showPrompt(label: string) {

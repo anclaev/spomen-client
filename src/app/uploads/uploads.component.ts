@@ -105,6 +105,8 @@ export class UploadsComponent implements OnInit {
   private uploadsQuery: UploadsQueryRef | null = null
   private isLastPage = false
 
+  Permission = Permission
+
   skeletonRows = new Array(10)
   modalFiltersIsOpen = false
 
@@ -251,6 +253,20 @@ export class UploadsComponent implements OnInit {
     this.$previewUpload.set(null)
   }
 
+  handleUpdateUpload(event: { data: { [key: string]: any }; id: string }) {
+    const updatedFields: { [key: string]: any } = {}
+
+    Object.keys(event.data).forEach(
+      (key) => (updatedFields[key] = event.data[key].set)
+    )
+
+    this.$uploads.update((items) =>
+      items.map((item) => {
+        return item.id === event.id ? { ...item, ...updatedFields } : item
+      })
+    )
+  }
+
   handleDeletedUpload(id: string) {
     if (this.infoSub) this.infoSub.unsubscribe()
 
@@ -274,10 +290,6 @@ export class UploadsComponent implements OnInit {
         })
       }
     })
-  }
-
-  isPrivate(permissions: Permission[]) {
-    return !permissions.includes(Permission.Public)
   }
 
   setExtensionFilter(ext: string) {

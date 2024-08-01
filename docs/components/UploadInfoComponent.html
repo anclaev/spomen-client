@@ -149,6 +149,7 @@
                 <td class="col-md-9">
                                 <code><a href="../injectables/UploadByIdGQL.html" target="_self" >UploadByIdGQL</a></code>
                                 <code><a href="../injectables/DeleteUploadByIdGQL.html" target="_self" >DeleteUploadByIdGQL</a></code>
+                                <code><a href="../injectables/UpdateUploadByIdGQL.html" target="_self" >UpdateUploadByIdGQL</a></code>
                 </td>
             </tr>
 
@@ -174,6 +175,7 @@
                             <code>TuiLineClampModule</code>
                             <code>TuiToggleModule</code>
                             <code>TuiAvatarModule</code>
+                            <code>TuiLoaderModule</code>
                                 <code><a href="../components/UploadActionsComponent.html" target="_self" >UploadActionsComponent</a></code>
                 </td>
             </tr>
@@ -251,8 +253,15 @@
                                 <a href="#onDelete" >onDelete</a>
                             </li>
                             <li>
+                                <a href="#onUpdate" >onUpdate</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#router" >router</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#updateUploadByIdGQL" >updateUploadByIdGQL</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
@@ -287,6 +296,10 @@
                                 <a href="#deleteUpload" >deleteUpload</a>
                             </li>
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getUpdatedFields" >getUpdatedFields</a>
+                            </li>
+                            <li>
                                 <a href="#handleDeleteUpload" >handleDeleteUpload</a>
                             </li>
                             <li>
@@ -298,6 +311,10 @@
                             <li>
                                     <span class="modifier">Private</span>
                                 <a href="#showPrompt" >showPrompt</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#updateUpload" >updateUpload</a>
                             </li>
                         </ul>
                     </td>
@@ -357,7 +374,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:95</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -375,7 +392,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:86</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:98</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -408,8 +425,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="169"
-                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:169</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="181"
+                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:181</a></div>
                         </td>
                     </tr>
 
@@ -447,8 +464,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="197"
-                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:197</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="256"
+                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:256</a></div>
                         </td>
                     </tr>
 
@@ -458,6 +475,45 @@
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUpdatedFields"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>getUpdatedFields</b></span>
+                        <a href="#getUpdatedFields"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getUpdatedFields()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="284"
+                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:284</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>literal type[]</code>
 
                         </div>
                 </td>
@@ -484,8 +540,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="187"
-                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:187</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="201"
+                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:201</a></div>
                         </td>
                     </tr>
 
@@ -521,8 +577,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="175"
-                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:175</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="187"
+                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:187</a></div>
                         </td>
                     </tr>
 
@@ -558,8 +614,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="107"
-                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:107</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:119</a></div>
                         </td>
                     </tr>
 
@@ -597,8 +653,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="222"
-                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:222</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="346"
+                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:346</a></div>
                         </td>
                     </tr>
 
@@ -644,6 +700,75 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateUpload"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>updateUpload</b></span>
+                        <a href="#updateUpload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateUpload(data: literal type)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="211"
+                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:211</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                        <code>literal type</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
     <section data-compodoc="block-properties">
     
@@ -672,7 +797,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:101</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:113</a></div>
                         </td>
                     </tr>
 
@@ -704,7 +829,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:92</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:104</a></div>
                         </td>
                     </tr>
 
@@ -735,7 +860,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:90</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:102</a></div>
                         </td>
                     </tr>
 
@@ -766,7 +891,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:89</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:101</a></div>
                         </td>
                     </tr>
 
@@ -797,7 +922,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:88</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:100</a></div>
                         </td>
                     </tr>
 
@@ -823,7 +948,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:67</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:76</a></div>
                         </td>
                     </tr>
 
@@ -849,7 +974,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:71</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:80</a></div>
                         </td>
                     </tr>
 
@@ -875,7 +1000,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:68</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:77</a></div>
                         </td>
                     </tr>
 
@@ -901,7 +1026,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:66</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:75</a></div>
                         </td>
                     </tr>
 
@@ -926,7 +1051,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:74</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:84</a></div>
                         </td>
                     </tr>
 
@@ -946,7 +1071,32 @@
             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:86</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onUpdate"></a>
+                    <span class="name">
+                        <span ><b>onUpdate</b></span>
+                        <a href="#onUpdate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>output&lt;{ data: { [key: string]: any }; id: string }&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:97</a></div>
                         </td>
                     </tr>
 
@@ -972,7 +1122,33 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:69</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateUploadByIdGQL"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>updateUploadByIdGQL</b></span>
+                        <a href="#updateUploadByIdGQL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(UpdateUploadByIdGQL)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:81</a></div>
                         </td>
                     </tr>
 
@@ -998,7 +1174,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:65</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:74</a></div>
                         </td>
                     </tr>
 
@@ -1018,7 +1194,7 @@
             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:85</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:95</a></div>
                         </td>
                     </tr>
 
@@ -1056,7 +1232,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:76</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:86</a></div>
                         </td>
                     </tr>
 
@@ -1081,7 +1257,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:73</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:83</a></div>
                         </td>
                     </tr>
 
@@ -1122,15 +1298,23 @@ import {
   TuiToggleModule,
 } from &#x27;@taiga-ui/kit&#x27;
 
-import { TuiAlertService, TuiDialogService } from &#x27;@taiga-ui/core&#x27;
+import {
+  TuiAlertService,
+  TuiDialogService,
+  TuiLoaderModule,
+} from &#x27;@taiga-ui/core&#x27;
 import { takeUntilDestroyed } from &#x27;@angular/core/rxjs-interop&#x27;
 import { TuiChipModule } from &#x27;@taiga-ui/experimental&#x27;
 import { CommonModule } from &#x27;@angular/common&#x27;
 import * as Sentry from &#x27;@sentry/angular&#x27;
 import { Router } from &#x27;@angular/router&#x27;
-import { filter, map, take } from &#x27;rxjs&#x27;
+import { filter, map } from &#x27;rxjs&#x27;
 
-import { DeleteUploadByIdGQL, UploadByIdGQL } from &#x27;@graphql&#x27;
+import {
+  DeleteUploadByIdGQL,
+  UpdateUploadByIdGQL,
+  UploadByIdGQL,
+} from &#x27;@graphql&#x27;
 import { UploadActionsParams } from &#x27;@interfaces&#x27;
 import { AuthService } from &#x27;@services&#x27;
 import { UploadModel } from &#x27;@models&#x27;
@@ -1150,9 +1334,10 @@ import { UploadActionsComponent } from &#x27;../upload-actions/upload-actions.co
     TuiLineClampModule,
     TuiToggleModule,
     TuiAvatarModule,
+    TuiLoaderModule,
     UploadActionsComponent,
   ],
-  providers: [UploadByIdGQL, DeleteUploadByIdGQL],
+  providers: [UploadByIdGQL, DeleteUploadByIdGQL, UpdateUploadByIdGQL],
   templateUrl: &#x27;./upload-info.component.html&#x27;,
   styleUrl: &#x27;./upload-info.component.scss&#x27;,
 })
@@ -1165,6 +1350,7 @@ export class UploadInfoComponent implements OnInit {
   private router &#x3D; inject(Router)
 
   private deleteUploadByIdGQL &#x3D; inject(DeleteUploadByIdGQL)
+  private updateUploadByIdGQL &#x3D; inject(UpdateUploadByIdGQL)
 
   userId &#x3D; inject(AuthService).$user().id!
   isAdmin &#x3D; inject(AuthService).$isAdmin()
@@ -1179,6 +1365,8 @@ export class UploadInfoComponent implements OnInit {
   })
 
   uploadId &#x3D; input.required&lt;string&gt;()
+
+  onUpdate &#x3D; output&lt;{ data: { [key: string]: any }; id: string }&gt;()
   onDelete &#x3D; output&lt;string&gt;()
 
   $upload: WritableSignal&lt;UploadModel | null&gt; &#x3D; signal(null)
@@ -1269,15 +1457,17 @@ export class UploadInfoComponent implements OnInit {
   }
 
   handleSaveUpload() {
-    const editedControls &#x3D; Object.keys(this.uploadInfoForm.controls)
-      .map((control) &#x3D;&gt; {
-        return this.uploadInfoForm.controls[control].dirty
-          ? { [control]: this.uploadInfoForm.controls[control].value }
-          : null
-      })
-      .filter((val) &#x3D;&gt; val)
+    const updatedFields &#x3D; this.getUpdatedFields()
 
-    console.log(editedControls)
+    if (updatedFields.length &#x3D;&#x3D;&#x3D; 0) return
+
+    const data: { [key: string]: any } &#x3D; {}
+
+    updatedFields.forEach((val) &#x3D;&gt; {
+      data[Object.keys(val)[0] as string] &#x3D; val[Object.keys(val)[0]]
+    })
+
+    this.updateUpload(data)
   }
 
   handleDeleteUpload() {
@@ -1290,8 +1480,55 @@ export class UploadInfoComponent implements OnInit {
     })
   }
 
+  private updateUpload(data: { [key: string]: any }) {
+    this.$loading.set(true)
+
+    this.updateUploadByIdGQL
+      .mutate({
+        id: this.uploadId(),
+        data,
+      })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () &#x3D;&gt; {
+          this.onUpdate.emit({ data, id: this.uploadId() })
+
+          Object.keys(data).forEach((key) &#x3D;&gt; {
+            this.$upload.update((item) &#x3D;&gt;
+              item
+                ? {
+                    ...item,
+                    [key]: data[key].set,
+                  }
+                : null
+            )
+          })
+
+          this.alerts
+            .open(&#x27;Файл успешно изменён!&#x27;, { status: &#x27;success&#x27; })
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe()
+
+          this.$loading.set(false)
+        },
+        error: (err) &#x3D;&gt; {
+          console.log(err)
+          this.alerts
+            .open(&#x27;Изменить файл не удалось&#x27;, {
+              status: &#x27;error&#x27;,
+            })
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe()
+
+          this.$loading.set(false)
+        },
+      })
+  }
+
   private deleteUpload() {
     if (!this.$upload() || !this.$editable()) return
+
+    this.$loading.set(true)
 
     this.deleteUploadByIdGQL
       .mutate({
@@ -1301,9 +1538,10 @@ export class UploadInfoComponent implements OnInit {
       .subscribe({
         next: () &#x3D;&gt; {
           this.onDelete.emit(this.$upload()!.id)
+          this.$loading.set(false)
         },
         error: (err) &#x3D;&gt; {
-          console.log(err)
+          this.$loading.set(false)
 
           this.alerts
             .open(&#x27;Удалить файл не удалось&#x27;, {
@@ -1313,6 +1551,68 @@ export class UploadInfoComponent implements OnInit {
             .subscribe()
         },
       })
+  }
+
+  private getUpdatedFields(): { [key: string]: any }[] {
+    return Object.keys(this.uploadInfoForm.controls)
+      .map((control) &#x3D;&gt; {
+        return this.uploadInfoForm.controls[control].dirty
+          ? { [control]: this.uploadInfoForm.controls[control].value }
+          : null
+      })
+      .filter((val) &#x3D;&gt; val)
+      .map((val: { [key: string]: any } | null) &#x3D;&gt; {
+        const name &#x3D; Object.keys(val!)[0]
+
+        let key
+        let value
+
+        switch (name) {
+          case &#x27;name&#x27;: {
+            key &#x3D; &#x27;name&#x27;
+            value &#x3D;
+              this.$upload()![name] !&#x3D;&#x3D; val![name]
+                ? { [key]: { set: val![name] } }
+                : null
+            break
+          }
+
+          case &#x27;originalName&#x27;: {
+            key &#x3D; &#x27;file_name&#x27;
+            value &#x3D;
+              this.$upload()!.file_name !&#x3D;&#x3D; val![name]
+                ? { [key]: { set: val![name] } }
+                : null
+            break
+          }
+
+          case &#x27;isPrivate&#x27;: {
+            const isPrivate &#x3D; this.$upload()!.permissions.includes(
+              Permission.OwnerOnly
+            )
+            key &#x3D; &#x27;permissions&#x27;
+            value &#x3D;
+              isPrivate !&#x3D;&#x3D; val![name]
+                ? {
+                    [key]: {
+                      set: isPrivate
+                        ? this.$upload()!.permissions.filter(
+                            (p) &#x3D;&gt; p !&#x3D;&#x3D; Permission.OwnerOnly
+                          )
+                        : [
+                            ...this.$upload()!.permissions,
+                            Permission.OwnerOnly,
+                          ],
+                    },
+                  }
+                : null
+            break
+          }
+        }
+
+        return value
+      })
+      .filter((val) &#x3D;&gt; val) as { [key: string]: any }[]
   }
 
   private showPrompt(label: string) {
@@ -1333,87 +1633,96 @@ export class UploadInfoComponent implements OnInit {
 
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">@if (this.$upload()) {
-  &lt;form class&#x3D;&quot;upload-info-container&quot; [formGroup]&#x3D;&quot;this.uploadInfoForm&quot;&gt;
-    &lt;tui-input-inline formControlName&#x3D;&quot;name&quot; class&#x3D;&quot;upload-info__name&quot; /&gt;
+  &lt;tui-loader
+    class&#x3D;&quot;loader upload-info__loader&quot;
+    [inheritColor]&#x3D;&quot;true&quot;
+    [overlay]&#x3D;&quot;true&quot;
+    [showLoader]&#x3D;&quot;this.$loading()&quot;
+  &gt;
+    &lt;div class&#x3D;&quot;upload-info&quot;&gt;
+      &lt;form class&#x3D;&quot;upload-info-form&quot; [formGroup]&#x3D;&quot;this.uploadInfoForm&quot;&gt;
+        &lt;tui-input-inline formControlName&#x3D;&quot;name&quot; class&#x3D;&quot;upload-info__name&quot; /&gt;
 
-    &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
-      &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
-        &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Имя&lt;/tui-chip&gt;
-      &lt;/div&gt;
-      &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
-        &lt;tui-input-inline formControlName&#x3D;&quot;originalName&quot; /&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
-      &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
-        &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Тип&lt;/tui-chip&gt;
-      &lt;/div&gt;
-      &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
-        &lt;tui-chip size&#x3D;&quot;s&quot; data-type&#x3D;&quot;primary&quot;&gt;
-          {{ this.$upload()!.ext }}
-        &lt;/tui-chip&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
-      &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
-        &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Ссылка&lt;/tui-chip&gt;
-      &lt;/div&gt;
-      &lt;div class&#x3D;&quot;upload-info__column upload-info__url&quot;&gt;
-        &lt;a
-          [href]&#x3D;&quot;this.$upload()!.url&quot;
-          target&#x3D;&quot;_blank&quot;
-        &gt;
-          &lt;tui-line-clamp [content]&#x3D;&quot;this.$upload()!.url&quot; [linesLimit]&#x3D;&quot;1&quot; /&gt;
-        &lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
-      &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
-        &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Владелец&lt;/tui-chip&gt;
-      &lt;/div&gt;
+        &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
+          &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
+            &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Имя&lt;/tui-chip&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
+            &lt;tui-input-inline formControlName&#x3D;&quot;originalName&quot; /&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
+          &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
+            &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Тип&lt;/tui-chip&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
+            &lt;tui-chip size&#x3D;&quot;s&quot; data-type&#x3D;&quot;primary&quot;&gt;
+              {{ this.$upload()!.ext }}
+            &lt;/tui-chip&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
+          &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
+            &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Ссылка&lt;/tui-chip&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;upload-info__column upload-info__url&quot;&gt;
+            &lt;a
+              [href]&#x3D;&quot;this.$upload()!.url&quot;
+              target&#x3D;&quot;_blank&quot;
+            &gt;
+              &lt;tui-line-clamp [content]&#x3D;&quot;this.$upload()!.url&quot; [linesLimit]&#x3D;&quot;1&quot; /&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;upload-info__row&quot;&gt;
+          &lt;div class&#x3D;&quot;upload-info__column&quot;&gt;
+            &lt;tui-chip size&#x3D;&quot;s&quot;&gt;Владелец&lt;/tui-chip&gt;
+          &lt;/div&gt;
 
-      @if (this.$upload()!.owner!) {
-        &lt;div class&#x3D;&quot;upload-info__column upload-info__owner&quot; (click)&#x3D;&quot;this.clickOwner()&quot;&gt;
-          &lt;tui-avatar
-            [rounded]&#x3D;&quot;true&quot;
-            class&#x3D;&quot;avatar&quot;
-            [avatarUrl]&#x3D;&quot;this.uploadInfoForm.controls[&#x27;ownerAvatar&#x27;].value&quot;
-            [text]&#x3D;&quot;this.uploadInfoForm.controls[&#x27;owner&#x27;].value&quot;
-            size&#x3D;&quot;s&quot;
-          /&gt;
-          &lt;span&gt;{{ this.uploadInfoForm.controls[&#x27;owner&#x27;].value }}&lt;/span&gt;
+          @if (this.$upload()!.owner!) {
+            &lt;div class&#x3D;&quot;upload-info__column upload-info__owner&quot; (click)&#x3D;&quot;this.clickOwner()&quot;&gt;
+              &lt;tui-avatar
+                [rounded]&#x3D;&quot;true&quot;
+                class&#x3D;&quot;avatar&quot;
+                [avatarUrl]&#x3D;&quot;this.uploadInfoForm.controls[&#x27;ownerAvatar&#x27;].value&quot;
+                [text]&#x3D;&quot;this.uploadInfoForm.controls[&#x27;owner&#x27;].value&quot;
+                size&#x3D;&quot;s&quot;
+              /&gt;
+              &lt;span&gt;{{ this.uploadInfoForm.controls[&#x27;owner&#x27;].value }}&lt;/span&gt;
+            &lt;/div&gt;
+          } @else {
+            &lt;span&gt;Не найден&lt;/span&gt;
+          }
         &lt;/div&gt;
-      } @else {
-        &lt;span&gt;Не найден&lt;/span&gt;
-      }
+        @if (this.$editable()) {
+          &lt;div class&#x3D;&quot;upload-info__row upload-info__row--between&quot;&gt;
+            &lt;div class&#x3D;&quot;upload-info__column upload-info__column--50&quot;&gt;
+              &lt;span&gt;Личный&lt;/span&gt;
+              &lt;tui-toggle
+                formControlName&#x3D;&quot;isPrivate&quot;
+                [showIcons]&#x3D;&quot;true&quot;
+                size&#x3D;&quot;l&quot;
+              &gt;&lt;/tui-toggle&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;upload-info__column upload-info__column--50&quot;&gt;
+              &lt;span&gt;Системный&lt;/span&gt;
+              &lt;tui-toggle
+                formControlName&#x3D;&quot;isSystem&quot;
+                [showIcons]&#x3D;&quot;true&quot;
+                size&#x3D;&quot;l&quot;
+              &gt;&lt;/tui-toggle&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        }
+      &lt;/form&gt;
+      &lt;spomen-upload-actions
+        [actions]&#x3D;&quot;this.$actions()&quot;
+        [url]&#x3D;&quot;this.$upload()!.url&quot;
+        (handleSave)&#x3D;&quot;this.handleSaveUpload()&quot;
+        (handleDelete)&#x3D;&quot;this.handleDeleteUpload()&quot;
+      /&gt;
     &lt;/div&gt;
-    @if (this.$editable()) {
-      &lt;div class&#x3D;&quot;upload-info__row upload-info__row--between&quot;&gt;
-        &lt;div class&#x3D;&quot;upload-info__column upload-info__column--50&quot;&gt;
-          &lt;span&gt;Личный&lt;/span&gt;
-          &lt;tui-toggle
-            formControlName&#x3D;&quot;isPrivate&quot;
-            [showIcons]&#x3D;&quot;true&quot;
-            size&#x3D;&quot;l&quot;
-          &gt;&lt;/tui-toggle&gt;
-        &lt;/div&gt;
-        &lt;div class&#x3D;&quot;upload-info__column upload-info__column--50&quot;&gt;
-          &lt;span&gt;Системный&lt;/span&gt;
-          &lt;tui-toggle
-            formControlName&#x3D;&quot;isSystem&quot;
-            [showIcons]&#x3D;&quot;true&quot;
-            size&#x3D;&quot;l&quot;
-          &gt;&lt;/tui-toggle&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    }
-  &lt;/form&gt;
-  &lt;spomen-upload-actions
-    [actions]&#x3D;&quot;this.$actions()&quot;
-    [url]&#x3D;&quot;this.$upload()!.url&quot;
-    (handleSave)&#x3D;&quot;this.handleSaveUpload()&quot;
-    (handleDelete)&#x3D;&quot;this.handleDeleteUpload()&quot;
-  /&gt;
+  &lt;/tui-loader&gt;
 }
 </code></pre>
     </div>
@@ -1444,7 +1753,7 @@ export class UploadInfoComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>@if (this.$upload()) {  <form class="upload-info-container" [formGroup]="this.uploadInfoForm">    <tui-input-inline formControlName="name" class="upload-info__name" />    <div class="upload-info__row">      <div class="upload-info__column">        <tui-chip size="s">Имя</tui-chip>      </div>      <div class="upload-info__column">        <tui-input-inline formControlName="originalName" />      </div>    </div>    <div class="upload-info__row">      <div class="upload-info__column">        <tui-chip size="s">Тип</tui-chip>      </div>      <div class="upload-info__column">        <tui-chip size="s" data-type="primary">          {{ this.$upload()!.ext }}        </tui-chip>      </div>    </div>    <div class="upload-info__row">      <div class="upload-info__column">        <tui-chip size="s">Ссылка</tui-chip>      </div>      <div class="upload-info__column upload-info__url">        <a          [href]="this.$upload()!.url"          target="_blank"        >          <tui-line-clamp [content]="this.$upload()!.url" [linesLimit]="1" />        </a>      </div>    </div>    <div class="upload-info__row">      <div class="upload-info__column">        <tui-chip size="s">Владелец</tui-chip>      </div>      @if (this.$upload()!.owner!) {        <div class="upload-info__column upload-info__owner" (click)="this.clickOwner()">          <tui-avatar            [rounded]="true"            class="avatar"            [avatarUrl]="this.uploadInfoForm.controls[\'ownerAvatar\'].value"            [text]="this.uploadInfoForm.controls[\'owner\'].value"            size="s"          />          <span>{{ this.uploadInfoForm.controls[\'owner\'].value }}</span>        </div>      } @else {        <span>Не найден</span>      }    </div>    @if (this.$editable()) {      <div class="upload-info__row upload-info__row--between">        <div class="upload-info__column upload-info__column--50">          <span>Личный</span>          <tui-toggle            formControlName="isPrivate"            [showIcons]="true"            size="l"          ></tui-toggle>        </div>        <div class="upload-info__column upload-info__column--50">          <span>Системный</span>          <tui-toggle            formControlName="isSystem"            [showIcons]="true"            size="l"          ></tui-toggle>        </div>      </div>    }  </form>  <spomen-upload-actions    [actions]="this.$actions()"    [url]="this.$upload()!.url"    (handleSave)="this.handleSaveUpload()"    (handleDelete)="this.handleDeleteUpload()"  />}</div>'
+        var COMPONENT_TEMPLATE = '<div>@if (this.$upload()) {  <tui-loader    class="loader upload-info__loader"    [inheritColor]="true"    [overlay]="true"    [showLoader]="this.$loading()"  >    <div class="upload-info">      <form class="upload-info-form" [formGroup]="this.uploadInfoForm">        <tui-input-inline formControlName="name" class="upload-info__name" />        <div class="upload-info__row">          <div class="upload-info__column">            <tui-chip size="s">Имя</tui-chip>          </div>          <div class="upload-info__column">            <tui-input-inline formControlName="originalName" />          </div>        </div>        <div class="upload-info__row">          <div class="upload-info__column">            <tui-chip size="s">Тип</tui-chip>          </div>          <div class="upload-info__column">            <tui-chip size="s" data-type="primary">              {{ this.$upload()!.ext }}            </tui-chip>          </div>        </div>        <div class="upload-info__row">          <div class="upload-info__column">            <tui-chip size="s">Ссылка</tui-chip>          </div>          <div class="upload-info__column upload-info__url">            <a              [href]="this.$upload()!.url"              target="_blank"            >              <tui-line-clamp [content]="this.$upload()!.url" [linesLimit]="1" />            </a>          </div>        </div>        <div class="upload-info__row">          <div class="upload-info__column">            <tui-chip size="s">Владелец</tui-chip>          </div>          @if (this.$upload()!.owner!) {            <div class="upload-info__column upload-info__owner" (click)="this.clickOwner()">              <tui-avatar                [rounded]="true"                class="avatar"                [avatarUrl]="this.uploadInfoForm.controls[\'ownerAvatar\'].value"                [text]="this.uploadInfoForm.controls[\'owner\'].value"                size="s"              />              <span>{{ this.uploadInfoForm.controls[\'owner\'].value }}</span>            </div>          } @else {            <span>Не найден</span>          }        </div>        @if (this.$editable()) {          <div class="upload-info__row upload-info__row--between">            <div class="upload-info__column upload-info__column--50">              <span>Личный</span>              <tui-toggle                formControlName="isPrivate"                [showIcons]="true"                size="l"              ></tui-toggle>            </div>            <div class="upload-info__column upload-info__column--50">              <span>Системный</span>              <tui-toggle                formControlName="isSystem"                [showIcons]="true"                size="l"              ></tui-toggle>            </div>          </div>        }      </form>      <spomen-upload-actions        [actions]="this.$actions()"        [url]="this.$upload()!.url"        (handleSave)="this.handleSaveUpload()"        (handleDelete)="this.handleDeleteUpload()"      />    </div>  </tui-loader>}</div>'
     var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'PermissionInputComponent', 'selector': 'spomen-permission-input'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadActionsComponent', 'selector': 'spomen-upload-actions'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadPreviewComponent', 'selector': 'spomen-upload-preview'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
     var DIRECTIVES = [{'name': 'ScrollNearEndDirective', 'selector': '[scrollNearEnd]'}];
     var ACTUAL_COMPONENT = {'name': 'UploadInfoComponent'};

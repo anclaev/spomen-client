@@ -197,6 +197,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/ScrollService.html" data-type="entity-link" >ScrollService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/UpdateUploadByIdGQL.html" data-type="entity-link" >UpdateUploadByIdGQL</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/UploadByIdGQL.html" data-type="entity-link" >UploadByIdGQL</a>
                                 </li>
                                 <li class="link">

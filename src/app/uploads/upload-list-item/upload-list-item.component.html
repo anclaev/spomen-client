@@ -14,13 +14,11 @@
         [content]="this.upload()!.name"
       >
       </tui-line-clamp>
-      @if (this.isPrivate()) {
         <tui-svg
           src="tuiIconLock"
           tuiHint="Личный файл"
           [tuiHintShowDelay]="1000"
         />
-      }
     </div>
     <div class="uploads-list-item__meta">
       <tui-line-clamp

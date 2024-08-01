@@ -30,9 +30,8 @@
       @for (upload of this.$uploads(); track $index) {
         <spomen-upload-list-item
           [isLoading]="false"
-          [isPrivate]="this.isPrivate(upload.permissions)"
+          [isPrivate]="upload.permissions.includes(Permission.OwnerOnly)"
           [upload]="upload"
-          (onDelete)="this.handleDeletedUpload($event)"
           (showPreview)="this.showUploadPreview($event)"
           (clickUpload)="this.showUploadInfo(upload.id)"
           (selectExtension)="this.setExtensionFilter(upload.ext)"
@@ -44,7 +43,7 @@
   @if (this.$uploadsLoading()) {
     <div @inOutGrid200>
       @for (row of this.skeletonRows; track $index) {
-        <spomen-upload-list-item [isLoading]="true" [upload]="null" [isPrivate]="false"/>
+        <spomen-upload-list-item [isLoading]="true" [upload]="null" [isPrivate]="false" />
       }
     </div>
   }
@@ -79,18 +78,23 @@
       <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" placeholder="Тип файла" />
 
       @if (this.isAdministrator) {
-        <spomen-account-input [formGroup]="this.uploadFiltersForm" formControlName="account" placeholder="Аккаунт владельца"/>
+        <spomen-account-input [formGroup]="this.uploadFiltersForm" formControlName="account"
+                              placeholder="Аккаунт владельца" />
       }
 
-      <spomen-permission-input [formGroup]="this.uploadFiltersForm" formControlName="permissions"/>
+      <spomen-permission-input [formGroup]="this.uploadFiltersForm" formControlName="permissions" />
 
       <button class="button" (click)="observer.complete()"><span>Найти</span></button>
     </form>
   </div>
- </ng-template>
+</ng-template>
 
 <ng-template
   #info
 >
-  <spomen-upload-info [uploadId]="this.$infoUpload()!" (onDelete)="this.handleDeletedUpload($event)"/>
+  <spomen-upload-info
+    [uploadId]="this.$infoUpload()!"
+    (onUpdate)="this.handleUpdateUpload($event)"
+    (onDelete)="this.handleDeletedUpload($event)"
+  />
 </ng-template>

@@ -16,6 +16,11 @@
   display: flex;
 }
 
+.uploads-list-item > .uploads-list-item__title > tui-svg {
+  opacity: 0;
+  transition: 0.3s;
+}
+
 .uploads-list-item[data-private="true"] > .uploads-list-item__title > tui-svg {
   margin-left: 10px;
   opacity: 0.5;
