@@ -60,13 +60,13 @@
     "@angular/cli": "^18.0.3",
     "@angular/compiler-cli": "^18.0.0",
     "@angular/localize": "18.0.2",
+    "@commitlint/cli": "^19.3.0",
     "@compodoc/compodoc": "1.1.25",
     "@schematics/angular": "^18.0.3",
     "@types/dompurify": "3.0.5",
     "@types/jasmine": "~5.1.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "cz-customizable": "^7.2.1",
     "husky": "^9.1.1",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
@@ -84,12 +84,14 @@
     ],
     "*.md": "prettier --write"
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g './.husky/commitlint.js'"
+    }
+  },
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
-    },
-    "cz-customizable": {
-      "config": ".husky/commitizen.js"
     }
   }
 }
