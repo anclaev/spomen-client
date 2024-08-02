@@ -1,4 +1,3 @@
-npx --no -- commitlint --edit $1
 yarn lint-staged
 yarn changelog
 yarn docs
