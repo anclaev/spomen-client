@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 36px;
 }
 
 :host,
@@ -18,7 +19,7 @@
 :host::before {
   content: '404';
   font-size: 400px;
-  min-height: 50vh;
+  min-height: 40vh;
   min-width: 50vw;
   line-height: 1;
   font-weight: 500;
@@ -29,13 +30,14 @@
   -webkit-text-fill-color: transparent;
   z-index: -1;
   animation: show404 2s forwards;
+  text-align: center;
 }
 
 .not-found__title {
   text-align: center;
-  font-size: 36px;
+  font-size: inherit;
   font-weight: 500;
-  margin-bottom: 40px;
+  margin-bottom: 3rem;
   line-height: 1.2;
 }
 

@@ -37,6 +37,7 @@ button {
 .button:active,
 .button:focus {
   border-color: var(--color-accent-dark);
+  transition: 0.2s;
 }
 
 .button:disabled {
@@ -67,6 +68,7 @@ button {
   border-radius: 50px;
   overflow: hidden;
   user-select: none;
+  transition: 0.2s;
 }
 
 .button > span,
@@ -107,9 +109,16 @@ div.tui-autofill:after {
   border-right: none !important;
   border-radius: 0 !important;
   border-bottom: 2px solid var(--color-primary-dark);
+  transition: 0.2s;
 }
 
-div.tui-autofill._focused::after {
+div.tui-autofill:after,
+div[data-appearance='textfield']:after {
+  transition: 0.2s;
+}
+
+div.tui-autofill._focused::after,
+div[data-appearance='textfield']._focused:after {
   border-color: var(--color-accent);
 }
 
@@ -118,7 +127,7 @@ div.t-item {
 }
 
 label.t-placeholder {
-  color: var(--color-background-light) !important;
+  color: var(--tui-text-02) !important;
   margin-bottom: 5px;
 }
 
@@ -143,13 +152,40 @@ tui-dropdown p {
   text-align: center;
 }
 
+tui-preview div.t-title {
+  text-align: left !important;
+}
+
+tui-preview header.t-header {
+  align-items: flex-start;
+}
+
+tui-preview div.t-actions {
+  align-items: flex-end;
+}
+
+tui-prompt > div.t-buttons {
+  flex-wrap: nowrap !important;
+}
+
+tui-prompt > div.t-buttons button {
+  width: 49%;
+}
+
+tui-dialog h2.t-heading {
+  font: var(--tui-font-heading-6) !important;
+  margin-bottom: 15px !important;
+}
+
 tui-chip {
   width: 100% !important;
   justify-content: center !important;
 }
 
-tui-chip[data-role='Administrator'] {
+tui-chip[data-role='Administrator'],
+tui-chip[data-type='primary'] {
   border: 1px solid var(--color-accent);
+  transition: 0.2s;
 }
 
 .t-src svg {
@@ -171,4 +207,29 @@ tui-svg[data-fill-path] .t-src svg path {
 
 tui-hint {
   background: var(--color-background-light) !important;
+}
+
+div[data-appearance='textfield']:after {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid var(--color-primary-dark);
+  transition: 0.2s;
+}
+
+._expandable {
+  border-radius: 0 !important;
+}
+
+.t-native {
+  user-select: none;
+}
+
+input.t-native::placeholder {
+  opacity: 1 !important;
+}
+
+.avatar {
+  @include avatarBorder(1px);
+  margin-right: 10px;
 }

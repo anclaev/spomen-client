@@ -121,6 +121,9 @@
                             <a href="#authGuard" title="src/app/core/guards/auth.guard.ts" ><b>authGuard</b>&nbsp;&nbsp;&nbsp;(src/.../auth.guard.ts)</a>
                         </li>
                         <li>
+                            <a href="#DeleteUploadByIdQuery" title="src/app/core/graphql/mutations/delete-upload-by-id.gql.ts" ><b>DeleteUploadByIdQuery</b>&nbsp;&nbsp;&nbsp;(src/.../delete-upload-by-id.gql.ts)</a>
+                        </li>
+                        <li>
                             <a href="#enterLeaveAnimation" title="src/app/common/animations/enter-leave.animation.ts" ><b>enterLeaveAnimation</b>&nbsp;&nbsp;&nbsp;(src/.../enter-leave.animation.ts)</a>
                         </li>
                         <li>
@@ -133,13 +136,10 @@
                             <a href="#env" title="src/envs/env.ts" ><b>env</b>&nbsp;&nbsp;&nbsp;(src/.../env.ts)</a>
                         </li>
                         <li>
-                            <a href="#getAccountQuery" title="src/app/core/graphql/queries/getAccount.query.ts" ><b>getAccountQuery</b>&nbsp;&nbsp;&nbsp;(src/.../getAccount.query.ts)</a>
-                        </li>
-                        <li>
                             <a href="#graphqlProvider" title="src/app/core/graphql/graphql.provider.ts" ><b>graphqlProvider</b>&nbsp;&nbsp;&nbsp;(src/.../graphql.provider.ts)</a>
                         </li>
                         <li>
-                            <a href="#httpRequestIntercepor" title="src/app/core/interceptors/http.interceptor.ts" ><b>httpRequestIntercepor</b>&nbsp;&nbsp;&nbsp;(src/.../http.interceptor.ts)</a>
+                            <a href="#httpRequestInterceptor" title="src/app/core/interceptors/http.interceptor.ts" ><b>httpRequestInterceptor</b>&nbsp;&nbsp;&nbsp;(src/.../http.interceptor.ts)</a>
                         </li>
                         <li>
                             <a href="#initialAccount" title="src/types/interfaces/account.interface.ts" ><b>initialAccount</b>&nbsp;&nbsp;&nbsp;(src/.../account.interface.ts)</a>
@@ -154,10 +154,22 @@
                             <a href="#inOutAnimation500" title="src/app/common/animations/in-out.animation.ts" ><b>inOutAnimation500</b>&nbsp;&nbsp;&nbsp;(src/.../in-out.animation.ts)</a>
                         </li>
                         <li>
+                            <a href="#inOutGridAnimation200" title="src/app/common/animations/in-out-grid.animation.ts" ><b>inOutGridAnimation200</b>&nbsp;&nbsp;&nbsp;(src/.../in-out-grid.animation.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#inOutGridAnimation500" title="src/app/common/animations/in-out-grid.animation.ts" ><b>inOutGridAnimation500</b>&nbsp;&nbsp;&nbsp;(src/.../in-out-grid.animation.ts)</a>
+                        </li>
+                        <li>
                             <a href="#protectedRoutes" title="src/app/common/components/nav/nav.component.ts" ><b>protectedRoutes</b>&nbsp;&nbsp;&nbsp;(src/.../nav.component.ts)</a>
                         </li>
                         <li>
                             <a href="#sexIcons" title="src/app/profile/profile.component.ts" ><b>sexIcons</b>&nbsp;&nbsp;&nbsp;(src/.../profile.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UpdateUploadByIdQuery" title="src/app/core/graphql/mutations/update-upload-by-id.gql.ts" ><b>UpdateUploadByIdQuery</b>&nbsp;&nbsp;&nbsp;(src/.../update-upload-by-id.gql.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UploadsQuery" title="src/app/core/graphql/queries/uploads.gql.ts" ><b>UploadsQuery</b>&nbsp;&nbsp;&nbsp;(src/.../uploads.gql.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -193,7 +205,7 @@
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withViewTransitions()),
     importProvidersFrom(TuiRootModule),
-    provideHttpClient(withInterceptors([httpRequestIntercepor])),
+    provideHttpClient(withInterceptors([httpRequestInterceptor])),
     {
       provide: ErrorHandler,
       useValue: Sentry.createErrorHandler({
@@ -220,6 +232,9 @@
     ConfigService,
     AuthService,
     AccountService,
+    UploadService,
+    ScrollService,
+    AccountGQL,
   ],
 }</code>
                     </td>
@@ -317,6 +332,35 @@
     })
   )
 }</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/graphql/mutations/delete-upload-by-id.gql.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DeleteUploadByIdQuery"></a>
+                    <span class="name">
+                        <span ><b>DeleteUploadByIdQuery</b></span>
+                        <a href="#DeleteUploadByIdQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>gql&#x60;
+  mutation deleteUploadById($id: String!) {
+    deleteUpload(where: { id: $id }) {
+      id
+    }
+  }
+&#x60;</code>
                     </td>
                 </tr>
 
@@ -491,46 +535,6 @@
         </tbody>
     </table>
 </section>
-    <h3>src/app/core/graphql/queries/getAccount.query.ts</h3>
-    <section data-compodoc="block-properties">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getAccountQuery"></a>
-                    <span class="name">
-                        <span ><b>getAccountQuery</b></span>
-                        <a href="#getAccountQuery"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>gql&#x60;
-  query Account($username: String!) {
-    account(username: $username) {
-      id
-      username
-      email
-      roles
-      avatar {
-        url
-      }
-      vk_id
-      vk_avatar
-      first_name
-      last_name
-      birthday
-    }
-  }
-&#x60;</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-</section>
     <h3>src/app/core/graphql/graphql.provider.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -566,10 +570,10 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="httpRequestIntercepor"></a>
+                    <a name="httpRequestInterceptor"></a>
                     <span class="name">
-                        <span ><b>httpRequestIntercepor</b></span>
-                        <a href="#httpRequestIntercepor"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>httpRequestInterceptor</b></span>
+                        <a href="#httpRequestInterceptor"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -584,13 +588,14 @@
                         <i>Default value : </i><code>(req, next) &#x3D;&gt; {
   req &#x3D; req.clone({
     withCredentials: true,
-    headers: new HttpHeaders({
-      &#x27;Access-Control-Allow-Origin&#x27;: env.origin,
-      &#x27;Access-Control-Allow-Methods&#x27;: &#x27;GET,POST,PUT,DELETE,OPTIONS&#x27;,
-      &#x27;Access-Control-Allow-Headers&#x27;:
-        &#x27;Accept, Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With, sentry-trace, baggage&#x27;,
-      &#x27;Access-Control-Allow-Credentials&#x27;: &#x27;true&#x27;,
-    }),
+    headers: req.headers
+      .set(&#x27;Access-Control-Allow-Origin&#x27;, env.origin)
+      .set(&#x27;Access-Control-Allow-Methods&#x27;, &#x27;GET,POST,PUT,DELETE,OPTIONS&#x27;)
+      .set(
+        &#x27;Access-Control-Allow-Headers&#x27;,
+        &#x27;Accept, Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With, sentry-trace, baggage&#x27;
+      )
+      .set(&#x27;Access-Control-Allow-Credentials&#x27;, &#x27;true&#x27;),
   })
 
   return next(req).pipe(
@@ -823,6 +828,135 @@
         </tbody>
     </table>
 </section>
+    <h3>src/app/common/animations/in-out-grid.animation.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inOutGridAnimation200"></a>
+                    <span class="name">
+                        <span ><b>inOutGridAnimation200</b></span>
+                        <a href="#inOutGridAnimation200"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>trigger(&#x27;inOutGrid200&#x27;, [
+  transition(&#x27;:enter&#x27;, [
+    style({
+      opacity: 0,
+      position: &#x27;absolute&#x27;,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    }),
+    animate(
+      &#x27;200ms ease-in&#x27;,
+      style({
+        opacity: 1,
+        position: &#x27;absolute&#x27;,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      })
+    ),
+  ]),
+  transition(&#x27;:leave&#x27;, [
+    style({
+      opacity: 1,
+      position: &#x27;absolute&#x27;,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    }),
+    animate(
+      &#x27;200ms ease-in&#x27;,
+      style({
+        opacity: 0,
+        position: &#x27;absolute&#x27;,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      })
+    ),
+  ]),
+])</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inOutGridAnimation500"></a>
+                    <span class="name">
+                        <span ><b>inOutGridAnimation500</b></span>
+                        <a href="#inOutGridAnimation500"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>trigger(&#x27;inOutGrid500&#x27;, [
+  transition(&#x27;:enter&#x27;, [
+    style({
+      opacity: 0,
+      position: &#x27;absolute&#x27;,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    }),
+    animate(
+      &#x27;500ms ease-in&#x27;,
+      style({
+        opacity: 1,
+        position: &#x27;absolute&#x27;,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      })
+    ),
+  ]),
+  transition(&#x27;:leave&#x27;, [
+    style({
+      opacity: 1,
+      position: &#x27;absolute&#x27;,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    }),
+    animate(
+      &#x27;500ms ease-in&#x27;,
+      style({
+        opacity: 0,
+        position: &#x27;absolute&#x27;,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      })
+    ),
+  ]),
+])</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>src/app/common/components/nav/nav.component.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -912,6 +1046,96 @@
   1: &#x27;/images/man.svg&#x27;,
   2: &#x27;/images/woman.svg&#x27;,
 }</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/graphql/mutations/update-upload-by-id.gql.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UpdateUploadByIdQuery"></a>
+                    <span class="name">
+                        <span ><b>UpdateUploadByIdQuery</b></span>
+                        <a href="#UpdateUploadByIdQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>gql&#x60;
+  mutation updateUploadById($data: UploadUpdateInput!, $id: String!) {
+    updateUpload(data: $data, where: { id: $id }) {
+      id
+    }
+  }
+&#x60;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/graphql/queries/uploads.gql.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UploadsQuery"></a>
+                    <span class="name">
+                        <span ><b>UploadsQuery</b></span>
+                        <a href="#UploadsQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>gql&#x60;
+  query uploads(
+    $size: Float!
+    $page: Float!
+    $owner: [String!]
+    $name: String
+    $ext: [String!]
+    $permissions: [Permission!]
+  ) {
+    uploads(
+      filters: {
+        owner: { username: { in: $owner } }
+        name: { contains: $name }
+        ext: { in: $ext }
+        permissions: { hasEvery: $permissions }
+      }
+      size: $size
+      page: $page
+    ) {
+      id
+      name
+      ext
+      file_name
+      url
+      permissions
+      owner {
+        id
+        username
+        avatar {
+          url
+        }
+        vk_avatar
+        first_name
+        last_name
+      }
+      created_at
+    }
+  }
+&#x60;</code>
                     </td>
                 </tr>
 

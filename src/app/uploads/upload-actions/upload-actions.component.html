@@ -1,0 +1,57 @@
+@if (this._actions().open) {
+  <button
+    tuiPreviewAction
+    (click)="this.handleOpen.emit()"
+    tuiHint="Перейти к"
+    [tuiHintShowDelay]="1000"
+    tuiHintDirection="bottom"
+  >
+    <tui-svg src="tuiIconExternalLink"/>
+  </button>
+}
+
+@if (this._actions().delete) {
+  <button
+    tuiPreviewAction
+    tuiHint="Удалить"
+    [tuiHintShowDelay]="1000"
+    tuiHintDirection="bottom"
+    (click)="this.handleDelete.emit()"
+  >
+    <tui-svg src="tuiIconTrash"></tui-svg>
+  </button>
+}
+
+@if (this._actions().save) {
+  <button
+    tuiPreviewAction
+    (click)="this.handleSave.emit()"
+    tuiHint="Сохранить"
+    [tuiHintShowDelay]="1000"
+    tuiHintDirection="bottom"
+  >
+    <tui-svg src="tuiIconSave" />
+  </button>
+}
+
+<a
+  [href]="this.url()"
+  tuiPreviewAction
+  tuiHint="Скачать"
+  [tuiHintShowDelay]="1000"
+  tuiHintDirection="bottom"
+>
+  <tui-svg src="tuiIconDownload"></tui-svg>
+</a>
+
+@if(this.preview()) {
+  <button
+    tuiHint="Закрыть"
+    [tuiHintShowDelay]="1000"
+    tuiHintDirection="bottom"
+    tuiPreviewAction
+    (click)="this.preview()!.complete()"
+  >
+    <tui-svg src="tuiIconClose"></tui-svg>
+  </button>
+}

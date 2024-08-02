@@ -1,0 +1,61 @@
+<ng-template #preview  let-preview>
+  <tui-preview [rotatable]="this.isRotatable()" [zoomable]="this.isZoomable()">
+    <tui-preview-title class="t-preview-title">
+      {{ this.title() }}
+    </tui-preview-title>
+    <tui-preview-pagination
+      [length]="1"
+      [(index)]="index"
+    ></tui-preview-pagination>
+
+    <spomen-upload-actions
+      [preview]="preview"
+      [url]="this.url()"
+      [actions]="this.uploadActions()"
+      (handleOpen)="this.handleOpen.emit()"
+      (handleDelete)="this.handleDelete.emit()"
+      tuiPreviewAction
+    />
+
+    @switch (this.ext()) {
+      @case ('webp') {
+        <img
+          *polymorpheusOutlet="previewContent as src"
+          [alt]="this.name()"
+          [src]="src"
+        />
+      }
+      @case ('mpga') {
+        <iframe
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          [src]="this.url() | iframeUrl"
+          class="content"
+        ></iframe>
+      }
+      @default {
+        <div class="t-container uploads-list-item-preview__fail">
+          <tui-svg
+            src="tuiIconFileLarge"
+            class="t-icon"
+          ></tui-svg>
+          <div>Просмотр не поддерживается</div>
+        </div>
+      }
+    }
+
+  </tui-preview>
+</ng-template>
+
+<ng-template
+  #actions
+  let-content="content"
+>
+  <spomen-upload-actions
+    [url]="content"
+    [id]="this.id()"
+    [actions]="this.uploadActions()"
+    (handleOpen)="this.handleOpen.emit()"
+    (handleDelete)="this.handleDelete.emit()"
+  />
+</ng-template>

@@ -1,18 +1,22 @@
 {
   "name": "spomen-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "description": "Platform of memories",
   "scripts": {
     "ng": "ng",
-    "dev": "ng serve --port 80",
+    "local": "ng serve --port 80",
     "build": "ng build && yarn sentry:sourcemaps",
     "build:staging": "ng build --configuration staging && yarn sentry:sourcemaps",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "sentry:sourcemaps": "sentry-cli sourcemaps inject --org anclaev-ti --project spomen-client ./dist/spomen/client/browser && sentry-cli sourcemaps upload --org anclaev-ti --project spomen-client ./dist/spomen/client/browser",
-    "push": "git push origin && git push gitverse",
     "docs": "compodoc -c .compodocrc",
     "docs:serve": "compodoc -c .compodocrc -s",
-    "prepare": "husky"
+    "prepare": "husky",
+    "commit": "npx git-cz",
+    "push": "git push --follow-tags origin && git push --follow-tags gitverse",
+    "changelog": "npx conventional-changelog -p angular -i CHANGELOG.md -s",
+    "bump": "npx standard-version -s"
   },
   "private": true,
   "dependencies": {
@@ -60,6 +64,9 @@
     "@schematics/angular": "^18.0.3",
     "@types/dompurify": "3.0.5",
     "@types/jasmine": "~5.1.0",
+    "commitizen": "^4.3.0",
+    "conventional-changelog-cli": "^5.0.0",
+    "cz-conventional-changelog": "^3.3.0",
     "husky": "^9.1.1",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
@@ -69,6 +76,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.1",
+    "standard-version": "^9.5.0",
     "typescript": "~5.4.2"
   },
   "lint-staged": {
@@ -76,5 +84,12 @@
       "prettier --write"
     ],
     "*.md": "prettier --write"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog",
+      "disableScopeLowerCase": true,
+      "disableSubjectLowerCase": true
+    }
   }
 }

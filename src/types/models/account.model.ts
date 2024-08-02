@@ -16,3 +16,10 @@ export interface AccountModel {
   created_at: Date
   updated_at: Date
 }
+
+export interface AccountShortModel {
+  id: string
+  username: string
+  first_name: string | null
+  last_name: string | null
+}

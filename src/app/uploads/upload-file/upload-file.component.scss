@@ -1,0 +1,118 @@
+.upload-file-container[data-step="1"] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 90vh;
+  max-height: 60px;
+  transition: 0.2s;
+  position: relative;
+}
+
+.upload-file-container[data-selected="true"] {
+  max-height: 140px;
+}
+
+.upload-file-container[data-step="2"] {
+  max-height: 500px;
+}
+
+.upload-file-container[data-step="3"] {
+  max-height: unset;
+}
+
+.upload-file-input, .upload-file-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  user-select: none;
+}
+
+.upload-file-input > button {
+  margin-top: 20px;
+}
+
+
+.upload-file-info__row {
+  display: flex;
+  flex-direction: row;
+}
+
+.upload-file-info__row > tui-input-inline {
+  font: var(--tui-font-text-xl);
+  flex-grow: 1 !important;
+  margin-right: 15px;
+}
+
+.upload-file-info__row > tui-chip {
+  width: auto !important;
+}
+
+.upload-file-info__row:first-child {
+  align-items: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  max-width: 100%;
+}
+
+.upload-file-info__row:nth-child(2) {
+  font: var(--tui-font-text-m);
+  justify-content: space-between;
+  width: 100%;
+}
+
+.upload-file-info__col {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-file-info__col > button {
+  padding: 11px 20px;
+}
+
+.upload-file-info__col:last-child {
+  justify-content: center;
+}
+
+.upload-file-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.upload-file-toggle > span {
+  font: var(--tui-font-text-s);
+  display: block;
+  margin-right: 10px;
+  width: 60px;
+}
+
+
+.upload-file-toggle:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.upload-file-result__title {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.upload-file-result__title > tui-svg {
+  color: var(--tui-success-fill)
+}
+
+.upload-file-result__title > span {
+  display: block;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.upload-file-result__grid {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-gap: 15px 20px;
+}
+
+.upload-file-result__grid tui-line-clamp {
+  max-width: 250px;
+}

@@ -1,5 +1,5 @@
 import { RouterModule } from '@angular/router'
-import { Component } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import * as Sentry from '@sentry/angular'
 
 @Component({
@@ -10,4 +10,7 @@ import * as Sentry from '@sentry/angular'
   styleUrl: './not-found.component.scss',
 })
 @Sentry.TraceClass({ name: 'NotFound' })
-export class NotFoundComponent {}
+export class NotFoundComponent {
+  @Input() title: string = 'Такой страницы не существует'
+  @Input() showRef: boolean = true
+}

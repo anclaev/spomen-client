@@ -28,12 +28,11 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { ApolloError } from '@apollo/client/errors'
 import { Title } from '@angular/platform-browser'
 import * as Sentry from '@sentry/angular'
-import { Apollo } from 'apollo-angular'
 import { Observable, map } from 'rxjs'
 
-import { getAccountQuery, GetAccountModel } from '@graphql'
 import { isNotFound, serializeRole } from '@utils'
 import { AuthService } from '@services'
+import { AccountGQL } from '@graphql'
 import { SexPipe } from '@pipes'
 
 import { Account, Sex, initialAccount } from '@interfaces'
@@ -73,10 +72,11 @@ export class ProfileComponent implements OnInit {
   private destroyRef = inject(DestroyRef)
   private route = inject(ActivatedRoute)
   private injector = inject(Injector)
-  private apollo = inject(Apollo)
   private router = inject(Router)
   private title = inject(Title)
   auth = inject(AuthService)
+
+  private accountGQL = inject(AccountGQL)
 
   $profile: WritableSignal<Account> = signal(initialAccount)
   $loading: WritableSignal<boolean> = signal(true)
@@ -120,13 +120,11 @@ export class ProfileComponent implements OnInit {
           return
         }
 
-        this.apollo
-          .watchQuery<GetAccountModel, { username: string }>({
-            query: getAccountQuery,
-            variables: {
-              username: this.$query(),
-            },
-          })
+        this.accountGQL
+          .watch(
+            { username: this.$query() },
+            { fetchPolicy: 'cache-and-network' }
+          )
           .valueChanges.pipe(takeUntilDestroyed(this.destroyRef))
           .subscribe({
             next: ({ data, loading }) => {

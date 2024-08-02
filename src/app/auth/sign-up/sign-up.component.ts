@@ -189,6 +189,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
             ])
           },
           error: (err: HttpErrorResponse) => {
+            this.confirmForm.controls.confirmPass.reset()
+            this.form.controls.pass.reset()
+
             if (err.status === 409) {
               if (this.form.controls.email.value!.trim().length === 0) {
                 this.subs$.push(
@@ -215,7 +218,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
             }
 
             this.subs$.push(
-              this.alerts.open('Сервер временно недоступен').subscribe()
+              this.alerts
+                .open('Сервер временно недоступен', { status: 'error' })
+                .subscribe()
             )
 
             this.isLoading.next(false)
@@ -233,5 +238,3 @@ export class SignUpComponent implements OnInit, OnDestroy {
     this.subs$.forEach((sub) => sub.unsubscribe())
   }
 }
-
-// TODO: Сброс паролей в обеих формах при неудачной регистрации

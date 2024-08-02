@@ -1,0 +1,108 @@
+@if (this.upload() && !this.isLoading()) {
+  <div class="uploads-list-item" [attr.data-private]="this.isPrivate()">
+    <button
+      (click)="this.showPreview.emit(this.upload()!)"
+      tuiHint="Предпросмотр"
+      [tuiHintShowDelay]="500"
+    >
+      <tui-svg src="tuiIconFolderLarge" />
+    </button>
+    <div class="uploads-list-item__title">
+      <tui-line-clamp
+        (click)="this.clickUpload.emit()"
+        [linesLimit]="1"
+        [content]="this.upload()!.name"
+      >
+      </tui-line-clamp>
+        <tui-svg
+          src="tuiIconLock"
+          tuiHint="Личный файл"
+          [tuiHintShowDelay]="1000"
+        />
+    </div>
+    <div class="uploads-list-item__meta">
+      <tui-line-clamp
+        [linesLimit]="1"
+        [content]="this.upload()!.file_name"
+      >
+      </tui-line-clamp>
+    </div>
+    <tui-chip
+      class="uploads-list-item__ext"
+      [attr.data-type]="'primary'"
+      tuiHint="Выбрать тип"
+      [tuiHintShowDelay]="1000"
+      (click)="this.selectExtension.emit()"
+    >{{ this.upload()!.ext }}
+    </tui-chip
+    >
+    <a
+      class="uploads-list-item__owner"
+      [routerLink]="this.upload()!.owner ? '/' + this.upload()!.owner!.username : null"
+      [attr.data-system]="!this.upload()!.owner"
+      tuiHint="Перейти к аккаунту"
+      [tuiHintShowDelay]="1000"
+    >
+      <tui-avatar
+        class="avatar"
+        [avatarUrl]="this.avatarUrl()"
+        [text]="this.owner()"
+        [rounded]="true"
+        size="s"
+      />
+
+      <tui-line-clamp
+        [linesLimit]="1"
+        [content]="this.owner()"
+      ></tui-line-clamp>
+    </a>
+    <span class="uploads-list-item__date">
+      {{
+        this.upload()!.created_at | date: 'd MMMM, YYYY г.'
+      }}
+    </span>
+  </div>
+} @else {
+  <div class="uploads-list-item">
+          <span [tuiSkeleton]="this.isLoading()"
+          ><tui-svg src="tuiIconFolderLarge"></tui-svg>
+          </span>
+    <tui-line-clamp
+      [tuiSkeleton]="this.isLoading()"
+      class="uploads-list-item__title"
+      [linesLimit]="1"
+      content="loading"
+    ></tui-line-clamp>
+    <div class="uploads-list-item__meta">
+      <tui-line-clamp
+        [tuiSkeleton]="this.isLoading()"
+        [linesLimit]="1"
+        content="loading"
+      ></tui-line-clamp>
+    </div>
+    <tui-chip
+      [tuiSkeleton]="this.isLoading()"
+      class="uploads-list-item__ext"
+      [attr.data-type]="'primary'"
+    >loading
+    </tui-chip
+    >
+    <a class="uploads-list-item__owner">
+      <tui-avatar
+        avatarUrl="tuiIconUser"
+        [rounded]="true"
+        size="s"
+        [tuiSkeleton]="this.isLoading()"
+      />
+
+      <tui-line-clamp
+        [linesLimit]="1"
+        [tuiSkeleton]="this.isLoading()"
+        content="loading"
+      ></tui-line-clamp>
+    </a>
+    <span class="uploads-list-item__date" [tuiSkeleton]="this.isLoading()"
+    >01.01.2001</span
+    >
+  </div>
+}

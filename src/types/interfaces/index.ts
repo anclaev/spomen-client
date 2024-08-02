@@ -1,5 +1,7 @@
 export * from './authenticated-user.interface'
 export * from './account.interface'
+export * from './upload.interface'
 export * from './route.interface'
 export * from './env.interface'
 export * from './sex.interface'
+export * from './ui.interface'

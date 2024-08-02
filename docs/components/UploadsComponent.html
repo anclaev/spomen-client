@@ -122,6 +122,12 @@
 
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
 
 
 <section data-compodoc="block-metadata">
@@ -138,6 +144,13 @@
 
 
 
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                                <code><a href="../injectables/UploadsGQL.html" target="_self" >UploadsGQL</a></code>
+                                <code><a href="../injectables/DeleteUploadByIdGQL.html" target="_self" >DeleteUploadByIdGQL</a></code>
+                </td>
+            </tr>
 
 
             <tr>
@@ -150,6 +163,30 @@
                 <td class="col-md-9"><code>true</code></td>
             </tr>
 
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                                <code><a href="../interfaces/Route.html" target="_self" >RouterModule</a></code>
+                            <code>FormsModule</code>
+                            <code>ReactiveFormsModule</code>
+                            <code>TuiInputModule</code>
+                            <code>TuiTextfieldControllerModule</code>
+                            <code>TuiSelectModule</code>
+                            <code>TuiDataListWrapperModule</code>
+                            <code>TuiSvgModule</code>
+                                <code><a href="../miscellaneous/typealiases.html#Pagination" target="_self" >TuiTablePaginationModule</a></code>
+                            <code>TuiDialogModule</code>
+                            <code>TuiHintModule</code>
+                                <code><a href="../components/UploadListItemComponent.html" target="_self" >UploadListItemComponent</a></code>
+                                <code><a href="../components/ExtensionInputComponent.html" target="_self" >ExtensionInputComponent</a></code>
+                                <code><a href="../components/AccountInputComponent.html" target="_self" >AccountInputComponent</a></code>
+                                <code><a href="../components/PermissionInputComponent.html" target="_self" >PermissionInputComponent</a></code>
+                                <code><a href="../components/NotFoundComponent.html" target="_self" >NotFoundComponent</a></code>
+                                <code><a href="../components/UploadPreviewComponent.html" target="_self" >UploadPreviewComponent</a></code>
+                                <code><a href="../components/UploadInfoComponent.html" target="_self" >UploadInfoComponent</a></code>
+                </td>
+            </tr>
 
 
 
@@ -174,35 +211,2376 @@
     </table>
 </section>
 
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#$ext" >$ext</a>
+                            </li>
+                            <li>
+                                <a href="#$infoUpload" >$infoUpload</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#$name" >$name</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#$owner" >$owner</a>
+                            </li>
+                            <li>
+                                <a href="#$page" >$page</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#$permissions" >$permissions</a>
+                            </li>
+                            <li>
+                                <a href="#$previewStatus" >$previewStatus</a>
+                            </li>
+                            <li>
+                                <a href="#$previewUpload" >$previewUpload</a>
+                            </li>
+                            <li>
+                                <a href="#$size" >$size</a>
+                            </li>
+                            <li>
+                                <a href="#$uploads" >$uploads</a>
+                            </li>
+                            <li>
+                                <a href="#$uploadsLoading" >$uploadsLoading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#alerts" >alerts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#currentUser" >currentUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#deleteUploadByIdGQL" >deleteUploadByIdGQL</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroyRef" >destroyRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dialogs" >dialogs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Readonly</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#info" >info</a>
+                            </li>
+                            <li>
+                                <a href="#infoSub" >infoSub</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#injector" >injector</a>
+                            </li>
+                            <li>
+                                <a href="#isAdministrator" >isAdministrator</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#isLastPage" >isLastPage</a>
+                            </li>
+                            <li>
+                                <a href="#modalFiltersIsOpen" >modalFiltersIsOpen</a>
+                            </li>
+                            <li>
+                                <a href="#Permission" >Permission</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#scroll" >scroll</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#showUploadFileDialog" >showUploadFileDialog</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#showUploadInfoDialog" >showUploadInfoDialog</a>
+                            </li>
+                            <li>
+                                <a href="#skeletonRows" >skeletonRows</a>
+                            </li>
+                            <li>
+                                <a href="#uploadFiltersForm" >uploadFiltersForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#uploadsGQL" >uploadsGQL</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#uploadsQuery" >uploadsQuery</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#deletePreviewedUpload" >deletePreviewedUpload</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#fetchMoreUploads" >fetchMoreUploads</a>
+                            </li>
+                            <li>
+                                <a href="#handleClosePreview" >handleClosePreview</a>
+                            </li>
+                            <li>
+                                <a href="#handleDeletedUpload" >handleDeletedUpload</a>
+                            </li>
+                            <li>
+                                <a href="#handleDeletePreviewedUpload" >handleDeletePreviewedUpload</a>
+                            </li>
+                            <li>
+                                <a href="#handleUpdateUpload" >handleUpdateUpload</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#refetchUploads" >refetchUploads</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#resetUploads" >resetUploads</a>
+                            </li>
+                            <li>
+                                <a href="#setExtensionFilter" >setExtensionFilter</a>
+                            </li>
+                            <li>
+                                <a href="#showModalFilters" >showModalFilters</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#showPrompt" >showPrompt</a>
+                            </li>
+                            <li>
+                                <a href="#showUploadFile" >showUploadFile</a>
+                            </li>
+                            <li>
+                                <a href="#showUploadInfo" >showUploadInfo</a>
+                            </li>
+                            <li>
+                                <a href="#showUploadPreview" >showUploadPreview</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#params" >params</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
 
 
 
 
 
 
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deletePreviewedUpload"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>deletePreviewedUpload</b></span>
+                        <a href="#deletePreviewedUpload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deletePreviewedUpload()</code>
+                </td>
+            </tr>
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="308"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:308</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fetchMoreUploads"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>fetchMoreUploads</b></span>
+                        <a href="#fetchMoreUploads"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>fetchMoreUploads()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="367"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:367</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleClosePreview"></a>
+                    <span class="name">
+                        <span ><b>handleClosePreview</b></span>
+                        <a href="#handleClosePreview"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleClosePreview()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="251"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:251</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleDeletedUpload"></a>
+                    <span class="name">
+                        <span ><b>handleDeletedUpload</b></span>
+                        <a href="#handleDeletedUpload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleDeletedUpload(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="270"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:270</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleDeletePreviewedUpload"></a>
+                    <span class="name">
+                        <span ><b>handleDeletePreviewedUpload</b></span>
+                        <a href="#handleDeletePreviewedUpload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleDeletePreviewedUpload()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="285"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:285</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleUpdateUpload"></a>
+                    <span class="name">
+                        <span ><b>handleUpdateUpload</b></span>
+                        <a href="#handleUpdateUpload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleUpdateUpload(event: literal type)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="256"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:256</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>literal type</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="140"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:140</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="refetchUploads"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>refetchUploads</b></span>
+                        <a href="#refetchUploads"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>refetchUploads()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="353"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:353</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetUploads"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>resetUploads</b></span>
+                        <a href="#resetUploads"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>resetUploads()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="359"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:359</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setExtensionFilter"></a>
+                    <span class="name">
+                        <span ><b>setExtensionFilter</b></span>
+                        <a href="#setExtensionFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setExtensionFilter(ext: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="295"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:295</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>ext</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showModalFilters"></a>
+                    <span class="name">
+                        <span ><b>showModalFilters</b></span>
+                        <a href="#showModalFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showModalFilters()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="247"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:247</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showPrompt"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>showPrompt</b></span>
+                        <a href="#showPrompt"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>showPrompt(label: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="389"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:389</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>label</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showUploadFile"></a>
+                    <span class="name">
+                        <span ><b>showUploadFile</b></span>
+                        <a href="#showUploadFile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showUploadFile()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="223"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:223</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showUploadInfo"></a>
+                    <span class="name">
+                        <span ><b>showUploadInfo</b></span>
+                        <a href="#showUploadInfo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showUploadInfo(uploadId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="229"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:229</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>uploadId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showUploadPreview"></a>
+                    <span class="name">
+                        <span ><b>showUploadPreview</b></span>
+                        <a href="#showUploadPreview"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showUploadPreview(upload: <a href="../interfaces/UploadModel.html" target="_self">UploadModel</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="242"
+                                    class="link-to-prism">src/app/uploads/uploads.component.ts:242</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>upload</td>
+                                            <td>
+                                                            <code><a href="../interfaces/UploadModel.html" target="_self" >UploadModel</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$ext"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>$ext</b></span>
+                        <a href="#$ext"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;string[]&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/app/uploads/uploads.component.ts:137</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$infoUpload"></a>
+                    <span class="name">
+                        <span ><b>$infoUpload</b></span>
+                        <a href="#$infoUpload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;string | null&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/app/uploads/uploads.component.ts:114</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$name"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>$name</b></span>
+                        <a href="#$name"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;string&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(&#x27;&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/app/uploads/uploads.component.ts:136</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$owner"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>$owner</b></span>
+                        <a href="#$owner"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;string[]&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">src/app/uploads/uploads.component.ts:138</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$page"></a>
+                    <span class="name">
+                        <span ><b>$page</b></span>
+                        <a href="#$page"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;number&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(1)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/app/uploads/uploads.component.ts:119</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$permissions"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>$permissions</b></span>
+                        <a href="#$permissions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#Permission" target="_self" >WritableSignal&lt;Permission[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/app/uploads/uploads.component.ts:135</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$previewStatus"></a>
+                    <span class="name">
+                        <span ><b>$previewStatus</b></span>
+                        <a href="#$previewStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/app/uploads/uploads.component.ts:116</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$previewUpload"></a>
+                    <span class="name">
+                        <span ><b>$previewUpload</b></span>
+                        <a href="#$previewUpload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/UploadModel.html" target="_self" >WritableSignal&lt;UploadModel | null&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">src/app/uploads/uploads.component.ts:117</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$size"></a>
+                    <span class="name">
+                        <span ><b>$size</b></span>
+                        <a href="#$size"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;number&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(20)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/app/uploads/uploads.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$uploads"></a>
+                    <span class="name">
+                        <span ><b>$uploads</b></span>
+                        <a href="#$uploads"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/UploadModel.html" target="_self" >WritableSignal&lt;UploadModel[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">src/app/uploads/uploads.component.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$uploadsLoading"></a>
+                    <span class="name">
+                        <span ><b>$uploadsLoading</b></span>
+                        <a href="#$uploadsLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(true)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/app/uploads/uploads.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="alerts"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>alerts</b></span>
+                        <a href="#alerts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(TuiAlertService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/uploads/uploads.component.ts:95</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentUser"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>currentUser</b></span>
+                        <a href="#currentUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(AuthService).$user().username</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/app/uploads/uploads.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteUploadByIdGQL"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>deleteUploadByIdGQL</b></span>
+                        <a href="#deleteUploadByIdGQL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(DeleteUploadByIdGQL)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/app/uploads/uploads.component.ts:100</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroyRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroyRef</b></span>
+                        <a href="#destroyRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(DestroyRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/app/uploads/uploads.component.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dialogs"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>dialogs</b></span>
+                        <a href="#dialogs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(TuiDialogService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/app/uploads/uploads.component.ts:94</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="info"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Readonly</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>info</b></span>
+                        <a href="#info"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;TuiDialogContext&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;info&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/uploads/uploads.component.ts:126</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="infoSub"></a>
+                    <span class="name">
+                        <span ><b>infoSub</b></span>
+                        <a href="#infoSub"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/app/uploads/uploads.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="injector"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>injector</b></span>
+                        <a href="#injector"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Injector)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/app/uploads/uploads.component.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isAdministrator"></a>
+                    <span class="name">
+                        <span ><b>isAdministrator</b></span>
+                        <a href="#isAdministrator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(AuthService).$isAdmin()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/uploads/uploads.component.ts:103</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLastPage"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>isLastPage</b></span>
+                        <a href="#isLastPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/uploads/uploads.component.ts:106</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modalFiltersIsOpen"></a>
+                    <span class="name">
+                        <span ><b>modalFiltersIsOpen</b></span>
+                        <a href="#modalFiltersIsOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/app/uploads/uploads.component.ts:111</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Permission"></a>
+                    <span class="name">
+                        <span ><b>Permission</b></span>
+                        <a href="#Permission"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Permission</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/app/uploads/uploads.component.ts:108</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scroll"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>scroll</b></span>
+                        <a href="#scroll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ScrollService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/app/uploads/uploads.component.ts:97</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showUploadFileDialog"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>showUploadFileDialog</b></span>
+                        <a href="#showUploadFileDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="373" class="link-to-prism">src/app/uploads/uploads.component.ts:373</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showUploadInfoDialog"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>showUploadInfoDialog</b></span>
+                        <a href="#showUploadInfoDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="381" class="link-to-prism">src/app/uploads/uploads.component.ts:381</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="skeletonRows"></a>
+                    <span class="name">
+                        <span ><b>skeletonRows</b></span>
+                        <a href="#skeletonRows"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Array(10)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/app/uploads/uploads.component.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uploadFiltersForm"></a>
+                    <span class="name">
+                        <span ><b>uploadFiltersForm</b></span>
+                        <a href="#uploadFiltersForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormGroup({
+    name: new FormControl(),
+    ext: new FormControl(),
+    account: new FormControl(),
+    permissions: new FormControl(),
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/app/uploads/uploads.component.ts:128</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uploadsGQL"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>uploadsGQL</b></span>
+                        <a href="#uploadsGQL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(UploadsGQL)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/app/uploads/uploads.component.ts:101</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uploadsQuery"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>uploadsQuery</b></span>
+                        <a href="#uploadsQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#UploadsQuery" target="_self" >UploadsQueryRef | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/app/uploads/uploads.component.ts:105</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="params"></a>
+                        <span class="name"><b>params</b><a href="#params"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>params()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="335" class="link-to-prism">src/app/uploads/uploads.component.ts:335</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  TuiAlertService,
+  TuiDialogContext,
+  TuiDialogModule,
+  TuiDialogService,
+  TuiHintModule,
+  TuiSvgModule,
+  TuiTextfieldControllerModule,
+} from &#x27;@taiga-ui/core&#x27;
+
+import {
+  Component,
+  DestroyRef,
+  inject,
+  Injector,
+  OnInit,
+  signal,
+  TemplateRef,
+  ViewChild,
+  WritableSignal,
+} from &#x27;@angular/core&#x27;
+
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from &#x27;@angular/forms&#x27;
+
+import {
+  TUI_PROMPT,
+  TuiDataListWrapperModule,
+  TuiInputModule,
+  TuiSelectModule,
+} from &#x27;@taiga-ui/kit&#x27;
+
+import { PolymorpheusComponent } from &#x27;@tinkoff/ng-polymorpheus&#x27;
+import { TuiTablePaginationModule } from &#x27;@taiga-ui/addon-table&#x27;
+import { takeUntilDestroyed } from &#x27;@angular/core/rxjs-interop&#x27;
+import { debounceTime, distinctUntilChanged, Subscription } from &#x27;rxjs&#x27;
+import { CommonModule } from &#x27;@angular/common&#x27;
+import { RouterModule } from &#x27;@angular/router&#x27;
 import * as Sentry from &#x27;@sentry/angular&#x27;
+
+import { UploadsQueryRef, UploadsGQL, DeleteUploadByIdGQL } from &#x27;@graphql&#x27;
+import { AuthService, ScrollService } from &#x27;@services&#x27;
+import { inOutGridAnimation200 } from &#x27;@animations&#x27;
+import { serializePermissions } from &#x27;@utils&#x27;
+import { UploadModel } from &#x27;@models&#x27;
+import { Permission } from &#x27;@enums&#x27;
+
+import { PermissionInputComponent } from &#x27;@components/permission-input&#x27;
+import { ExtensionInputComponent } from &#x27;@components/extension-input&#x27;
+import { AccountInputComponent } from &#x27;@components/account-input&#x27;
+import { NotFoundComponent } from &#x27;@components/not-found&#x27;
+
+import { UploadListItemComponent } from &#x27;./upload-list-item/upload-list-item.component&#x27;
+import { UploadPreviewComponent } from &#x27;./upload-preview/upload-preview.component&#x27;
+import { UploadFileComponent } from &#x27;./upload-file/upload-file.component&#x27;
+import { UploadInfoComponent } from &#x27;./upload-info/upload-info.component&#x27;
 
 @Component({
   selector: &#x27;spomen-uploads&#x27;,
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TuiInputModule,
+    TuiTextfieldControllerModule,
+    TuiSelectModule,
+    TuiDataListWrapperModule,
+    TuiSvgModule,
+    TuiTablePaginationModule,
+    TuiDialogModule,
+    TuiHintModule,
+    UploadListItemComponent,
+    ExtensionInputComponent,
+    AccountInputComponent,
+    PermissionInputComponent,
+    NotFoundComponent,
+    UploadPreviewComponent,
+    UploadInfoComponent,
+  ],
+  providers: [UploadsGQL, DeleteUploadByIdGQL],
+  animations: [inOutGridAnimation200],
   templateUrl: &#x27;./uploads.component.html&#x27;,
   styleUrl: &#x27;./uploads.component.scss&#x27;,
 })
 @Sentry.TraceClass({ name: &#x27;Uploads&#x27; })
-export class UploadsComponent {}
+export class UploadsComponent implements OnInit {
+  private currentUser &#x3D; inject(AuthService).$user().username
+  private dialogs &#x3D; inject(TuiDialogService)
+  private alerts &#x3D; inject(TuiAlertService)
+  private destroyRef &#x3D; inject(DestroyRef)
+  private scroll &#x3D; inject(ScrollService)
+  private injector &#x3D; inject(Injector)
+
+  private deleteUploadByIdGQL &#x3D; inject(DeleteUploadByIdGQL)
+  private uploadsGQL &#x3D; inject(UploadsGQL)
+
+  isAdministrator &#x3D; inject(AuthService).$isAdmin()
+
+  private uploadsQuery: UploadsQueryRef | null &#x3D; null
+  private isLastPage &#x3D; false
+
+  Permission &#x3D; Permission
+
+  skeletonRows &#x3D; new Array(10)
+  modalFiltersIsOpen &#x3D; false
+
+  infoSub: Subscription | null &#x3D; null
+  $infoUpload: WritableSignal&lt;string | null&gt; &#x3D; signal(null)
+
+  $previewStatus: WritableSignal&lt;boolean&gt; &#x3D; signal(false)
+  $previewUpload: WritableSignal&lt;UploadModel | null&gt; &#x3D; signal(null)
+
+  $page: WritableSignal&lt;number&gt; &#x3D; signal(1)
+  $size: WritableSignal&lt;number&gt; &#x3D; signal(20)
+
+  $uploads: WritableSignal&lt;UploadModel[]&gt; &#x3D; signal([])
+  $uploadsLoading: WritableSignal&lt;boolean&gt; &#x3D; signal(true)
+
+  @ViewChild(&#x27;info&#x27;)
+  readonly info?: TemplateRef&lt;TuiDialogContext&gt;
+
+  uploadFiltersForm &#x3D; new FormGroup({
+    name: new FormControl(),
+    ext: new FormControl(),
+    account: new FormControl(),
+    permissions: new FormControl(),
+  })
+
+  private $permissions: WritableSignal&lt;Permission[]&gt; &#x3D; signal([])
+  private $name: WritableSignal&lt;string&gt; &#x3D; signal(&#x27;&#x27;)
+  private $ext: WritableSignal&lt;string[]&gt; &#x3D; signal([])
+  private $owner: WritableSignal&lt;string[]&gt; &#x3D; signal([])
+
+  ngOnInit() {
+    this.scroll.isEnd
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() &#x3D;&gt; {
+        this.scroll.next(false, 0)
+
+        if (this.$uploadsLoading() || this.isLastPage) return
+
+        this.fetchMoreUploads()
+      })
+
+    if (this.currentUser) {
+      this.uploadFiltersForm.controls[&#x27;account&#x27;].setValue([this.currentUser])
+
+      this.$owner.set([this.currentUser])
+    }
+
+    this.uploadsQuery &#x3D; this.uploadsGQL.watch(this.params)
+
+    this.uploadsQuery.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (res) &#x3D;&gt; {
+          if (res.data.uploads.length &#x3D;&#x3D;&#x3D; 0) this.isLastPage &#x3D; true
+
+          this.$uploads.update((prev) &#x3D;&gt; prev.concat(res.data.uploads))
+
+          this.$uploadsLoading.set(false)
+        },
+        error: () &#x3D;&gt; {
+          this.alerts
+            .open(&#x27;Не удалось получить список загрузок&#x27;, { status: &#x27;error&#x27; })
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe()
+          this.$uploadsLoading.set(false)
+        },
+      })
+
+    this.uploadFiltersForm.controls[&#x27;account&#x27;].valueChanges
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        debounceTime(1000),
+        distinctUntilChanged()
+      )
+      .subscribe((items) &#x3D;&gt; {
+        this.$owner.set(items)
+        this.resetUploads()
+      })
+
+    this.uploadFiltersForm.controls[&#x27;ext&#x27;].valueChanges
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        debounceTime(1000),
+        distinctUntilChanged()
+      )
+      .subscribe((items) &#x3D;&gt; {
+        this.$ext.set(items)
+        this.resetUploads()
+      })
+
+    this.uploadFiltersForm.controls[&#x27;name&#x27;].valueChanges
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        debounceTime(1000),
+        distinctUntilChanged()
+      )
+      .subscribe((items) &#x3D;&gt; {
+        this.$name.set(items)
+        this.resetUploads()
+      })
+
+    this.uploadFiltersForm.controls[&#x27;permissions&#x27;].valueChanges
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        debounceTime(1000),
+        distinctUntilChanged()
+      )
+      .subscribe((permissions) &#x3D;&gt; {
+        this.$permissions.set(serializePermissions(permissions))
+        this.resetUploads()
+      })
+  }
+
+  showUploadFile() {
+    this.showUploadFileDialog()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe()
+  }
+
+  showUploadInfo(uploadId: string) {
+    if (this.$previewStatus()) {
+      this.$previewStatus.set(false)
+      this.$previewUpload.set(null)
+    }
+
+    this.$infoUpload.set(uploadId)
+
+    this.infoSub &#x3D; this.showUploadInfoDialog()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe()
+  }
+
+  showUploadPreview(upload: UploadModel) {
+    this.$previewUpload.set(upload)
+    this.$previewStatus.set(true)
+  }
+
+  showModalFilters() {
+    this.modalFiltersIsOpen &#x3D; true
+  }
+
+  handleClosePreview() {
+    this.$previewStatus.set(false)
+    this.$previewUpload.set(null)
+  }
+
+  handleUpdateUpload(event: { data: { [key: string]: any }; id: string }) {
+    const updatedFields: { [key: string]: any } &#x3D; {}
+
+    Object.keys(event.data).forEach(
+      (key) &#x3D;&gt; (updatedFields[key] &#x3D; event.data[key].set)
+    )
+
+    this.$uploads.update((items) &#x3D;&gt;
+      items.map((item) &#x3D;&gt; {
+        return item.id &#x3D;&#x3D;&#x3D; event.id ? { ...item, ...updatedFields } : item
+      })
+    )
+  }
+
+  handleDeletedUpload(id: string) {
+    if (this.infoSub) this.infoSub.unsubscribe()
+
+    this.$infoUpload.set(null)
+
+    this.alerts
+      .open(&#x27;Файл успешно удалён&#x27;, {
+        status: &#x27;success&#x27;,
+      })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe()
+
+    this.$uploads.update((items) &#x3D;&gt; items.filter((item) &#x3D;&gt; item.id !&#x3D;&#x3D; id))
+  }
+
+  handleDeletePreviewedUpload() {
+    this.showPrompt(&#x27;Удалить файл?&#x27;).subscribe((res) &#x3D;&gt; {
+      if (res) {
+        this.showPrompt(&#x27;Вы уверены?&#x27;).subscribe((res) &#x3D;&gt; {
+          if (res) this.deletePreviewedUpload()
+        })
+      }
+    })
+  }
+
+  setExtensionFilter(ext: string) {
+    const currentValue &#x3D; this.uploadFiltersForm.controls[&#x27;ext&#x27;].value
+
+    if (!currentValue) this.uploadFiltersForm.controls[&#x27;ext&#x27;].setValue([ext])
+
+    if (Array.isArray(currentValue) &amp;&amp; !currentValue.includes(ext.trim())) {
+      this.uploadFiltersForm.controls[&#x27;ext&#x27;].setValue([
+        ...this.uploadFiltersForm.controls[&#x27;ext&#x27;].value,
+        ext,
+      ])
+    }
+  }
+
+  private deletePreviewedUpload() {
+    this.deleteUploadByIdGQL
+      .mutate({
+        id: this.$previewUpload()!.id,
+      })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () &#x3D;&gt; {
+          this.handleDeletedUpload(this.$previewUpload()!.id)
+
+          this.handleClosePreview()
+        },
+        error: (err) &#x3D;&gt; {
+          console.log(err)
+
+          this.handleClosePreview()
+
+          this.alerts
+            .open(&#x27;Удалить файл не удалось&#x27;, {
+              status: &#x27;error&#x27;,
+            })
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe()
+        },
+      })
+  }
+
+  private get params() {
+    const owner &#x3D; !this.isAdministrator
+      ? [this.currentUser!]
+      : this.$owner().length &#x3D;&#x3D;&#x3D; 0
+        ? undefined
+        : this.$owner()
+
+    return {
+      size: this.$size(),
+      page: this.$page(),
+      owner,
+      name: this.$name().trim().length &#x3D;&#x3D;&#x3D; 0 ? undefined : this.$name(),
+      ext: this.$ext().length &#x3D;&#x3D;&#x3D; 0 ? undefined : this.$ext(),
+      permissions:
+        this.$permissions().length &#x3D;&#x3D;&#x3D; 0 ? undefined : this.$permissions(),
+    }
+  }
+
+  private refetchUploads() {
+    this.$uploadsLoading.set(true)
+
+    this.uploadsQuery!.refetch(this.params)
+  }
+
+  private resetUploads() {
+    this.$page.set(1)
+    this.$uploads.set([])
+    this.isLastPage &#x3D; false
+
+    this.refetchUploads()
+  }
+
+  private fetchMoreUploads() {
+    this.$page.set(this.$page() + 1)
+
+    this.refetchUploads()
+  }
+
+  private showUploadFileDialog &#x3D; () &#x3D;&gt;
+    this.dialogs.open&lt;string | null&gt;(
+      new PolymorpheusComponent(UploadFileComponent, this.injector),
+      {
+        size: &#x27;s&#x27;,
+      }
+    )
+
+  private showUploadInfoDialog &#x3D; () &#x3D;&gt;
+    this.dialogs.open&lt;string | null&gt;(this.info, {
+      size: &#x27;s&#x27;,
+    })
+
+  // TODO: Uploads filters из query params
+  // TODO: Uploads list в отдельный компонент
+
+  private showPrompt(label: string) {
+    return this.dialogs
+      .open&lt;boolean&gt;(TUI_PROMPT, {
+        label,
+        size: &#x27;s&#x27;,
+        data: {
+          yes: &#x27;Да&#x27;,
+          no: &#x27;Нет&#x27;,
+        },
+      })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+  }
+}
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;p&gt;uploads works!&lt;/p&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;form class&#x3D;&quot;uploads-filters&quot; [formGroup]&#x3D;&quot;this.uploadFiltersForm&quot;&gt;
+  &lt;tui-input
+    formControlName&#x3D;&quot;name&quot;
+    tuiTextfieldIcon&#x3D;&quot;tuiIconSearch&quot;
+    [tuiTextfieldSize]&#x3D;&quot;&#x27;s&#x27;&quot;
+  &gt;
+    Название
+  &lt;/tui-input&gt;
+  &lt;spomen-extension-input [formGroup]&#x3D;&quot;this.uploadFiltersForm&quot; formControlName&#x3D;&quot;ext&quot; /&gt;
+  &lt;button
+    class&#x3D;&quot;button uploads-filters__btn&quot;
+    (click)&#x3D;&quot;this.showModalFilters()&quot;
+    tuiHint&#x3D;&quot;Параметры поиска&quot;
+    [tuiHintShowDelay]&#x3D;&quot;1000&quot;
+  &gt;
+    &lt;tui-svg src&#x3D;&quot;tuiIconCompass&quot;&gt;&lt;/tui-svg&gt;
+  &lt;/button&gt;
+  &lt;button
+    class&#x3D;&quot;button uploads-filters__btn&quot;
+    (click)&#x3D;&quot;this.showUploadFile()&quot;
+    tuiHint&#x3D;&quot;Загрузить файл&quot;
+    [tuiHintShowDelay]&#x3D;&quot;1000&quot;
+  &gt;
+    &lt;tui-svg src&#x3D;&quot;tuiIconUpload&quot;&gt;&lt;/tui-svg&gt;
+  &lt;/button&gt;
+&lt;/form&gt;
+&lt;section class&#x3D;&quot;uploads-list&quot;&gt;
+  @if (this.$uploads().length &gt; 0) {
+    &lt;div @inOutGrid200&gt;
+      @for (upload of this.$uploads(); track $index) {
+        &lt;spomen-upload-list-item
+          [isLoading]&#x3D;&quot;false&quot;
+          [isPrivate]&#x3D;&quot;upload.permissions.includes(Permission.OwnerOnly)&quot;
+          [upload]&#x3D;&quot;upload&quot;
+          (showPreview)&#x3D;&quot;this.showUploadPreview($event)&quot;
+          (clickUpload)&#x3D;&quot;this.showUploadInfo(upload.id)&quot;
+          (selectExtension)&#x3D;&quot;this.setExtensionFilter(upload.ext)&quot;
+        /&gt;
+      }
+    &lt;/div&gt;
+  }
+
+  @if (this.$uploadsLoading()) {
+    &lt;div @inOutGrid200&gt;
+      @for (row of this.skeletonRows; track $index) {
+        &lt;spomen-upload-list-item [isLoading]&#x3D;&quot;true&quot; [upload]&#x3D;&quot;null&quot; [isPrivate]&#x3D;&quot;false&quot; /&gt;
+      }
+    &lt;/div&gt;
+  }
+&lt;/section&gt;
+
+@if (this.$uploads().length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; !this.$uploadsLoading()) {
+  &lt;section class&#x3D;&quot;uploads__not-found&quot;&gt;
+    &lt;spomen-not-found
+      title&#x3D;&quot;Файлы не найдены&quot;
+      [showRef]&#x3D;&quot;false&quot;
+    &gt;&lt;/spomen-not-found&gt;
+  &lt;/section&gt;
+}
+
+&lt;spomen-upload-preview
+  [upload]&#x3D;&quot;this.$previewUpload()&quot;
+  [isOpen]&#x3D;&quot;this.$previewStatus()&quot;
+  (handleOpen)&#x3D;&quot;this.showUploadInfo(this.$previewUpload()!.id)&quot;
+  (handleDelete)&#x3D;&quot;this.handleDeletePreviewedUpload()&quot;
+  (handleClose)&#x3D;&quot;this.handleClosePreview()&quot;
+/&gt;
+
+
+&lt;ng-template
+  let-observer
+  [tuiDialogOptions]&#x3D;&quot;{size: &#x27;s&#x27;}&quot;
+  [(tuiDialog)]&#x3D;&quot;this.modalFiltersIsOpen&quot;
+&gt;
+  &lt;div class&#x3D;&quot;uploads-filters--modal&quot;&gt;
+    &lt;form class&#x3D;&quot;uploads-filters--modal__form&quot; [formGroup]&#x3D;&quot;this.uploadFiltersForm&quot;&gt;
+      &lt;span class&#x3D;&quot;uploads-filters--modal__title&quot;&gt;Поиск&lt;/span&gt;
+      &lt;spomen-extension-input [formGroup]&#x3D;&quot;this.uploadFiltersForm&quot; formControlName&#x3D;&quot;ext&quot; placeholder&#x3D;&quot;Тип файла&quot; /&gt;
+
+      @if (this.isAdministrator) {
+        &lt;spomen-account-input [formGroup]&#x3D;&quot;this.uploadFiltersForm&quot; formControlName&#x3D;&quot;account&quot;
+                              placeholder&#x3D;&quot;Аккаунт владельца&quot; /&gt;
+      }
+
+      &lt;spomen-permission-input [formGroup]&#x3D;&quot;this.uploadFiltersForm&quot; formControlName&#x3D;&quot;permissions&quot; /&gt;
+
+      &lt;button class&#x3D;&quot;button&quot; (click)&#x3D;&quot;observer.complete()&quot;&gt;&lt;span&gt;Найти&lt;/span&gt;&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/ng-template&gt;
+
+&lt;ng-template
+  #info
+&gt;
+  &lt;spomen-upload-info
+    [uploadId]&#x3D;&quot;this.$infoUpload()!&quot;
+    (onUpdate)&#x3D;&quot;this.handleUpdateUpload($event)&quot;
+    (onDelete)&#x3D;&quot;this.handleDeletedUpload($event)&quot;
+  /&gt;
+&lt;/ng-template&gt;
 </code></pre>
     </div>
 
@@ -232,9 +2610,9 @@ export class UploadsComponent {}
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><p>uploads works!</p></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
-    var DIRECTIVES = [];
+        var COMPONENT_TEMPLATE = '<div><form class="uploads-filters" [formGroup]="this.uploadFiltersForm">  <tui-input    formControlName="name"    tuiTextfieldIcon="tuiIconSearch"    [tuiTextfieldSize]="\'s\'"  >    Название  </tui-input>  <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" />  <button    class="button uploads-filters__btn"    (click)="this.showModalFilters()"    tuiHint="Параметры поиска"    [tuiHintShowDelay]="1000"  >    <tui-svg src="tuiIconCompass"></tui-svg>  </button>  <button    class="button uploads-filters__btn"    (click)="this.showUploadFile()"    tuiHint="Загрузить файл"    [tuiHintShowDelay]="1000"  >    <tui-svg src="tuiIconUpload"></tui-svg>  </button></form><section class="uploads-list">  @if (this.$uploads().length > 0) {    <div @inOutGrid200>      @for (upload of this.$uploads(); track $index) {        <spomen-upload-list-item          [isLoading]="false"          [isPrivate]="upload.permissions.includes(Permission.OwnerOnly)"          [upload]="upload"          (showPreview)="this.showUploadPreview($event)"          (clickUpload)="this.showUploadInfo(upload.id)"          (selectExtension)="this.setExtensionFilter(upload.ext)"        />      }    </div>  }  @if (this.$uploadsLoading()) {    <div @inOutGrid200>      @for (row of this.skeletonRows; track $index) {        <spomen-upload-list-item [isLoading]="true" [upload]="null" [isPrivate]="false" />      }    </div>  }</section>@if (this.$uploads().length === 0 && !this.$uploadsLoading()) {  <section class="uploads__not-found">    <spomen-not-found      title="Файлы не найдены"      [showRef]="false"    ></spomen-not-found>  </section>}<spomen-upload-preview  [upload]="this.$previewUpload()"  [isOpen]="this.$previewStatus()"  (handleOpen)="this.showUploadInfo(this.$previewUpload()!.id)"  (handleDelete)="this.handleDeletePreviewedUpload()"  (handleClose)="this.handleClosePreview()"/><ng-template  let-observer  [tuiDialogOptions]="{size: \'s\'}"  [(tuiDialog)]="this.modalFiltersIsOpen">  <div class="uploads-filters--modal">    <form class="uploads-filters--modal__form" [formGroup]="this.uploadFiltersForm">      <span class="uploads-filters--modal__title">Поиск</span>      <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" placeholder="Тип файла" />      @if (this.isAdministrator) {        <spomen-account-input [formGroup]="this.uploadFiltersForm" formControlName="account"                              placeholder="Аккаунт владельца" />      }      <spomen-permission-input [formGroup]="this.uploadFiltersForm" formControlName="permissions" />      <button class="button" (click)="observer.complete()"><span>Найти</span></button>    </form>  </div></ng-template><ng-template  #info>  <spomen-upload-info    [uploadId]="this.$infoUpload()!"    (onUpdate)="this.handleUpdateUpload($event)"    (onDelete)="this.handleDeletedUpload($event)"  /></ng-template></div>'
+    var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'PermissionInputComponent', 'selector': 'spomen-permission-input'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadActionsComponent', 'selector': 'spomen-upload-actions'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadPreviewComponent', 'selector': 'spomen-upload-preview'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
+    var DIRECTIVES = [{'name': 'ScrollNearEndDirective', 'selector': '[scrollNearEnd]'}];
     var ACTUAL_COMPONENT = {'name': 'UploadsComponent'};
 </script>
 <script src="../js/tree.js"></script>

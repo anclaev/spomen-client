@@ -1,0 +1,16 @@
+<ng-container [formGroup]="this.formGroup">
+  <tui-input-tag
+    [formControlName]="this.formControlName"
+    [placeholder]="this.placeholder"
+    tuiTextfieldIcon="tuiIconUser"
+    [tuiTextfieldSize]="'s'"
+    (searchChange)="this.handleChange($event)"
+    [rows]="1"
+  >{{this.placeholder}}
+    <tui-data-list-wrapper
+      *tuiDataList
+      [items]="this.$accountsList()"
+    ></tui-data-list-wrapper
+    >
+  </tui-input-tag>
+</ng-container>

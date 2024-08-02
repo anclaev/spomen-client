@@ -1,1 +1,100 @@
-<p>uploads works!</p>
+<form class="uploads-filters" [formGroup]="this.uploadFiltersForm">
+  <tui-input
+    formControlName="name"
+    tuiTextfieldIcon="tuiIconSearch"
+    [tuiTextfieldSize]="'s'"
+  >
+    Название
+  </tui-input>
+  <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" />
+  <button
+    class="button uploads-filters__btn"
+    (click)="this.showModalFilters()"
+    tuiHint="Параметры поиска"
+    [tuiHintShowDelay]="1000"
+  >
+    <tui-svg src="tuiIconCompass"></tui-svg>
+  </button>
+  <button
+    class="button uploads-filters__btn"
+    (click)="this.showUploadFile()"
+    tuiHint="Загрузить файл"
+    [tuiHintShowDelay]="1000"
+  >
+    <tui-svg src="tuiIconUpload"></tui-svg>
+  </button>
+</form>
+<section class="uploads-list">
+  @if (this.$uploads().length > 0) {
+    <div @inOutGrid200>
+      @for (upload of this.$uploads(); track $index) {
+        <spomen-upload-list-item
+          [isLoading]="false"
+          [isPrivate]="upload.permissions.includes(Permission.OwnerOnly)"
+          [upload]="upload"
+          (showPreview)="this.showUploadPreview($event)"
+          (clickUpload)="this.showUploadInfo(upload.id)"
+          (selectExtension)="this.setExtensionFilter(upload.ext)"
+        />
+      }
+    </div>
+  }
+
+  @if (this.$uploadsLoading()) {
+    <div @inOutGrid200>
+      @for (row of this.skeletonRows; track $index) {
+        <spomen-upload-list-item [isLoading]="true" [upload]="null" [isPrivate]="false" />
+      }
+    </div>
+  }
+</section>
+
+@if (this.$uploads().length === 0 && !this.$uploadsLoading()) {
+  <section class="uploads__not-found">
+    <spomen-not-found
+      title="Файлы не найдены"
+      [showRef]="false"
+    ></spomen-not-found>
+  </section>
+}
+
+<spomen-upload-preview
+  [upload]="this.$previewUpload()"
+  [isOpen]="this.$previewStatus()"
+  (handleOpen)="this.showUploadInfo(this.$previewUpload()!.id)"
+  (handleDelete)="this.handleDeletePreviewedUpload()"
+  (handleClose)="this.handleClosePreview()"
+/>
+
+
+<ng-template
+  let-observer
+  [tuiDialogOptions]="{size: 's'}"
+  [(tuiDialog)]="this.modalFiltersIsOpen"
+>
+  <div class="uploads-filters--modal">
+    <form class="uploads-filters--modal__form" [formGroup]="this.uploadFiltersForm">
+      <span class="uploads-filters--modal__title">Поиск</span>
+      <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" placeholder="Тип файла" />
+
+      @if (this.isAdministrator) {
+        <spomen-account-input [formGroup]="this.uploadFiltersForm" formControlName="account"
+                              placeholder="Аккаунт владельца" />
+      }
+
+      <spomen-permission-input [formGroup]="this.uploadFiltersForm" formControlName="permissions" />
+
+      <button class="button" (click)="observer.complete()"><span>Найти</span></button>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template
+  #info
+>
+  <spomen-upload-info
+    [uploadId]="this.$infoUpload()!"
+    (onUpdate)="this.handleUpdateUpload($event)"
+    (onDelete)="this.handleDeletedUpload($event)"
+  />
+</ng-template>

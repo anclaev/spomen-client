@@ -2,4 +2,118 @@
 
 :host {
   @include page;
+  user-select: none;
+}
+
+.uploads-filters,
+.uploads-list {
+  display: flex;
+}
+
+.uploads-filters {
+  flex-direction: row;
+  width: 100%;
+  margin: 10px 0 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.uploads-filters > *:first-child {
+  flex-grow: 1;
+}
+
+.uploads-filters > spomen-extension-input {
+  min-width: 200px;
+}
+
+.uploads-filters > *:not(:last-child) {
+  margin-right: 20px;
+}
+
+.uploads-filters__btn {
+  max-width: 40px;
+  min-width: 40px;
+  max-height: 40px;
+  min-height: 40px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploads-list {
+  position: relative;
+  flex-direction: column;
+}
+
+.uploads-list > div > *:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.uploads__not-found {
+  position: absolute;
+  top: 70%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.uploads__not-found > spomen-not-found::before {
+  font-size: 300px;
+}
+
+.uploads__not-found span.not-found__title {
+  display: none;
+}
+
+.uploads__not-found > spomen-not-found {
+  font-size: 24px !important;
+}
+
+.uploads-filters--modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploads-filters--modal__form {
+  width: 100%;
+}
+
+.uploads-filters--modal__form > *:not(button) {
+  margin-bottom: 30px;
+}
+
+.uploads-filters--modal__title {
+  display: block;
+  margin-bottom: 10px !important;
+}
+
+
+.uploads-filters--modal__form > button {
+  font: var(--tui-font-text-m);
+}
+
+@media only screen and (max-width: 576px) {
+  .uploads-filters > spomen-account-input,
+  .uploads-filters > spomen-extension-input {
+    display: none;
+  }
+
+  .uploads-filters > *:not(:last-child) {
+    margin-right: 15px;
+  }
+
+  .uploads__not-found {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .uploads__not-found > spomen-not-found::before {
+    font-size: 250px;
+  }
 }

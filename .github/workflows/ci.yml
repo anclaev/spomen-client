@@ -10,7 +10,7 @@ concurrency:
 
 jobs:
   tests:
-    if: contains(github.event.head_commit.message, '[tests]')
+    if: contains(github.event.head_commit.message, 'test(')
     name: Run tests
     runs-on: ${{matrix.os}}
     strategy:
@@ -58,7 +58,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
   build:
-    if: contains(github.event.head_commit.message, '[ci]')
+    if: contains(github.event.head_commit.message, 'ci(')
     name: Build project
     runs-on: ubuntu-latest
 

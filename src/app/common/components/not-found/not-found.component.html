@@ -1,2 +1,5 @@
-<span class="not-found__title">Такой страницы не существует</span>
-<a routerLink="/" class="not-found__btn button"><span>На главную</span></a>
+<span class="not-found__title">{{ this.title }}</span>
+
+@if (this.showRef) {
+  <a routerLink="/" class="not-found__btn button"><span>На главную</span></a>
+}

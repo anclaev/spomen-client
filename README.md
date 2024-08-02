@@ -1,3 +1,3 @@
-# spomen-slient
+# spomen-client
 
 Платформа воспоминаний

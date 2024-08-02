@@ -16,10 +16,16 @@ import {
   LOCALE_ID,
 } from '@angular/core'
 
-import { AuthService, ConfigService, AccountService } from '@services'
+import {
+  AuthService,
+  ConfigService,
+  AccountService,
+  UploadService,
+  ScrollService,
+} from '@services'
 
-import { httpRequestIntercepor } from '@interceptors'
-import { graphqlProvider } from '@graphql'
+import { httpRequestInterceptor } from '@interceptors'
+import { AccountGQL, graphqlProvider } from '@graphql'
 import { initSentry } from '@utils'
 
 import { routes } from './app.routes'
@@ -37,7 +43,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withViewTransitions()),
     importProvidersFrom(TuiRootModule),
-    provideHttpClient(withInterceptors([httpRequestIntercepor])),
+    provideHttpClient(withInterceptors([httpRequestInterceptor])),
     {
       provide: ErrorHandler,
       useValue: Sentry.createErrorHandler({
@@ -64,5 +70,8 @@ export const appConfig: ApplicationConfig = {
     ConfigService,
     AuthService,
     AccountService,
+    UploadService,
+    ScrollService,
+    AccountGQL,
   ],
 }

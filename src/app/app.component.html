@@ -1,4 +1,6 @@
 <tui-root
+  scrollNearEnd
+  (nearEnd)="this.nearEnd($event)"
   class="root-wrapper"
   [attr.data-loading]="this.auth.$$isLoading | async"
   [attr.data-nf]="this.config.$isNotFoundPage()"

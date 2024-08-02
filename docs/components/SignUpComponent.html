@@ -439,8 +439,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="232"
-                                    class="link-to-prism">src/app/auth/sign-up/sign-up.component.ts:232</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="237"
+                                    class="link-to-prism">src/app/auth/sign-up/sign-up.component.ts:237</a></div>
                         </td>
                     </tr>
 
@@ -1011,6 +1011,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
             ])
           },
           error: (err: HttpErrorResponse) &#x3D;&gt; {
+            this.confirmForm.controls.confirmPass.reset()
+            this.form.controls.pass.reset()
+
             if (err.status &#x3D;&#x3D;&#x3D; 409) {
               if (this.form.controls.email.value!.trim().length &#x3D;&#x3D;&#x3D; 0) {
                 this.subs$.push(
@@ -1037,7 +1040,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
             }
 
             this.subs$.push(
-              this.alerts.open(&#x27;Сервер временно недоступен&#x27;).subscribe()
+              this.alerts
+                .open(&#x27;Сервер временно недоступен&#x27;, { status: &#x27;error&#x27; })
+                .subscribe()
             )
 
             this.isLoading.next(false)
@@ -1055,8 +1060,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
     this.subs$.forEach((sub) &#x3D;&gt; sub.unsubscribe())
   }
 }
-
-// TODO: Сброс паролей в обеих формах при неудачной регистрации
 </code></pre>
     </div>
 
@@ -1197,8 +1200,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><form class="sign-up" [formGroup]="form" (ngSubmit)="onSubmit()">  <div class="sign-up__fields">    <input      class="textbox"      type="text"      name="login"      id="login"      autocomplete="username"      placeholder="Логин"      formControlName="login"      [ngClass]="{ \'textbox--invalid\': form.controls.login.errors }"    />    <input      class="textbox"      type="password"      name="pass"      autocomplete="current-password"      id="pass"      placeholder="Пароль"      formControlName="pass"      [ngClass]="{ \'textbox--invalid\': form.controls.pass.errors }"    />  </div>  <div class="sign-up__fields">    <input      class="textbox"      type="text"      name="name"      id="name"      placeholder="Как вас зовут"      formControlName="name"      [ngClass]="{ \'textbox--invalid\': form.controls.name.errors }"    />    <input      class="textbox"      type="text"      name="surname"      id="surname"      placeholder="Ваша фамилия"      formControlName="surname"      [ngClass]="{ \'textbox--invalid\': form.controls.surname.errors }"    />  </div>  <div class="sign-up__fields">    <input      class="textbox"      type="email"      name="email"      id="email"      placeholder="Email"      formControlName="email"      [ngClass]="{ \'textbox--invalid\': form.controls.email.errors }"    />    <tui-input-date      class="datebox"      formControlName="birthday"      id="birthday"      [ngClass]="{ \'textbox--invalid\': form.controls.birthday.errors }"    >      Дата рождения      <input tuiTextfield />    </tui-input-date>  </div>  <tui-loader    class="sign-up__loader"    [inheritColor]="true"    [overlay]="true"    [showLoader]="(isLoading$$ | async) || false"  >    <button class="sign-up__btn button" [disabled]="isLoading$$ | async">      <span>Продолжить</span>    </button></tui-loader  ></form><ng-template  let-observer  [tuiDialogOptions]="{ label: \'Подтвердите пароль\', size: \'s\' }"  [(tuiDialog)]="showConfirmForm"  title="Hi">  <form    class="sign-up__confirm"    [formGroup]="confirmForm"    (ngSubmit)="observer.complete()"  >    <input      class="textbox"      type="password"      name="confirmPass"      id="confirmPass"      placeholder="Пароль"      formControlName="confirmPass"      [ngClass]="{ \'textbox--invalid\': form.controls.email.errors }"    />    <button      class="button"      type="submit"      (click)="confirmPass()"      [disabled]="confirmForm.controls.confirmPass.errors"    >      <span>ОК</span>    </button>  </form></ng-template></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
-    var DIRECTIVES = [];
+    var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'PermissionInputComponent', 'selector': 'spomen-permission-input'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadActionsComponent', 'selector': 'spomen-upload-actions'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadPreviewComponent', 'selector': 'spomen-upload-preview'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
+    var DIRECTIVES = [{'name': 'ScrollNearEndDirective', 'selector': '[scrollNearEnd]'}];
     var ACTUAL_COMPONENT = {'name': 'SignUpComponent'};
 </script>
 <script src="../js/tree.js"></script>
