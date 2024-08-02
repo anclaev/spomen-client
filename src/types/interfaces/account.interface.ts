@@ -1,4 +1,5 @@
-import { Role } from '../enums/role.enum'
+import { Sex } from '@interfaces'
+import { Role } from '@enums'
 
 export const initialAccount: Account = {
   id: null,
@@ -27,5 +28,5 @@ export interface Account {
   last_name: string | null
   full_name: string | null
   birthday: Date | null
-  sex: '0' | '1' | '2' | null
+  sex: Sex | null
 }
