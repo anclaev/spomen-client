@@ -1072,6 +1072,10 @@
   mutation updateUploadById($data: UploadUpdateInput!, $id: String!) {
     updateUpload(data: $data, where: { id: $id }) {
       id
+      url
+      name
+      file_name
+      permissions
     }
   }
 &#x60;</code>

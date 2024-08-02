@@ -464,8 +464,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="256"
-                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:256</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="245"
+                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:245</a></div>
                         </td>
                     </tr>
 
@@ -503,8 +503,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="284"
-                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:284</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="273"
+                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:273</a></div>
                         </td>
                     </tr>
 
@@ -653,8 +653,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="346"
-                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:346</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="335"
+                                    class="link-to-prism">src/app/uploads/upload-info/upload-info.component.ts:335</a></div>
                         </td>
                     </tr>
 
@@ -1490,19 +1490,8 @@ export class UploadInfoComponent implements OnInit {
       })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: () &#x3D;&gt; {
+        next: (res) &#x3D;&gt; {
           this.onUpdate.emit({ data, id: this.uploadId() })
-
-          Object.keys(data).forEach((key) &#x3D;&gt; {
-            this.$upload.update((item) &#x3D;&gt;
-              item
-                ? {
-                    ...item,
-                    [key]: data[key].set,
-                  }
-                : null
-            )
-          })
 
           this.alerts
             .open(&#x27;Файл успешно изменён!&#x27;, { status: &#x27;success&#x27; })
