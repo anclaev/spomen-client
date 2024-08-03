@@ -1,4 +1,1 @@
-yarn lint-staged
-yarn changelog
-yarn docs
-git add docs
+yarn lint-staged --allow-empty

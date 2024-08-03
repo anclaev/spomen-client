@@ -314,6 +314,7 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { UploadModel } from &#x27;@models&#x27;
 import { Role } from &#x27;@enums&#x27;
+import { Sex } from &#x27;@interfaces&#x27;
 
 export interface AccountModel {
   id: string
@@ -326,7 +327,7 @@ export interface AccountModel {
   first_name: string | null
   last_name: string | null
   birthday: Date | null
-  sex: &#x27;0&#x27; | &#x27;1&#x27; | &#x27;2&#x27;
+  sex: Sex | null
   created_at: Date
   updated_at: Date
 }

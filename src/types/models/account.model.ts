@@ -1,5 +1,6 @@
 import { UploadModel } from '@models'
 import { Role } from '@enums'
+import { Sex } from '@interfaces'
 
 export interface AccountModel {
   id: string
@@ -12,7 +13,7 @@ export interface AccountModel {
   first_name: string | null
   last_name: string | null
   birthday: Date | null
-  sex: '0' | '1' | '2'
+  sex: Sex | null
   created_at: Date
   updated_at: Date
 }

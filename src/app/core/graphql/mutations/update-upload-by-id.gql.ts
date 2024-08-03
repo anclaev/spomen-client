@@ -4,7 +4,13 @@ import { Injectable } from '@angular/core'
 import { Permission } from '@enums'
 
 export type UpdateUploadByIdResponse = {
-  id: string
+  updateUpload: {
+    id: string
+    url: string
+    name: string
+    file_name: string
+    permissions: Permission[]
+  }
 }
 
 export type UpdateUploadByIdVariables = {
@@ -20,6 +26,10 @@ export const UpdateUploadByIdQuery = gql`
   mutation updateUploadById($data: UploadUpdateInput!, $id: String!) {
     updateUpload(data: $data, where: { id: $id }) {
       id
+      url
+      name
+      file_name
+      permissions
     }
   }
 `

@@ -230,11 +230,11 @@ import { Sex } from &#x27;@interfaces&#x27;
 export class SexPipe implements PipeTransform {
   transform(value: Sex | null): string {
     switch (value) {
-      case &#x27;1&#x27;: {
-        return &#x27;Мужской&#x27;
-      }
-      case &#x27;2&#x27;: {
+      case 1: {
         return &#x27;Женский&#x27;
+      }
+      case 2: {
+        return &#x27;Мужской&#x27;
       }
       default: {
         return &#x27;Не указан&#x27;

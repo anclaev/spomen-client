@@ -1,1 +1,1 @@
-export type Sex = '0' | '1' | '2'
+export type Sex = 0 | 1 | 2

@@ -218,19 +218,8 @@ export class UploadInfoComponent implements OnInit {
       })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: () => {
+        next: (res) => {
           this.onUpdate.emit({ data, id: this.uploadId() })
-
-          Object.keys(data).forEach((key) => {
-            this.$upload.update((item) =>
-              item
-                ? {
-                    ...item,
-                    [key]: data[key].set,
-                  }
-                : null
-            )
-          })
 
           this.alerts
             .open('Файл успешно изменён!', { status: 'success' })
