@@ -16,7 +16,7 @@
     "commit": "npx git-cz",
     "push": "git push --follow-tags origin && git push --follow-tags gitverse",
     "changelog": "npx conventional-changelog -p angular -i CHANGELOG.md -s",
-    "release": "npx standard-version -s"
+    "release": "npx standard-version -s --release-as"
   },
   "private": true,
   "dependencies": {
