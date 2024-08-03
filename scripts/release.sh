@@ -1,2 +1,2 @@
 #!/bin/bash
-yarn release -- --release-as $1
+yarn release --release-as $1
