@@ -18,6 +18,20 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.4](https://github.com/anclaev/spomen-client/compare/v0.0.3...v0.0.4) (2024-08-03)
 
+### Features
+
+- **workflow:** Добавить скрипт релиза ([3e56403](https://github.com/anclaev/spomen-client/commit/3e56403a1d2b754cae627f88a276dcd32c450b6e))
+
+### Bug Fixes
+
+- **profile,uploads:** Исправить отображение UI ([5712d8d](https://github.com/anclaev/spomen-client/commit/5712d8d9bec138540103bdebd58d88e6afe5c644))
+- **uploads:** Исправить изменение загрузки ([9d20609](https://github.com/anclaev/spomen-client/commit/9d20609948a766e9b2e9789bbccbea5789c6820b))
+- **workflow:** Изменить генерацию документации ([10415fc](https://github.com/anclaev/spomen-client/commit/10415fc3b4ada60f71d688e685bf85bd1683ad85))
+- **workflow:** Изменить сценарии релиза и документации ([4ff626a](https://github.com/anclaev/spomen-client/commit/4ff626a6ccf20d9773801100b5a4d04c10e4bfe1))
+- **workflow:** Изменить сценарий релиза ([be41310](https://github.com/anclaev/spomen-client/commit/be41310285073d897c36c218589cdcf72faf1fba))
+
+### [0.0.4](https://github.com/anclaev/spomen-client/compare/v0.0.3...v0.0.4) (2024-08-03)
+
 ### Bug Fixes
 
 - **profile,uploads:** Исправить отображение UI ([5712d8d](https://github.com/anclaev/spomen-client/commit/5712d8d9bec138540103bdebd58d88e6afe5c644))
