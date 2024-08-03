@@ -1,6 +1,6 @@
 {
   "name": "spomen-client",
-  "version": "0.0.4",
+  "version": "0.0.3",
   "description": "Platform of memories",
   "scripts": {
     "ng": "ng",
