@@ -37,6 +37,7 @@
       "@graphql": ["./src/app/core/graphql/index.ts"],
       "@app/*": ["./src/app/*"]
     },
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {

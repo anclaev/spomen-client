@@ -5,4 +5,5 @@ export interface Env {
   apiUrl: string
   origin: string
   sentryDsn: string
+  appVersion: string
 }

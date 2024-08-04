@@ -1,6 +1,8 @@
 import { Component } from '@angular/core'
 import * as Sentry from '@sentry/angular'
 
+import { env } from '@env'
+
 import { NavComponent } from '@components/nav'
 
 @Component({
@@ -11,4 +13,6 @@ import { NavComponent } from '@components/nav'
   styleUrl: './menu.component.scss',
 })
 @Sentry.TraceClass({ name: 'Menu' })
-export class MenuComponent {}
+export class MenuComponent {
+  appVersion = env.appVersion
+}
