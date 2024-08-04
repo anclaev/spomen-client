@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/anclaev/spomen-client/compare/v0.0.4...v0.0.5) (2024-08-04)
+
+### Bug Fixes
+
+- **profile:** fixed [#14](https://github.com/anclaev/spomen-client/issues/14) ([b8f80ba](https://github.com/anclaev/spomen-client/commit/b8f80ba1591cadfa73c977c7e811e1e315920389))
+- **uploads:** fixed [#13](https://github.com/anclaev/spomen-client/issues/13) ([1599df4](https://github.com/anclaev/spomen-client/commit/1599df4be4fc1130c3fc9feafbbff40ef6c26c5b))
+- **workflow:** Изменить сценарий релиза ([e7319e4](https://github.com/anclaev/spomen-client/commit/e7319e4d2ce78f194d4e05e9626c736201845ed6))
+- **workflow:** Изменить сценарий релиза ([5ee44fb](https://github.com/anclaev/spomen-client/commit/5ee44fbedd9ee97fce9f7063afd77f47b8fe0b8c))
+- **workflow:** CI ([40226bb](https://github.com/anclaev/spomen-client/commit/40226bb9a936abcada3aefe91da36d733e0f2735))
+
 ### [0.0.4](https://github.com/anclaev/spomen-client/compare/v0.0.3...v0.0.4) (2024-08-03)
 
 ### Features
