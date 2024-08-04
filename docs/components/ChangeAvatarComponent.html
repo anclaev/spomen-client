@@ -379,15 +379,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>handleUploadResult(res: <a href="../interfaces/UploadModel.html" target="_self">UploadModel | null</a>)</code>
+                    <code>handleUploadResult(res: <a href="../interfaces/UploadModel.html" target="_self">UploadModel | Error</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="149"
-                                    class="link-to-prism">src/app/profile/change-avatar/change-avatar.component.ts:149</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="139"
+                                    class="link-to-prism">src/app/profile/change-avatar/change-avatar.component.ts:139</a></div>
                         </td>
                     </tr>
 
@@ -410,7 +410,7 @@
                                         <tr>
                                                 <td>res</td>
                                             <td>
-                                                            <code><a href="../interfaces/UploadModel.html" target="_self" >UploadModel | null</a></code>
+                                                            <code><a href="../interfaces/UploadModel.html" target="_self" >UploadModel | Error</a></code>
                                             </td>
 
                                             <td>
@@ -453,8 +453,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="108"
-                                    class="link-to-prism">src/app/profile/change-avatar/change-avatar.component.ts:108</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/app/profile/change-avatar/change-avatar.component.ts:111</a></div>
                         </td>
                     </tr>
 
@@ -529,8 +529,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="155"
-                                    class="link-to-prism">src/app/profile/change-avatar/change-avatar.component.ts:155</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="150"
+                                    class="link-to-prism">src/app/profile/change-avatar/change-avatar.component.ts:150</a></div>
                         </td>
                     </tr>
 
@@ -598,8 +598,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="133"
-                                    class="link-to-prism">src/app/profile/change-avatar/change-avatar.component.ts:133</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="130"
+                                    class="link-to-prism">src/app/profile/change-avatar/change-avatar.component.ts:130</a></div>
                         </td>
                     </tr>
 
@@ -901,22 +901,25 @@ export class ChangeAvatarComponent {
         .pipe(
           takeUntilDestroyed(this.destroyRef),
           catchError((res) &#x3D;&gt; {
-            this.showError(res.error.message)
             return of(new Error(res.error))
           }),
-          switchMap((res) &#x3D;&gt; (res ? this.uploadAvatar() : of(null)))
+          switchMap((res) &#x3D;&gt;
+            res instanceof Error ? of(res) : this.uploadAvatar()
+          )
         )
         .subscribe({
-          next: (res) &#x3D;&gt; this.handleUploadResult(res as UploadModel),
-          error: () &#x3D;&gt; {
-            this.isLoading.set(false)
+          next: (res) &#x3D;&gt; this.handleUploadResult(res),
+          error: (err) &#x3D;&gt; {
+            this.showError(&#x27;Возникла проблема. Попробуйте позже&#x27;)
+            throw err
           },
         })
     } else {
       this.uploadAvatar().subscribe({
         next: (res) &#x3D;&gt; this.handleUploadResult(res as UploadModel),
-        error: () &#x3D;&gt; {
-          this.isLoading.set(false)
+        error: (err) &#x3D;&gt; {
+          this.showError(&#x27;Возникла проблема. Попробуйте позже&#x27;)
+          throw err
         },
       })
     }
@@ -929,20 +932,14 @@ export class ChangeAvatarComponent {
       .removeAvatar({
         id: this.targetAccountId,
       })
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-        catchError((err) &#x3D;&gt; {
-          this.showError(err)
-          return of(new Error(err))
-        })
-      )
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: () &#x3D;&gt; {
+        next: (data) &#x3D;&gt; {
           this.isLoading.set(false)
           this.context.completeWith(true)
         },
-        error: () &#x3D;&gt; {
-          this.isLoading.set(false)
+        error: (err) &#x3D;&gt; {
+          this.showError(&#x27;Возникла проблема. Попробуйте позже&#x27;)
         },
       })
   }
@@ -953,27 +950,24 @@ export class ChangeAvatarComponent {
         file: this.control.value!,
         id: this.targetAccountId,
       })
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-        takeLast(1),
-        catchError((res) &#x3D;&gt; {
-          this.showError(res.error.message)
-          return of(new Error(res.error))
-        })
-      )
+      .pipe(takeUntilDestroyed(this.destroyRef), takeLast(1))
   }
 
-  private handleUploadResult(res: UploadModel | null) {
+  private handleUploadResult(res: UploadModel | Error) {
+    if (res instanceof Error) {
+      this.showError(&#x27;Возникла проблема. Попробуйте позже&#x27;)
+      throw res
+    }
+
     this.isLoading.set(false)
 
     this.context.completeWith(res ? res.url : null)
   }
 
   private showError(err: string) {
-    this.alerts
-      .open(err, { status: &#x27;error&#x27; })
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe()
+    this.isLoading.set(false)
+
+    this.alerts.open(err, { status: &#x27;error&#x27; }).subscribe()
   }
 }
 </code></pre>
