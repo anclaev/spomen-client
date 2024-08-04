@@ -84,22 +84,25 @@ export class ChangeAvatarComponent {
         .pipe(
           takeUntilDestroyed(this.destroyRef),
           catchError((res) => {
-            this.showError(res.error.message)
             return of(new Error(res.error))
           }),
-          switchMap((res) => (res ? this.uploadAvatar() : of(null)))
+          switchMap((res) =>
+            res instanceof Error ? of(res) : this.uploadAvatar()
+          )
         )
         .subscribe({
-          next: (res) => this.handleUploadResult(res as UploadModel),
-          error: () => {
-            this.isLoading.set(false)
+          next: (res) => this.handleUploadResult(res),
+          error: (err) => {
+            this.showError('Возникла проблема. Попробуйте позже')
+            throw err
           },
         })
     } else {
       this.uploadAvatar().subscribe({
         next: (res) => this.handleUploadResult(res as UploadModel),
-        error: () => {
-          this.isLoading.set(false)
+        error: (err) => {
+          this.showError('Возникла проблема. Попробуйте позже')
+          throw err
         },
       })
     }
@@ -112,20 +115,14 @@ export class ChangeAvatarComponent {
       .removeAvatar({
         id: this.targetAccountId,
       })
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-        catchError((err) => {
-          this.showError(err)
-          return of(new Error(err))
-        })
-      )
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: () => {
+        next: (data) => {
           this.isLoading.set(false)
           this.context.completeWith(true)
         },
-        error: () => {
-          this.isLoading.set(false)
+        error: (err) => {
+          this.showError('Возникла проблема. Попробуйте позже')
         },
       })
   }
@@ -136,26 +133,23 @@ export class ChangeAvatarComponent {
         file: this.control.value!,
         id: this.targetAccountId,
       })
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-        takeLast(1),
-        catchError((res) => {
-          this.showError(res.error.message)
-          return of(new Error(res.error))
-        })
-      )
+      .pipe(takeUntilDestroyed(this.destroyRef), takeLast(1))
   }
 
-  private handleUploadResult(res: UploadModel | null) {
+  private handleUploadResult(res: UploadModel | Error) {
+    if (res instanceof Error) {
+      this.showError('Возникла проблема. Попробуйте позже')
+      throw res
+    }
+
     this.isLoading.set(false)
 
     this.context.completeWith(res ? res.url : null)
   }
 
   private showError(err: string) {
-    this.alerts
-      .open(err, { status: 'error' })
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe()
+    this.isLoading.set(false)
+
+    this.alerts.open(err, { status: 'error' }).subscribe()
   }
 }

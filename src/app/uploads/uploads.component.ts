@@ -160,9 +160,20 @@ export class UploadsComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (res) => {
-          if (res.data.uploads.length === 0) this.isLastPage = true
+          if (res.data.uploads.length === 0) {
+            this.isLastPage = true
 
-          this.$uploads.update((prev) => prev.concat(res.data.uploads))
+            this.$uploadsLoading.set(false)
+            return
+          }
+
+          this.$uploads.update((prev) =>
+            prev.concat(
+              res.data.uploads.filter((item) => {
+                return !prev.find((prevItem) => prevItem.id === item.id)
+              })
+            )
+          )
 
           this.$uploadsLoading.set(false)
         },

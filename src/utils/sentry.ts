@@ -13,6 +13,6 @@ export function initSentry(): void {
     replaysSessionSampleRate: 0.1,
     replaysOnErrorSampleRate: 1.0,
     environment: env.environment,
-    // enabled: env.environment !== 'local'
+    enabled: env.environment !== 'local',
   })
 }
