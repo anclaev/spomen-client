@@ -5,6 +5,7 @@
     {
       "name": "app",
       "installMode": "prefetch",
+      "updateMode": "prefetch",
       "resources": {
         "files": [
           "/favicon.ico",
@@ -27,17 +28,21 @@
       }
     }
   ],
-  "dataGroups": [{
-    "name": "auth",
-    "urls": ["/auth"],
-    "cacheConfig": {
-      "maxSize": 5,
-      "maxAge": "7d0h",
-      "timeout": "10s0u",
-      "strategy": "freshness"
-    },
-    "cacheQueryOptions": {
-      "ignoreSearch": false
+  "dataGroups": [
+    {
+      "name": "auth",
+      "urls": [
+        "/auth"
+      ],
+      "cacheConfig": {
+        "maxSize": 5,
+        "maxAge": "7d0h",
+        "timeout": "10s0u",
+        "strategy": "freshness"
+      },
+      "cacheQueryOptions": {
+        "ignoreSearch": false
+      }
     }
-  }]
+  ]
 }
