@@ -64,7 +64,8 @@
                   "maximumError": "4kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "serviceWorker": "ngsw-config.json"
             },
             "staging": {
               "budgets": [
@@ -79,13 +80,14 @@
                   "maximumError": "4kB"
                 }
               ],
-              "outputHashing": "all",
               "fileReplacements": [
                 {
                   "replace": "src/envs/env.ts",
                   "with": "src/envs/env.staging.ts"
                 }
-              ]
+              ],
+              "outputHashing": "all",
+              "serviceWorker": "ngsw-config.json"
             },
             "development": {
               "optimization": false,

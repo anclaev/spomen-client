@@ -2,6 +2,7 @@ import { Router, provideRouter, withViewTransitions } from '@angular/router'
 import { provideHttpClient, withInterceptors } from '@angular/common/http'
 import { provideAnimations } from '@angular/platform-browser/animations'
 import { TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE } from '@taiga-ui/i18n'
+import { provideServiceWorker } from '@angular/service-worker'
 import { TUI_SANITIZER, TuiRootModule } from '@taiga-ui/core'
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify'
 import * as Sentry from '@sentry/angular'
@@ -14,6 +15,7 @@ import {
   APP_INITIALIZER,
   ErrorHandler,
   LOCALE_ID,
+  isDevMode,
 } from '@angular/core'
 
 import {
@@ -22,6 +24,7 @@ import {
   AccountService,
   UploadService,
   ScrollService,
+  PwaService,
 } from '@services'
 
 import { httpRequestInterceptor } from '@interceptors'
@@ -67,6 +70,11 @@ export const appConfig: ApplicationConfig = {
     },
     { provide: LOCALE_ID, useValue: 'ru' },
     graphqlProvider,
+    provideServiceWorker('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
+    PwaService,
     ConfigService,
     AuthService,
     AccountService,
