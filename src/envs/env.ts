@@ -1,3 +1,5 @@
+import { version } from '../../package.json'
+
 import { Env } from '@interfaces'
 
 export const env: Env = {
@@ -7,4 +9,5 @@ export const env: Env = {
   apiUrl: '',
   origin: '',
   sentryDsn: '',
+  appVersion: `v${version}` ?? 'latest',
 }

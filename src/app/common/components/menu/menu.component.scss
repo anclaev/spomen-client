@@ -16,6 +16,14 @@
   margin-top: 70px;
 }
 
+.menu__version {
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+  opacity: .5;
+}
+
 @media only screen and (max-width: 576px) {
   .menu {
     flex-direction: column;
