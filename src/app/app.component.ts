@@ -13,6 +13,7 @@ import {
   effect,
   inject,
   untracked,
+  AfterViewInit,
 } from '@angular/core'
 
 import { TuiPreviewModule } from '@taiga-ui/addon-preview'
@@ -25,7 +26,12 @@ import * as VKID from '@vkid/sdk'
 
 import { env } from '@env'
 
-import { AuthService, ConfigService, ScrollService } from '@services'
+import {
+  AuthService,
+  ConfigService,
+  PwaService,
+  ScrollService,
+} from '@services'
 import { inOutAnimation200, inOutAnimation500 } from '@animations'
 import { ScrollNearEndDirective } from '@directives'
 import { TuiPdfViewerModule } from '@taiga-ui/kit'
@@ -60,9 +66,10 @@ import { NavComponent } from '@components/nav'
   styleUrl: './app.component.scss',
 })
 @Sentry.TraceClass({ name: 'App' })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   private alerts = inject(TuiAlertService)
   private scroll = inject(ScrollService)
+  private pwa = inject(PwaService)
   private router = inject(Router)
   config = inject(ConfigService)
   auth = inject(AuthService)
@@ -114,6 +121,11 @@ export class AppComponent implements OnInit, OnDestroy {
         },
       })
     )
+  }
+
+  @Sentry.TraceMethod({ name: 'App.ngOnAfterViewInit' })
+  ngAfterViewInit() {
+    this.pwa.update()
   }
 
   nearEnd(posY: number) {

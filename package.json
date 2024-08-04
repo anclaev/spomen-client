@@ -4,6 +4,7 @@
   "description": "Platform of memories",
   "scripts": {
     "ng": "ng",
+    "pwa": "ng build --configuration staging && npx http-server -p 80 -c-1 dist/spomen/client/browser",
     "local": "ng serve --port 80",
     "build": "ng build && yarn sentry:sourcemaps",
     "build:staging": "ng build --configuration staging && yarn sentry:sourcemaps",
@@ -29,6 +30,7 @@
     "@angular/platform-browser": "^18.0.0",
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
+    "@angular/service-worker": "^18.0.0",
     "@apollo/client": "^3.0.0",
     "@sentry/angular": "^8.13.0",
     "@sentry/cli": "^2.32.1",
@@ -67,6 +69,7 @@
     "commitizen": "^4.3.0",
     "conventional-changelog-cli": "^5.0.0",
     "cz-conventional-changelog": "^3.3.0",
+    "http-server": "^14.1.1",
     "husky": "^9.1.1",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
