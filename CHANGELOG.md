@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/anclaev/spomen-client/compare/v0.0.5...v0.0.6) (2024-08-04)
+
+### Bug Fixes
+
+- **workflow:** Фикс генерации документации ([2d9a901](https://github.com/anclaev/spomen-client/commit/2d9a901df82526524218685b2ad17d875aeabf49))
+- **workflow:** Фикс генерации документации ([b2e3f4f](https://github.com/anclaev/spomen-client/commit/b2e3f4fd9e6f7beaf3972a291bec432c5d36657c))
+
 ### [0.0.5](https://github.com/anclaev/spomen-client/compare/v0.0.4...v0.0.5) (2024-08-04)
 
 ### Bug Fixes
