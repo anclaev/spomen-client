@@ -71,7 +71,8 @@ export const appConfig: ApplicationConfig = {
     { provide: LOCALE_ID, useValue: 'ru' },
     graphqlProvider,
     provideServiceWorker('ngsw-worker.js', {
-      enabled: !isDevMode(),
+      // enabled: !isDevMode(),
+      enabled: false,
       registrationStrategy: 'registerWhenStable:30000',
     }),
     PwaService,
