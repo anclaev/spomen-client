@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/anclaev/spomen-client/compare/v0.0.6...v0.0.7) (2024-08-04)
+
+### Features
+
+- **menu:** Отображение версии приложения ([bc42044](https://github.com/anclaev/spomen-client/commit/bc42044a70f411cdb6db6e9496a83cc5ba4de466))
+
 ### [0.0.6](https://github.com/anclaev/spomen-client/compare/v0.0.5...v0.0.6) (2024-08-04)
 
 ### Bug Fixes
