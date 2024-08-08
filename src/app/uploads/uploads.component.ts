@@ -111,7 +111,7 @@ export class UploadsComponent implements OnInit {
   modalFiltersIsOpen = false
 
   infoSub: Subscription | null = null
-  $infoUpload: WritableSignal<string | null> = signal(null)
+  $uploadInfoId: WritableSignal<string | null> = signal(null)
 
   $previewStatus: WritableSignal<boolean> = signal(false)
   $previewUpload: WritableSignal<UploadModel | null> = signal(null)
@@ -243,7 +243,7 @@ export class UploadsComponent implements OnInit {
       this.$previewUpload.set(null)
     }
 
-    this.$infoUpload.set(uploadId)
+    this.$uploadInfoId.set(uploadId)
 
     this.infoSub = this.showUploadInfoDialog()
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -281,7 +281,7 @@ export class UploadsComponent implements OnInit {
   handleDeletedUpload(id: string) {
     if (this.infoSub) this.infoSub.unsubscribe()
 
-    this.$infoUpload.set(null)
+    this.$uploadInfoId.set(null)
 
     this.alerts
       .open('Файл успешно удалён', {
