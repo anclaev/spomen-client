@@ -82,6 +82,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/ChatsComponent.html" data-type="entity-link" >ChatsComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/ConfirmAlertComponent.html" data-type="entity-link" >ConfirmAlertComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/DashboardComponent.html" data-type="entity-link" >DashboardComponent</a>
                             </li>
                             <li class="link">
@@ -199,6 +202,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/DeleteUploadByIdGQL.html" data-type="entity-link" >DeleteUploadByIdGQL</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/PwaService.html" data-type="entity-link" >PwaService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/ScrollService.html" data-type="entity-link" >ScrollService</a>
                                 </li>
                                 <li class="link">
@@ -243,6 +249,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/AuthModel.html" data-type="entity-link" >AuthModel</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ConfirmAlertOptions.html" data-type="entity-link" >ConfirmAlertOptions</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Env.html" data-type="entity-link" >Env</a>

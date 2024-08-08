@@ -229,6 +229,12 @@
     },
     { provide: LOCALE_ID, useValue: &#x27;ru&#x27; },
     graphqlProvider,
+    provideServiceWorker(&#x27;ngsw-worker.js&#x27;, {
+      // enabled: !isDevMode(),
+      enabled: false,
+      registrationStrategy: &#x27;registerWhenStable:30000&#x27;,
+    }),
+    PwaService,
     ConfigService,
     AuthService,
     AccountService,

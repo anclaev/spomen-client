@@ -228,9 +228,6 @@
                                 <a href="#$ext" >$ext</a>
                             </li>
                             <li>
-                                <a href="#$infoUpload" >$infoUpload</a>
-                            </li>
-                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#$name" >$name</a>
                             </li>
@@ -253,6 +250,9 @@
                             </li>
                             <li>
                                 <a href="#$size" >$size</a>
+                            </li>
+                            <li>
+                                <a href="#$uploadInfoId" >$uploadInfoId</a>
                             </li>
                             <li>
                                 <a href="#$uploads" >$uploads</a>
@@ -1217,37 +1217,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="$infoUpload"></a>
-                    <span class="name">
-                        <span ><b>$infoUpload</b></span>
-                        <a href="#$infoUpload"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>WritableSignal&lt;string | null&gt;</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>signal(null)</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/app/uploads/uploads.component.ts:114</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="$name"></a>
                     <span class="name">
                             <span class="modifier">Private</span>
@@ -1458,6 +1427,37 @@
                     <tr>
                         <td class="col-md-4">
                                 <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/app/uploads/uploads.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="$uploadInfoId"></a>
+                    <span class="name">
+                        <span ><b>$uploadInfoId</b></span>
+                        <a href="#$uploadInfoId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>WritableSignal&lt;string | null&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/app/uploads/uploads.component.ts:114</a></div>
                         </td>
                     </tr>
 
@@ -2189,7 +2189,7 @@ export class UploadsComponent implements OnInit {
   modalFiltersIsOpen &#x3D; false
 
   infoSub: Subscription | null &#x3D; null
-  $infoUpload: WritableSignal&lt;string | null&gt; &#x3D; signal(null)
+  $uploadInfoId: WritableSignal&lt;string | null&gt; &#x3D; signal(null)
 
   $previewStatus: WritableSignal&lt;boolean&gt; &#x3D; signal(false)
   $previewUpload: WritableSignal&lt;UploadModel | null&gt; &#x3D; signal(null)
@@ -2321,7 +2321,7 @@ export class UploadsComponent implements OnInit {
       this.$previewUpload.set(null)
     }
 
-    this.$infoUpload.set(uploadId)
+    this.$uploadInfoId.set(uploadId)
 
     this.infoSub &#x3D; this.showUploadInfoDialog()
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -2359,7 +2359,7 @@ export class UploadsComponent implements OnInit {
   handleDeletedUpload(id: string) {
     if (this.infoSub) this.infoSub.unsubscribe()
 
-    this.$infoUpload.set(null)
+    this.$uploadInfoId.set(null)
 
     this.alerts
       .open(&#x27;Файл успешно удалён&#x27;, {
@@ -2587,7 +2587,7 @@ export class UploadsComponent implements OnInit {
   #info
 &gt;
   &lt;spomen-upload-info
-    [uploadId]&#x3D;&quot;this.$infoUpload()!&quot;
+    [uploadId]&#x3D;&quot;this.$uploadInfoId()!&quot;
     (onUpdate)&#x3D;&quot;this.handleUpdateUpload($event)&quot;
     (onDelete)&#x3D;&quot;this.handleDeletedUpload($event)&quot;
   /&gt;
@@ -2621,8 +2621,8 @@ export class UploadsComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form class="uploads-filters" [formGroup]="this.uploadFiltersForm">  <tui-input    formControlName="name"    tuiTextfieldIcon="tuiIconSearch"    [tuiTextfieldSize]="\'s\'"  >    Название  </tui-input>  <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" />  <button    class="button uploads-filters__btn"    (click)="this.showModalFilters()"    tuiHint="Параметры поиска"    [tuiHintShowDelay]="1000"  >    <tui-svg src="tuiIconCompass"></tui-svg>  </button>  <button    class="button uploads-filters__btn"    (click)="this.showUploadFile()"    tuiHint="Загрузить файл"    [tuiHintShowDelay]="1000"  >    <tui-svg src="tuiIconUpload"></tui-svg>  </button></form><section class="uploads-list">  @if (this.$uploads().length > 0) {    <div @inOutGrid200>      @for (upload of this.$uploads(); track $index) {        <spomen-upload-list-item          [isLoading]="false"          [isPrivate]="upload.permissions.includes(Permission.OwnerOnly)"          [upload]="upload"          (showPreview)="this.showUploadPreview($event)"          (clickUpload)="this.showUploadInfo(upload.id)"          (selectExtension)="this.setExtensionFilter(upload.ext)"        />      }    </div>  }  @if (this.$uploadsLoading()) {    <div @inOutGrid200>      @for (row of this.skeletonRows; track $index) {        <spomen-upload-list-item [isLoading]="true" [upload]="null" [isPrivate]="false" />      }    </div>  }</section>@if (this.$uploads().length === 0 && !this.$uploadsLoading()) {  <section class="uploads__not-found">    <spomen-not-found      title="Файлы не найдены"      [showRef]="false"    ></spomen-not-found>  </section>}<spomen-upload-preview  [upload]="this.$previewUpload()"  [isOpen]="this.$previewStatus()"  (handleOpen)="this.showUploadInfo(this.$previewUpload()!.id)"  (handleDelete)="this.handleDeletePreviewedUpload()"  (handleClose)="this.handleClosePreview()"/><ng-template  let-observer  [tuiDialogOptions]="{size: \'s\'}"  [(tuiDialog)]="this.modalFiltersIsOpen">  <div class="uploads-filters--modal">    <form class="uploads-filters--modal__form" [formGroup]="this.uploadFiltersForm">      <span class="uploads-filters--modal__title">Поиск</span>      <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" placeholder="Тип файла" />      @if (this.isAdministrator) {        <spomen-account-input [formGroup]="this.uploadFiltersForm" formControlName="account"                              placeholder="Аккаунт владельца" />      }      <spomen-permission-input [formGroup]="this.uploadFiltersForm" formControlName="permissions" />      <button class="button" (click)="observer.complete()"><span>Найти</span></button>    </form>  </div></ng-template><ng-template  #info>  <spomen-upload-info    [uploadId]="this.$infoUpload()!"    (onUpdate)="this.handleUpdateUpload($event)"    (onDelete)="this.handleDeletedUpload($event)"  /></ng-template></div>'
-    var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'PermissionInputComponent', 'selector': 'spomen-permission-input'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadActionsComponent', 'selector': 'spomen-upload-actions'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadPreviewComponent', 'selector': 'spomen-upload-preview'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
+        var COMPONENT_TEMPLATE = '<div><form class="uploads-filters" [formGroup]="this.uploadFiltersForm">  <tui-input    formControlName="name"    tuiTextfieldIcon="tuiIconSearch"    [tuiTextfieldSize]="\'s\'"  >    Название  </tui-input>  <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" />  <button    class="button uploads-filters__btn"    (click)="this.showModalFilters()"    tuiHint="Параметры поиска"    [tuiHintShowDelay]="1000"  >    <tui-svg src="tuiIconCompass"></tui-svg>  </button>  <button    class="button uploads-filters__btn"    (click)="this.showUploadFile()"    tuiHint="Загрузить файл"    [tuiHintShowDelay]="1000"  >    <tui-svg src="tuiIconUpload"></tui-svg>  </button></form><section class="uploads-list">  @if (this.$uploads().length > 0) {    <div @inOutGrid200>      @for (upload of this.$uploads(); track $index) {        <spomen-upload-list-item          [isLoading]="false"          [isPrivate]="upload.permissions.includes(Permission.OwnerOnly)"          [upload]="upload"          (showPreview)="this.showUploadPreview($event)"          (clickUpload)="this.showUploadInfo(upload.id)"          (selectExtension)="this.setExtensionFilter(upload.ext)"        />      }    </div>  }  @if (this.$uploadsLoading()) {    <div @inOutGrid200>      @for (row of this.skeletonRows; track $index) {        <spomen-upload-list-item [isLoading]="true" [upload]="null" [isPrivate]="false" />      }    </div>  }</section>@if (this.$uploads().length === 0 && !this.$uploadsLoading()) {  <section class="uploads__not-found">    <spomen-not-found      title="Файлы не найдены"      [showRef]="false"    ></spomen-not-found>  </section>}<spomen-upload-preview  [upload]="this.$previewUpload()"  [isOpen]="this.$previewStatus()"  (handleOpen)="this.showUploadInfo(this.$previewUpload()!.id)"  (handleDelete)="this.handleDeletePreviewedUpload()"  (handleClose)="this.handleClosePreview()"/><ng-template  let-observer  [tuiDialogOptions]="{size: \'s\'}"  [(tuiDialog)]="this.modalFiltersIsOpen">  <div class="uploads-filters--modal">    <form class="uploads-filters--modal__form" [formGroup]="this.uploadFiltersForm">      <span class="uploads-filters--modal__title">Поиск</span>      <spomen-extension-input [formGroup]="this.uploadFiltersForm" formControlName="ext" placeholder="Тип файла" />      @if (this.isAdministrator) {        <spomen-account-input [formGroup]="this.uploadFiltersForm" formControlName="account"                              placeholder="Аккаунт владельца" />      }      <spomen-permission-input [formGroup]="this.uploadFiltersForm" formControlName="permissions" />      <button class="button" (click)="observer.complete()"><span>Найти</span></button>    </form>  </div></ng-template><ng-template  #info>  <spomen-upload-info    [uploadId]="this.$uploadInfoId()!"    (onUpdate)="this.handleUpdateUpload($event)"    (onDelete)="this.handleDeletedUpload($event)"  /></ng-template></div>'
+    var COMPONENTS = [{'name': 'AccountInputComponent', 'selector': 'spomen-account-input'},{'name': 'AppComponent', 'selector': 'spomen-root'},{'name': 'AuthCallbackComponent', 'selector': 'spomen-auth-callback'},{'name': 'AuthComponent', 'selector': 'spomen-auth'},{'name': 'AuthPassComponent', 'selector': 'spomen-auth-pass'},{'name': 'ChangeAvatarComponent', 'selector': 'spomen-change-avatar'},{'name': 'ChatsComponent', 'selector': 'spomen-chats'},{'name': 'ConfirmAlertComponent', 'selector': 'spomen-confirm-alert'},{'name': 'DashboardComponent', 'selector': 'spomen-dashboard'},{'name': 'EventsComponent', 'selector': 'spomen-events'},{'name': 'ExtensionInputComponent', 'selector': 'spomen-extension-input'},{'name': 'HeaderComponent', 'selector': 'spomen-header'},{'name': 'MeComponent', 'selector': 'spomen-me'},{'name': 'MemoriesComponent', 'selector': 'spomen-memories'},{'name': 'MenuComponent', 'selector': 'spomen-menu'},{'name': 'NavComponent', 'selector': 'spomen-nav'},{'name': 'NotFoundComponent', 'selector': 'spomen-not-found'},{'name': 'OopsComponent', 'selector': 'spomen-oops'},{'name': 'PermissionInputComponent', 'selector': 'spomen-permission-input'},{'name': 'ProfileComponent', 'selector': 'spomen-profile'},{'name': 'SignInComponent', 'selector': 'spomen-sign-in'},{'name': 'SignUpComponent', 'selector': 'spomen-sign-up'},{'name': 'TimelinesComponent', 'selector': 'spomen-timelines'},{'name': 'UploadActionsComponent', 'selector': 'spomen-upload-actions'},{'name': 'UploadFileComponent', 'selector': 'spomen-upload-file'},{'name': 'UploadInfoComponent', 'selector': 'spomen-upload-info'},{'name': 'UploadListItemComponent', 'selector': 'spomen-upload-list-item'},{'name': 'UploadPreviewComponent', 'selector': 'spomen-upload-preview'},{'name': 'UploadsComponent', 'selector': 'spomen-uploads'}];
     var DIRECTIVES = [{'name': 'ScrollNearEndDirective', 'selector': '[scrollNearEnd]'}];
     var ACTUAL_COMPONENT = {'name': 'UploadsComponent'};
 </script>

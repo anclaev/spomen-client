@@ -91,7 +91,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >AccountGQL</li>
+  <li class="breadcrumb-item" >PwaService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -115,17 +115,11 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/core/graphql/queries/account.gql.ts</code>
+            <code>src/app/core/services/pwa.service.ts</code>
         </p>
 
 
 
-            <p class="comment">
-                <h3>Extends</h3>
-            </p>
-            <p class="comment">
-                        <code>Query</code>
-            </p>
 
 
             <section data-compodoc="block-index">
@@ -141,12 +135,35 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#document" >document</a>
+                                    <span class="modifier">Private</span>
+                                <a href="#alerts" >alerts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#injector" >injector</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#updates" >updates</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#update" >update</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -157,7 +174,49 @@
 </section>
 
 
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update"></a>
+                    <span class="name">
+                        <span ><b>update</b></span>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>update()</code>
+                </td>
+            </tr>
 
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/app/core/services/pwa.service.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
             <section data-compodoc="block-properties">
     
     <h3 id="inputs">
@@ -167,38 +226,74 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="document"></a>
+                    <a name="alerts"></a>
                     <span class="name">
-                        <span ><b>document</b></span>
-                        <a href="#document"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Private</span>
+                        <span ><b>alerts</b></span>
+                        <a href="#alerts"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>gql&#x60;
-    query account($username: String!) {
-      account(where: { username: $username }) {
-        id
-        username
-        email
-        roles
-        avatar {
-          url
-        }
-        vk_id
-        vk_avatar
-        first_name
-        last_name
-        birthday
-      }
-    }
-  &#x60;</code>
+                        <i>Default value : </i><code>inject(TuiAlertService)</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/core/graphql/queries/account.gql.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/core/services/pwa.service.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="injector"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>injector</b></span>
+                        <a href="#injector"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Injector)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/core/services/pwa.service.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updates"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>updates</b></span>
+                        <a href="#updates"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(SwUpdate)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/core/services/pwa.service.ts:14</a></div>
                         </td>
                     </tr>
 
@@ -211,43 +306,68 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { gql, Query, QueryRef } from &#x27;apollo-angular&#x27;
-import { Injectable } from &#x27;@angular/core&#x27;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PolymorpheusComponent } from &#x27;@tinkoff/ng-polymorpheus&#x27;
+import { inject, Injectable, Injector } from &#x27;@angular/core&#x27;
+import { SwUpdate } from &#x27;@angular/service-worker&#x27;
+import { TuiAlertService } from &#x27;@taiga-ui/core&#x27;
+import { map } from &#x27;rxjs&#x27;
 
-import { AccountModel } from &#x27;@models&#x27;
-
-export type AccountResponse &#x3D; {
-  account: AccountModel
-}
-
-export type AccountVariables &#x3D; {
-  username: string
-}
-
-export type AccountQueryRef &#x3D; QueryRef&lt;AccountResponse, AccountVariables&gt;
+import { ConfirmAlertComponent } from &#x27;@components/confirm-alert&#x27;
 
 @Injectable({
   providedIn: &#x27;root&#x27;,
 })
-export class AccountGQL extends Query&lt;AccountResponse, AccountVariables&gt; {
-  document &#x3D; gql&#x60;
-    query account($username: String!) {
-      account(where: { username: $username }) {
-        id
-        username
-        email
-        roles
-        avatar {
-          url
+export class PwaService {
+  private alerts &#x3D; inject(TuiAlertService)
+  private updates &#x3D; inject(SwUpdate)
+  private injector &#x3D; inject(Injector)
+
+  update() {
+    return this.updates.versionUpdates.subscribe((e) &#x3D;&gt; {
+      switch (e.type) {
+        case &#x27;VERSION_DETECTED&#x27;: {
+          console.log(&#x60;Загрузка новой версии приложения: ${e.version.hash}&#x60;)
+          break
         }
-        vk_id
-        vk_avatar
-        first_name
-        last_name
-        birthday
+        case &#x27;VERSION_READY&#x27;: {
+          console.log(&#x60;Текущая версия приложения: ${e.currentVersion.hash}&#x60;)
+          console.log(&#x60;Приложение обновлено до версии: ${e.latestVersion.hash}&#x60;)
+
+          this.alerts
+            .open(
+              new PolymorpheusComponent(ConfirmAlertComponent, this.injector),
+              {
+                label: &#x27;Приложение обновлено&#x27;,
+                status: &#x27;info&#x27;,
+                data: {
+                  confirmMessage: &#x27;Перезагрузить&#x27;,
+                },
+                autoClose: (item) &#x3D;&gt; false,
+              }
+            )
+            .pipe(
+              map((res: unknown) &#x3D;&gt; {
+                if (res) {
+                  document.location.reload()
+                }
+              })
+            )
+            .subscribe()
+
+          break
+        }
+        case &#x27;VERSION_INSTALLATION_FAILED&#x27;: {
+          console.log(&#x60;Ошибка установки версии &#x27;${e.version.hash}&#x27;: ${e.error}&#x60;)
+
+          this.alerts
+            .open(&#x60;Версия ${e.version.hash} не установлена&#x60;, {
+              status: &#x27;error&#x27;,
+            })
+            .subscribe()
+        }
       }
-    }
-  &#x60;
+    })
+  }
 }
 </code></pre>
     </div>
@@ -292,7 +412,7 @@ export class AccountGQL extends Query&lt;AccountResponse, AccountVariables&gt; {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'AccountGQL.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'PwaService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
