@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/anclaev/spomen-client/compare/v0.0.7...v0.1.0) (2024-08-08)
+
+### Features
+
+- **app:** Интеграция service worker ([f0169b3](https://github.com/anclaev/spomen-client/commit/f0169b32c8749b4154b648051117a7289bd7da11))
+- **app:** Интеграция service worker ([d5e5421](https://github.com/anclaev/spomen-client/commit/d5e5421797efb4ce2224c1fa320cf8684a4d41f7))
+
+### Bug Fixes
+
+- **app:** Общие стили приложения ([bbdd633](https://github.com/anclaev/spomen-client/commit/bbdd6334bb9d27ab90ff15db6b94fc2f86abfdda))
+- **app:** Отключение service workers ([008b84c](https://github.com/anclaev/spomen-client/commit/008b84c617ba92509d01e1f5e9d76e32af86c5ca))
+- **app:** Service worker ([e95ed38](https://github.com/anclaev/spomen-client/commit/e95ed38582fc3c514c122dbb7abb047a3cadf64a))
+- **app:** Service worker ([45fe8c7](https://github.com/anclaev/spomen-client/commit/45fe8c7e653e9f83097d9c07e97c85ff1e6e4da8))
+- **app:** Service worker ([b322198](https://github.com/anclaev/spomen-client/commit/b3221981d98ed93840483b8f9cf655c72b27679c))
+
 ### [0.0.7](https://github.com/anclaev/spomen-client/compare/v0.0.6...v0.0.7) (2024-08-04)
 
 ### Features
